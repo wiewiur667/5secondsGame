@@ -57,16 +57,25 @@ class Hub {
   private roster(): string[] {
     return [...this.players.values()].filter((p) => !p.gone).map((p) => p.name)
   }
-  // Game master = earliest-registered player with a live socket. Auto-reassigns
-  // when the current host disconnects or logs out.
+  // Game master = earliest-registered active player. Based on players, not live
+  // sockets, so a phone locking (transient WS drop) does NOT flicker the role;
+  // it only reassigns on an explicit logout/leave (which removes the player).
   private currentGm(): number | null {
     let m: number | null = null
-    for (const pid of this.peers.keys()) if (m === null || pid < m) m = pid
+    for (const id of this.activeIds()) if (m === null || id < m) m = id
     return m
   }
 
   // --- sockets -----------------------------------------------------------
   attach(pid: number, peer: Peer) {
+    // Unknown/stale id (e.g. after a server restart) — tell the client to
+    // re-register instead of parking a ghost entry in `peers`.
+    if (!this.players.has(pid)) {
+      try { peer.send(JSON.stringify({ phase: 'register' })) } catch {}
+      return
+    }
+    const prev = this.peerPid.get(peer) // a reconnecting socket may hold an old pid
+    if (prev != null && prev !== pid && this.peers.get(prev) === peer) this.peers.delete(prev)
     this.peers.set(pid, peer) // overwrite any stale socket for this pid
     this.peerPid.set(peer, pid)
     const p = this.players.get(pid)

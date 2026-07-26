@@ -110,7 +110,6 @@ const fiveSecondRule: GameModule<State> = {
 
   stateForPlayer(s, pid, elapsedSec): PlayerView {
     const q = s.questions[s.idx]
-    const remaining = Math.max(0, Math.ceil(s.timerSeconds - elapsedSec))
     const yourPicks = s.picks[pid] || []
     const common = {
       game: this.id,
