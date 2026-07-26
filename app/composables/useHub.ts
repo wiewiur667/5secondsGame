@@ -41,6 +41,11 @@ export function useHub() {
   function action(type: string) {
     if (send && statusRef?.value === 'OPEN') send(JSON.stringify({ type }))
   }
+  function logout() {
+    if (import.meta.client) localStorage.removeItem('mi_id')
+    id.value = null
+    state.value = { phase: 'register' }
+  }
 
   if (import.meta.client) {
     const stored = localStorage.getItem('mi_id')
@@ -72,5 +77,6 @@ export function useHub() {
     submit,
     startTimer: () => action('start-timer'),
     reveal: () => action('reveal'),
+    logout,
   }
 }

@@ -3,7 +3,7 @@ import MusicImpostor from '~/components/games/MusicImpostor.vue'
 import FiveSecondRule from '~/components/games/FiveSecondRule.vue'
 import GmBar from '~/components/GmBar.vue'
 
-const { state, id, register, submit, startTimer, reveal } = useHub()
+const { state, id, register, submit, startTimer, reveal, logout } = useHub()
 const name = ref('')
 
 function join() {
@@ -39,6 +39,7 @@ const ownName = computed(() => name.value.trim())
         <span v-for="p in state.roster" :key="p" class="chip" :class="{ me: p === ownName }">{{ p }}</span>
       </div>
       <p class="count">{{ state.roster.length }} in the room</p>
+      <button class="btn logout" @click="logout">Log out</button>
     </section>
 
     <!-- game over — final scores -->
@@ -53,6 +54,7 @@ const ownName = computed(() => name.value.trim())
         </li>
       </ol>
       <p class="muted">Waiting for the next game…</p>
+      <button class="btn logout" @click="logout">Log out</button>
     </section>
 
     <!-- in a game -->
@@ -99,6 +101,7 @@ const ownName = computed(() => name.value.trim())
 .count { color: var(--muted); font-size: 0.9rem; margin: 0; }
 .block { width: 100%; }
 .gmlink { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; margin-top: 4px; }
+.logout { align-self: center; min-height: 42px; font-size: 0.95rem; color: var(--muted); background: transparent; border: 1px solid var(--border); margin-top: 4px; }
 
 .trophy { font-size: 56px; }
 
