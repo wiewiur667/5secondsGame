@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "timerSeconds": 5,
+  "picksRequired": 3,
+  "categories": [
+    {
+      "id": "food",
+      "name": "Food & Drink",
+      "questions": [
+        { "id": 1, "prompt": "Pick 3 ice cream flavors", "options": ["Vanilla", "Chocolate", "Strawberry", "Ketchup", "Gravel", "Pencil"], "correct": [0, 1, 2] },
+        { "id": 2, "prompt": "Pick 3 pizza toppings", "options": ["Pepperoni", "Mushroom", "Onion", "Motor oil", "Brick", "Sock"], "correct": [0, 1, 2] },
+        { "id": 3, "prompt": "Pick 3 hot drinks", "options": ["Coffee", "Tea", "Hot chocolate", "Ice cube", "Sand", "Bleach"], "correct": [0, 1, 2] },
+        { "id": 4, "prompt": "Pick 3 fruits", "options": ["Apple", "Banana", "Mango", "Hammer", "Cloud", "Rug"], "correct": [0, 1, 2] },
+        { "id": 5, "prompt": "Pick 3 breakfast foods", "options": ["Eggs", "Cereal", "Pancakes", "Concrete", "Stapler", "Tire"], "correct": [0, 1, 2] }
+      ]
+    },
+    {
+      "id": "everyday",
+      "name": "Everyday Things",
+      "questions": [
+        { "id": 6, "prompt": "Pick 3 things with wheels", "options": ["Car", "Bicycle", "Shopping cart", "Banana", "Cloud", "Table"], "correct": [0, 1, 2] },
+        { "id": 7, "prompt": "Pick 3 things you find in a kitchen", "options": ["Fridge", "Oven", "Sink", "Volcano", "Whale", "Planet"], "correct": [0, 1, 2] },
+        { "id": 8, "prompt": "Pick 3 things that are cold", "options": ["Ice", "Snow", "Winter", "Fire", "Sun", "Lava"], "correct": [0, 1, 2] },
+        { "id": 9, "prompt": "Pick 3 things in a bathroom", "options": ["Toilet", "Towel", "Toothbrush", "Tractor", "Anchor", "Cactus"], "correct": [0, 1, 2] },
+        { "id": 10, "prompt": "Pick 3 things that fly", "options": ["Plane", "Bird", "Helicopter", "Rock", "Sofa", "Fridge"], "correct": [0, 1, 2] }
+      ]
+    },
+    {
+      "id": "entertainment",
+      "name": "Entertainment",
+      "questions": [
+        { "id": 11, "prompt": "Pick 3 board games", "options": ["Monopoly", "Chess", "Scrabble", "Hammer", "Toaster", "Shovel"], "correct": [0, 1, 2] },
+        { "id": 12, "prompt": "Pick 3 musical instruments", "options": ["Guitar", "Piano", "Drums", "Spoon", "Ladder", "Kettle"], "correct": [0, 1, 2] },
+        { "id": 13, "prompt": "Pick 3 movie genres", "options": ["Comedy", "Horror", "Action", "Sandwich", "Gravel", "Tuesday"], "correct": [0, 1, 2] },
+        { "id": 14, "prompt": "Pick 3 sports", "options": ["Soccer", "Tennis", "Basketball", "Napping", "Blinking", "Chewing"], "correct": [0, 1, 2] },
+        { "id": 15, "prompt": "Pick 3 card games", "options": ["Poker", "Blackjack", "Solitaire", "Broccoli", "Ceiling", "Cactus"], "correct": [0, 1, 2] }
+      ]
+    }
+  ]
+}
