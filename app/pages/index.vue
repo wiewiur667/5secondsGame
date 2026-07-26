@@ -3,7 +3,7 @@ import MusicImpostor from '~/components/games/MusicImpostor.vue'
 import FiveSecondRule from '~/components/games/FiveSecondRule.vue'
 import GmBar from '~/components/GmBar.vue'
 
-const { state, id, register, submit, startTimer, reveal, logout } = useHub()
+const { state, id, register, submit, startTimer, reveal, continueRound, logout } = useHub()
 const name = ref('')
 
 function join() {
@@ -66,6 +66,7 @@ const ownName = computed(() => name.value.trim())
       @submit="submit"
       @start-timer="startTimer"
       @reveal="reveal"
+      @continue="continueRound"
     />
   </main>
 </template>

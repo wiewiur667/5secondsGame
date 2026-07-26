@@ -6,6 +6,7 @@ const emit = defineEmits<{
   submit: [payload: { picks: number[] }]
   startTimer: []
   reveal: []
+  continue: []
 }>()
 
 // Local selection drives the UI for snappy taps; reset on new question.
@@ -113,7 +114,9 @@ const board = computed<PlayerView['leaderboard']>(() =>
         </div>
       </div>
 
-      <p v-if="!state.autoAdvance" class="waitgm">Waiting for the host…</p>
+      <button v-if="!state.autoAdvance" class="btn btn-primary gate" @click="emit('continue')">
+        ▶ Continue
+      </button>
     </template>
 
     <!-- leaderboard during the playing phase (compact) -->
@@ -196,5 +199,4 @@ const board = computed<PlayerView['leaderboard']>(() =>
 .answer .chips { display: flex; flex-wrap: wrap; gap: 8px; }
 .ans { font-weight: 700; padding: 7px 13px; border-radius: 999px; background: color-mix(in srgb, var(--success) 16%, var(--surface-2)); border: 1px solid color-mix(in srgb, var(--success) 45%, transparent); }
 .ans.mine { outline: 2px dashed var(--gold); outline-offset: 2px; }
-.waitgm { text-align: center; color: var(--muted); }
 </style>

@@ -72,6 +72,15 @@ export function useHub() {
       try { apply(await $fetch<PlayerView>('/api/state', { query: { id: id.value } })) } catch {}
     }, 2000)
     onScopeDispose(() => clearInterval(timer))
+
+    // Phones lock/background constantly at a party; mobile browsers delay the
+    // native `close` event until the tab resumes, so the passive reconnect can
+    // sit stale for a while. Force a reconnect the instant the tab is visible.
+    const onVisible = () => {
+      if (document.visibilityState === 'visible' && ws.status.value !== 'OPEN') ws.open()
+    }
+    document.addEventListener('visibilitychange', onVisible)
+    onScopeDispose(() => document.removeEventListener('visibilitychange', onVisible))
   }
 
   return {
@@ -81,6 +90,7 @@ export function useHub() {
     submit,
     startTimer: () => action('start-timer'),
     reveal: () => action('reveal'),
+    continueRound: () => action('continue'),
     logout,
   }
 }

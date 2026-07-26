@@ -145,6 +145,7 @@ class Hub {
     this.totals = new Map()
     this.finalBoard = []
     this.timerSeconds = 5
+    this.autoAdvance = true
   }
   start(): string | null {
     if (!this.gameId) return 'Pick a game first.'
@@ -211,6 +212,11 @@ class Hub {
       this.game.reveal(this.round, this.elapsed())
       this.broadcast()
     }
+  }
+  // Any player unsticks a manual-mode reveal (auto-advance off). Only fires
+  // when genuinely stuck — revealed + not auto — so it can't skip a live round.
+  playerContinue() {
+    if (!this.autoAdvance && this.scored) this.next()
   }
 
   // --- clock / scoring ---------------------------------------------------
