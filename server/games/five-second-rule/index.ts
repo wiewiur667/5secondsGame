@@ -23,6 +23,8 @@ interface State {
   revealAt: number | null // elapsed(s) at reveal — auto-advance is 10s after this
 }
 
+const MIN_READ_SECONDS = 5 // force at least this long to read the prompt before Start can fire
+
 function shuffle<T>(a: T[]): T[] {
   const r = [...a]
   for (let i = r.length - 1; i > 0; i--) {
@@ -67,9 +69,14 @@ const fiveSecondRule: GameModule<State> = {
     return s.revealed && s.revealAt != null ? s.revealAt + 10 : null
   },
 
-  // Any player presses "Start" to begin this question's 5s timer.
+  // Any player presses "Start" to begin this question's answer timer. Ignored
+  // (no-op) before the read-wait has passed since the prompt appeared — an
+  // eager tap doesn't rob everyone else of reading time. Capped at the GM's
+  // chosen answer window so a 3s speed-round doesn't get a longer read-wait
+  // than its own answer time.
   startTimer(s, elapsedSec) {
-    if (s.startedAt == null) s.startedAt = elapsedSec
+    const readSeconds = Math.min(MIN_READ_SECONDS, s.timerSeconds)
+    if (s.startedAt == null && elapsedSec >= readSeconds) s.startedAt = elapsedSec
   },
 
   // Any player presses "Reveal" once the answer window has closed.
@@ -146,8 +153,11 @@ const fiveSecondRule: GameModule<State> = {
       return { phase: 'revealed', ...common, correct: q.correct, gained, nextIn }
     }
     // Not started yet → prompt shown, waiting for someone to start the timer.
+    // readWait > 0 means Start is still disabled (forced minimum read time).
     if (s.startedAt == null) {
-      return { phase: 'playing', ...common, awaitingStart: true, remaining: s.timerSeconds }
+      const readSeconds = Math.min(MIN_READ_SECONDS, s.timerSeconds)
+      const readWait = Math.max(0, Math.ceil(readSeconds - elapsedSec))
+      return { phase: 'playing', ...common, awaitingStart: true, readWait, remaining: s.timerSeconds }
     }
     // Answer window closed but not revealed → waiting for someone to reveal.
     if (elapsedSec >= s.startedAt + s.timerSeconds) {

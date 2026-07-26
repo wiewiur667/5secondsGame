@@ -32,6 +32,7 @@ function toggle(i: number) {
 }
 
 const remaining = computed(() => Number(props.state.remaining ?? 0))
+const readWait = computed(() => Number(props.state.readWait ?? 0)) // seconds left before Start is allowed
 const correct = computed<number[]>(() => props.state.correct ?? [])
 const board = computed<PlayerView['leaderboard']>(() =>
   [...(props.state.leaderboard ?? [])].sort((a: any, b: any) => b.score - a.score),
@@ -57,9 +58,16 @@ const board = computed<PlayerView['leaderboard']>(() =>
         <p class="hint">Tap <b>{{ picksRequired }}</b></p>
       </div>
 
-      <!-- gate 1: start the timer — answers stay hidden until this is pressed -->
-      <button v-if="awaitingStart" class="btn btn-primary gate" @click="emit('startTimer')">
-        ▶ Start timer ({{ state.remaining }}s)
+      <!-- gate 1: start the timer — answers stay hidden until this is pressed.
+           Disabled for the first MIN_READ_SECONDS so nobody rushes it before
+           everyone's had a chance to read the prompt. -->
+      <button
+        v-if="awaitingStart"
+        class="btn btn-primary gate"
+        :disabled="readWait > 0"
+        @click="emit('startTimer')"
+      >
+        {{ readWait > 0 ? `Reading… ${readWait}s` : `▶ Start timer (${state.remaining}s)` }}
       </button>
 
       <div v-if="!awaitingStart" class="options">
