@@ -12,10 +12,19 @@ function join() {
 }
 
 const ownName = computed(() => name.value.trim())
+
+function doLogout() {
+  if (confirm("Log out? You'll leave the game and need to rejoin.")) logout()
+}
 </script>
 
 <template>
   <main class="wrap">
+    <!-- always-reachable logout, once registered -->
+    <button v-if="state && state.phase !== 'register'" class="corner-logout" @click="doLogout">
+      Log out
+    </button>
+
     <!-- host controls, inline, so the game master plays too -->
     <GmBar v-if="state && state.phase !== 'register' && state.isGm" />
 
@@ -39,7 +48,6 @@ const ownName = computed(() => name.value.trim())
         <span v-for="p in state.roster" :key="p" class="chip" :class="{ me: p === ownName }">{{ p }}</span>
       </div>
       <p class="count">{{ state.roster.length }} in the room</p>
-      <button class="btn logout" @click="logout">Log out</button>
     </section>
 
     <!-- game over — final scores -->
@@ -54,7 +62,6 @@ const ownName = computed(() => name.value.trim())
         </li>
       </ol>
       <p class="muted">Waiting for the next game…</p>
-      <button class="btn logout" @click="logout">Log out</button>
     </section>
 
     <!-- in a game -->
@@ -73,6 +80,7 @@ const ownName = computed(() => name.value.trim())
 
 <style scoped>
 .wrap {
+  position: relative;
   min-height: 100dvh;
   padding: max(24px, env(safe-area-inset-top)) 20px calc(24px + env(safe-area-inset-bottom));
   display: flex;
@@ -80,6 +88,20 @@ const ownName = computed(() => name.value.trim())
   justify-content: center;
   align-items: center;
 }
+.corner-logout {
+  position: absolute;
+  top: max(10px, env(safe-area-inset-top));
+  right: 12px;
+  min-height: 36px;
+  padding: 0 12px;
+  font-size: 0.85rem;
+  color: var(--muted);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+}
+.corner-logout:active { transform: scale(0.96); }
 .card { width: 100%; max-width: 440px; }
 .center { text-align: center; }
 .stack { display: flex; flex-direction: column; gap: 16px; }
@@ -102,7 +124,6 @@ const ownName = computed(() => name.value.trim())
 .count { color: var(--muted); font-size: 0.9rem; margin: 0; }
 .block { width: 100%; }
 .gmlink { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; margin-top: 4px; }
-.logout { align-self: center; min-height: 42px; font-size: 0.95rem; color: var(--muted); background: transparent; border: 1px solid var(--border); margin-top: 4px; }
 
 .trophy { font-size: 56px; }
 
