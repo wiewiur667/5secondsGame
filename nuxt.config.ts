@@ -3,6 +3,9 @@
 // - host 0.0.0.0 so phones on the LAN can reach dev server; prod uses HOST env.
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-01',
+  // Devtools instrumentation (vue-router __vrv_devtools) crashes on some phone
+  // browsers when hitting the dev server; off since phones are the whole point.
+  devtools: { enabled: false },
   modules: ['@vite-pwa/nuxt'],
   css: ['~/assets/css/theme.css'],
   app: {
