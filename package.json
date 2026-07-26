@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "nuxt dev --qr --publicURL http://192.168.1.190:3333",
+    "dev": "nuxt dev --qr --publicURL http://192.168.1.254:3333",
     "build": "nuxt build",
     "preview": "node .output/server/index.mjs",
     "postinstall": "patch-package && nuxt prepare",
