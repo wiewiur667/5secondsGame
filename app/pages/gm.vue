@@ -6,7 +6,8 @@ type State = {
   games: { id: string; name: string }[]
   gameId: string | null
   categories: { id: string; name: string }[]
-  category: string | null
+  selected: string[]
+  autoAdvance: boolean
   phase: 'lobby' | 'playing' | 'revealed'
   players: { id: string; name: string; gone: boolean }[]
   leaderboard: { id: string; name: string; score: number }[]
@@ -41,7 +42,7 @@ watch(
 )
 
 const needCategory = computed(
-  () => state.value?.gameId === 'five-second-rule' && !state.value?.category,
+  () => state.value?.gameId === 'five-second-rule' && !state.value?.selected?.length,
 )
 const startDisabled = computed(() => !state.value?.gameId || needCategory.value)
 
@@ -83,13 +84,13 @@ onUnmounted(() => clearInterval(timer))
       </div>
 
       <template v-if="state.gameId === 'five-second-rule' && state.categories.length">
-        <p class="section-label">Category</p>
+        <p class="section-label">Categories <span class="hint">· pick one or more</span></p>
         <div class="grid">
           <button
             v-for="c in state.categories"
             :key="c.id"
             class="btn"
-            :class="{ sel: state.category === c.id }"
+            :class="{ sel: state.selected.includes(c.id) }"
             @click="post('select-category', { category: c.id })"
           >
             {{ c.name }}
@@ -97,6 +98,11 @@ onUnmounted(() => clearInterval(timer))
         </div>
       </template>
     </div>
+
+    <label v-if="state.gameId === 'five-second-rule'" class="auto">
+      <input type="checkbox" :checked="state.autoAdvance" @change="post('set-auto', { on: ($event.target as HTMLInputElement).checked })" />
+      <span>Auto-advance to next question (10s after reveal)</span>
+    </label>
 
     <section class="flow">
       <button v-if="state.phase === 'lobby'" class="btn btn-primary big" :disabled="startDisabled" @click="post('start')">
@@ -164,6 +170,9 @@ onUnmounted(() => clearInterval(timer))
 
 .setup { display: flex; flex-direction: column; gap: 10px; }
 .section-label { color: var(--muted); margin: 4px 0 0; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; }
+.section-label .hint { text-transform: none; letter-spacing: 0; opacity: 0.7; }
+.auto { display: flex; align-items: center; gap: 10px; font-size: 1rem; color: var(--text); cursor: pointer; padding: 4px 2px; }
+.auto input { width: 20px; height: 20px; accent-color: var(--accent); cursor: pointer; }
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
 
 .flow { display: flex; flex-wrap: wrap; gap: 12px; }

@@ -35,6 +35,7 @@ const ownName = computed(() => name.value.trim())
         <span v-for="p in state.roster" :key="p" class="chip" :class="{ me: p === ownName }">{{ p }}</span>
       </div>
       <p class="count">{{ state.roster.length }} in the room</p>
+      <a v-if="state.isGm" href="/gm" class="btn btn-accent block gmlink">🎛️ You're the host — open controls</a>
     </section>
 
     <!-- game over — final scores -->
@@ -49,6 +50,7 @@ const ownName = computed(() => name.value.trim())
         </li>
       </ol>
       <p class="muted">Waiting for the next game…</p>
+      <a v-if="state.isGm" href="/gm" class="btn btn-accent block gmlink">🎛️ Open host controls</a>
     </section>
 
     <!-- in a game -->
@@ -91,6 +93,8 @@ const ownName = computed(() => name.value.trim())
 .chip { font-family: var(--font-display); font-weight: 600; padding: 8px 14px; border-radius: 999px; background: var(--surface-2); border: 1px solid var(--border); }
 .chip.me { border-color: var(--success); background: color-mix(in srgb, var(--success) 18%, var(--surface-2)); color: #d7ffe9; }
 .count { color: var(--muted); font-size: 0.9rem; margin: 0; }
+.block { width: 100%; }
+.gmlink { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; margin-top: 4px; }
 
 .trophy { font-size: 56px; }
 

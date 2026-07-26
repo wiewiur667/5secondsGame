@@ -59,27 +59,35 @@ test('music: <2 valid links returns error string', () => {
 })
 
 test('5sr: start with valid category returns state; unknown/empty returns error', () => {
-  assert.strictEqual(typeof fiveSecondRule.start([1], questionsCfg, { category: 'couples' }), 'object')
-  assert.strictEqual(typeof fiveSecondRule.start([1], questionsCfg, { category: 'nope' }), 'string')
+  assert.strictEqual(typeof fiveSecondRule.start([1], questionsCfg, { categories: ['couples'] }), 'object')
+  assert.strictEqual(typeof fiveSecondRule.start([1], questionsCfg, { categories: ['nope'] }), 'string')
   assert.strictEqual(typeof fiveSecondRule.start([1], questionsCfg, {}), 'string')
 })
 
+test('5sr: multiple categories pool their questions', () => {
+  const one = fiveSecondRule.start([1], questionsCfg, { categories: ['couples'] }) as any
+  const two = fiveSecondRule.start([1], questionsCfg, { categories: ['couples', 'party'] }) as any
+  assert(two.questions.length > one.questions.length)
+  assert.strictEqual(two.questions.length, 200) // 100 + 100
+  assert.strictEqual(typeof fiveSecondRule.start([1], questionsCfg, { categories: [] }), 'string')
+})
+
 test('5sr: submit correct picks in time scores count', () => {
-  const s = fiveSecondRule.start([1], questionsCfg, { category: 'couples' }) as any
+  const s = fiveSecondRule.start([1], questionsCfg, { categories: ['couples'] }) as any
   const correct: number[] = s.questions[s.idx].correct
   fiveSecondRule.submit!(s, 1, { picks: correct }, 1)
   assert.strictEqual(fiveSecondRule.score!(s)[1], correct.length)
 })
 
 test('5sr: picksRequired caps stored picks', () => {
-  const s = fiveSecondRule.start([1], questionsCfg, { category: 'couples' }) as any
+  const s = fiveSecondRule.start([1], questionsCfg, { categories: ['couples'] }) as any
   fiveSecondRule.submit!(s, 1, { picks: [0, 1, 2, 3, 4] }, 1)
   assert(s.picks[1].length <= s.picksRequired)
   assert(fiveSecondRule.score!(s)[1] <= s.picksRequired)
 })
 
 test('5sr: late submit is ignored', () => {
-  const s = fiveSecondRule.start([1, 2], questionsCfg, { category: 'couples' }) as any
+  const s = fiveSecondRule.start([1, 2], questionsCfg, { categories: ['couples'] }) as any
   const correct: number[] = s.questions[s.idx].correct
   fiveSecondRule.submit!(s, 2, { picks: correct }, 99)
   const score = fiveSecondRule.score!(s)[2]
@@ -87,13 +95,13 @@ test('5sr: late submit is ignored', () => {
 })
 
 test('5sr: duplicate picks are deduped', () => {
-  const s = fiveSecondRule.start([1], questionsCfg, { category: 'couples' }) as any
+  const s = fiveSecondRule.start([1], questionsCfg, { categories: ['couples'] }) as any
   fiveSecondRule.submit!(s, 1, { picks: [0, 0, 1] }, 1)
   assert.deepStrictEqual(s.picks[1], [0, 1])
 })
 
 test('5sr: next advances idx and returns false past last question', () => {
-  const s = fiveSecondRule.start([1], questionsCfg, { category: 'couples' }) as any
+  const s = fiveSecondRule.start([1], questionsCfg, { categories: ['couples'] }) as any
   const start = s.idx
   assert.strictEqual(fiveSecondRule.next!(s), true)
   assert.strictEqual(s.idx, start + 1)

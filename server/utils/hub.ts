@@ -23,8 +23,10 @@ class Hub {
   peers = new Map<number, Peer>() // pid -> live socket
   peerPid = new Map<Peer, number>() // reverse, for close cleanup
 
+  gmPid: number | null = null // first player to join is the game master
+  autoAdvance = true // GM toggle: auto-advance to next question after reveal
   gameId: string | null = null
-  category: string | null = null
+  categories: string[] = [] // 5s: GM can pick several decks at once
   game: GameModule | null = null
   round: any = null
   startMs = 0
@@ -41,6 +43,7 @@ class Hub {
     const nm = String(name || '').trim().slice(0, 20) || 'Anon'
     const id = this.nextId++
     this.players.set(id, { name: nm, gone: false })
+    if (this.gmPid == null) this.gmPid = id // first to join runs the game
     this.broadcast()
     return id
   }
@@ -82,12 +85,18 @@ class Hub {
   selectGame(id: string) {
     if (!games[id]) return
     this.gameId = id
-    this.category = null
+    this.categories = []
     this.finalBoard = [] // returning to setup clears the previous game's final screen
     this.broadcast()
   }
   selectCategory(cat: string) {
-    this.category = cat
+    const at = this.categories.indexOf(cat)
+    if (at >= 0) this.categories.splice(at, 1) // toggle off
+    else this.categories.push(cat) // toggle on
+    this.broadcast()
+  }
+  setAutoAdvance(on: boolean) {
+    this.autoAdvance = !!on
     this.broadcast()
   }
   start(): string | null {
@@ -95,7 +104,7 @@ class Hub {
     const game = games[this.gameId]
     const res = game.start(this.activeIds(), configs[this.gameId], {
       names: this.names(),
-      category: this.category,
+      categories: this.categories,
     })
     if (typeof res === 'string') return res // rejection message
     this.game = game
@@ -117,7 +126,7 @@ class Hub {
       // Games without `next` (e.g. Music Impostor): Next = a fresh round.
       const res = this.game.start(this.activeIds(), configs[this.gameId!], {
         names: this.names(),
-        category: this.category,
+        categories: this.categories,
       })
       if (typeof res === 'string') return this.end() // e.g. players dropped below 2 — back to lobby
       this.round = res
@@ -161,6 +170,11 @@ class Hub {
     if (!this.game || !this.round) return
     const over = this.game.tick ? this.game.tick(this.round, this.elapsed()) : false
     if (over) this.applyScore()
+    // Auto-advance (5s: 10s after reveal) — GM can still press Next early / turn this off.
+    if (this.autoAdvance && this.scored && this.game.autoAdvanceAt) {
+      const at = this.game.autoAdvanceAt(this.round)
+      if (at != null && this.elapsed() >= at) return this.next()
+    }
     this.broadcast()
   }
   private leaderboard(): Leaderboard {
@@ -172,9 +186,10 @@ class Hub {
   // --- views -------------------------------------------------------------
   stateFor(pid: number): PlayerView {
     if (!this.players.has(pid)) return { phase: 'register' }
+    const isGm = pid === this.gmPid
     if (!this.game || !this.round) {
-      if (this.finalBoard.length) return { phase: 'gameover', leaderboard: this.finalBoard }
-      return { phase: 'waiting', roster: this.roster() }
+      if (this.finalBoard.length) return { phase: 'gameover', leaderboard: this.finalBoard, isGm }
+      return { phase: 'waiting', roster: this.roster(), isGm }
     }
     const view = this.game.stateForPlayer(this.round, pid, this.elapsed())
     if (view.phase === 'playing' || view.phase === 'revealed') {
@@ -193,7 +208,8 @@ class Hub {
       games: Object.values(games).map((g) => ({ id: g.id, name: g.name })),
       gameId: this.gameId,
       categories: catList,
-      category: this.category,
+      selected: this.categories,
+      autoAdvance: this.autoAdvance,
       phase,
       players: [...this.players].map(([id, p]) => ({ id, name: p.name, gone: p.gone })),
       leaderboard: this.leaderboard(),

@@ -79,6 +79,7 @@ const board = computed<PlayerView['leaderboard']>(() =>
         </div>
       </div>
       <p class="gained">You got <b>{{ state.gained }}</b> right</p>
+      <p v-if="state.nextIn > 0" class="nextin">Next question in {{ state.nextIn }}s…</p>
     </template>
 
     <!-- compact leaderboard whenever present -->
@@ -124,6 +125,7 @@ const board = computed<PlayerView['leaderboard']>(() =>
 .reveal.mine { outline: 2px dashed var(--gold); outline-offset: 2px; }
 .tag { position: absolute; right: 14px; font-size: 13px; color: var(--gold); font-weight: 700; }
 .gained { text-align: center; font-size: 20px; font-family: var(--font-display); }
+.nextin { text-align: center; color: var(--muted); margin: 4px 0 0; }
 
 .result.good { color: var(--success); background: color-mix(in srgb, var(--success) 18%, var(--surface-2)); }
 .result.zero { color: var(--muted); }

@@ -7,6 +7,7 @@ export default defineEventHandler(async (event) => {
   switch (action) {
     case 'select-game': hub.selectGame(body.game); return { ok: true }
     case 'select-category': hub.selectCategory(body.category); return { ok: true }
+    case 'set-auto': hub.setAutoAdvance(body.on); return { ok: true }
     case 'start': { const err = hub.start(); return { ok: !err, error: err } }
     case 'next': hub.next(); return { ok: true }
     case 'end': hub.end(); return { ok: true }

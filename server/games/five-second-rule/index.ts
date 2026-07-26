@@ -35,12 +35,13 @@ const fiveSecondRule: GameModule<State> = {
   minPlayers: 1,
   configFile: 'questions.json',
 
-  start(playerIds, cfg: Config, opts?: { category?: string }) {
-    const cat = cfg.categories.find((c) => c.id === opts?.category)
-    if (!cat) return 'Pick a category first.'
-    if (!cat.questions.length) return 'That category has no questions.'
+  start(playerIds, cfg: Config, opts?: { categories?: string[] }) {
+    const sel = opts?.categories || []
+    if (!sel.length) return 'Pick at least one category.'
+    const pool = cfg.categories.filter((c) => sel.includes(c.id)).flatMap((c) => c.questions)
+    if (!pool.length) return 'Those categories have no questions.'
     return {
-      questions: shuffle(cat.questions),
+      questions: shuffle(pool),
       idx: 0,
       picks: {},
       timerSeconds: cfg.timerSeconds || 5,
@@ -50,6 +51,11 @@ const fiveSecondRule: GameModule<State> = {
 
   tick(s, elapsedSec) {
     return elapsedSec >= s.timerSeconds
+  },
+
+  // Hold the reveal for 10s, then auto-advance to the next question.
+  autoAdvanceAt(s) {
+    return s.timerSeconds + 10
   },
 
   next(s) {
@@ -94,7 +100,8 @@ const fiveSecondRule: GameModule<State> = {
     }
     if (elapsedSec >= s.timerSeconds) {
       const gained = yourPicks.filter((p) => q.correct.includes(p)).length
-      return { phase: 'revealed', ...common, correct: q.correct, gained }
+      const nextIn = Math.max(0, Math.ceil(s.timerSeconds + 10 - elapsedSec)) // auto-advance countdown
+      return { phase: 'revealed', ...common, correct: q.correct, gained, nextIn }
     }
     return { phase: 'playing', ...common, remaining }
   },
