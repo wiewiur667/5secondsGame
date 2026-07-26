@@ -52,8 +52,11 @@ export function useHub() {
     const stored = localStorage.getItem('mi_id')
     if (stored) id.value = Number(stored)
 
-    const ws = useWebSocket(`ws://${location.host}/ws`, {
-      autoReconnect: true,
+    const proto = location.protocol === 'https:' ? 'wss' : 'ws'
+    const ws = useWebSocket(`${proto}://${location.host}/ws`, {
+      // Keep retrying forever, but with a 2s gap so a brief outage (e.g. Nitro
+      // dev HMR reload) doesn't flood the upgrade endpoint. Poll covers the gap.
+      autoReconnect: { retries: () => true, delay: 2000 },
       onConnected() { if (id.value != null) ws.send(hello()) },
     })
     send = ws.send
