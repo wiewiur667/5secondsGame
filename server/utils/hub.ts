@@ -25,6 +25,7 @@ class Hub {
 
   gmPid: number | null = null // first player to join is the game master
   autoAdvance = true // GM toggle: auto-advance to next question after reveal
+  timerSeconds = 5 // GM-chosen answer window for 5 Second Rule
   gameId: string | null = null
   categories: string[] = [] // 5s: GM can pick several decks at once
   game: GameModule | null = null
@@ -98,12 +99,37 @@ class Hub {
     this.autoAdvance = !!on
     this.broadcast()
   }
+  setTimer(seconds: number) {
+    const n = Math.round(Number(seconds))
+    if (Number.isFinite(n)) this.timerSeconds = Math.min(60, Math.max(3, n))
+    this.broadcast()
+  }
+  // Full wipe: kick everyone back to the name prompt, clear scores/selection.
+  reset() {
+    for (const [, peer] of this.peers) {
+      try { peer.send(JSON.stringify({ phase: 'register' })) } catch {}
+    }
+    this.players.clear()
+    this.peers.clear()
+    this.peerPid.clear()
+    this.nextId = 1
+    this.gmPid = null
+    this.gameId = null
+    this.categories = []
+    this.game = null
+    this.round = null
+    this.scored = false
+    this.totals = new Map()
+    this.finalBoard = []
+    this.timerSeconds = 5
+  }
   start(): string | null {
     if (!this.gameId) return 'Pick a game first.'
     const game = games[this.gameId]
     const res = game.start(this.activeIds(), configs[this.gameId], {
       names: this.names(),
       categories: this.categories,
+      timerSeconds: this.timerSeconds,
     })
     if (typeof res === 'string') return res // rejection message
     this.game = game
@@ -224,6 +250,7 @@ class Hub {
       categories: catList,
       selected: this.categories,
       autoAdvance: this.autoAdvance,
+      timerSeconds: this.timerSeconds,
       phase,
       players: [...this.players].map(([id, p]) => ({ id, name: p.name, gone: p.gone })),
       leaderboard: this.leaderboard(),

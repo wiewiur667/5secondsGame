@@ -6,6 +6,7 @@ export type GmState = {
   categories: { id: string; name: string }[]
   selected: string[]
   autoAdvance: boolean
+  timerSeconds: number
   phase: 'lobby' | 'playing' | 'revealed'
   players: { id: number; name: string; gone: boolean }[]
   leaderboard: { id: number; name: string; score: number }[]

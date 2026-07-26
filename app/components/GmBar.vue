@@ -8,6 +8,10 @@ const needCategory = computed(
 )
 const startDisabled = computed(() => !gm.value?.gameId || needCategory.value)
 const collapsed = ref(false)
+
+function doReset() {
+  if (confirm('Reset the game? Everyone is logged out and scores are cleared.')) post('reset')
+}
 </script>
 
 <template>
@@ -40,6 +44,15 @@ const collapsed = ref(false)
             @click="post('select-category', { category: c.id })"
           >{{ c.name }}</button>
         </div>
+        <div v-if="gm.gameId === 'five-second-rule'" class="grid">
+          <button
+            v-for="t in [3, 5, 7, 10]"
+            :key="t"
+            class="btn sm"
+            :class="{ sel: gm.timerSeconds === t }"
+            @click="post('set-timer', { seconds: t })"
+          >{{ t }}s</button>
+        </div>
         <label v-if="gm.gameId === 'five-second-rule'" class="auto">
           <input type="checkbox" :checked="gm.autoAdvance" @change="post('set-auto', { on: ($event.target as HTMLInputElement).checked })" />
           <span>Auto-advance (10s)</span>
@@ -52,6 +65,8 @@ const collapsed = ref(false)
         <button class="btn btn-accent" @click="post('next')">Next ▶</button>
         <button class="btn btn-danger" @click="post('end')">End</button>
       </div>
+
+      <button class="btn reset" @click="doReset">↺ Reset game</button>
     </div>
   </div>
 </template>
@@ -70,4 +85,6 @@ const collapsed = ref(false)
 .auto { display: flex; align-items: center; gap: 10px; font-size: 0.95rem; cursor: pointer; }
 .auto input { width: 20px; height: 20px; accent-color: var(--accent); }
 .err { color: #fca5a5; margin: 0; }
+.reset { min-height: 40px; font-size: 0.9rem; color: var(--muted); background: transparent; border: 1px solid var(--border); margin-top: 4px; }
+.reset:hover { background: color-mix(in srgb, var(--danger) 18%, transparent); color: #ffd7dc; border-color: color-mix(in srgb, var(--danger) 50%, transparent); }
 </style>

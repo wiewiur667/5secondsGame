@@ -38,7 +38,7 @@ const fiveSecondRule: GameModule<State> = {
   minPlayers: 1,
   configFile: 'questions.json',
 
-  start(playerIds, cfg: Config, opts?: { categories?: string[] }) {
+  start(playerIds, cfg: Config, opts?: { categories?: string[]; timerSeconds?: number }) {
     const sel = opts?.categories || []
     if (!sel.length) return 'Pick at least one category.'
     const pool = cfg.categories.filter((c) => sel.includes(c.id)).flatMap((c) => c.questions)
@@ -47,7 +47,7 @@ const fiveSecondRule: GameModule<State> = {
       questions: shuffle(pool),
       idx: 0,
       picks: {},
-      timerSeconds: cfg.timerSeconds || 5,
+      timerSeconds: opts?.timerSeconds || cfg.timerSeconds || 5,
       picksRequired: cfg.picksRequired || 3,
       startedAt: null,
       revealed: false,

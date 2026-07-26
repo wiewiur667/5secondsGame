@@ -18,6 +18,10 @@ const needCategory = computed(
   () => state.value?.gameId === 'five-second-rule' && !state.value?.selected?.length,
 )
 const startDisabled = computed(() => !state.value?.gameId || needCategory.value)
+
+function doReset() {
+  if (confirm('Reset the game? Everyone is logged out and scores are cleared.')) post('reset')
+}
 </script>
 
 <template>
@@ -62,6 +66,17 @@ const startDisabled = computed(() => !state.value?.gameId || needCategory.value)
             {{ c.name }}
           </button>
         </div>
+
+        <p class="section-label">Answer time</p>
+        <div class="grid">
+          <button
+            v-for="t in [3, 5, 7, 10]"
+            :key="t"
+            class="btn"
+            :class="{ sel: state.timerSeconds === t }"
+            @click="post('set-timer', { seconds: t })"
+          >{{ t }}s</button>
+        </div>
       </template>
     </div>
 
@@ -79,6 +94,7 @@ const startDisabled = computed(() => !state.value?.gameId || needCategory.value)
         <button class="btn btn-danger big" @click="post('end')">End</button>
       </template>
       <p v-if="startError" class="err">{{ startError }}</p>
+      <button class="btn reset" @click="doReset">↺ Reset game</button>
     </section>
 
     <div class="cols">
@@ -139,6 +155,8 @@ const startDisabled = computed(() => !state.value?.gameId || needCategory.value)
 .section-label .hint { text-transform: none; letter-spacing: 0; opacity: 0.7; }
 .auto { display: flex; align-items: center; gap: 10px; font-size: 1rem; color: var(--text); cursor: pointer; padding: 4px 2px; }
 .auto input { width: 20px; height: 20px; accent-color: var(--accent); cursor: pointer; }
+.reset { flex-basis: 100%; min-height: 48px; font-size: 1rem; color: var(--muted); background: transparent; border: 1px solid var(--border); }
+.reset:hover { background: color-mix(in srgb, var(--danger) 18%, transparent); color: #ffd7dc; border-color: color-mix(in srgb, var(--danger) 50%, transparent); }
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
 
 .flow { display: flex; flex-wrap: wrap; gap: 12px; }
