@@ -194,6 +194,7 @@ class Hub {
     const view = this.game.stateForPlayer(this.round, pid, this.elapsed())
     if (view.phase === 'playing' || view.phase === 'revealed') {
       ;(view as any).leaderboard = this.leaderboard()
+      ;(view as any).autoAdvance = this.autoAdvance
     }
     return view
   }

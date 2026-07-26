@@ -58,32 +58,44 @@ const board = computed<PlayerView['leaderboard']>(() =>
       </div>
     </template>
 
+    <!-- interstitial: standings + countdown between questions -->
     <template v-else-if="state.phase === 'revealed'">
-      <header class="head">
-        <span class="pill">Q{{ state.questionNo }} / {{ state.questionCount }}</span>
-        <span class="pill result" :class="state.gained > 0 ? 'good' : 'zero'">+{{ state.gained }}</span>
-      </header>
+      <div class="inter-head">
+        <div v-if="state.autoAdvance && state.nextIn > 0" class="ring">
+          <span class="ring-n">{{ state.nextIn }}</span>
+          <span class="ring-l">next</span>
+        </div>
+        <span class="score-flash" :class="state.gained > 0 ? 'good' : 'zero'">
+          You got {{ state.gained }} right
+        </span>
+      </div>
 
-      <div class="card prompt-card"><h2 class="prompt">{{ state.prompt }}</h2></div>
+      <div class="board card hero">
+        <h3 class="board-title">Leaderboard</h3>
+        <ol class="lb">
+          <li v-for="(row, i) in board" :key="row.id" :class="{ me: row.id === meId }">
+            <span class="rank">{{ ['🥇','🥈','🥉'][i] || (i + 1) }}</span>
+            <span class="nm">{{ row.name }}</span>
+            <span class="sc">{{ row.score }}</span>
+          </li>
+          <li v-if="!board.length" class="none">No scores yet</li>
+        </ol>
+      </div>
 
-      <div class="options">
-        <div
-          v-for="(opt, i) in state.options"
-          :key="i"
-          class="opt reveal"
-          :class="{ good: correct.includes(i), bad: !correct.includes(i), mine: (state.yourPicks ?? []).includes(i) }"
-        >
-          <span class="mark">{{ correct.includes(i) ? '✓' : '✕' }}</span>
-          {{ opt }}
-          <span v-if="(state.yourPicks ?? []).includes(i)" class="tag">you</span>
+      <div class="answer card">
+        <p class="answer-label">Correct answers</p>
+        <div class="chips">
+          <span v-for="i in correct" :key="i" class="ans" :class="{ mine: (state.yourPicks ?? []).includes(i) }">
+            {{ state.options[i] }}
+          </span>
         </div>
       </div>
-      <p class="gained">You got <b>{{ state.gained }}</b> right</p>
-      <p v-if="state.nextIn > 0" class="nextin">Next question in {{ state.nextIn }}s…</p>
+
+      <p v-if="!state.autoAdvance" class="waitgm">Waiting for the host…</p>
     </template>
 
-    <!-- compact leaderboard whenever present -->
-    <div v-if="board.length" class="board card">
+    <!-- leaderboard during the playing phase (compact) -->
+    <div v-if="state.phase === 'playing' && board.length" class="board card">
       <h3 class="board-title">Leaderboard</h3>
       <ol class="lb">
         <li v-for="(row, i) in board" :key="row.id" :class="{ me: row.id === meId }">
@@ -132,4 +144,32 @@ const board = computed<PlayerView['leaderboard']>(() =>
 
 .board { padding: 16px; }
 .board-title { font-size: 1rem; color: var(--muted); margin: 0 0 10px; }
+
+/* --- between-questions interstitial --- */
+.inter-head { display: flex; flex-direction: column; align-items: center; gap: 14px; padding: 8px 0; }
+.ring {
+  width: 92px; height: 92px; border-radius: 50%;
+  display: grid; place-items: center; line-height: 1;
+  background: radial-gradient(circle at 50% 40%, var(--surface-2), var(--surface));
+  border: 3px solid var(--accent);
+  box-shadow: 0 0 26px -6px var(--accent);
+  animation: pop 0.9s ease-in-out infinite;
+}
+.ring-n { font-family: var(--font-display); font-weight: 700; font-size: 40px; color: var(--text); }
+.ring-l { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+@keyframes pop { 50% { transform: scale(1.06); } }
+.score-flash { font-family: var(--font-display); font-weight: 700; font-size: 1.35rem; padding: 6px 18px; border-radius: 999px; background: var(--surface-2); }
+.score-flash.good { color: var(--success); background: color-mix(in srgb, var(--success) 18%, var(--surface-2)); }
+.score-flash.zero { color: var(--muted); }
+
+.hero .rank { font-size: 1.2rem; }
+.hero .lb li { padding: 14px; }
+.none { color: var(--muted); justify-content: center; }
+
+.answer { padding: 14px 16px; }
+.answer-label { font-size: 0.85rem; color: var(--muted); margin: 0 0 8px; text-transform: uppercase; letter-spacing: 0.06em; }
+.answer .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.ans { font-weight: 700; padding: 7px 13px; border-radius: 999px; background: color-mix(in srgb, var(--success) 16%, var(--surface-2)); border: 1px solid color-mix(in srgb, var(--success) 45%, transparent); }
+.ans.mine { outline: 2px dashed var(--gold); outline-offset: 2px; }
+.waitgm { text-align: center; color: var(--muted); }
 </style>
