@@ -4,36 +4,5121 @@
   "picksRequired": 3,
   "categories": [
     {
-      "id": "food",
-      "name": "Food & Drink",
+      "id": "couples",
+      "name": "Dla Par",
       "questions": [
-        { "id": 1, "prompt": "Pick 3 ice cream flavors", "options": ["Vanilla", "Chocolate", "Strawberry", "Ketchup", "Gravel", "Pencil"], "correct": [0, 1, 2] },
-        { "id": 2, "prompt": "Pick 3 pizza toppings", "options": ["Pepperoni", "Mushroom", "Onion", "Motor oil", "Brick", "Sock"], "correct": [0, 1, 2] },
-        { "id": 3, "prompt": "Pick 3 hot drinks", "options": ["Coffee", "Tea", "Hot chocolate", "Ice cube", "Sand", "Bleach"], "correct": [0, 1, 2] },
-        { "id": 4, "prompt": "Pick 3 fruits", "options": ["Apple", "Banana", "Mango", "Hammer", "Cloud", "Rug"], "correct": [0, 1, 2] },
-        { "id": 5, "prompt": "Pick 3 breakfast foods", "options": ["Eggs", "Cereal", "Pancakes", "Concrete", "Stapler", "Tire"], "correct": [0, 1, 2] }
+        {
+          "id": 1,
+          "prompt": "Wybierz 3 romantyczne gesty",
+          "options": [
+            "Wymiana oleju w aucie",
+            "Kolacja przy świecach",
+            "Trzymanie za rękę",
+            "Wypełnianie deklaracji PIT",
+            "Bukiet kwiatów",
+            "Koszenie trawnika"
+          ],
+          "correct": [
+            1,
+            2,
+            4
+          ]
+        },
+        {
+          "id": 2,
+          "prompt": "Wybierz 3 pomysły na pierwszą randkę",
+          "options": [
+            "Wizyta u dentysty",
+            "Spacer po parku",
+            "Kino",
+            "Sekcja zwłok",
+            "Przegląd techniczny samochodu",
+            "Kawa w kawiarni"
+          ],
+          "correct": [
+            1,
+            2,
+            5
+          ]
+        },
+        {
+          "id": 3,
+          "prompt": "Wybierz 3 czułe zwroty do ukochanej osoby",
+          "options": [
+            "Petenci",
+            "Skarbie",
+            "Słońce",
+            "Kochanie",
+            "Podatniku",
+            "Interesancie"
+          ],
+          "correct": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "id": 4,
+          "prompt": "Wybierz 3 rzeczy typowe dla ślubu",
+          "options": [
+            "Obrączki",
+            "Pierwszy taniec",
+            "Wiertarka udarowa",
+            "Faktura VAT",
+            "Kontrola drogowa",
+            "Suknia ślubna"
+          ],
+          "correct": [
+            0,
+            1,
+            5
+          ]
+        },
+        {
+          "id": 5,
+          "prompt": "Wybierz 3 prezenty na walentynki",
+          "options": [
+            "Czerwone róże",
+            "Worek cementu",
+            "Kartka z sercem",
+            "Czekoladki",
+            "Klucz francuski",
+            "Odkurzacz przemysłowy"
+          ],
+          "correct": [
+            0,
+            2,
+            3
+          ]
+        },
+        {
+          "id": 6,
+          "prompt": "Wybierz 3 oznaki zakochania",
+          "options": [
+            "Szybsze bicie serca",
+            "Ciągłe myślenie o kimś",
+            "Motyle w brzuchu",
+            "Ból zęba",
+            "Katar sienny",
+            "Skręcona kostka"
+          ],
+          "correct": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "id": 7,
+          "prompt": "Wybierz 3 rzeczy, o które kłócą się pary",
+          "options": [
+            "Odległość do Księżyca",
+            "Temperaturę w sypialni",
+            "Prędkość światła",
+            "Kto zmywa naczynia",
+            "Wybór filmu na wieczór",
+            "Skład chemiczny wody"
+          ],
+          "correct": [
+            1,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 8,
+          "prompt": "Wybierz 3 czerwone flagi w związku",
+          "options": [
+            "Posiadanie kota",
+            "Lubienie pizzy",
+            "Zazdrość bez powodu",
+            "Brak szacunku",
+            "Słuchanie muzyki",
+            "Ciągłe kłamstwa"
+          ],
+          "correct": [
+            2,
+            3,
+            5
+          ]
+        },
+        {
+          "id": 9,
+          "prompt": "Wybierz 3 miejsca na romantyczny wyjazd",
+          "options": [
+            "Santorini",
+            "Wenecja",
+            "Parking podziemny",
+            "Wysypisko śmieci",
+            "Stacja benzynowa",
+            "Paryż"
+          ],
+          "correct": [
+            0,
+            1,
+            5
+          ]
+        },
+        {
+          "id": 10,
+          "prompt": "Wybierz 3 rzeczy na romantyczną kolację",
+          "options": [
+            "Młot pneumatyczny",
+            "Wino",
+            "Świece",
+            "Kosz na śmieci",
+            "Segregator z fakturami",
+            "Cicha muzyka"
+          ],
+          "correct": [
+            1,
+            2,
+            5
+          ]
+        },
+        {
+          "id": 11,
+          "prompt": "Wybierz 3 sposoby na okazanie miłości",
+          "options": [
+            "Wspólny czas",
+            "Miłe słowa",
+            "Audyt podatkowy",
+            "Ignorowanie",
+            "Przytulanie",
+            "Wystawianie mandatu"
+          ],
+          "correct": [
+            0,
+            1,
+            4
+          ]
+        },
+        {
+          "id": 12,
+          "prompt": "Wybierz 3 pieszczotliwe imiona dla partnera",
+          "options": [
+            "Kotku",
+            "Misiu",
+            "Dyrektorze",
+            "Serduszko",
+            "Świadku",
+            "Podejrzany"
+          ],
+          "correct": [
+            0,
+            1,
+            3
+          ]
+        },
+        {
+          "id": 13,
+          "prompt": "Wybierz 3 klasyczne motywy piosenek o miłości",
+          "options": [
+            "Wieczna miłość",
+            "Rozliczenie kwartalne",
+            "Tęsknota",
+            "Awaria hydrauliki",
+            "Bijące serce",
+            "Protokół zebrania"
+          ],
+          "correct": [
+            0,
+            2,
+            4
+          ]
+        },
+        {
+          "id": 14,
+          "prompt": "Wybierz 3 rzeczy na rocznicę związku",
+          "options": [
+            "Przegląd kominiarski",
+            "Wizyta w urzędzie skarbowym",
+            "Wymiana opon",
+            "Prezent niespodzianka",
+            "Wspólna kolacja",
+            "Wspomnienia ze zdjęć"
+          ],
+          "correct": [
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 15,
+          "prompt": "Wybierz 3 romantyczne aktywności zimą",
+          "options": [
+            "Naprawa pieca",
+            "Wspólne oglądanie śniegu",
+            "Ognisko z ukochaną osobą",
+            "Segregacja odpadów",
+            "Odśnieżanie dachu sąsiada",
+            "Gorąca czekolada we dwoje"
+          ],
+          "correct": [
+            1,
+            2,
+            5
+          ]
+        },
+        {
+          "id": 16,
+          "prompt": "Wybierz 3 rzeczy, które robią zakochane pary",
+          "options": [
+            "Kalibrują wagę",
+            "Trzymają się za ręce",
+            "Wypełniają zeznania podatkowe",
+            "Liczą śruby",
+            "Piszą do siebie SMS-y",
+            "Planują wspólną przyszłość"
+          ],
+          "correct": [
+            1,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 17,
+          "prompt": "Wybierz 3 sposoby na romantyczną niespodziankę",
+          "options": [
+            "Płatki róż na łóżku",
+            "Rachunek za prąd",
+            "Śniadanie do łóżka",
+            "Instrukcja obsługi pralki",
+            "Liścik miłosny",
+            "Ulotka reklamowa"
+          ],
+          "correct": [
+            0,
+            2,
+            4
+          ]
+        },
+        {
+          "id": 18,
+          "prompt": "Wybierz 3 rzeczy, które sprawiają, że randka jest udana",
+          "options": [
+            "Dobra rozmowa",
+            "Awaria prądu",
+            "Kolejka do kasy",
+            "Wspólny śmiech",
+            "Miła atmosfera",
+            "Kontrola biletów"
+          ],
+          "correct": [
+            0,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 19,
+          "prompt": "Wybierz 3 gesty na przeprosiny w związku",
+          "options": [
+            "Wezwanie do zapłaty",
+            "Ulubione danie partnera",
+            "Nakaz eksmisji",
+            "Mandat karny",
+            "Szczera rozmowa",
+            "Kwiaty"
+          ],
+          "correct": [
+            1,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 20,
+          "prompt": "Wybierz 3 rzeczy związane z zaręczynami",
+          "options": [
+            "Wymiana filtra oleju",
+            "Podpisanie umowy leasingowej",
+            "Deklaracja celna",
+            "Klękanie na jedno kolano",
+            "Pierścionek",
+            "Pytanie 'Wyjdziesz za mnie?'"
+          ],
+          "correct": [
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 21,
+          "prompt": "Wybierz 3 wspólne hobby dla par",
+          "options": [
+            "Gotowanie razem",
+            "Milczenie przez tydzień",
+            "Wspólne podróże",
+            "Unikanie się nawzajem",
+            "Rozdzielne mieszkanie",
+            "Taniec"
+          ],
+          "correct": [
+            0,
+            2,
+            5
+          ]
+        },
+        {
+          "id": 22,
+          "prompt": "Wybierz 3 rzeczy, które warto powiedzieć partnerowi",
+          "options": [
+            "Podpisz tutaj",
+            "Zapłać rachunek",
+            "Kocham cię",
+            "Okaż dokumenty",
+            "Dziękuję, że jesteś",
+            "Jesteś dla mnie ważny"
+          ],
+          "correct": [
+            2,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 23,
+          "prompt": "Wybierz 3 romantyczne miejsca na oświadczyny",
+          "options": [
+            "Na szczycie góry o zachodzie słońca",
+            "Na plaży",
+            "Pod gwiazdami",
+            "W poczekalni u lekarza",
+            "Na złomowisku",
+            "W kolejce w markecie"
+          ],
+          "correct": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "id": 24,
+          "prompt": "Wybierz 3 składniki idealnego randkowego wieczoru",
+          "options": [
+            "Dobre jedzenie",
+            "Hałas wiertarki",
+            "Stos brudnych naczyń",
+            "Zapach spalin",
+            "Wspólna rozmowa",
+            "Przytulny nastrój"
+          ],
+          "correct": [
+            0,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 25,
+          "prompt": "Wybierz 3 rzeczy, które łączą pary",
+          "options": [
+            "Zaufanie",
+            "Wspólne cele",
+            "Wspólny numer PESEL",
+            "Ten sam odcisk palca",
+            "Identyczna grupa krwi",
+            "Wspólne wartości"
+          ],
+          "correct": [
+            0,
+            1,
+            5
+          ]
+        },
+        {
+          "id": 26,
+          "prompt": "Wybierz 3 romantyczne prezenty ręcznie robione",
+          "options": [
+            "Kosztorys budowlany",
+            "Sweter na drutach",
+            "Słoik z liścikami",
+            "Album ze zdjęciami",
+            "Faktura proforma",
+            "Protokół odbioru"
+          ],
+          "correct": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "id": 27,
+          "prompt": "Wybierz 3 sposoby na podtrzymanie iskry w związku",
+          "options": [
+            "Wspólne przygody",
+            "Randki co jakiś czas",
+            "Zapomnienie o rocznicy",
+            "Komplementy",
+            "Ciche dni",
+            "Ignorowanie partnera"
+          ],
+          "correct": [
+            0,
+            1,
+            3
+          ]
+        },
+        {
+          "id": 28,
+          "prompt": "Wybierz 3 typowe elementy wesela",
+          "options": [
+            "Inwentaryzacja magazynu",
+            "Oczepiny",
+            "Kontrola sanepidu",
+            "Toast młodej pary",
+            "Tort weselny",
+            "Przegląd gaśnic"
+          ],
+          "correct": [
+            1,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 29,
+          "prompt": "Wybierz 3 rzeczy, które mówi się na randce",
+          "options": [
+            "Gdzie jest wyjście ewakuacyjne",
+            "Opowiedz mi o sobie",
+            "Ile kosztuje bilet",
+            "Poproszę o paragon",
+            "Miło cię poznać",
+            "Ładnie dziś wyglądasz"
+          ],
+          "correct": [
+            1,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 30,
+          "prompt": "Wybierz 3 romantyczne filmy do obejrzenia we dwoje",
+          "options": [
+            "Instruktaż BHP",
+            "Film szkoleniowy o podatkach",
+            "Nagranie z monitoringu",
+            "Film o wielkiej miłości",
+            "Klasyczna love story",
+            "Komedia romantyczna"
+          ],
+          "correct": [
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 31,
+          "prompt": "Wybierz 3 rzeczy, które robi się na miesiącu miodowym",
+          "options": [
+            "Rozliczenie faktur",
+            "Remont łazienki",
+            "Podróż w romantyczne miejsce",
+            "Spacery o zachodzie słońca",
+            "Relaks we dwoje",
+            "Sprzątanie garażu"
+          ],
+          "correct": [
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 32,
+          "prompt": "Wybierz 3 komplementy dla partnera",
+          "options": [
+            "Masz zaległości w płatnościach",
+            "Przekroczyłeś limit",
+            "Uwielbiam z tobą być",
+            "Masz piękny uśmiech",
+            "Twój dowód wygasł",
+            "Jesteś wyjątkowa"
+          ],
+          "correct": [
+            2,
+            3,
+            5
+          ]
+        },
+        {
+          "id": 33,
+          "prompt": "Wybierz 3 rzeczy budujące zaufanie w związku",
+          "options": [
+            "Znikanie bez słowa",
+            "Wsparcie w trudnych chwilach",
+            "Dotrzymywanie obietnic",
+            "Łamanie obietnic",
+            "Szczerość",
+            "Ukrywanie prawdy"
+          ],
+          "correct": [
+            1,
+            2,
+            4
+          ]
+        },
+        {
+          "id": 34,
+          "prompt": "Wybierz 3 pomysły na tanią, ale romantyczną randkę",
+          "options": [
+            "Wynajęcie prywatnego odrzutowca",
+            "Kupno wyspy",
+            "Spacer nad rzeką",
+            "Zakup diamentowej korony",
+            "Piknik w parku",
+            "Domowe kino"
+          ],
+          "correct": [
+            2,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 35,
+          "prompt": "Wybierz 3 rzeczy, które sprawiają, że para jest szczęśliwa",
+          "options": [
+            "Wspólny śmiech",
+            "Brak zaufania",
+            "Poczucie bezpieczeństwa",
+            "Obojętność",
+            "Ciągłe kłótnie",
+            "Wzajemny szacunek"
+          ],
+          "correct": [
+            0,
+            2,
+            5
+          ]
+        },
+        {
+          "id": 36,
+          "prompt": "Wybierz 3 romantyczne napisy na kartce miłosnej",
+          "options": [
+            "Jesteś moim wszystkim",
+            "Na zawsze twoja",
+            "Prosimy o kontakt",
+            "Reklamacja odrzucona",
+            "Termin płatności upływa",
+            "Kocham cię nad życie"
+          ],
+          "correct": [
+            0,
+            1,
+            5
+          ]
+        },
+        {
+          "id": 37,
+          "prompt": "Wybierz 3 rzeczy, które robi się na Walentynki",
+          "options": [
+            "Randka we dwoje",
+            "Coroczny audyt",
+            "Wyznanie uczuć",
+            "Spis inwentarza",
+            "Przegląd rejestracyjny",
+            "Wręczenie prezentu"
+          ],
+          "correct": [
+            0,
+            2,
+            5
+          ]
+        },
+        {
+          "id": 38,
+          "prompt": "Wybierz 3 cechy dobrego partnera",
+          "options": [
+            "Troskliwość",
+            "Lojalność",
+            "Egoizm",
+            "Obojętność",
+            "Poczucie humoru",
+            "Kłamliwość"
+          ],
+          "correct": [
+            0,
+            1,
+            4
+          ]
+        },
+        {
+          "id": 39,
+          "prompt": "Wybierz 3 wspólne poranne rytuały par",
+          "options": [
+            "Wspólne śniadanie",
+            "Wypełnianie wniosku kredytowego",
+            "Segregacja śmieci",
+            "Kontrola techniczna auta",
+            "Poranny pocałunek",
+            "Kawa we dwoje"
+          ],
+          "correct": [
+            0,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 40,
+          "prompt": "Wybierz 3 romantyczne pory dnia dla zakochanych",
+          "options": [
+            "Godziny szczytu w korku",
+            "Godzina zamknięcia urzędu",
+            "Wieczór przy świecach",
+            "Wschód słońca",
+            "Przerwa techniczna",
+            "Zachód słońca"
+          ],
+          "correct": [
+            2,
+            3,
+            5
+          ]
+        },
+        {
+          "id": 41,
+          "prompt": "Wybierz 3 rzeczy kojarzone z miłością",
+          "options": [
+            "Czerwona róża",
+            "Pocałunek",
+            "Faktura",
+            "Śrubokręt",
+            "Odkurzacz",
+            "Serce"
+          ],
+          "correct": [
+            0,
+            1,
+            5
+          ]
+        },
+        {
+          "id": 42,
+          "prompt": "Wybierz 3 sposoby na romantyczne wyznanie miłości",
+          "options": [
+            "Piosenka pod oknem",
+            "Wysłanie ponaglenia",
+            "Wpis w rejestrze dłużników",
+            "Kontrola biletowa",
+            "Wyznanie o zachodzie słońca",
+            "List miłosny"
+          ],
+          "correct": [
+            0,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 43,
+          "prompt": "Wybierz 3 rzeczy, które para robi w Wigilię razem",
+          "options": [
+            "Wypełniają PIT",
+            "Dzielą się opłatkiem",
+            "Odśnieżają autostradę",
+            "Ubierają choinkę",
+            "Robią przegląd samochodu",
+            "Śpiewają kolędy"
+          ],
+          "correct": [
+            1,
+            3,
+            5
+          ]
+        },
+        {
+          "id": 44,
+          "prompt": "Wybierz 3 romantyczne słowa w piosenkach miłosnych",
+          "options": [
+            "Pocałunek",
+            "Serce",
+            "Miłość",
+            "Faktura",
+            "Deklaracja",
+            "Mandat"
+          ],
+          "correct": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "id": 45,
+          "prompt": "Wybierz 3 rzeczy potrzebne do romantycznego pikniku",
+          "options": [
+            "Butelka wina",
+            "Segregator",
+            "Gaśnica",
+            "Koc",
+            "Kosz z jedzeniem",
+            "Wiertarka"
+          ],
+          "correct": [
+            0,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 46,
+          "prompt": "Wybierz 3 sposoby na spędzenie rocznicy ślubu",
+          "options": [
+            "Inwentaryzacja piwnicy",
+            "Kolacja w restauracji",
+            "Powtórka pierwszej randki",
+            "Przegląd instalacji gazowej",
+            "Wizyta w urzędzie skarbowym",
+            "Wspólny weekend"
+          ],
+          "correct": [
+            1,
+            2,
+            5
+          ]
+        },
+        {
+          "id": 47,
+          "prompt": "Wybierz 3 rzeczy, które zakochani robią przez telefon",
+          "options": [
+            "Składają reklamacje",
+            "Wysyłają serduszka",
+            "Rozmawiają do późna",
+            "Zamawiają części",
+            "Piszą słodkie wiadomości",
+            "Płacą rachunki"
+          ],
+          "correct": [
+            1,
+            2,
+            4
+          ]
+        },
+        {
+          "id": 48,
+          "prompt": "Wybierz 3 tradycyjne symbole ślubu",
+          "options": [
+            "Bukiet panny młodej",
+            "Znak drogowy",
+            "Kask ochronny",
+            "Faktura VAT",
+            "Obrączki",
+            "Białe gołębie"
+          ],
+          "correct": [
+            0,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 49,
+          "prompt": "Wybierz 3 rzeczy budujące bliskość w związku",
+          "options": [
+            "Szczere rozmowy",
+            "Wzajemne wsparcie",
+            "Zamykanie się w sobie",
+            "Kłamstwa",
+            "Ciągłe unikanie",
+            "Wspólne przeżycia"
+          ],
+          "correct": [
+            0,
+            1,
+            5
+          ]
+        },
+        {
+          "id": 50,
+          "prompt": "Wybierz 3 romantyczne prezenty dla niej",
+          "options": [
+            "Filtr powietrza",
+            "Worek żwiru",
+            "Bukiet kwiatów",
+            "Klucz nasadowy",
+            "Perfumy",
+            "Biżuteria"
+          ],
+          "correct": [
+            2,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 51,
+          "prompt": "Wybierz 3 romantyczne prezenty dla niego",
+          "options": [
+            "Ulubione perfumy",
+            "Zdjęcie w ramce",
+            "Mandat karny",
+            "Segregator biurowy",
+            "Wezwanie do zapłaty",
+            "Zegarek"
+          ],
+          "correct": [
+            0,
+            1,
+            5
+          ]
+        },
+        {
+          "id": 52,
+          "prompt": "Wybierz 3 rzeczy, które łączą się z pierwszym pocałunkiem",
+          "options": [
+            "Motyle w brzuchu",
+            "Zamknięte oczy",
+            "Kontrola paszportowa",
+            "Rozliczenie kosztów",
+            "Ból głowy",
+            "Szybsze bicie serca"
+          ],
+          "correct": [
+            0,
+            1,
+            5
+          ]
+        },
+        {
+          "id": 53,
+          "prompt": "Wybierz 3 pomysły na romantyczny weekend we dwoje",
+          "options": [
+            "Wypad w góry",
+            "Malowanie płotu",
+            "Sortowanie dokumentów",
+            "Spa dla dwojga",
+            "Wyjazd nad morze",
+            "Sprzątanie strychu"
+          ],
+          "correct": [
+            0,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 54,
+          "prompt": "Wybierz 3 słodkie gesty rano dla partnera",
+          "options": [
+            "Kawa do łóżka",
+            "Rachunek za wodę",
+            "Buziak na dzień dobry",
+            "Powiadomienie o mandacie",
+            "Miła wiadomość na lustrze",
+            "Lista zadań służbowych"
+          ],
+          "correct": [
+            0,
+            2,
+            4
+          ]
+        },
+        {
+          "id": 55,
+          "prompt": "Wybierz 3 rzeczy, o które warto zadbać w związku",
+          "options": [
+            "Wspólny czas",
+            "Zaufanie",
+            "Komunikacja",
+            "Zaległości podatkowe",
+            "Przegląd techniczny",
+            "Numer faktury"
+          ],
+          "correct": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "id": 56,
+          "prompt": "Wybierz 3 romantyczne miejsca na pierwszy pocałunek",
+          "options": [
+            "Na parkingu podziemnym",
+            "W kolejce do kasy",
+            "W poczekalni urzędu",
+            "Pod latarnią w deszczu",
+            "Na moście o zachodzie słońca",
+            "Na plaży"
+          ],
+          "correct": [
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 57,
+          "prompt": "Wybierz 3 typowe zwroty w liście miłosnym",
+          "options": [
+            "Zgodnie z regulaminem",
+            "Myślę o tobie codziennie",
+            "Uprzejmie informujemy",
+            "Tęsknię za tobą",
+            "Jesteś moją bratnią duszą",
+            "W załączeniu przesyłamy fakturę"
+          ],
+          "correct": [
+            1,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 58,
+          "prompt": "Wybierz 3 rzeczy, które robią pary w Sylwestra",
+          "options": [
+            "Wypełniają PIT",
+            "Składają sobie życzenia",
+            "Całują się o północy",
+            "Wznoszą toast",
+            "Liczą magazyn",
+            "Robią przegląd auta"
+          ],
+          "correct": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "id": 59,
+          "prompt": "Wybierz 3 romantyczne desery na randkę",
+          "options": [
+            "Kostki bulionowe",
+            "Zupa z puszki",
+            "Tiramisu dla dwojga",
+            "Suchy chleb",
+            "Fondue czekoladowe",
+            "Truskawki w czekoladzie"
+          ],
+          "correct": [
+            2,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 60,
+          "prompt": "Wybierz 3 sposoby na powiedzenie 'kocham cię' bez słów",
+          "options": [
+            "Podpisanie umowy",
+            "Wysłanie wezwania",
+            "Trzymanie za rękę",
+            "Pocałunek",
+            "Przytulenie",
+            "Wystawienie mandatu"
+          ],
+          "correct": [
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 61,
+          "prompt": "Wybierz 3 rzeczy potrzebne do romantycznej kąpieli we dwoje",
+          "options": [
+            "Segregator",
+            "Płatki róż",
+            "Pianka do kąpieli",
+            "Odkurzacz",
+            "Świece",
+            "Wiertarka"
+          ],
+          "correct": [
+            1,
+            2,
+            4
+          ]
+        },
+        {
+          "id": 62,
+          "prompt": "Wybierz 3 rzeczy, które robią zakochani na spacerze",
+          "options": [
+            "Wypisują mandaty",
+            "Kontrolują bilety",
+            "Trzymają się za ręce",
+            "Liczą samochody",
+            "Rozmawiają o marzeniach",
+            "Zatrzymują się na pocałunek"
+          ],
+          "correct": [
+            2,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 63,
+          "prompt": "Wybierz 3 rzeczy, które dają poczucie bezpieczeństwa w związku",
+          "options": [
+            "Lojalność",
+            "Obojętność",
+            "Kłamstwo",
+            "Wsparcie",
+            "Szczerość",
+            "Zdrada"
+          ],
+          "correct": [
+            0,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 64,
+          "prompt": "Wybierz 3 elementy romantycznej atmosfery",
+          "options": [
+            "Delikatna muzyka",
+            "Zapach spalin",
+            "Zapach świec",
+            "Głośny alarm",
+            "Migające światło ostrzegawcze",
+            "Przygaszone światło"
+          ],
+          "correct": [
+            0,
+            2,
+            5
+          ]
+        },
+        {
+          "id": 65,
+          "prompt": "Wybierz 3 typowe prezenty na rocznicę ślubu",
+          "options": [
+            "Zestaw kluczy",
+            "Worek cementu",
+            "Romantyczny wyjazd",
+            "Biżuteria",
+            "Nowe opony",
+            "Kwiaty"
+          ],
+          "correct": [
+            2,
+            3,
+            5
+          ]
+        },
+        {
+          "id": 66,
+          "prompt": "Wybierz 3 rzeczy, które robią świeżo zakochani",
+          "options": [
+            "Robią remanent",
+            "Naprawiają dach",
+            "Składają zeznania podatkowe",
+            "Piszą do siebie bez przerwy",
+            "Uśmiechają się bez powodu",
+            "Myślą o sobie ciągle"
+          ],
+          "correct": [
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 67,
+          "prompt": "Wybierz 3 sposoby na zaskoczenie partnera",
+          "options": [
+            "Niespodziankowa randka",
+            "Niezapowiedziany audyt",
+            "Wezwanie do sądu",
+            "Nagła kontrola",
+            "Prezent bez okazji",
+            "Romantyczna kolacja"
+          ],
+          "correct": [
+            0,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 68,
+          "prompt": "Wybierz 3 rzeczy, które sprawiają, że ślub jest wyjątkowy",
+          "options": [
+            "Kontrola dokumentów",
+            "Przysięga małżeńska",
+            "Pocałunek młodej pary",
+            "Pierwszy taniec",
+            "Rozliczenie VAT",
+            "Odprawa celna"
+          ],
+          "correct": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "id": 69,
+          "prompt": "Wybierz 3 romantyczne gesty w deszczu",
+          "options": [
+            "Bieganie za rękę",
+            "Naprawa rynny",
+            "Wypełnianie formularza",
+            "Taniec w deszczu",
+            "Pocałunek pod parasolem",
+            "Odczyt licznika"
+          ],
+          "correct": [
+            0,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 70,
+          "prompt": "Wybierz 3 słodkie SMS-y do partnera",
+          "options": [
+            "Termin przeglądu minął",
+            "Nie mogę się doczekać spotkania",
+            "Faktura do zapłaty",
+            "Myślę o tobie",
+            "Twój numer w kolejce",
+            "Tęsknię już za tobą"
+          ],
+          "correct": [
+            1,
+            3,
+            5
+          ]
+        },
+        {
+          "id": 71,
+          "prompt": "Wybierz 3 rzeczy, które łączą się z randką w restauracji",
+          "options": [
+            "Kontrola sanepidu",
+            "Przegląd wentylacji",
+            "Wspólna kolacja",
+            "Rozmowa przy świecach",
+            "Toast winem",
+            "Inwentaryzacja kuchni"
+          ],
+          "correct": [
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 72,
+          "prompt": "Wybierz 3 sposoby na okazanie troski partnerowi",
+          "options": [
+            "Przygotowanie ulubionego posiłku",
+            "Wysłanie ponaglenia",
+            "Zapytanie, jak minął dzień",
+            "Wysłuchanie problemów",
+            "Wystawienie faktury",
+            "Nałożenie kary"
+          ],
+          "correct": [
+            0,
+            2,
+            3
+          ]
+        },
+        {
+          "id": 73,
+          "prompt": "Wybierz 3 rzeczy, które robią pary na wakacjach",
+          "options": [
+            "Leżą na plaży",
+            "Robią przegląd auta",
+            "Zwiedzają razem",
+            "Robią wspólne zdjęcia",
+            "Rozliczają podatki",
+            "Segregują odpady"
+          ],
+          "correct": [
+            0,
+            2,
+            3
+          ]
+        },
+        {
+          "id": 74,
+          "prompt": "Wybierz 3 romantyczne kwiaty dla ukochanej",
+          "options": [
+            "Pokrzywy",
+            "Osty",
+            "Róże",
+            "Chwasty z rowu",
+            "Tulipany",
+            "Piwonie"
+          ],
+          "correct": [
+            2,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 75,
+          "prompt": "Wybierz 3 rzeczy potrzebne do oświadczyn",
+          "options": [
+            "Odwaga",
+            "Piękne miejsce",
+            "Segregator z rachunkami",
+            "Pierścionek zaręczynowy",
+            "Kalkulator podatkowy",
+            "Kask budowlany"
+          ],
+          "correct": [
+            0,
+            1,
+            3
+          ]
+        },
+        {
+          "id": 76,
+          "prompt": "Wybierz 3 pieszczotliwe określenia partnera",
+          "options": [
+            "Moje słońce",
+            "Petent",
+            "Dłużnik",
+            "Ukochana",
+            "Najdroższy",
+            "Podejrzany"
+          ],
+          "correct": [
+            0,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 77,
+          "prompt": "Wybierz 3 rzeczy, które robią zakochani wieczorem",
+          "options": [
+            "Kalibrują wagę",
+            "Przytulają się na kanapie",
+            "Robią remanent",
+            "Oglądają razem film",
+            "Rozmawiają do późna",
+            "Wypełniają wnioski"
+          ],
+          "correct": [
+            1,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 78,
+          "prompt": "Wybierz 3 romantyczne pomysły na jesień",
+          "options": [
+            "Odśnieżanie autostrady",
+            "Przegląd instalacji",
+            "Kontrola gaśnic",
+            "Gorąca herbata we dwoje",
+            "Wspólne pieczenie ciasta",
+            "Spacer w parku wśród liści"
+          ],
+          "correct": [
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 79,
+          "prompt": "Wybierz 3 rzeczy, które sprawiają, że związek trwa długo",
+          "options": [
+            "Brak zaufania",
+            "Komunikacja",
+            "Ciągłe kłamstwa",
+            "Wspólne wartości",
+            "Wzajemny szacunek",
+            "Zdrada"
+          ],
+          "correct": [
+            1,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 80,
+          "prompt": "Wybierz 3 sposoby na romantyczny wieczór w domu",
+          "options": [
+            "Sprzątanie piwnicy",
+            "Wino i rozmowa",
+            "Kolacja przy świecach",
+            "Segregacja dokumentów",
+            "Wspólny film pod kocem",
+            "Naprawa kranu"
+          ],
+          "correct": [
+            1,
+            2,
+            4
+          ]
+        },
+        {
+          "id": 81,
+          "prompt": "Wybierz 3 rzeczy typowe dla walentynkowej randki",
+          "options": [
+            "Wizyta w banku",
+            "Kontrola techniczna",
+            "Prezent z serduszkiem",
+            "Kolacja we dwoje",
+            "Czerwone róże",
+            "Przegląd auta"
+          ],
+          "correct": [
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 82,
+          "prompt": "Wybierz 3 romantyczne symbole miłości",
+          "options": [
+            "Paragon fiskalny",
+            "Kask ochronny",
+            "Serce",
+            "Dwie połączone obrączki",
+            "Kłódka miłości na moście",
+            "Znak zakazu"
+          ],
+          "correct": [
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 83,
+          "prompt": "Wybierz 3 rzeczy, które para robi razem w kuchni",
+          "options": [
+            "Piecze ciasto",
+            "Degustuje wino",
+            "Naprawia zmywarkę na fakturze",
+            "Robi inwentaryzację",
+            "Gotuje wspólnie kolację",
+            "Wypełnia deklaracje"
+          ],
+          "correct": [
+            0,
+            1,
+            4
+          ]
+        },
+        {
+          "id": 84,
+          "prompt": "Wybierz 3 romantyczne prezenty na pierwszą rocznicę",
+          "options": [
+            "Bilety na wspólny wyjazd",
+            "Kanister paliwa",
+            "Ramka ze wspólnym zdjęciem",
+            "Zestaw śrub",
+            "List miłosny",
+            "Nowy tłumik"
+          ],
+          "correct": [
+            0,
+            2,
+            4
+          ]
+        },
+        {
+          "id": 85,
+          "prompt": "Wybierz 3 rzeczy, które robią zakochani na plaży",
+          "options": [
+            "Robią przegląd łodzi ratunkowej",
+            "Trzymają się za ręce",
+            "Wypełniają mandaty",
+            "Kontrolują bilety",
+            "Patrzą na zachód słońca",
+            "Spacerują brzegiem morza"
+          ],
+          "correct": [
+            1,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 86,
+          "prompt": "Wybierz 3 elementy bajkowego ślubu",
+          "options": [
+            "Taśma ostrzegawcza",
+            "Suknia jak z bajki",
+            "Wózek widłowy",
+            "Kontener na gruz",
+            "Fajerwerki",
+            "Karoca"
+          ],
+          "correct": [
+            1,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 87,
+          "prompt": "Wybierz 3 rzeczy, które robi się na romantycznej randce w kinie",
+          "options": [
+            "Dzielenie się popcornem",
+            "Sprawdzanie faktur",
+            "Wspólne oglądanie filmu",
+            "Trzymanie za rękę",
+            "Liczenie foteli",
+            "Przegląd projektora"
+          ],
+          "correct": [
+            0,
+            2,
+            3
+          ]
+        },
+        {
+          "id": 88,
+          "prompt": "Wybierz 3 sposoby na miłe zakończenie dnia z partnerem",
+          "options": [
+            "Kontrola liczników",
+            "Rozliczenie kosztów",
+            "Wspólne przytulanie",
+            "Wypełnianie wniosku",
+            "Rozmowa o dniu",
+            "Pocałunek na dobranoc"
+          ],
+          "correct": [
+            2,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 89,
+          "prompt": "Wybierz 3 romantyczne napoje na randkę",
+          "options": [
+            "Szampan",
+            "Czerwone wino",
+            "Płyn do spryskiwaczy",
+            "Gorąca czekolada",
+            "Woda z kałuży",
+            "Olej silnikowy"
+          ],
+          "correct": [
+            0,
+            1,
+            3
+          ]
+        },
+        {
+          "id": 90,
+          "prompt": "Wybierz 3 rzeczy, które mówią o głębokiej miłości",
+          "options": [
+            "Wzajemne zaufanie",
+            "Kłamstwa",
+            "Wspólne marzenia",
+            "Bezwarunkowe wsparcie",
+            "Kontrola każdego kroku",
+            "Ciągła zazdrość"
+          ],
+          "correct": [
+            0,
+            2,
+            3
+          ]
+        },
+        {
+          "id": 91,
+          "prompt": "Wybierz 3 romantyczne pomysły na urodziny partnera",
+          "options": [
+            "Kolacja w ulubionej restauracji",
+            "Wysłanie ponaglenia",
+            "Kontrola dokumentów",
+            "Wystawienie faktury",
+            "Niespodziankowa impreza",
+            "Prezent marzeń"
+          ],
+          "correct": [
+            0,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 92,
+          "prompt": "Wybierz 3 rzeczy, które robią pary długo po ślubie",
+          "options": [
+            "Robią przegląd auta z wesela",
+            "Wspominają początki",
+            "Liczą gości sprzed lat",
+            "Wspólnie się starzeją",
+            "Wypełniają PIT za młodość",
+            "Wciąż trzymają się za ręce"
+          ],
+          "correct": [
+            1,
+            3,
+            5
+          ]
+        },
+        {
+          "id": 93,
+          "prompt": "Wybierz 3 romantyczne słowa na kartce walentynkowej",
+          "options": [
+            "Zapłać zaległości",
+            "Kocham cię",
+            "Prosimy o kontakt",
+            "Bądź moją walentynką",
+            "Jesteś wyjątkowa",
+            "Okaż dowód"
+          ],
+          "correct": [
+            1,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 94,
+          "prompt": "Wybierz 3 sposoby na wzmocnienie więzi z partnerem",
+          "options": [
+            "Wspólne pasje",
+            "Ciche dni",
+            "Szczere rozmowy",
+            "Ignorowanie się",
+            "Wspólne cele",
+            "Ukrywanie prawdy"
+          ],
+          "correct": [
+            0,
+            2,
+            4
+          ]
+        },
+        {
+          "id": 95,
+          "prompt": "Wybierz 3 rzeczy, które są częścią przyjęcia weselnego",
+          "options": [
+            "Inwentaryzacja magazynu",
+            "Przegląd gaśnic",
+            "Tort",
+            "Muzyka do tańca",
+            "Toast za młodą parę",
+            "Kontrola BHP"
+          ],
+          "correct": [
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 96,
+          "prompt": "Wybierz 3 romantyczne miejsca na randkę wieczorem",
+          "options": [
+            "Taras z widokiem na miasto",
+            "Poczekalnia u lekarza",
+            "Molo o zachodzie słońca",
+            "Restauracja przy świecach",
+            "Parking podziemny",
+            "Kolejka na poczcie"
+          ],
+          "correct": [
+            0,
+            2,
+            3
+          ]
+        },
+        {
+          "id": 97,
+          "prompt": "Wybierz 3 gesty świadczące o oddaniu partnerowi",
+          "options": [
+            "Kłamstwa",
+            "Bycie obok mimo przeszkód",
+            "Dotrzymywanie obietnic",
+            "Wsparcie w trudnych chwilach",
+            "Łamanie obietnic",
+            "Znikanie bez słowa"
+          ],
+          "correct": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "id": 98,
+          "prompt": "Wybierz 3 rzeczy potrzebne na romantyczne śniadanie do łóżka",
+          "options": [
+            "Taca",
+            "Wiertarka",
+            "Kanister paliwa",
+            "Ulubione danie partnera",
+            "Segregator",
+            "Świeże kwiaty"
+          ],
+          "correct": [
+            0,
+            3,
+            5
+          ]
+        },
+        {
+          "id": 99,
+          "prompt": "Wybierz 3 romantyczne pomysły na wiosnę",
+          "options": [
+            "Przegląd kotła",
+            "Spacer wśród kwitnących drzew",
+            "Rowerowa wycieczka we dwoje",
+            "Kontrola techniczna",
+            "Piknik na łące",
+            "Odśnieżanie chodnika"
+          ],
+          "correct": [
+            1,
+            2,
+            4
+          ]
+        },
+        {
+          "id": 100,
+          "prompt": "Wybierz 3 rzeczy, które robią zakochani pod gwiazdami",
+          "options": [
+            "Liczą satelity dla urzędu",
+            "Marzą razem",
+            "Wypełniają formularze",
+            "Przytulają się",
+            "Patrzą w niebo",
+            "Robią przegląd teleskopu na fakturę"
+          ],
+          "correct": [
+            1,
+            3,
+            4
+          ]
+        }
       ]
     },
     {
-      "id": "everyday",
-      "name": "Everyday Things",
+      "id": "spicy",
+      "name": "Pikantne",
       "questions": [
-        { "id": 6, "prompt": "Pick 3 things with wheels", "options": ["Car", "Bicycle", "Shopping cart", "Banana", "Cloud", "Table"], "correct": [0, 1, 2] },
-        { "id": 7, "prompt": "Pick 3 things you find in a kitchen", "options": ["Fridge", "Oven", "Sink", "Volcano", "Whale", "Planet"], "correct": [0, 1, 2] },
-        { "id": 8, "prompt": "Pick 3 things that are cold", "options": ["Ice", "Snow", "Winter", "Fire", "Sun", "Lava"], "correct": [0, 1, 2] },
-        { "id": 9, "prompt": "Pick 3 things in a bathroom", "options": ["Toilet", "Towel", "Toothbrush", "Tractor", "Anchor", "Cactus"], "correct": [0, 1, 2] },
-        { "id": 10, "prompt": "Pick 3 things that fly", "options": ["Plane", "Bird", "Helicopter", "Rock", "Sofa", "Fridge"], "correct": [0, 1, 2] }
+        {
+          "id": 101,
+          "prompt": "Wybierz 3 rzeczy, które budują nastrój w sypialni",
+          "options": [
+            "Jedwabna pościel",
+            "Segregator z rachunkami",
+            "Wiertarka udarowa",
+            "Przygaszone światło",
+            "Kalkulator naukowy",
+            "Świece zapachowe"
+          ],
+          "correct": [
+            0,
+            3,
+            5
+          ]
+        },
+        {
+          "id": 102,
+          "prompt": "Wybierz 3 pomysły na gorącą randkę we dwoje",
+          "options": [
+            "Wypełnianie deklaracji podatkowej",
+            "Mycie okien na klatce",
+            "Kolacja przy świecach",
+            "Taniec do zmysłowej muzyki",
+            "Wspólna kąpiel w wannie",
+            "Sortowanie śmieci"
+          ],
+          "correct": [
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 103,
+          "prompt": "Wybierz 3 rzeczy, które kojarzą się z uwodzeniem",
+          "options": [
+            "Worek cementu",
+            "Faktura VAT",
+            "Instrukcja obsługi pralki",
+            "Perfumy o zmysłowym zapachu",
+            "Zalotne spojrzenie",
+            "Szept do ucha"
+          ],
+          "correct": [
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 104,
+          "prompt": "Wybierz 3 rzeczy na uwodzicielski prywatny taniec dla partnera",
+          "options": [
+            "Formularz PIT-37",
+            "Zmysłowa, powolna muzyka",
+            "Wiertarka udarowa",
+            "Krzesło do zmysłowego tańca",
+            "Kuszące zsuwanie ramiączka",
+            "Segregator z fakturami"
+          ],
+          "correct": [
+            1,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 105,
+          "prompt": "Wybierz 3 rzeczy, które podkręcają atmosferę na randce",
+          "options": [
+            "Arkusz kalkulacyjny",
+            "Butelka wina",
+            "Wspólny śmiech",
+            "Młotek murarski",
+            "Formularz reklamacyjny",
+            "Dotyk dłoni"
+          ],
+          "correct": [
+            1,
+            2,
+            5
+          ]
+        },
+        {
+          "id": 106,
+          "prompt": "Wybierz 3 elementy zmysłowego wieczoru we dwoje",
+          "options": [
+            "Miękki koc przy kominku",
+            "Kieliszek szampana",
+            "Instrukcja BHP",
+            "Płatki róż na łóżku",
+            "Piła łańcuchowa",
+            "Segregator z fakturami"
+          ],
+          "correct": [
+            0,
+            1,
+            3
+          ]
+        },
+        {
+          "id": 107,
+          "prompt": "Wybierz 3 rzeczy, które można znaleźć w sklepie dla dorosłych",
+          "options": [
+            "Olejek do masażu",
+            "Koronkowa bielizna",
+            "Kosiarka spalinowa",
+            "Karma dla rybek",
+            "Jedwabna opaska na oczy",
+            "Zszywacz biurowy"
+          ],
+          "correct": [
+            0,
+            1,
+            4
+          ]
+        },
+        {
+          "id": 108,
+          "prompt": "Wybierz 3 sposoby, by flirtować przez wiadomości",
+          "options": [
+            "Wysłać listę zakupów",
+            "Przesłać wyciąg bankowy",
+            "Prawić komplementy",
+            "Zostawić coś niedopowiedziane",
+            "Podać numer PESEL",
+            "Wysłać dwuznaczne emoji"
+          ],
+          "correct": [
+            2,
+            3,
+            5
+          ]
+        },
+        {
+          "id": 109,
+          "prompt": "Wybierz 3 rzeczy, które podnoszą temperaturę podczas tańca",
+          "options": [
+            "Liczydło",
+            "Kask ochronny",
+            "Zmysłowy rytm bioder",
+            "Ręce na talii partnera",
+            "Rozkład jazdy autobusów",
+            "Bliski kontakt ciał"
+          ],
+          "correct": [
+            2,
+            3,
+            5
+          ]
+        },
+        {
+          "id": 110,
+          "prompt": "Wybierz 3 rekwizyty do zabawy w prawda czy wyzwanie dla dorosłych",
+          "options": [
+            "Talia kart z wyzwaniami",
+            "Opaska na oczy",
+            "Klucz francuski",
+            "Encyklopedia botaniki",
+            "Termometr do mięsa",
+            "Kostki z pikantnymi zadaniami"
+          ],
+          "correct": [
+            0,
+            1,
+            5
+          ]
+        },
+        {
+          "id": 111,
+          "prompt": "Wybierz 3 rzeczy na romantyczny miesiąc miodowy",
+          "options": [
+            "Wkrętarka akumulatorowa",
+            "Kalendarz spotkań firmowych",
+            "Prywatne jacuzzi",
+            "Butelka szampana",
+            "Bielizna na specjalną okazję",
+            "Instrukcja składania mebli"
+          ],
+          "correct": [
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 112,
+          "prompt": "Wybierz 3 dwuznaczne teksty na podryw",
+          "options": [
+            "\"Masz piękne oczy, tonę w nich\"",
+            "\"Chyba ktoś ukradł gwiazdy i włożył ci do oczu\"",
+            "\"Wierzysz w miłość od pierwszego wejrzenia?\"",
+            "\"Gdzie jest najbliższy warsztat?\"",
+            "\"Ile kosztuje kilogram cementu?\"",
+            "\"Czy ta pralka ma gwarancję?\""
+          ],
+          "correct": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "id": 113,
+          "prompt": "Wybierz 3 rzeczy, które kojarzą się ze zmysłowym masażem",
+          "options": [
+            "Relaksująca muzyka",
+            "Ciepły olejek",
+            "Arkusz z podatkami",
+            "Delikatny dotyk",
+            "Szlifierka kątowa",
+            "Worek ziemniaków"
+          ],
+          "correct": [
+            0,
+            1,
+            3
+          ]
+        },
+        {
+          "id": 114,
+          "prompt": "Wybierz 3 elementy uwodzicielskiego stroju",
+          "options": [
+            "Głęboki dekolt",
+            "Kamizelka odblaskowa",
+            "Wysokie szpilki",
+            "Kalosze gumowe",
+            "Kombinezon roboczy",
+            "Koronkowe pończochy"
+          ],
+          "correct": [
+            0,
+            2,
+            5
+          ]
+        },
+        {
+          "id": 115,
+          "prompt": "Wybierz 3 rzeczy, które psują romantyczny nastrój",
+          "options": [
+            "Płatki róż",
+            "Muzyka jazzowa w tle",
+            "Głośne chrapanie",
+            "Przygaszone światło",
+            "Rozmowa o rachunkach",
+            "Nagły telefon od teściowej"
+          ],
+          "correct": [
+            2,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 116,
+          "prompt": "Wybierz 3 gorące pomysły na wieczór kawalerski",
+          "options": [
+            "Wykład o rachunkowości",
+            "Drinki na mieście",
+            "Pokaz striptizu",
+            "Przegląd techniczny auta",
+            "Inwentaryzacja magazynu",
+            "Zabawy z pikantnymi fantami"
+          ],
+          "correct": [
+            1,
+            2,
+            5
+          ]
+        },
+        {
+          "id": 117,
+          "prompt": "Wybierz 3 rzeczy, które kuszą na wieczorze panieńskim",
+          "options": [
+            "Instrukcja obsługi tostera",
+            "Różowe koktajle",
+            "Sprośne gadżety na opaskach",
+            "Prezentacja w PowerPoincie",
+            "Formularz podatkowy",
+            "Przystojny striptizer"
+          ],
+          "correct": [
+            1,
+            2,
+            5
+          ]
+        },
+        {
+          "id": 118,
+          "prompt": "Wybierz 3 rzeczy, które budują napięcie miłosne",
+          "options": [
+            "Segregacja odpadów",
+            "Kolejka w urzędzie",
+            "Muśnięcie dłoni",
+            "Przeciągane spojrzenia",
+            "Zbliżanie się ust",
+            "Odczyt licznika prądu"
+          ],
+          "correct": [
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 119,
+          "prompt": "Wybierz 3 kuszące części bielizny na wyjątkową noc",
+          "options": [
+            "Koronkowe body",
+            "Wełniane skarpety robocze",
+            "Satynowe pończochy z podwiązką",
+            "Fartuch spawalniczy",
+            "Przezroczysta koszulka nocna",
+            "Kamizelka odblaskowa"
+          ],
+          "correct": [
+            0,
+            2,
+            4
+          ]
+        },
+        {
+          "id": 120,
+          "prompt": "Wybierz 3 rzeczy, które sprawiają, że randka robi się gorąca",
+          "options": [
+            "Naprawa cieknącego kranu",
+            "Bliski taniec",
+            "Wspólne wino",
+            "Wypełnianie ankiety",
+            "Dłoń na kolanie",
+            "Odkurzanie dywanu"
+          ],
+          "correct": [
+            1,
+            2,
+            4
+          ]
+        },
+        {
+          "id": 121,
+          "prompt": "Wybierz 3 rekwizyty na zmysłowe zdjęcia we dwoje",
+          "options": [
+            "Taczka ogrodowa",
+            "Prześcieradło z jedwabiu",
+            "Miękkie światło lampki",
+            "Delikatna bielizna",
+            "Skrzynka z narzędziami",
+            "Kask budowlany"
+          ],
+          "correct": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "id": 122,
+          "prompt": "Wybierz 3 rzeczy kojarzące się z pocałunkiem",
+          "options": [
+            "Wypełniony formularz",
+            "Odgłos wiertarki",
+            "Zamknięte oczy",
+            "Przyspieszone bicie serca",
+            "Bliskość ust",
+            "Rachunek za prąd"
+          ],
+          "correct": [
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 123,
+          "prompt": "Wybierz 3 rzeczy, które można zapakować na romantyczny wypad",
+          "options": [
+            "Betoniarka",
+            "Koronkowa bielizna",
+            "Kosa spalinowa",
+            "Worek z gruzem",
+            "Świece zapachowe",
+            "Butelka wina"
+          ],
+          "correct": [
+            1,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 124,
+          "prompt": "Wybierz 3 gorące motywy przebrań na noc",
+          "options": [
+            "Inspektor sanitarny",
+            "Poborca podatkowy",
+            "Kusząca pielęgniarka",
+            "Uwodzicielski strażak",
+            "Zalotna pokojówka",
+            "Kontroler biletów"
+          ],
+          "correct": [
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 125,
+          "prompt": "Wybierz 3 rzeczy, które robią się w łóżku niedzielnym rankiem",
+          "options": [
+            "Długie pocałunki",
+            "Leniwe przytulanie",
+            "Koszenie trawnika",
+            "Rozliczanie faktur",
+            "Malowanie płotu",
+            "Śniadanie do łóżka"
+          ],
+          "correct": [
+            0,
+            1,
+            5
+          ]
+        },
+        {
+          "id": 126,
+          "prompt": "Wybierz 3 dwuznaczne warzywa i owoce z żartów dla dorosłych",
+          "options": [
+            "Brzoskwinia",
+            "Banan",
+            "Kapusta kiszona",
+            "Ogórek",
+            "Suszona fasola",
+            "Ziemniak z ziemi"
+          ],
+          "correct": [
+            0,
+            1,
+            3
+          ]
+        },
+        {
+          "id": 127,
+          "prompt": "Wybierz 3 rzeczy, które kobieta może szepnąć uwodzicielsko",
+          "options": [
+            "\"Wynieś śmieci\"",
+            "\"Zadzwoń do hydraulika\"",
+            "\"Zostań na noc\"",
+            "\"Chodź bliżej\"",
+            "\"Tęskniłam za tobą\"",
+            "\"Zapłać rachunek za gaz\""
+          ],
+          "correct": [
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 128,
+          "prompt": "Wybierz 3 elementy idealnej gorącej kąpieli we dwoje",
+          "options": [
+            "Świece przy wannie",
+            "Odpływowy filtr",
+            "Kieliszek wina na brzegu",
+            "Szczotka do szorowania fug",
+            "Wiadro z mopem",
+            "Piana i bąbelki"
+          ],
+          "correct": [
+            0,
+            2,
+            5
+          ]
+        },
+        {
+          "id": 129,
+          "prompt": "Wybierz 3 rzeczy, które zdradzają, że ktoś flirtuje",
+          "options": [
+            "Bawienie się włosami",
+            "Recytowanie tabeli mnożenia",
+            "Zalotny uśmiech",
+            "Sprawdzanie oleju w silniku",
+            "Dłuższy kontakt wzrokowy",
+            "Liczenie drobnych"
+          ],
+          "correct": [
+            0,
+            2,
+            4
+          ]
+        },
+        {
+          "id": 130,
+          "prompt": "Wybierz 3 gadżety z gustownego sklepu dla par",
+          "options": [
+            "Aksamitna opaska na oczy",
+            "Szlifierka taśmowa",
+            "Poziomica laserowa",
+            "Piórko do łaskotania",
+            "Odkurzacz warsztatowy",
+            "Aromatyczny olejek"
+          ],
+          "correct": [
+            0,
+            3,
+            5
+          ]
+        },
+        {
+          "id": 131,
+          "prompt": "Wybierz 3 rzeczy, które ustawiają romantyczny klimat kolacji",
+          "options": [
+            "Jarzeniówka w kuchni",
+            "Cicha muzyka",
+            "Butelka czerwonego wina",
+            "Ryk odkurzacza",
+            "Migoczące świece",
+            "Faktura na stole"
+          ],
+          "correct": [
+            1,
+            2,
+            4
+          ]
+        },
+        {
+          "id": 132,
+          "prompt": "Wybierz 3 dwuznaczne komplementy",
+          "options": [
+            "\"Twój segregator jest bardzo schludny\"",
+            "\"Ładnie wyglądasz w tej sukience... i bez niej pewnie też\"",
+            "\"Masz świetnie ustawiony licznik prądu\"",
+            "\"Nie mogę oderwać od ciebie oczu\"",
+            "\"Twój uśmiech mnie rozbraja\"",
+            "\"Podoba mi się twoja deklaracja PIT\""
+          ],
+          "correct": [
+            1,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 133,
+          "prompt": "Wybierz 3 rzeczy potrzebne do gry w butelkę",
+          "options": [
+            "Katalog śrub",
+            "Kalkulator odsetek",
+            "Instrukcja obsługi kombajnu",
+            "Odwaga do pocałunków",
+            "Chętni gracze",
+            "Pusta butelka"
+          ],
+          "correct": [
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 134,
+          "prompt": "Wybierz 3 zmysłowe zapachy, które kuszą",
+          "options": [
+            "Aromat spalonej gumy",
+            "Wanilia",
+            "Zapach spalin",
+            "Woń mokrego betonu",
+            "Piżmo",
+            "Jaśmin"
+          ],
+          "correct": [
+            1,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 135,
+          "prompt": "Wybierz 3 rzeczy, które można zrobić podczas leniwego poranka w łóżku",
+          "options": [
+            "Przytulanie pod kołdrą",
+            "Naprawa rynny",
+            "Wspólna drzemka",
+            "Odśnieżanie podjazdu",
+            "Całowanie na dzień dobry",
+            "Segregacja korespondencji"
+          ],
+          "correct": [
+            0,
+            2,
+            4
+          ]
+        },
+        {
+          "id": 136,
+          "prompt": "Wybierz 3 rzeczy kojarzące się z tangiem",
+          "options": [
+            "Splecione ciała",
+            "Namiętne spojrzenia",
+            "Róża w zębach",
+            "Rolka papieru toaletowego",
+            "Puszka farby",
+            "Kask spawalniczy"
+          ],
+          "correct": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "id": 137,
+          "prompt": "Wybierz 3 gorące hasła z gry w karty dla dorosłych",
+          "options": [
+            "\"Pocałuj osobę po lewej\"",
+            "\"Umyj naczynia\"",
+            "\"Zdejmij jedną część garderoby\"",
+            "\"Wyszepcz komuś fantazję\"",
+            "\"Wypełnij zeznanie podatkowe\"",
+            "\"Oblicz ratę kredytu\""
+          ],
+          "correct": [
+            0,
+            2,
+            3
+          ]
+        },
+        {
+          "id": 138,
+          "prompt": "Wybierz 3 rzeczy, które podgrzewają atmosferę na plaży o zmierzchu",
+          "options": [
+            "Skradziony pocałunek",
+            "Parasol reklamowy firmy ubezpieczeniowej",
+            "Ciepły piasek pod stopami",
+            "Szept fal w tle",
+            "Wózek widłowy",
+            "Formularz meldunkowy"
+          ],
+          "correct": [
+            0,
+            2,
+            3
+          ]
+        },
+        {
+          "id": 139,
+          "prompt": "Wybierz 3 rzeczy, które można znaleźć w sypialni pary nowożeńców",
+          "options": [
+            "Skrzynka z narzędziami",
+            "Koronkowa koszula nocna",
+            "Worek nawozu",
+            "Płatki róż na pościeli",
+            "Kosz na makulaturę",
+            "Butelka szampana w wiaderku"
+          ],
+          "correct": [
+            1,
+            3,
+            5
+          ]
+        },
+        {
+          "id": 140,
+          "prompt": "Wybierz 3 zalotne gesty",
+          "options": [
+            "Podpisanie umowy najmu",
+            "Pomiar ciśnienia w oponach",
+            "Mrugnięcie okiem",
+            "Muśnięcie ramienia",
+            "Ostemplowanie koperty",
+            "Przygryzienie wargi"
+          ],
+          "correct": [
+            2,
+            3,
+            5
+          ]
+        },
+        {
+          "id": 141,
+          "prompt": "Wybierz 3 rzeczy, które sprawiają, że wieczór robi się namiętny",
+          "options": [
+            "Włączony telewizor z wiadomościami",
+            "Stos rachunków do zapłaty",
+            "Wolna, zmysłowa muzyka",
+            "Zgaszone górne światło",
+            "Głośny alarm przeciwpożarowy",
+            "Butelka wina do dwóch kieliszków"
+          ],
+          "correct": [
+            2,
+            3,
+            5
+          ]
+        },
+        {
+          "id": 142,
+          "prompt": "Wybierz 3 rzeczy do zabawy w striptiz-pokera",
+          "options": [
+            "Odrobina odwagi",
+            "Chętni gracze",
+            "Instrukcja obsługi piekarnika",
+            "Kalkulator naukowy",
+            "Katalog materiałów budowlanych",
+            "Talia kart"
+          ],
+          "correct": [
+            0,
+            1,
+            5
+          ]
+        },
+        {
+          "id": 143,
+          "prompt": "Wybierz 3 rzeczy, które podkreślają zmysłowość sylwetki",
+          "options": [
+            "Głęboki dekolt",
+            "Kombinezon ochronny",
+            "Kamizelka odblaskowa",
+            "Kalosze",
+            "Wysokie rozcięcie na nodze",
+            "Dopasowana sukienka"
+          ],
+          "correct": [
+            0,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 144,
+          "prompt": "Wybierz 3 sposoby na uwodzicielskie spojrzenie",
+          "options": [
+            "Delikatne mrugnięcie",
+            "Spojrzenie spod rzęs",
+            "Przeciągnięcie wzroku po twarzy",
+            "Sprawdzanie godziny na dworcu",
+            "Czytanie ulotki leku",
+            "Wpatrywanie się w licznik gazu"
+          ],
+          "correct": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "id": 145,
+          "prompt": "Wybierz 3 dwuznaczne wiadomości do wysłania partnerowi późnym wieczorem",
+          "options": [
+            "„Podaj numer faktury”",
+            "„Nie mogę przestać myśleć o twoich dłoniach”",
+            "„Czekam na ciebie tylko w koronce...”",
+            "„Przypomnij mi zapłacić za prąd”",
+            "„O której masz przegląd auta?”",
+            "„Pospiesz się, mam dla ciebie niespodziankę pod kołdrą”"
+          ],
+          "correct": [
+            1,
+            2,
+            5
+          ]
+        },
+        {
+          "id": 146,
+          "prompt": "Wybierz 3 rzeczy, które kojarzą się z gorącym pocałunkiem w deszczu",
+          "options": [
+            "Ignorowanie ulewy",
+            "Mokre włosy",
+            "Spleceni w uścisku",
+            "Prognoza pogody w gazecie",
+            "Kalosze robocze",
+            "Parasol z logo banku"
+          ],
+          "correct": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "id": 147,
+          "prompt": "Wybierz 3 dwuznaczne nazwy koktajli",
+          "options": [
+            "Woda mineralna niegazowana",
+            "Śliski sutek",
+            "Napar z rumianku",
+            "Sok z buraka",
+            "Pocałunek anioła",
+            "Seks na plaży"
+          ],
+          "correct": [
+            1,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 148,
+          "prompt": "Wybierz 3 rzeczy, które robi para na romantycznym rejsie",
+          "options": [
+            "Sprawdzanie manifestu ładunku",
+            "Całowanie się na dziobie",
+            "Konserwacja silnika okrętowego",
+            "Wypełnianie dziennika pokładowego",
+            "Toast szampanem o zachodzie słońca",
+            "Taniec przy świetle księżyca"
+          ],
+          "correct": [
+            1,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 149,
+          "prompt": "Wybierz 3 rzeczy, które kuszą w spa dla par",
+          "options": [
+            "Kąpiel w płatkach róż",
+            "Odczyt licznika wody",
+            "Kontrola stanu magazynowego ręczników",
+            "Naprawa dyszy jacuzzi",
+            "Sauna we dwoje",
+            "Wspólny masaż olejkami"
+          ],
+          "correct": [
+            0,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 150,
+          "prompt": "Wybierz 3 zalotne rzeczy, które można zrobić przy pożegnaniu",
+          "options": [
+            "Pocałunek na do widzenia",
+            "Szept \"wróć szybko\"",
+            "Wręczenie faktury",
+            "Odbicie karty w czytniku",
+            "Uścisk trochę za długi",
+            "Podpis na liście obecności"
+          ],
+          "correct": [
+            0,
+            1,
+            4
+          ]
+        },
+        {
+          "id": 151,
+          "prompt": "Wybierz 3 rzeczy na zmysłową kolację, podczas której karmicie się nawzajem",
+          "options": [
+            "Truskawki podawane z palca",
+            "Kalkulator do dzielenia rachunku",
+            "Instrukcja obsługi zmywarki",
+            "Bita śmietana do zlizania",
+            "Worek cementu",
+            "Kieliszek wina dzielony we dwoje"
+          ],
+          "correct": [
+            0,
+            3,
+            5
+          ]
+        },
+        {
+          "id": 152,
+          "prompt": "Wybierz 3 elementy uwodzicielskiego tańca na rurze",
+          "options": [
+            "Wygięcie ciała",
+            "Instrukcja montażu rusztowania",
+            "Kask ochronny",
+            "Pewny chwyt dłoni",
+            "Zmysłowe ruchy bioder",
+            "Uprzęż alpinistyczna"
+          ],
+          "correct": [
+            0,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 153,
+          "prompt": "Wybierz 3 rzeczy, które para robi pod jedną kołdrą w zimowy wieczór",
+          "options": [
+            "Leniwe pocałunki",
+            "Naprawa suszarki",
+            "Splatanie stóp",
+            "Segregacja skarpet",
+            "Przytulanie dla ciepła",
+            "Rozwiązywanie sudoku podatkowego"
+          ],
+          "correct": [
+            0,
+            2,
+            4
+          ]
+        },
+        {
+          "id": 154,
+          "prompt": "Wybierz 3 rzeczy, które budują napięcie na pierwszej randce",
+          "options": [
+            "Skanowanie kodów kreskowych",
+            "Wypełnianie kwestionariusza osobowego",
+            "Podpisywanie protokołu",
+            "Przypadkowe dotknięcie dłoni",
+            "Nerwowe spojrzenia",
+            "Rumieniec na policzkach"
+          ],
+          "correct": [
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 155,
+          "prompt": "Wybierz 3 gorące pomysły na weekend we dwoje",
+          "options": [
+            "Wspólne jacuzzi",
+            "Kolacja przy świecach",
+            "Inwentaryzacja piwnicy",
+            "Przegląd instalacji gazowej",
+            "Remont łazienki",
+            "Romantyczny nocleg w hotelu"
+          ],
+          "correct": [
+            0,
+            1,
+            5
+          ]
+        },
+        {
+          "id": 156,
+          "prompt": "Wybierz 3 rzeczy, które kojarzą się ze zmysłową grą wstępną",
+          "options": [
+            "Muśnięcia palcami",
+            "Delikatne pocałunki na szyi",
+            "Wypełnianie deklaracji celnej",
+            "Powolne rozbieranie wzrokiem",
+            "Odczyt temperatury lodówki",
+            "Sortowanie śrubek"
+          ],
+          "correct": [
+            0,
+            1,
+            3
+          ]
+        },
+        {
+          "id": 157,
+          "prompt": "Wybierz 3 rzeczy, które można wylosować na kartkach z pikantnymi wyzwaniami",
+          "options": [
+            "\"Odkurz salon\"",
+            "\"Zatańcz zmysłowo przez minutę\"",
+            "\"Pocałuj partnera w kark\"",
+            "\"Wyznaj skrytą fantazję\"",
+            "\"Policz koszty utrzymania domu\"",
+            "\"Wynieś kosz na śmieci\""
+          ],
+          "correct": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "id": 158,
+          "prompt": "Wybierz 3 rzeczy na wieczór inspirowany pikantnym romansem",
+          "options": [
+            "Skrzynka z narzędziami hydraulicznymi",
+            "Kalendarz podatkowy",
+            "Miękkie wiązania z jedwabiu",
+            "Worek nawozu ogrodowego",
+            "Butelka wina i kieliszki",
+            "Zmysłowa lista wspólnych fantazji"
+          ],
+          "correct": [
+            2,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 159,
+          "prompt": "Wybierz 3 rzeczy, które podnoszą temperaturę w wiadomościach nocą",
+          "options": [
+            "Dwuznaczne emoji",
+            "Obietnica \"pokażę ci jutro\"",
+            "Numer konta bankowego",
+            "Lista zakupów spożywczych",
+            "Prośba o przelanie zaliczki",
+            "Zalotne \"nie mogę spać, myślę o tobie\""
+          ],
+          "correct": [
+            0,
+            1,
+            5
+          ]
+        },
+        {
+          "id": 160,
+          "prompt": "Wybierz 3 rzeczy, które sprawiają, że sesja zdjęciowa robi się zmysłowa",
+          "options": [
+            "Kuszące spojrzenie do obiektywu",
+            "Kombinezon roboczy",
+            "Miękkie, ciepłe światło",
+            "Jasna jarzeniówka w garażu",
+            "Delikatna bielizna",
+            "Tablica z BHP w tle"
+          ],
+          "correct": [
+            0,
+            2,
+            4
+          ]
+        },
+        {
+          "id": 161,
+          "prompt": "Wybierz 3 rzeczy, które kojarzą się z uwodzeniem szeptem",
+          "options": [
+            "Odczytywanie regulaminu na głos",
+            "Dyktowanie numeru faktury",
+            "Ciepły oddech przy uchu",
+            "Dwuznaczne słowa",
+            "Ogłoszenie przez megafon",
+            "Cicha, niska barwa głosu"
+          ],
+          "correct": [
+            2,
+            3,
+            5
+          ]
+        },
+        {
+          "id": 162,
+          "prompt": "Wybierz 3 rzeczy z klasycznej sceny uwodzenia w filmie",
+          "options": [
+            "Powolne zsuwanie ramiączka",
+            "Wypełnianie formularza w urzędzie",
+            "Naprawa cieknącego kranu",
+            "Zbliżenie ust w półmroku",
+            "Spojrzenie pełne pożądania",
+            "Odczyt licznika kilometrów"
+          ],
+          "correct": [
+            0,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 163,
+          "prompt": "Wybierz 3 rzeczy, które można zrobić na romantycznej kolacji na dachu",
+          "options": [
+            "Sprawdzanie stanu komina",
+            "Naprawa instalacji odgromowej",
+            "Toast pod gwiazdami",
+            "Taniec przy świetle miasta",
+            "Skradziony pocałunek na wietrze",
+            "Konserwacja anteny satelitarnej"
+          ],
+          "correct": [
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 164,
+          "prompt": "Wybierz 3 rzeczy, które robią się gorące podczas slow dance",
+          "options": [
+            "Skanowanie paragonów",
+            "Dłonie na biodrach",
+            "Liczenie kasy w sklepie",
+            "Wypełnianie karty gwarancyjnej",
+            "Policzek przy policzku",
+            "Ciała blisko siebie"
+          ],
+          "correct": [
+            1,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 165,
+          "prompt": "Wybierz 3 rzeczy, które budują napięcie w windzie",
+          "options": [
+            "Naciskanie przycisku alarmu",
+            "Odczyt tabliczki udźwigu",
+            "Wymowne spojrzenia",
+            "Sprawdzanie przeglądu technicznego",
+            "Wstrzymany oddech",
+            "Przypadkowe muśnięcie ramion"
+          ],
+          "correct": [
+            2,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 166,
+          "prompt": "Wybierz 3 rzeczy, które kojarzą się z gorącą nocą w tropikach",
+          "options": [
+            "Koktajl z palemką",
+            "Konserwacja generatora prądu",
+            "Odczyt licznika klimatyzacji",
+            "Ciepły wiatr na skórze",
+            "Inwentaryzacja leżaków",
+            "Kąpiel w morzu o północy"
+          ],
+          "correct": [
+            0,
+            3,
+            5
+          ]
+        },
+        {
+          "id": 167,
+          "prompt": "Wybierz 3 rzeczy, które para pisze sobie na karteczkach z pikantnymi fantami",
+          "options": [
+            "\"Kolacja w samej bieliźnie\"",
+            "\"Masaż pleców dla mnie\"",
+            "\"Przegląd gwarancji sprzętu\"",
+            "\"Wymiana filtra w okapie\"",
+            "\"Rozliczenie wspólnego budżetu\"",
+            "\"Pocałunek trwający minutę\""
+          ],
+          "correct": [
+            0,
+            1,
+            5
+          ]
+        },
+        {
+          "id": 168,
+          "prompt": "Wybierz 3 zalotne gesty pod stołem podczas kolacji",
+          "options": [
+            "Stopa muskająca łydkę partnera",
+            "Dłoń wędrująca po udzie",
+            "Liczenie sztućców",
+            "Sprawdzanie poczty służbowej",
+            "Kuszące spojrzenie znad kieliszka",
+            "Podliczanie napiwku na kalkulatorze"
+          ],
+          "correct": [
+            0,
+            1,
+            4
+          ]
+        },
+        {
+          "id": 169,
+          "prompt": "Wybierz 3 rzeczy, które zdradzają chemię między dwojgiem ludzi",
+          "options": [
+            "Wymiana wizytówek służbowych",
+            "Nieświadome zbliżanie się",
+            "Podział rachunku co do grosza",
+            "Iskra w spojrzeniach",
+            "Wspólne wypełnianie PIT-u",
+            "Uśmiechy tylko dla siebie"
+          ],
+          "correct": [
+            1,
+            3,
+            5
+          ]
+        },
+        {
+          "id": 170,
+          "prompt": "Wybierz 3 rzeczy, które sprawiają, że masaż robi się zmysłowy",
+          "options": [
+            "Ostry reflektor warsztatowy",
+            "Przyciemnione światło i muzyka",
+            "Ciepły, pachnący olejek",
+            "Zimna woda z węża ogrodowego",
+            "Wibrująca szlifierka",
+            "Powolne, długie ruchy dłoni"
+          ],
+          "correct": [
+            1,
+            2,
+            5
+          ]
+        },
+        {
+          "id": 171,
+          "prompt": "Wybierz 3 rzeczy, które kojarzą się z romansem na wakacjach",
+          "options": [
+            "Wspólny drink na tarasie",
+            "Pocałunki o zachodzie słońca",
+            "Odczyt licznika minibaru",
+            "Wypełnianie karty meldunkowej co do joty",
+            "Reklamacja pokoju hotelowego",
+            "Spacer boso po plaży"
+          ],
+          "correct": [
+            0,
+            1,
+            5
+          ]
+        },
+        {
+          "id": 172,
+          "prompt": "Wybierz 3 rzeczy, które kobieta zabiera na uwodzicielski wieczór",
+          "options": [
+            "Koronkowa bielizna",
+            "Kask rowerowy",
+            "Szpilki dodające pewności",
+            "Perfumy o zmysłowej nucie",
+            "Kombinezon malarski",
+            "Kalosze do ogrodu"
+          ],
+          "correct": [
+            0,
+            2,
+            3
+          ]
+        },
+        {
+          "id": 173,
+          "prompt": "Wybierz 3 rzeczy, które mężczyzna robi, by zrobić wrażenie na randce",
+          "options": [
+            "Liczy resztę trzy razy",
+            "Odsuwa krzesło partnerce",
+            "Patrzy głęboko w oczy",
+            "Prawi komplementy",
+            "Recytuje regulamin parkingu",
+            "Sprawdza ciśnienie w oponach"
+          ],
+          "correct": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "id": 174,
+          "prompt": "Wybierz 3 rzeczy, które podkręcają nastrój na sylwestrowej nocy we dwoje",
+          "options": [
+            "Rozliczenie rocznego budżetu",
+            "Pocałunek o północy",
+            "Odczyt liczników na koniec roku",
+            "Segregacja fajerwerków według faktur",
+            "Taniec do białego rana",
+            "Kieliszki szampana"
+          ],
+          "correct": [
+            1,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 175,
+          "prompt": "Wybierz 3 rzeczy, które kojarzą się z zalotnym mruganiem",
+          "options": [
+            "Sygnalizacja awarii silnika",
+            "Kokieteria",
+            "Flirt",
+            "Miganie kontrolki paliwa",
+            "Zaproszenie bez słów",
+            "Alarm przeciwpożarowy"
+          ],
+          "correct": [
+            1,
+            2,
+            4
+          ]
+        },
+        {
+          "id": 176,
+          "prompt": "Wybierz 3 rzeczy, które robi para podczas gorącej gry planszowej dla dorosłych",
+          "options": [
+            "Zdejmuje po jednej części ubrania",
+            "Losuje pikantne wyzwania",
+            "Odkłada pionki do segregatora",
+            "Sumuje wyniki w arkuszu",
+            "Całuje na każdym polu \"start\"",
+            "Sprawdza instrukcję gry trzy razy"
+          ],
+          "correct": [
+            0,
+            1,
+            4
+          ]
+        },
+        {
+          "id": 177,
+          "prompt": "Wybierz 3 rzeczy, które kojarzą się z jedwabnymi kajdankami z butiku dla par",
+          "options": [
+            "Element wspólnej zabawy",
+            "Miękkie wykończenie",
+            "Aksamitna faktura",
+            "Norma przemysłowa DIN",
+            "Certyfikat wytrzymałości na 5 ton",
+            "Instrukcja BHP operatora dźwigu"
+          ],
+          "correct": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "id": 178,
+          "prompt": "Wybierz 3 rzeczy, które budują namiętność w liście miłosnym",
+          "options": [
+            "Wyznanie tęsknoty",
+            "Warunki gwarancji sprzętu AGD",
+            "Opis skradzionego pocałunku",
+            "Zestawienie miesięcznych wydatków",
+            "Obietnica gorącej nocy",
+            "Numer sprawy urzędowej"
+          ],
+          "correct": [
+            0,
+            2,
+            4
+          ]
+        },
+        {
+          "id": 179,
+          "prompt": "Wybierz 3 rzeczy, które kuszą w oknie sklepu z bielizną",
+          "options": [
+            "Jedwabne koszule nocne",
+            "Koronkowe komplety",
+            "Fartuch spawalniczy",
+            "Satynowe pończochy",
+            "Kalosze gumowe",
+            "Wełniane skarpety robocze"
+          ],
+          "correct": [
+            0,
+            1,
+            3
+          ]
+        },
+        {
+          "id": 180,
+          "prompt": "Wybierz 3 rzeczy, które kojarzą się z gorącym prysznicem we dwoje",
+          "options": [
+            "Wspólne mydlenie pleców",
+            "Odczyt licznika wody",
+            "Para na szybie",
+            "Spleceni pod strumieniem wody",
+            "Odkamienianie słuchawki prysznica",
+            "Wymiana uszczelki w baterii"
+          ],
+          "correct": [
+            0,
+            2,
+            3
+          ]
+        },
+        {
+          "id": 181,
+          "prompt": "Wybierz 3 rzeczy, które podnoszą temperaturę na parkiecie",
+          "options": [
+            "Uwodzicielskie spojrzenia",
+            "Zmysłowy taniec biodrami",
+            "Liczenie gości przy wejściu",
+            "Bliski kontakt ciał",
+            "Sprawdzanie biletów wstępu",
+            "Naprawa nagłośnienia"
+          ],
+          "correct": [
+            0,
+            1,
+            3
+          ]
+        },
+        {
+          "id": 182,
+          "prompt": "Wybierz 3 rzeczy z wieczoru pełnego flirtu w barze",
+          "options": [
+            "Podanie numeru na serwetce",
+            "Rozliczenie utargu baru",
+            "Postawienie drinka nieznajomej",
+            "Zamawianie dostawy szklanek",
+            "Wymiana wymownych spojrzeń",
+            "Kontrola daty ważności soków"
+          ],
+          "correct": [
+            0,
+            2,
+            4
+          ]
+        },
+        {
+          "id": 183,
+          "prompt": "Wybierz 3 rzeczy, które kojarzą się z uwodzicielskim głosem",
+          "options": [
+            "Niski, aksamitny ton",
+            "Automat zgłoszeniowy infolinii",
+            "Odczyt regulaminu przez megafon",
+            "Powolne, ciepłe słowa",
+            "Szept tuż przy uchu",
+            "Komunikat na dworcu kolejowym"
+          ],
+          "correct": [
+            0,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 184,
+          "prompt": "Wybierz 3 rzeczy, które para robi na romantycznym łóżku w płatkach róż",
+          "options": [
+            "Wymienia długie pocałunki",
+            "Wznosi toast szampanem",
+            "Nakręca budzik na 6 rano",
+            "Sortuje pranie",
+            "Przytula się przy świecach",
+            "Składa zeznanie podatkowe"
+          ],
+          "correct": [
+            0,
+            1,
+            4
+          ]
+        },
+        {
+          "id": 185,
+          "prompt": "Wybierz 3 gorące motywy na tematyczną noc dla par",
+          "options": [
+            "Wieczór segregacji dokumentów",
+            "Maraton wypełniania formularzy",
+            "Sceneria luksusowego harem-spa",
+            "Noc w stylu Tysiąca i jednej nocy",
+            "Noc inwentaryzacji magazynu",
+            "Wieczór francuskiej pokojówki"
+          ],
+          "correct": [
+            2,
+            3,
+            5
+          ]
+        },
+        {
+          "id": 186,
+          "prompt": "Wybierz 3 rzeczy, które kojarzą się z zalotnym uśmiechem",
+          "options": [
+            "Zaproszenie bez słów",
+            "Błysk w oku",
+            "Skrzywienie na widok rachunku",
+            "Uniesiony kącik ust",
+            "Grymas przy płaceniu podatku",
+            "Ziewnięcie ze zmęczenia"
+          ],
+          "correct": [
+            0,
+            1,
+            3
+          ]
+        },
+        {
+          "id": 187,
+          "prompt": "Wybierz 3 rzeczy z zestawu na zmysłowy wieczór w hotelu",
+          "options": [
+            "Instrukcja ewakuacji na drzwiach",
+            "Płatki róż na łóżku",
+            "Szampan w wiaderku z lodem",
+            "Przygaszone światła i muzyka",
+            "Formularz oceny pobytu",
+            "Cennik usług prania"
+          ],
+          "correct": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "id": 188,
+          "prompt": "Wybierz 3 rzeczy, które robi para na gorącym wypadzie do sauny",
+          "options": [
+            "Chłodzi się razem pod prysznicem",
+            "Wypełnia kartę serwisową pieca",
+            "Kontroluje termostat według normy",
+            "Szepcze komplementy w parze",
+            "Owija się w ręcznik i nic więcej",
+            "Liczy kamienie do sauny"
+          ],
+          "correct": [
+            0,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 189,
+          "prompt": "Wybierz 3 rzeczy, które kojarzą się z namiętnym pocałunkiem pod jemiołą",
+          "options": [
+            "Rumieniec i uśmiech",
+            "Pomiar wilgotności rośliny",
+            "Zbliżenie ust",
+            "Faktura za dekoracje świąteczne",
+            "Instrukcja wieszania ozdób",
+            "Ręce wokół talii"
+          ],
+          "correct": [
+            0,
+            2,
+            5
+          ]
+        },
+        {
+          "id": 190,
+          "prompt": "Wybierz 3 pikantne hasła do kalambur dla dorosłych",
+          "options": [
+            "„Zeznanie podatkowe”",
+            "„Pocałunek w kark”",
+            "„Odczyt licznika gazu”",
+            "„Striptiz dla partnera”",
+            "„Przegląd techniczny auta”",
+            "„Namiętny taniec we dwoje”"
+          ],
+          "correct": [
+            1,
+            3,
+            5
+          ]
+        },
+        {
+          "id": 191,
+          "prompt": "Wybierz 3 rzeczy, które kojarzą się z uwodzicielskim rozbieraniem wzrokiem",
+          "options": [
+            "Sprawdzanie rozmiaru buta",
+            "Powolne przesuwanie spojrzenia",
+            "Kuszący półuśmiech",
+            "Odczytywanie metki z ceną",
+            "Zawieszenie wzroku na ustach",
+            "Liczenie guzików w koszuli"
+          ],
+          "correct": [
+            1,
+            2,
+            4
+          ]
+        },
+        {
+          "id": 192,
+          "prompt": "Wybierz 3 rzeczy, które para wybiera na zmysłowy weekend w SPA",
+          "options": [
+            "Masaż dla dwojga",
+            "Wspólny relaks w saunie",
+            "Serwis pompy basenowej",
+            "Kontrola stanu ręczników",
+            "Inwentaryzacja szlafroków",
+            "Kąpiel w hydromasażu"
+          ],
+          "correct": [
+            0,
+            1,
+            5
+          ]
+        },
+        {
+          "id": 193,
+          "prompt": "Wybierz 3 rzeczy, które kuszą w zmysłowym tańcu brzucha",
+          "options": [
+            "Kuszące spojrzenia znad zasłony",
+            "Faliste ruchy bioder",
+            "Kask ochronny",
+            "Brzęk cekinów na pasku",
+            "Kamizelka odblaskowa",
+            "Instrukcja obsługi betoniarki"
+          ],
+          "correct": [
+            0,
+            1,
+            3
+          ]
+        },
+        {
+          "id": 194,
+          "prompt": "Wybierz 3 rzeczy, które budują napięcie podczas wspólnego gotowania we dwoje",
+          "options": [
+            "Śmiech i muśnięcia przy stole",
+            "Sprawdzanie terminów przydatności",
+            "Karmienie się nawzajem kęsami",
+            "Wypełnianie karty HACCP",
+            "Skradziony pocałunek przy garnku",
+            "Ważenie składników co do grama"
+          ],
+          "correct": [
+            0,
+            2,
+            4
+          ]
+        },
+        {
+          "id": 195,
+          "prompt": "Wybierz 3 rzeczy, które kojarzą się z gorącą sceną w kinie samochodowym",
+          "options": [
+            "Sprawdzanie ciśnienia w oponach",
+            "Wymiana oleju silnikowego",
+            "Odczyt licznika przebiegu",
+            "Przytulanie na tylnym siedzeniu",
+            "Wspólny koc w aucie",
+            "Skradzione pocałunki w półmroku"
+          ],
+          "correct": [
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 196,
+          "prompt": "Wybierz 3 rzeczy z zestawu dla par na romantyczny wieczór gier",
+          "options": [
+            "Kostka z pikantnymi zadaniami",
+            "Plansza do gry w chińczyka dla dzieci",
+            "Kalkulator wyników",
+            "Opaska na oczy do zabawy",
+            "Karty z wyzwaniami dla dwojga",
+            "Klepsydra do gotowania jajek"
+          ],
+          "correct": [
+            0,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 197,
+          "prompt": "Wybierz 3 rzeczy, które kojarzą się z uwodzicielskim strojem wieczorowym",
+          "options": [
+            "Kamizelka ostrzegawcza",
+            "Głęboki dekolt na plecach",
+            "Kalosze",
+            "Kombinezon roboczy",
+            "Sukienka z odważnym rozcięciem",
+            "Szpilki i czerwona szminka"
+          ],
+          "correct": [
+            1,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 198,
+          "prompt": "Wybierz 3 rzeczy, które para robi w namiętną deszczową noc",
+          "options": [
+            "Słucha deszczu, tuląc się do siebie",
+            "Wymienia leniwe pocałunki",
+            "Wynosi wiadra z wodą",
+            "Rozpala świece przy oknie",
+            "Sprawdza rynny spustowe",
+            "Uszczelnia przeciekający dach"
+          ],
+          "correct": [
+            0,
+            1,
+            3
+          ]
+        },
+        {
+          "id": 199,
+          "prompt": "Wybierz 3 rzeczy, które kojarzą się z zalotną grą spojrzeń przez salę",
+          "options": [
+            "Przeciągane spojrzenia",
+            "Zaczerwienione policzki",
+            "Liczenie krzeseł na sali",
+            "Nieśmiały uśmiech",
+            "Odczyt planu ewakuacji",
+            "Sprawdzanie listy obecności"
+          ],
+          "correct": [
+            0,
+            1,
+            3
+          ]
+        },
+        {
+          "id": 200,
+          "prompt": "Wybierz 3 kupony do wręczenia partnerowi na pikantny wieczór",
+          "options": [
+            "Kupon na zmysłowy masaż całego ciała",
+            "Kupon na wymianę oleju w aucie",
+            "Kupon na prywatny taniec",
+            "Kupon na wypełnienie deklaracji PIT",
+            "Kupon na spełnienie jednej fantazji",
+            "Kupon na przegląd instalacji gazowej"
+          ],
+          "correct": [
+            0,
+            2,
+            4
+          ]
+        }
       ]
     },
     {
-      "id": "entertainment",
-      "name": "Entertainment",
+      "id": "party",
+      "name": "Impreza",
       "questions": [
-        { "id": 11, "prompt": "Pick 3 board games", "options": ["Monopoly", "Chess", "Scrabble", "Hammer", "Toaster", "Shovel"], "correct": [0, 1, 2] },
-        { "id": 12, "prompt": "Pick 3 musical instruments", "options": ["Guitar", "Piano", "Drums", "Spoon", "Ladder", "Kettle"], "correct": [0, 1, 2] },
-        { "id": 13, "prompt": "Pick 3 movie genres", "options": ["Comedy", "Horror", "Action", "Sandwich", "Gravel", "Tuesday"], "correct": [0, 1, 2] },
-        { "id": 14, "prompt": "Pick 3 sports", "options": ["Soccer", "Tennis", "Basketball", "Napping", "Blinking", "Chewing"], "correct": [0, 1, 2] },
-        { "id": 15, "prompt": "Pick 3 card games", "options": ["Poker", "Blackjack", "Solitaire", "Broccoli", "Ceiling", "Cactus"], "correct": [0, 1, 2] }
+        {
+          "id": 201,
+          "prompt": "Wybierz 3 rzeczy niezbędne na dobrej imprezie",
+          "options": [
+            "Kalkulator",
+            "Zimne napoje",
+            "Dobre towarzystwo",
+            "Odkurzacz",
+            "Głośna muzyka",
+            "Segregator na dokumenty"
+          ],
+          "correct": [
+            1,
+            2,
+            4
+          ]
+        },
+        {
+          "id": 202,
+          "prompt": "Wybierz 3 klasyczne drinki imprezowe",
+          "options": [
+            "Zupa pomidorowa",
+            "Mojito",
+            "Cuba Libre",
+            "Sok z buraka na czczo",
+            "Herbata rumiankowa",
+            "Margarita"
+          ],
+          "correct": [
+            1,
+            2,
+            5
+          ]
+        },
+        {
+          "id": 203,
+          "prompt": "Wybierz 3 popularne gry imprezowe",
+          "options": [
+            "Wypełnianie PIT-u",
+            "Kalambury",
+            "Piwny ping-pong",
+            "Butelka",
+            "Prasowanie koszul",
+            "Segregacja śmieci"
+          ],
+          "correct": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "id": 204,
+          "prompt": "Wybierz 3 rzeczy na dobrym sylwestrze",
+          "options": [
+            "Szampan o północy",
+            "Odliczanie do północy",
+            "Poranna gimnastyka",
+            "Spis inwentarza",
+            "Wizyta u dentysty",
+            "Fajerwerki"
+          ],
+          "correct": [
+            0,
+            1,
+            5
+          ]
+        },
+        {
+          "id": 205,
+          "prompt": "Wybierz 3 elementy dekoracji urodzinowej",
+          "options": [
+            "Serpentyny",
+            "Faktura VAT",
+            "Tort ze świeczkami",
+            "Balony",
+            "Instrukcja obsługi pralki",
+            "Gaśnica"
+          ],
+          "correct": [
+            0,
+            2,
+            3
+          ]
+        },
+        {
+          "id": 206,
+          "prompt": "Wybierz 3 taneczne ruchy na parkiecie",
+          "options": [
+            "Machanie rękami w górze",
+            "Podskoki do rytmu",
+            "Kręcenie biodrami",
+            "Zamiatanie podłogi",
+            "Liczenie pieniędzy",
+            "Zawiązywanie krawata"
+          ],
+          "correct": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "id": 207,
+          "prompt": "Wybierz 3 rzeczy przydatne na festiwalu muzycznym",
+          "options": [
+            "Kwiatek doniczkowy",
+            "Kalosze",
+            "Żelazko",
+            "Namiot",
+            "Bilet na koncert",
+            "Biurko"
+          ],
+          "correct": [
+            1,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 208,
+          "prompt": "Wybierz 3 przekąski na domową imprezę",
+          "options": [
+            "Kostka rosołowa na sucho",
+            "Surowy makaron",
+            "Chipsy",
+            "Paluszki",
+            "Mrożone rybne paluszki bez smażenia",
+            "Nachosy z dipem"
+          ],
+          "correct": [
+            2,
+            3,
+            5
+          ]
+        },
+        {
+          "id": 209,
+          "prompt": "Wybierz 3 sposoby na kaca",
+          "options": [
+            "Długi sen",
+            "Solidne śniadanie",
+            "Egzamin z matematyki",
+            "Kolejny maraton biegowy",
+            "Skok ze spadochronem",
+            "Dużo wody"
+          ],
+          "correct": [
+            0,
+            1,
+            5
+          ]
+        },
+        {
+          "id": 210,
+          "prompt": "Wybierz 3 rzeczy na grillu u znajomych",
+          "options": [
+            "Lodówka bez prądu",
+            "Karkówka",
+            "Kiełbaski",
+            "Kalkulator naukowy",
+            "Płyta CD",
+            "Węgiel drzewny"
+          ],
+          "correct": [
+            1,
+            2,
+            5
+          ]
+        },
+        {
+          "id": 211,
+          "prompt": "Wybierz 3 kolorowe drinki na basenową imprezę",
+          "options": [
+            "Sex on the Beach",
+            "Blue Lagoon",
+            "Kefir naturalny",
+            "Barszcz czerwony",
+            "Piña colada",
+            "Kompot z suszu"
+          ],
+          "correct": [
+            0,
+            1,
+            4
+          ]
+        },
+        {
+          "id": 212,
+          "prompt": "Wybierz 3 klasyki karaoke",
+          "options": [
+            "Dancing Queen",
+            "Bohemian Rhapsody",
+            "Instrukcja przeciwpożarowa",
+            "Sweet Caroline",
+            "Regulamin osiedla",
+            "Prognoza pogody"
+          ],
+          "correct": [
+            0,
+            1,
+            3
+          ]
+        },
+        {
+          "id": 213,
+          "prompt": "Wybierz 3 gadżety na parkiet w klubie",
+          "options": [
+            "Okulary przeciwsłoneczne",
+            "Kalosze robocze",
+            "Glow sticki",
+            "Teczka na akta",
+            "Świecące bransoletki",
+            "Termofor"
+          ],
+          "correct": [
+            0,
+            2,
+            4
+          ]
+        },
+        {
+          "id": 214,
+          "prompt": "Wybierz 3 rzeczy potrzebne na potańcówce weselnej",
+          "options": [
+            "Instrukcja montażu szafy",
+            "Laptop służbowy",
+            "Rachunki do zapłaty",
+            "Dobry humor",
+            "Wygodne buty",
+            "Znajomość układu do Belgijki"
+          ],
+          "correct": [
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 215,
+          "prompt": "Wybierz 3 typowe okrzyki na imprezie",
+          "options": [
+            "Proszę o fakturę",
+            "Na zdrowie!",
+            "Sto lat!",
+            "Następny do okienka",
+            "Cisza w bibliotece",
+            "Impreza!"
+          ],
+          "correct": [
+            1,
+            2,
+            5
+          ]
+        },
+        {
+          "id": 216,
+          "prompt": "Wybierz 3 rzeczy na wieczorze panieńskim",
+          "options": [
+            "Malowanie ściany",
+            "Różowe balony",
+            "Wizyta w urzędzie skarbowym",
+            "Odkurzanie dywanu",
+            "Diadem dla przyszłej panny młodej",
+            "Wspólne wyjście na miasto"
+          ],
+          "correct": [
+            1,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 217,
+          "prompt": "Wybierz 3 składniki dobrego ponczu imprezowego",
+          "options": [
+            "Kostki lodu",
+            "Płyn do naczyń",
+            "Sok owocowy",
+            "Piasek kwarcowy",
+            "Plasterki cytryny",
+            "Olej silnikowy"
+          ],
+          "correct": [
+            0,
+            2,
+            4
+          ]
+        },
+        {
+          "id": 218,
+          "prompt": "Wybierz 3 rzeczy na imprezie w stylu retro lat 80.",
+          "options": [
+            "Neonowe stroje",
+            "Segregator na paragony",
+            "Kalkulator podatkowy",
+            "Muzyka disco",
+            "Kolorowe opaski na głowę",
+            "Faks biurowy"
+          ],
+          "correct": [
+            0,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 219,
+          "prompt": "Wybierz 3 rekwizyty do zabawnych zdjęć na imprezie",
+          "options": [
+            "Skalpel chirurgiczny",
+            "Kolorowe peruki",
+            "Wiertarka udarowa",
+            "Deklaracja celna",
+            "Sztuczne wąsy",
+            "Śmieszne okulary"
+          ],
+          "correct": [
+            1,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 220,
+          "prompt": "Wybierz 3 rzeczy kojarzące się z nocnym klubem",
+          "options": [
+            "Poranna msza",
+            "Cicha czytelnia",
+            "Sala operacyjna",
+            "Kula dyskotekowa",
+            "Didżej",
+            "Migające światła"
+          ],
+          "correct": [
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 221,
+          "prompt": "Wybierz 3 klasyczne shoty na imprezie",
+          "options": [
+            "Tequila",
+            "Syrop na kaszel",
+            "Sambuca",
+            "Woda destylowana",
+            "Ocet spirytusowy",
+            "Jägermeister"
+          ],
+          "correct": [
+            0,
+            2,
+            5
+          ]
+        },
+        {
+          "id": 222,
+          "prompt": "Wybierz 3 aktywności na domówce",
+          "options": [
+            "Mycie okien",
+            "Rozliczanie podatku",
+            "Wspólne śpiewanie",
+            "Segregowanie skarpetek",
+            "Tańce w salonie",
+            "Gra w karty"
+          ],
+          "correct": [
+            2,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 223,
+          "prompt": "Wybierz 3 rzeczy na plażowej imprezie",
+          "options": [
+            "Piłka plażowa",
+            "Chłodziarka z napojami",
+            "Głośnik bluetooth",
+            "Kominek na drewno",
+            "Narty biegowe",
+            "Łopata do śniegu"
+          ],
+          "correct": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "id": 224,
+          "prompt": "Wybierz 3 elementy dobrego toastu",
+          "options": [
+            "Uniesienie kieliszka",
+            "Wypełnienie ankiety",
+            "Odczytanie regulaminu",
+            "Podpisanie umowy",
+            "Kilka miłych słów",
+            "Stuknięcie się szkłem"
+          ],
+          "correct": [
+            0,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 225,
+          "prompt": "Wybierz 3 rzeczy potrzebne didżejowi",
+          "options": [
+            "Słuchawki",
+            "Kolekcja utworów",
+            "Kosiarka do trawy",
+            "Zestaw do szycia",
+            "Waga kuchenna",
+            "Konsola do miksowania"
+          ],
+          "correct": [
+            0,
+            1,
+            5
+          ]
+        },
+        {
+          "id": 226,
+          "prompt": "Wybierz 3 przysmaki na słodkim stole urodzinowym",
+          "options": [
+            "Surowa cebula",
+            "Galaretka",
+            "Cukierki",
+            "Babeczki",
+            "Kiszona kapusta",
+            "Mączka rybna"
+          ],
+          "correct": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "id": 227,
+          "prompt": "Wybierz 3 rzeczy na imprezie tematycznej w stylu Hawaje",
+          "options": [
+            "Koszule w palmy",
+            "Wianki z kwiatów",
+            "Rękawice spawalnicze",
+            "Drinki z parasolką",
+            "Czapka zimowa",
+            "Łańcuchy na opony"
+          ],
+          "correct": [
+            0,
+            1,
+            3
+          ]
+        },
+        {
+          "id": 228,
+          "prompt": "Wybierz 3 sposoby na rozkręcenie imprezy",
+          "options": [
+            "Włączenie odkurzacza",
+            "Wzniesienie toastu",
+            "Wyłączenie muzyki",
+            "Rozpoczęcie zabawy",
+            "Puszczenie hitu na parkiet",
+            "Ogłoszenie ciszy nocnej"
+          ],
+          "correct": [
+            1,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 229,
+          "prompt": "Wybierz 3 rzeczy na koncercie plenerowym",
+          "options": [
+            "Kolejka do kasy w banku",
+            "Tłum fanów",
+            "Poczekalnia u lekarza",
+            "Cicha sala lekcyjna",
+            "Zespół na żywo",
+            "Głośna scena"
+          ],
+          "correct": [
+            1,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 230,
+          "prompt": "Wybierz 3 klasyczne bezalkoholowe napoje na imprezę",
+          "options": [
+            "Woda z kranu z mydłem",
+            "Ocet jabłkowy prosto z butelki",
+            "Rosół z kością",
+            "Lemoniada",
+            "Sok pomarańczowy",
+            "Cola"
+          ],
+          "correct": [
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 231,
+          "prompt": "Wybierz 3 rzeczy na sylwestrowym balu",
+          "options": [
+            "Kalendarz ścienny",
+            "Piżama w misie",
+            "Elegancki strój",
+            "Maska karnawałowa",
+            "Muzyka na żywo",
+            "Kubeł na mopa"
+          ],
+          "correct": [
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 232,
+          "prompt": "Wybierz 3 popularne tańce na imprezie",
+          "options": [
+            "Marsz defiladowy",
+            "Rozgrzewka przedmeczowa",
+            "Belgijka",
+            "Makarena",
+            "Bieg na 100 metrów",
+            "Kaczuszki"
+          ],
+          "correct": [
+            2,
+            3,
+            5
+          ]
+        },
+        {
+          "id": 233,
+          "prompt": "Wybierz 3 elementy dobrej playlisty na parkiet",
+          "options": [
+            "Dźwięki wieloryba",
+            "Rytmiczne kawałki",
+            "Znane przeboje",
+            "Wykład o ekonomii",
+            "Hity disco polo",
+            "Nagranie deszczu do medytacji"
+          ],
+          "correct": [
+            1,
+            2,
+            4
+          ]
+        },
+        {
+          "id": 234,
+          "prompt": "Wybierz 3 rzeczy przydatne na after party",
+          "options": [
+            "Budzik na 6 rano",
+            "Zeszyt do notatek",
+            "Woda mineralna",
+            "Podręcznik do fizyki",
+            "Pizza na wynos",
+            "Kanapa do odpoczynku"
+          ],
+          "correct": [
+            2,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 235,
+          "prompt": "Wybierz 3 przekąski idealne pod piwo",
+          "options": [
+            "Paluszki",
+            "Sałata bez niczego",
+            "Chrupki serowe",
+            "Kasza gryczana na sypko",
+            "Owsianka na wodzie",
+            "Orzeszki solone"
+          ],
+          "correct": [
+            0,
+            2,
+            5
+          ]
+        },
+        {
+          "id": 236,
+          "prompt": "Wybierz 3 rzeczy na studenckiej imprezie w akademiku",
+          "options": [
+            "Tania przekąska",
+            "Tłum znajomych",
+            "Egzamin poprawkowy",
+            "Wykład o świcie",
+            "Cisza nocna o 20",
+            "Głośna muzyka"
+          ],
+          "correct": [
+            0,
+            1,
+            5
+          ]
+        },
+        {
+          "id": 237,
+          "prompt": "Wybierz 3 składniki klasycznego Mojito",
+          "options": [
+            "Świeża mięta",
+            "Musztarda",
+            "Rum",
+            "Kiszony ogórek",
+            "Kakao w proszku",
+            "Limonka"
+          ],
+          "correct": [
+            0,
+            2,
+            5
+          ]
+        },
+        {
+          "id": 238,
+          "prompt": "Wybierz 3 rzeczy na imprezie karnawałowej",
+          "options": [
+            "Kolorowe kostiumy",
+            "Maski",
+            "Wykaz obowiązków",
+            "Instrukcja BHP",
+            "Konfetti",
+            "Formularz podatkowy"
+          ],
+          "correct": [
+            0,
+            1,
+            4
+          ]
+        },
+        {
+          "id": 239,
+          "prompt": "Wybierz 3 gadżety świecące na festiwalu nocą",
+          "options": [
+            "Latarka czołowa",
+            "Świeca zapachowa do relaksu",
+            "Lampka nocna dla niemowlaka",
+            "Znicz nagrobny",
+            "Świecące naszyjniki",
+            "Neonowe opaski"
+          ],
+          "correct": [
+            0,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 240,
+          "prompt": "Wybierz 3 rzeczy na pikniku ze znajomymi",
+          "options": [
+            "Telewizor plazmowy",
+            "Betoniarka",
+            "Frisbee",
+            "Kosz z jedzeniem",
+            "Sejf pancerny",
+            "Koc na trawę"
+          ],
+          "correct": [
+            2,
+            3,
+            5
+          ]
+        },
+        {
+          "id": 241,
+          "prompt": "Wybierz 3 klasyczne dania na house party",
+          "options": [
+            "Frytki",
+            "Skrzydełka z kurczaka",
+            "Zupa mleczna",
+            "Kasza manna",
+            "Gotowany kalafior bez niczego",
+            "Pizza"
+          ],
+          "correct": [
+            0,
+            1,
+            5
+          ]
+        },
+        {
+          "id": 242,
+          "prompt": "Wybierz 3 rzeczy na parkiecie w dyskotece",
+          "options": [
+            "Tłum tańczących",
+            "Regał z aktami",
+            "Tablica z ogłoszeniami urzędu",
+            "Fotel dentystyczny",
+            "Głośne basy",
+            "Rozświetlona podłoga"
+          ],
+          "correct": [
+            0,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 243,
+          "prompt": "Wybierz 3 popularne koktajle na wieczornej imprezie",
+          "options": [
+            "Wywar z pokrzywy",
+            "Cosmopolitan",
+            "Sok z kiszonej kapusty",
+            "Aperol Spritz",
+            "Zsiadłe mleko",
+            "Whisky Sour"
+          ],
+          "correct": [
+            1,
+            3,
+            5
+          ]
+        },
+        {
+          "id": 244,
+          "prompt": "Wybierz 3 rzeczy na urodzinach dziecka",
+          "options": [
+            "Tort z bajkowym motywem",
+            "Balony w kształcie zwierząt",
+            "Kolorowe czapeczki",
+            "Rozliczenie ZUS",
+            "Wiertarka udarowa",
+            "Kanister z benzyną"
+          ],
+          "correct": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "id": 245,
+          "prompt": "Wybierz 3 sposoby na dobre wejście na imprezę",
+          "options": [
+            "Ulubiony strój",
+            "Spanie na wycieraczce",
+            "Milczenie w kącie cały wieczór",
+            "Uśmiech od ucha do ucha",
+            "Głośne przywitanie",
+            "Czytanie regulaminu na głos"
+          ],
+          "correct": [
+            0,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 246,
+          "prompt": "Wybierz 3 rzeczy na imprezie w stylu disco",
+          "options": [
+            "Deklaracja celna",
+            "Kula lustrzana",
+            "Błyszczące stroje",
+            "Instrukcja obsługi kosiarki",
+            "Kombinezon roboczy",
+            "Muzyka lat 70."
+          ],
+          "correct": [
+            1,
+            2,
+            5
+          ]
+        },
+        {
+          "id": 247,
+          "prompt": "Wybierz 3 napoje rozgrzewające na zimową imprezę",
+          "options": [
+            "Lody na patyku",
+            "Gorąca czekolada z rumem",
+            "Grzaniec z przyprawami",
+            "Mrożona kawa z lodem",
+            "Grzane wino",
+            "Zimny kompot z lodówki"
+          ],
+          "correct": [
+            1,
+            2,
+            4
+          ]
+        },
+        {
+          "id": 248,
+          "prompt": "Wybierz 3 rzeczy potrzebne na ognisku ze znajomymi",
+          "options": [
+            "Gitara",
+            "Klimatyzator",
+            "Kalkulator biurowy",
+            "Odkurzacz przemysłowy",
+            "Patyki",
+            "Kiełbaski do pieczenia"
+          ],
+          "correct": [
+            0,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 249,
+          "prompt": "Wybierz 3 zabawy na imprezie integracyjnej",
+          "options": [
+            "Kalambury",
+            "Wspólne karaoke",
+            "Inwentaryzacja magazynu",
+            "Segregacja dokumentów",
+            "Wypełnianie deklaracji",
+            "Dwie prawdy i kłamstwo"
+          ],
+          "correct": [
+            0,
+            1,
+            5
+          ]
+        },
+        {
+          "id": 250,
+          "prompt": "Wybierz 3 rzeczy na dachowej imprezie o zachodzie słońca",
+          "options": [
+            "Biurko z komputerem",
+            "Kombajn rolniczy",
+            "Chill-outowa muzyka",
+            "Piec hutniczy",
+            "Leżaki",
+            "Chłodne drinki"
+          ],
+          "correct": [
+            2,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 251,
+          "prompt": "Wybierz 3 klasyczne przekąski na stole imprezowym",
+          "options": [
+            "Chipsy z dipem",
+            "Mini pizzerki",
+            "Surowy filet z kurczaka",
+            "Kostka masła bez niczego",
+            "Mąka w torebce",
+            "Kanapeczki koreczki"
+          ],
+          "correct": [
+            0,
+            1,
+            5
+          ]
+        },
+        {
+          "id": 252,
+          "prompt": "Wybierz 3 rzeczy kojarzące się z andrzejkami",
+          "options": [
+            "Ustawianie butów do progu",
+            "Lanie wosku",
+            "Prasowanie pościeli",
+            "Mycie samochodu",
+            "Składanie zeznania podatkowego",
+            "Wróżby"
+          ],
+          "correct": [
+            0,
+            1,
+            5
+          ]
+        },
+        {
+          "id": 253,
+          "prompt": "Wybierz 3 elementy imprezy w stylu Halloween",
+          "options": [
+            "Straszne dekoracje",
+            "Pisanki wielkanocne",
+            "Choinka bożonarodzeniowa",
+            "Kostiumy potworów",
+            "Dynia z wyciętą buźką",
+            "Kwiaty na Dzień Matki"
+          ],
+          "correct": [
+            0,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 254,
+          "prompt": "Wybierz 3 rzeczy na sylwestrowym stole",
+          "options": [
+            "Szampan",
+            "Worek cementu",
+            "Sałatka jarzynowa",
+            "Płyn do spryskiwaczy",
+            "Przekąski na jeden kęs",
+            "Surowy ziemniak"
+          ],
+          "correct": [
+            0,
+            2,
+            4
+          ]
+        },
+        {
+          "id": 255,
+          "prompt": "Wybierz 3 rekwizyty na imprezę w stylu gangsterskim",
+          "options": [
+            "Elegancki garnitur",
+            "Cygaro z papieru",
+            "Kapelusz fedora",
+            "Kask budowlany",
+            "Fartuch laboratoryjny",
+            "Strój narciarski"
+          ],
+          "correct": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "id": 256,
+          "prompt": "Wybierz 3 rzeczy na wieczorze kawalerskim",
+          "options": [
+            "Sprzątanie garażu",
+            "Wizyta u notariusza",
+            "Nauka do egzaminu",
+            "Karty do pokera",
+            "Zimne piwo",
+            "Wypad z ekipą"
+          ],
+          "correct": [
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 257,
+          "prompt": "Wybierz 3 sposoby na dobrą zabawę bez alkoholu",
+          "options": [
+            "Liczenie owiec",
+            "Gry planszowe",
+            "Wypełnianie formularzy",
+            "Taniec do świtu",
+            "Wspólne śpiewanie",
+            "Czytanie instrukcji obsługi"
+          ],
+          "correct": [
+            1,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 258,
+          "prompt": "Wybierz 3 rzeczy na letnim festynie",
+          "options": [
+            "Kasa fiskalna w urzędzie",
+            "Stoisko z lodami",
+            "Wata cukrowa",
+            "Karuzela",
+            "Poczekalnia u lekarza",
+            "Sala konferencyjna"
+          ],
+          "correct": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "id": 259,
+          "prompt": "Wybierz 3 popularne przeboje na parkiet weselny",
+          "options": [
+            "Kołysanka dla niemowląt",
+            "Marsz żałobny",
+            "Jesteś szalona",
+            "Hymn państwowy",
+            "Ona tańczy dla mnie",
+            "Przez twe oczy zielone"
+          ],
+          "correct": [
+            2,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 260,
+          "prompt": "Wybierz 3 składniki dobrego grilla",
+          "options": [
+            "Płatki śniadaniowe na sucho",
+            "Surowy makaron",
+            "Pieczywo",
+            "Sos czosnkowy",
+            "Marynowane mięso",
+            "Zamrożone lody"
+          ],
+          "correct": [
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 261,
+          "prompt": "Wybierz 3 rzeczy na imprezie przy basenie",
+          "options": [
+            "Szufla do śniegu",
+            "Kolorowe drinki",
+            "Głośna muzyka",
+            "Płaszcz zimowy",
+            "Dmuchane koło",
+            "Kominek gazowy"
+          ],
+          "correct": [
+            1,
+            2,
+            4
+          ]
+        },
+        {
+          "id": 262,
+          "prompt": "Wybierz 3 gadżety na imprezie sylwestrowej",
+          "options": [
+            "Kalkulator naukowy",
+            "Śrubokręt",
+            "Papierowe trąbki",
+            "Termometr lekarski",
+            "Konfetti",
+            "Serpentyny"
+          ],
+          "correct": [
+            2,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 263,
+          "prompt": "Wybierz 3 rzeczy potrzebne barmanowi na imprezie",
+          "options": [
+            "Shaker",
+            "Waga łazienkowa",
+            "Zeszyt w kratkę",
+            "Kolorowe słomki",
+            "Lód w kostkach",
+            "Piła tarczowa"
+          ],
+          "correct": [
+            0,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 264,
+          "prompt": "Wybierz 3 zabawne fanty na imprezowej loterii",
+          "options": [
+            "Zabawkowa korona",
+            "Mandat drogowy",
+            "Paczka cukierków",
+            "Rachunek za prąd",
+            "Wezwanie do sądu",
+            "Śmieszny kubek"
+          ],
+          "correct": [
+            0,
+            2,
+            5
+          ]
+        },
+        {
+          "id": 265,
+          "prompt": "Wybierz 3 rzeczy na imprezie w plenerze latem",
+          "options": [
+            "Łyżwy",
+            "Piec kaflowy",
+            "Głośnik przenośny",
+            "Lampiony",
+            "Sanki",
+            "Hamak"
+          ],
+          "correct": [
+            2,
+            3,
+            5
+          ]
+        },
+        {
+          "id": 266,
+          "prompt": "Wybierz 3 popularne drinki z rumem",
+          "options": [
+            "Sok z buraków",
+            "Napar z rumianku",
+            "Kefir z ogórkiem",
+            "Mojito",
+            "Daiquiri",
+            "Piña colada"
+          ],
+          "correct": [
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 267,
+          "prompt": "Wybierz 3 rzeczy na klubowej nocy w mieście",
+          "options": [
+            "Taksówka do domu",
+            "Poduszka i koc",
+            "Podręcznik do biologii",
+            "Termos z herbatą",
+            "Wejściówka do klubu",
+            "Ekipa znajomych"
+          ],
+          "correct": [
+            0,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 268,
+          "prompt": "Wybierz 3 sposoby na uczczenie urodzin",
+          "options": [
+            "Wypełnienie PIT-u",
+            "Zdmuchnięcie świeczek",
+            "Podział tortu",
+            "Odśpiewanie Sto lat",
+            "Sprzątanie piwnicy",
+            "Wymiana oleju w aucie"
+          ],
+          "correct": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "id": 269,
+          "prompt": "Wybierz 3 rzeczy na sylwestra pod chmurką",
+          "options": [
+            "Termos z grzańcem",
+            "Wentylator biurkowy",
+            "Strój kąpielowy",
+            "Zimne ognie",
+            "Ciepła kurtka",
+            "Klimatyzator przenośny"
+          ],
+          "correct": [
+            0,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 270,
+          "prompt": "Wybierz 3 elementy dobrego stand-upu na imprezie",
+          "options": [
+            "Wykład o księgowości",
+            "Uśmiechnięta publiczność",
+            "Cisza jak makiem zasiał",
+            "Mikrofon",
+            "Formularz reklamacyjny",
+            "Zabawne żarty"
+          ],
+          "correct": [
+            1,
+            3,
+            5
+          ]
+        },
+        {
+          "id": 271,
+          "prompt": "Wybierz 3 rzeczy na potańcówce na wsi",
+          "options": [
+            "Sala operacyjna",
+            "Poczekalnia dworcowa",
+            "Kapela grająca na żywo",
+            "Zimna oranżada",
+            "Ławki dookoła parkietu",
+            "Serwerownia"
+          ],
+          "correct": [
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 272,
+          "prompt": "Wybierz 3 napoje na młodzieżowej imprezie bez procentów",
+          "options": [
+            "Kolorowa lemoniada",
+            "Sok z surowego selera bez niczego",
+            "Napój energetyczny",
+            "Koktajl owocowy",
+            "Ocet spożywczy",
+            "Woda z mydłem"
+          ],
+          "correct": [
+            0,
+            2,
+            3
+          ]
+        },
+        {
+          "id": 273,
+          "prompt": "Wybierz 3 rzeczy na imprezie przebierańców",
+          "options": [
+            "Peruka",
+            "Kombinezon ochronny malarza",
+            "Kostium superbohatera",
+            "Maska",
+            "Mundur roboczy hydraulika",
+            "Fartuch rzeźnika"
+          ],
+          "correct": [
+            0,
+            2,
+            3
+          ]
+        },
+        {
+          "id": 274,
+          "prompt": "Wybierz 3 sposoby na super atmosferę na imprezie",
+          "options": [
+            "Wyłączony prąd",
+            "Wykład o podatkach",
+            "Dobra muzyka",
+            "Cisza absolutna",
+            "Uśmiechnięci goście",
+            "Kolorowe światła"
+          ],
+          "correct": [
+            2,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 275,
+          "prompt": "Wybierz 3 przekąski na kinowy wieczór ze znajomymi",
+          "options": [
+            "Nachosy",
+            "Żelki",
+            "Sucha kasza jaglana",
+            "Popcorn",
+            "Surowe jajko",
+            "Bulion w kostce"
+          ],
+          "correct": [
+            0,
+            1,
+            3
+          ]
+        },
+        {
+          "id": 276,
+          "prompt": "Wybierz 3 rzeczy na imprezie w stylu Bollywood",
+          "options": [
+            "Wspólny taniec",
+            "Instrukcja obsługi pralki",
+            "Formularz zwrotu towaru",
+            "Kolorowe sari",
+            "Skoczna muzyka",
+            "Deklaracja podatkowa"
+          ],
+          "correct": [
+            0,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 277,
+          "prompt": "Wybierz 3 klasyczne gry przy stole na imprezie",
+          "options": [
+            "Sortowanie maili",
+            "Kółko i krzyżyk na czas",
+            "Liczenie kalorii",
+            "Państwa-miasta",
+            "Karty UNO",
+            "Wypełnianie ankiety RODO"
+          ],
+          "correct": [
+            1,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 278,
+          "prompt": "Wybierz 3 rzeczy na plenerowej imprezie sylwestrowej na rynku",
+          "options": [
+            "Pusta czytelnia",
+            "Kolejka w aptece",
+            "Sala gimnastyczna o poranku",
+            "Tłum ludzi",
+            "Pokaz fajerwerków",
+            "Wielka scena"
+          ],
+          "correct": [
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 279,
+          "prompt": "Wybierz 3 składniki koktajlu Piña colada",
+          "options": [
+            "Musztarda sarepska",
+            "Mleczko kokosowe",
+            "Kiszony ogórek",
+            "Biały rum",
+            "Sok ananasowy",
+            "Sos sojowy"
+          ],
+          "correct": [
+            1,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 280,
+          "prompt": "Wybierz 3 rzeczy potrzebne na karaoke party",
+          "options": [
+            "Wiertarka",
+            "Lista przebojów",
+            "Mikrofon",
+            "Waga kuchenna",
+            "Ekran z tekstami",
+            "Segregator"
+          ],
+          "correct": [
+            1,
+            2,
+            4
+          ]
+        },
+        {
+          "id": 281,
+          "prompt": "Wybierz 3 popularne zagryzki na wódkę na polskiej imprezie",
+          "options": [
+            "Budyń czekoladowy",
+            "Płatki z mlekiem",
+            "Kanapka z kiełbasą",
+            "Śledź w oleju",
+            "Ogórek kiszony",
+            "Lody waniliowe"
+          ],
+          "correct": [
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 282,
+          "prompt": "Wybierz 3 rzeczy na imprezie w ogrodzie latem",
+          "options": [
+            "Traktor",
+            "Kombajn",
+            "Girlandy świetlne",
+            "Leżaki",
+            "Grill",
+            "Piec do pizzy przemysłowy"
+          ],
+          "correct": [
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 283,
+          "prompt": "Wybierz 3 sposoby na zaproszenie znajomych na imprezę",
+          "options": [
+            "Wydarzenie w mediach społecznościowych",
+            "Telefon do kumpla",
+            "List polecony z awizem",
+            "Wezwanie sądowe",
+            "Wiadomość na czacie",
+            "Ogłoszenie w gazecie urzędowej"
+          ],
+          "correct": [
+            0,
+            1,
+            4
+          ]
+        },
+        {
+          "id": 284,
+          "prompt": "Wybierz 3 rzeczy na sylwestrowym odliczaniu",
+          "options": [
+            "Kieliszek szampana",
+            "Instrukcja gaśnicy",
+            "Zegar wybijający północ",
+            "Formularz meldunkowy",
+            "Głośne 5-4-3-2-1",
+            "Kalkulator kredytowy"
+          ],
+          "correct": [
+            0,
+            2,
+            4
+          ]
+        },
+        {
+          "id": 285,
+          "prompt": "Wybierz 3 elementy imprezy w stylu Gatsby",
+          "options": [
+            "Kalosze gumowe",
+            "Perły i pióra",
+            "Kombinezon narciarski",
+            "Kask ochronny",
+            "Muzyka jazzowa",
+            "Frędzle na sukienkach"
+          ],
+          "correct": [
+            1,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 286,
+          "prompt": "Wybierz 3 rzeczy na wypadzie na koncert rockowy",
+          "options": [
+            "Msza o świcie",
+            "Pogo pod sceną",
+            "Cichy fortepian w bibliotece",
+            "Poranna joga",
+            "Głośne gitary",
+            "Czarna koszulka zespołu"
+          ],
+          "correct": [
+            1,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 287,
+          "prompt": "Wybierz 3 owoce idealne do drinków imprezowych",
+          "options": [
+            "Truskawka",
+            "Ziemniak",
+            "Limonka",
+            "Ananas",
+            "Cebula",
+            "Burak ćwikłowy"
+          ],
+          "correct": [
+            0,
+            2,
+            3
+          ]
+        },
+        {
+          "id": 288,
+          "prompt": "Wybierz 3 rzeczy na domówce w małym mieszkaniu",
+          "options": [
+            "Karuzela",
+            "Basen olimpijski",
+            "Głośnik bluetooth",
+            "Scena koncertowa",
+            "Przekąski na stole",
+            "Ekipa znajomych na kanapie"
+          ],
+          "correct": [
+            2,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 289,
+          "prompt": "Wybierz 3 popularne motywy imprez tematycznych",
+          "options": [
+            "Lata 90.",
+            "Hawaje",
+            "Wizyta w przychodni",
+            "Halloween",
+            "Kontrola skarbowa",
+            "Zebranie wspólnoty"
+          ],
+          "correct": [
+            0,
+            1,
+            3
+          ]
+        },
+        {
+          "id": 290,
+          "prompt": "Wybierz 3 rzeczy na after w domu po klubie",
+          "options": [
+            "Woda do nawodnienia",
+            "Formularz podatkowy",
+            "Muzyka na chillout",
+            "Pizza na telefon",
+            "Podręcznik akademicki",
+            "Budzik na trening o 5"
+          ],
+          "correct": [
+            0,
+            2,
+            3
+          ]
+        },
+        {
+          "id": 291,
+          "prompt": "Wybierz 3 sposoby na udekorowanie sali na imprezę",
+          "options": [
+            "Kolorowe lampki",
+            "Regał na segregatory",
+            "Wiadro z mopem",
+            "Sterta faktur",
+            "Balony pod sufitem",
+            "Girlandy z papieru"
+          ],
+          "correct": [
+            0,
+            4,
+            5
+          ]
+        },
+        {
+          "id": 292,
+          "prompt": "Wybierz 3 rzeczy na imprezie sylwestrowej w górach",
+          "options": [
+            "Wentylator",
+            "Grzane wino",
+            "Chłodziarka na lody",
+            "Ciepłe swetry",
+            "Klapki na plażę",
+            "Kominek w chacie"
+          ],
+          "correct": [
+            1,
+            3,
+            5
+          ]
+        },
+        {
+          "id": 293,
+          "prompt": "Wybierz 3 rzeczy na urodzinowej niespodziance",
+          "options": [
+            "Kontrola biletów",
+            "Głośne Niespodzianka!",
+            "Spis powszechny",
+            "Ukryci goście",
+            "Prezent z kokardą",
+            "Odczyt licznika prądu"
+          ],
+          "correct": [
+            1,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 294,
+          "prompt": "Wybierz 3 składniki dobrego drinka z tequilą",
+          "options": [
+            "Sok z limonki",
+            "Ocet balsamiczny",
+            "Tequila",
+            "Cukier puder na cieście",
+            "Sól na brzegu kieliszka",
+            "Mleko w proszku"
+          ],
+          "correct": [
+            0,
+            2,
+            4
+          ]
+        },
+        {
+          "id": 295,
+          "prompt": "Wybierz 3 rzeczy na imprezie firmowej integracyjnej",
+          "options": [
+            "Kontrola BHP",
+            "Cotygodniowy raport",
+            "Wspólny bufet",
+            "Muzyka na parkiecie",
+            "Zabawy zespołowe",
+            "Audyt finansowy"
+          ],
+          "correct": [
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "id": 296,
+          "prompt": "Wybierz 3 sposoby na dobre selfie na imprezie",
+          "options": [
+            "Śmieszna mina",
+            "Skaner dokumentów",
+            "Kolorowe światła w tle",
+            "Grupka znajomych w kadrze",
+            "Formularz zgody na piśmie",
+            "Legitymacja służbowa"
+          ],
+          "correct": [
+            0,
+            2,
+            3
+          ]
+        },
+        {
+          "id": 297,
+          "prompt": "Wybierz 3 rzeczy na letniej imprezie nad jeziorem",
+          "options": [
+            "Odśnieżarka",
+            "Głośnik na baterie",
+            "Zimne napoje w lodówce turystycznej",
+            "Materac dmuchany",
+            "Łyżwy",
+            "Piec węglowy"
+          ],
+          "correct": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "id": 298,
+          "prompt": "Wybierz 3 typowe elementy toastu weselnego",
+          "options": [
+            "Sto lat dla pary młodej",
+            "Podpis na umowie najmu",
+            "Kontrola paragonów",
+            "Gorzko, gorzko!",
+            "Odczytanie regulaminu sali",
+            "Uniesione kieliszki"
+          ],
+          "correct": [
+            0,
+            3,
+            5
+          ]
+        },
+        {
+          "id": 299,
+          "prompt": "Wybierz 3 rzeczy na nocnej imprezie plażowej przy ognisku",
+          "options": [
+            "Biurko z lampką",
+            "Ognisko na piasku",
+            "Zimne napoje w kubełku z lodem",
+            "Szafa na akta",
+            "Gitara",
+            "Kaloryfer"
+          ],
+          "correct": [
+            1,
+            2,
+            4
+          ]
+        },
+        {
+          "id": 300,
+          "prompt": "Wybierz 3 popularne przekąski na sylwestrowej imprezie",
+          "options": [
+            "Owsianka na wodzie",
+            "Koreczki z serem i winogronem",
+            "Surowy kalafior bez niczego",
+            "Mini hot dogi",
+            "Tartinki",
+            "Kostka rosołowa na sucho"
+          ],
+          "correct": [
+            1,
+            3,
+            4
+          ]
+        }
       ]
     }
   ]
