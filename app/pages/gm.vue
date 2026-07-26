@@ -22,6 +22,12 @@ const startDisabled = computed(() => !state.value?.gameId || needCategory.value)
 function doReset() {
   if (confirm('Reset the game? Everyone is logged out and scores are cleared.')) post('reset')
 }
+
+// Starting from the full page sends the host to the game so they play too.
+async function startGame() {
+  const res = await post('start')
+  if (res?.ok) await navigateTo('/')
+}
 </script>
 
 <template>
@@ -86,7 +92,7 @@ function doReset() {
     </label>
 
     <section class="flow">
-      <button v-if="state.phase === 'lobby'" class="btn btn-primary big" :disabled="startDisabled" @click="post('start')">
+      <button v-if="state.phase === 'lobby'" class="btn btn-primary big" :disabled="startDisabled" @click="startGame">
         ▶ Start game
       </button>
       <template v-else>
