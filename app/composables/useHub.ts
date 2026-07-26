@@ -42,6 +42,7 @@ export function useHub() {
     if (send && statusRef?.value === 'OPEN') send(JSON.stringify({ type }))
   }
   function logout() {
+    action('logout') // tell the server to drop this player (frees the GM role)
     if (import.meta.client) localStorage.removeItem('mi_id')
     id.value = null
     state.value = { phase: 'register' }

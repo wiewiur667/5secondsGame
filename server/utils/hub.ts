@@ -23,7 +23,6 @@ class Hub {
   peers = new Map<number, Peer>() // pid -> live socket
   peerPid = new Map<Peer, number>() // reverse, for close cleanup
 
-  gmPid: number | null = null // first player to join is the game master
   autoAdvance = true // GM toggle: auto-advance to next question after reveal
   timerSeconds = 5 // GM-chosen answer window for 5 Second Rule
   gameId: string | null = null
@@ -44,7 +43,6 @@ class Hub {
     const nm = String(name || '').trim().slice(0, 20) || 'Anon'
     const id = this.nextId++
     this.players.set(id, { name: nm, gone: false })
-    if (this.gmPid == null) this.gmPid = id // first to join runs the game
     this.broadcast()
     return id
   }
@@ -59,6 +57,13 @@ class Hub {
   private roster(): string[] {
     return [...this.players.values()].filter((p) => !p.gone).map((p) => p.name)
   }
+  // Game master = earliest-registered player with a live socket. Auto-reassigns
+  // when the current host disconnects or logs out.
+  private currentGm(): number | null {
+    let m: number | null = null
+    for (const pid of this.peers.keys()) if (m === null || pid < m) m = pid
+    return m
+  }
 
   // --- sockets -----------------------------------------------------------
   attach(pid: number, peer: Peer) {
@@ -68,6 +73,16 @@ class Hub {
     if (p) p.gone = false
     peer.send(JSON.stringify(this.stateFor(pid)))
     this.broadcast() // others see the rejoin
+  }
+  // Explicit logout: remove the player entirely (frees the GM role to reassign).
+  logoutPeer(peer: Peer) {
+    const pid = this.peerPid.get(peer)
+    this.peerPid.delete(peer)
+    if (pid != null) {
+      this.peers.delete(pid)
+      this.players.delete(pid)
+    }
+    this.broadcast()
   }
   detach(peer: Peer) {
     const pid = this.peerPid.get(peer)
@@ -113,7 +128,6 @@ class Hub {
     this.peers.clear()
     this.peerPid.clear()
     this.nextId = 1
-    this.gmPid = null
     this.gameId = null
     this.categories = []
     this.game = null
@@ -224,7 +238,7 @@ class Hub {
   // --- views -------------------------------------------------------------
   stateFor(pid: number): PlayerView {
     if (!this.players.has(pid)) return { phase: 'register' }
-    const isGm = pid === this.gmPid
+    const isGm = pid === this.currentGm()
     if (!this.game || !this.round) {
       if (this.finalBoard.length) return { phase: 'gameover', leaderboard: this.finalBoard, isGm }
       return { phase: 'waiting', roster: this.roster(), isGm }

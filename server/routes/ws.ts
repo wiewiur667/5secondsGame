@@ -10,6 +10,7 @@ export default defineWebSocketHandler({
     else if (msg.type === 'submit') hub.submitByPeer(peer, msg.payload)
     else if (msg.type === 'start-timer') hub.startTimer()
     else if (msg.type === 'reveal') hub.reveal()
+    else if (msg.type === 'logout') hub.logoutPeer(peer)
   },
   close(peer) { hub.detach(peer) },
 })
