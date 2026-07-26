@@ -57,7 +57,12 @@ const board = computed<PlayerView['leaderboard']>(() =>
         <p class="hint">Tap <b>{{ picksRequired }}</b></p>
       </div>
 
-      <div class="options">
+      <!-- gate 1: start the timer — answers stay hidden until this is pressed -->
+      <button v-if="awaitingStart" class="btn btn-primary gate" @click="emit('startTimer')">
+        ▶ Start timer ({{ state.remaining }}s)
+      </button>
+
+      <div v-if="!awaitingStart" class="options">
         <button
           v-for="(opt, i) in state.options"
           :key="i"
@@ -71,12 +76,8 @@ const board = computed<PlayerView['leaderboard']>(() =>
         </button>
       </div>
 
-      <!-- gate 1: start the timer -->
-      <button v-if="awaitingStart" class="btn btn-primary gate" @click="emit('startTimer')">
-        ▶ Start timer ({{ state.remaining }}s)
-      </button>
       <!-- gate 2: reveal the answers -->
-      <button v-else-if="awaitingReveal" class="btn btn-accent gate" @click="emit('reveal')">
+      <button v-if="awaitingReveal" class="btn btn-accent gate" @click="emit('reveal')">
         👀 Reveal answers
       </button>
     </template>
@@ -134,7 +135,7 @@ const board = computed<PlayerView['leaderboard']>(() =>
 </template>
 
 <style scoped>
-.fsr { width: 100%; max-width: 480px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
+.fsr { width: 100%; max-width: 480px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
 .head { display: flex; align-items: center; justify-content: space-between; }
 .count {
   min-width: 48px; height: 48px; display: grid; place-items: center;
@@ -144,16 +145,16 @@ const board = computed<PlayerView['leaderboard']>(() =>
 .count.hot { color: var(--warn); border-color: var(--warn); animation: pulse 1s infinite; }
 @keyframes pulse { 50% { transform: scale(1.08); } }
 
-.prompt-card { padding: 20px; text-align: center; }
-.prompt { font-size: 26px; }
-.hint { color: var(--muted); margin: 8px 0 0; }
+.prompt-card { padding: 14px; text-align: center; }
+.prompt { font-size: clamp(1.1rem, 5vw, 1.5rem); line-height: 1.25; }
+.hint { color: var(--muted); margin: 4px 0 0; font-size: 0.9rem; }
 
-.options { display: flex; flex-direction: column; gap: 12px; }
-.opt { justify-content: flex-start; text-align: left; gap: 12px; font-size: 1.15rem; min-height: 58px; display: flex; align-items: center; }
-.check { width: 22px; height: 22px; border-radius: 6px; border: 2px solid var(--border); flex: none; transition: background 0.15s, border-color 0.15s; }
+.options { display: flex; flex-direction: column; gap: 8px; }
+.opt { justify-content: flex-start; text-align: left; gap: 10px; font-size: 1rem; min-height: 50px; padding: 0 14px; display: flex; align-items: center; line-height: 1.2; }
+.check { width: 18px; height: 18px; border-radius: 5px; border: 2px solid var(--border); flex: none; transition: background 0.15s, border-color 0.15s; }
 .check.on { background: var(--accent); border-color: var(--accent); }
 
-.gate { min-height: 60px; font-size: 1.25rem; }
+.gate { min-height: 52px; font-size: 1.1rem; }
 .hot-pill { color: var(--warn); border: 1px solid var(--warn); }
 
 .reveal { padding: 16px; border-radius: var(--r); border: 1px solid var(--border); background: var(--surface-2); position: relative; }

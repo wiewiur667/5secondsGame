@@ -25,14 +25,39 @@ export function useHub() {
     }
   }
 
-  async function register(name: string) {
-    const { id: newId } = await $fetch<{ id: number }>('/api/register', {
-      method: 'POST',
-      body: { name },
-    })
+  function acceptId(newId: number) {
     id.value = newId
     localStorage.setItem('mi_id', String(newId))
     if (send && statusRef?.value === 'OPEN') send(hello())
+  }
+
+  type RegisterResult = { ok: true } | { ok: false; reason: 'taken' | 'declined' }
+
+  // Names must be unique. If the name belongs to a player with no live
+  // socket, offer to rejoin as them (confirm-gated); otherwise reject.
+  async function register(name: string): Promise<RegisterResult> {
+    type Res = { id?: number; conflict?: 'taken' | 'rejoin' }
+    const res = await $fetch<Res>('/api/register', { method: 'POST', body: { name } })
+    if (res.id != null) {
+      acceptId(res.id)
+      return { ok: true }
+    }
+    if (res.conflict === 'rejoin' && res.id != null) {
+      const existingId = res.id
+      const wantsRejoin = confirm(`"${name}" is already in the game but not connected. Rejoin as them?`)
+      if (wantsRejoin) {
+        const res2 = await $fetch<Res>('/api/register', {
+          method: 'POST',
+          body: { name, rejoinId: existingId },
+        })
+        if (res2.id != null) {
+          acceptId(res2.id)
+          return { ok: true }
+        }
+      }
+      return { ok: false, reason: 'declined' }
+    }
+    return { ok: false, reason: 'taken' }
   }
 
   function submit(payload: any) {

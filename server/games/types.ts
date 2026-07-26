@@ -36,7 +36,10 @@ export interface GameModule<S = any> {
   reveal?(s: S, elapsedSec: number): void
 
   // Player action. The GAME enforces validity server-side (timing, count, dedupe).
-  submit?(s: S, pid: number, payload: any, elapsedSec: number): void
+  // hubFlags carries live GM toggles (e.g. revealOnAllAnswered) — read fresh on
+  // every call, not snapshotted into round state, so mid-game toggles apply
+  // immediately (mirrors how tick() reads hub.autoAdvance live).
+  submit?(s: S, pid: number, payload: any, elapsedSec: number, hubFlags?: Record<string, any>): void
 
   // Points earned THIS round, per player. Hub applies once on the playing→revealed edge.
   score?(s: S): Record<number, number>

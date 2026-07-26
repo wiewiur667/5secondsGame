@@ -22,8 +22,12 @@ class Hub {
   nextId = 1
   peers = new Map<number, Peer>() // pid -> live socket
   peerPid = new Map<Peer, number>() // reverse, for close cleanup
+  // Rejoin grants in flight but not yet confirmed by a real WS attach() —
+  // closes the TOCTOU window between the HTTP grant and the client's `hello`.
+  private claims = new Map<number, number>() // pid -> claimedAtMs
 
   autoAdvance = true // GM toggle: auto-advance to next question after reveal
+  revealOnAllAnswered = true // GM toggle: reveal early once every player has fully answered
   timerSeconds = 5 // GM-chosen answer window for 5 Second Rule
   gameId: string | null = null
   categories: string[] = [] // 5s: GM can pick several decks at once
@@ -39,6 +43,37 @@ class Hub {
   }
 
   // --- players -----------------------------------------------------------
+  // Case-insensitive name match against current players, plus whether that
+  // player has a live socket right now (peers.has, not the `gone` flag —
+  // `gone` is intentionally never set for transient drops, see detach()).
+  findByName(name: string): { id: number; connected: boolean } | null {
+    const nm = String(name || '').trim().toLowerCase()
+    for (const [id, p] of this.players) {
+      if (p.name.toLowerCase() === nm) {
+        return { id, connected: this.peers.has(id) || this.isClaimed(id) }
+      }
+    }
+    return null
+  }
+  // Lazily expires: a claim older than the TTL was never confirmed by a real
+  // WS attach() (dialog dismissed, network died) and must not block the name.
+  private isClaimed(pid: number): boolean {
+    const t = this.claims.get(pid)
+    if (t == null) return false
+    if (Date.now() - t > 8000) {
+      this.claims.delete(pid)
+      return false
+    }
+    return true
+  }
+  // Atomic check-then-set grant for the rejoin flow. Only one concurrent
+  // caller for the same pid can succeed; the loser must fall back to a
+  // normal conflict response instead of also being handed the id.
+  claimRejoin(pid: number): boolean {
+    if (this.peers.has(pid) || this.isClaimed(pid)) return false
+    this.claims.set(pid, Date.now())
+    return true
+  }
   register(name: string): number {
     const nm = String(name || '').trim().slice(0, 20) || 'Anon'
     const id = this.nextId++
@@ -80,6 +115,7 @@ class Hub {
     this.peerPid.set(peer, pid)
     const p = this.players.get(pid)
     if (p) p.gone = false
+    this.claims.delete(pid) // real WS confirmed — the rejoin claim is settled
     peer.send(JSON.stringify(this.stateFor(pid)))
     this.broadcast() // others see the rejoin
   }
@@ -105,6 +141,20 @@ class Hub {
     this.broadcast()
   }
 
+  // GM kick: remove the player entirely (frees the name, and reassigns the
+  // GM role automatically via currentGm() if the removed player held it).
+  removePlayer(pid: number) {
+    const peer = this.peers.get(pid)
+    if (peer) {
+      try { peer.send(JSON.stringify({ phase: 'register' })) } catch {}
+      this.peers.delete(pid)
+      this.peerPid.delete(peer)
+    }
+    this.players.delete(pid)
+    this.claims.delete(pid)
+    this.broadcast()
+  }
+
   // --- GM actions --------------------------------------------------------
   selectGame(id: string) {
     if (!games[id]) return
@@ -121,6 +171,10 @@ class Hub {
   }
   setAutoAdvance(on: boolean) {
     this.autoAdvance = !!on
+    this.broadcast()
+  }
+  setRevealOnAllAnswered(on: boolean) {
+    this.revealOnAllAnswered = !!on
     this.broadcast()
   }
   setTimer(seconds: number) {
@@ -146,6 +200,7 @@ class Hub {
     this.finalBoard = []
     this.timerSeconds = 5
     this.autoAdvance = true
+    this.revealOnAllAnswered = true
   }
   start(): string | null {
     if (!this.gameId) return 'Pick a game first.'
@@ -193,7 +248,9 @@ class Hub {
   }
   submit(pid: number, payload: any) {
     if (!this.game?.submit || !this.round) return
-    this.game.submit(this.round, pid, payload, this.elapsed())
+    this.game.submit(this.round, pid, payload, this.elapsed(), {
+      revealOnAllAnswered: this.revealOnAllAnswered,
+    })
     this.broadcast()
   }
   submitByPeer(peer: Peer, payload: any) {
@@ -279,6 +336,7 @@ class Hub {
       categories: catList,
       selected: this.categories,
       autoAdvance: this.autoAdvance,
+      revealOnAllAnswered: this.revealOnAllAnswered,
       timerSeconds: this.timerSeconds,
       phase,
       players: [...this.players].map(([id, p]) => ({ id, name: p.name, gone: p.gone })),

@@ -17,8 +17,9 @@ interface State {
   picks: Record<number, number[]> // pid -> chosen option indices (current question)
   timerSeconds: number
   picksRequired: number
+  playerIds: number[] // snapshot of active players when the round started — "everyone answered" target
   startedAt: number | null // elapsed(s) when the timer button was pressed; null = not started
-  revealed: boolean // true once someone reveals the answers
+  revealed: boolean // true once answers are shown (timeout, manual reveal, or last player answering)
   revealAt: number | null // elapsed(s) at reveal — auto-advance is 10s after this
 }
 
@@ -49,6 +50,7 @@ const fiveSecondRule: GameModule<State> = {
       picks: {},
       timerSeconds: opts?.timerSeconds || cfg.timerSeconds || 5,
       picksRequired: cfg.picksRequired || 3,
+      playerIds: [...playerIds],
       startedAt: null,
       revealed: false,
       revealAt: null,
@@ -88,13 +90,29 @@ const fiveSecondRule: GameModule<State> = {
     return true
   },
 
-  submit(s, pid, payload, elapsedSec) {
+  submit(s, pid, payload, elapsedSec, hubFlags) {
     if (s.startedAt == null) return // timer not started yet
     if (elapsedSec > s.startedAt + s.timerSeconds) return // server-clock trust boundary — too late
     const picks: number[] = Array.isArray(payload?.picks) ? payload.picks : []
     const valid = picks.filter((n) => Number.isInteger(n))
     const deduped = [...new Set(valid)].slice(0, s.picksRequired)
     s.picks[pid] = deduped // overwrite, never append
+
+    // Everyone who was in the round has submitted a FULL answer (all
+    // picksRequired picks, not just a partial tap) — reveal now instead of
+    // making them wait out the rest of the timer. GM can turn this off — read
+    // live off the hub each call (not snapshotted) so the toggle applies
+    // immediately, mid-game, like autoAdvance already does.
+    const revealOnAllAnswered = hubFlags?.revealOnAllAnswered !== false
+    if (
+      revealOnAllAnswered &&
+      !s.revealed &&
+      s.playerIds.length > 0 &&
+      s.playerIds.every((p) => (s.picks[p]?.length ?? 0) === s.picksRequired)
+    ) {
+      s.revealed = true
+      s.revealAt = elapsedSec
+    }
   },
 
   // Points for the CURRENT question only; hub adds to running totals once at reveal.

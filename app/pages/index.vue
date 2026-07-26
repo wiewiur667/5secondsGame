@@ -1,17 +1,38 @@
 <script setup lang="ts">
 import MusicImpostor from '~/components/games/MusicImpostor.vue'
 import FiveSecondRule from '~/components/games/FiveSecondRule.vue'
-import GmBar from '~/components/GmBar.vue'
 
 const { state, id, register, submit, startTimer, reveal, continueRound, logout } = useHub()
 const name = ref('')
+const joinError = ref('')
 
-function join() {
+// The player who becomes GM (first to join) is sent straight to the control
+// panel. Only fires right after THIS join — not on every later state push.
+let awaitingGmRedirect = false
+watch(state, (v) => {
+  if (!awaitingGmRedirect) return
+  awaitingGmRedirect = false // consume on the first state push after join, GM or not
+  if (v?.isGm) navigateTo('/gm')
+})
+
+async function join() {
   const n = name.value.trim()
-  if (n) register(n)
+  if (!n) return
+  joinError.value = ''
+  awaitingGmRedirect = true
+  const res = await register(n)
+  if (!res.ok) {
+    awaitingGmRedirect = false
+    joinError.value =
+      res.reason === 'declined' ? 'Pick a different name, or rejoin under that one.' : 'That name is taken — try another.'
+  }
 }
 
 const ownName = computed(() => name.value.trim())
+
+// Game screens (potentially tall/scrollable) start at the top; the simple
+// register/lobby/gameover cards stay vertically centered like before.
+const isGameScreen = computed(() => state.value?.phase === 'playing' || state.value?.phase === 'revealed')
 
 function doLogout() {
   if (confirm("Log out? You'll leave the game and need to rejoin.")) logout()
@@ -19,14 +40,12 @@ function doLogout() {
 </script>
 
 <template>
-  <main class="wrap">
-    <!-- always-reachable logout, once registered -->
-    <button v-if="state && state.phase !== 'register'" class="corner-logout" @click="doLogout">
-      Log out
-    </button>
-
-    <!-- host controls, inline, so the game master plays too -->
-    <GmBar v-if="state && state.phase !== 'register' && state.isGm" />
+  <main class="wrap" :class="{ 'wrap-top': isGameScreen }">
+    <!-- in-flow (not floating) so it always reserves space — never overlaps game content -->
+    <div v-if="state && state.phase !== 'register'" class="topbar">
+      <a v-if="state.isGm" href="/gm" class="topbar-link">🎛️ Host panel</a>
+      <button class="corner-logout" @click="doLogout">Log out</button>
+    </div>
 
     <!-- register / cold start -->
     <section v-if="!state || state.phase === 'register'" class="card center stack">
@@ -36,6 +55,7 @@ function doLogout() {
         <p class="muted">Join the game on your phone</p>
       </div>
       <input v-model="name" class="field" placeholder="Your name" maxlength="20" @keyup.enter="join" />
+      <p v-if="joinError" class="join-err">{{ joinError }}</p>
       <button class="btn btn-primary block" :disabled="!ownName" @click="join">Join the party</button>
     </section>
 
@@ -82,16 +102,34 @@ function doLogout() {
 .wrap {
   position: relative;
   min-height: 100dvh;
-  padding: max(24px, env(safe-area-inset-top)) 20px calc(24px + env(safe-area-inset-bottom));
+  /* iOS Chrome's floating toolbar overlaps content and its
+     safe-area-inset-bottom reporting lags the toolbar's actual state (a
+     known WKWebView quirk, unlike Safari) — don't rely on it alone, add a
+     real fixed buffer beneath so the last button is never covered. */
+  padding: max(14px, env(safe-area-inset-top)) 16px calc(48px + env(safe-area-inset-bottom));
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+/* game screens can be tall/scrollable — top-align so overflow scrolls down,
+   not so centering hides the top of content on a short viewport */
+.wrap-top { justify-content: flex-start; }
+.topbar { width: 100%; max-width: 480px; display: flex; justify-content: flex-end; align-items: center; gap: 8px; margin-bottom: 8px; }
+.topbar-link {
+  min-height: 36px;
+  padding: 0 12px;
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  text-decoration: none;
+}
 .corner-logout {
-  position: absolute;
-  top: max(10px, env(safe-area-inset-top));
-  right: 12px;
   min-height: 36px;
   padding: 0 12px;
   font-size: 0.85rem;
@@ -107,6 +145,7 @@ function doLogout() {
 .stack { display: flex; flex-direction: column; gap: 16px; }
 .block { width: 100%; }
 .muted { color: var(--muted); margin: 0; }
+.join-err { color: var(--danger); margin: -8px 0 0; font-size: 0.9rem; }
 
 .brand { display: flex; flex-direction: column; align-items: center; gap: 4px; margin-bottom: 4px; }
 .logo { font-size: 52px; line-height: 1; }
@@ -122,8 +161,6 @@ function doLogout() {
 .chip { font-family: var(--font-display); font-weight: 600; padding: 8px 14px; border-radius: 999px; background: var(--surface-2); border: 1px solid var(--border); }
 .chip.me { border-color: var(--success); background: color-mix(in srgb, var(--success) 18%, var(--surface-2)); color: #d7ffe9; }
 .count { color: var(--muted); font-size: 0.9rem; margin: 0; }
-.block { width: 100%; }
-.gmlink { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; margin-top: 4px; }
 
 .trophy { font-size: 56px; }
 

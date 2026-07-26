@@ -1,11 +1,11 @@
 // Game-master state + actions. Polls /api/gm/state (1s) and posts GM commands.
-// Shared by the full /gm page and the inline host bar on the player screen.
 export type GmState = {
   games: { id: string; name: string }[]
   gameId: string | null
   categories: { id: string; name: string }[]
   selected: string[]
   autoAdvance: boolean
+  revealOnAllAnswered: boolean
   timerSeconds: number
   phase: 'lobby' | 'playing' | 'revealed'
   players: { id: number; name: string; gone: boolean }[]

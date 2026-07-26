@@ -114,6 +114,48 @@ test('5sr: reveal gates on the closed window + drives auto-advance', () => {
   assert.strictEqual(fiveSecondRule.autoAdvanceAt!(s), s.timerSeconds + 1 + 10)
 })
 
+test('5sr: reveals immediately once every player has FULLY answered', () => {
+  const s = fiveSecondRule.start([1, 2], questionsCfg, { categories: ['couples'] }) as any
+  fiveSecondRule.startTimer!(s, 0)
+  fiveSecondRule.submit!(s, 1, { picks: [0, 1, 2] }, 1)
+  assert.strictEqual(s.revealed, false) // only 1 of 2 players answered
+  fiveSecondRule.submit!(s, 2, { picks: [0, 1, 2] }, 1.5) // well before the 5s window closes
+  assert.strictEqual(s.revealed, true)
+  assert.strictEqual(s.revealAt, 1.5)
+})
+
+test('5sr: GM can disable reveal-on-all-answered (read live, not snapshotted)', () => {
+  const s = fiveSecondRule.start([1, 2], questionsCfg, { categories: ['couples'] }) as any
+  fiveSecondRule.startTimer!(s, 0)
+  const off = { revealOnAllAnswered: false }
+  fiveSecondRule.submit!(s, 1, { picks: [0, 1, 2] }, 1, off)
+  fiveSecondRule.submit!(s, 2, { picks: [0, 1, 2] }, 1.5, off) // everyone answered, but toggle is off
+  assert.strictEqual(s.revealed, false) // must wait for timeout or manual reveal
+  fiveSecondRule.reveal!(s, s.timerSeconds + 1)
+  assert.strictEqual(s.revealed, true)
+})
+
+test('5sr: reveal-on-all-answered toggle applies mid-game, not just at start', () => {
+  const s = fiveSecondRule.start([1, 2], questionsCfg, { categories: ['couples'] }) as any
+  fiveSecondRule.startTimer!(s, 0)
+  // Same round object, no restart — GM flips the toggle live between submits.
+  fiveSecondRule.submit!(s, 1, { picks: [0, 1, 2] }, 1, { revealOnAllAnswered: false })
+  fiveSecondRule.submit!(s, 2, { picks: [0, 1, 2] }, 1.5, { revealOnAllAnswered: true })
+  assert.strictEqual(s.revealed, true) // the live flag at time of the deciding submit wins
+})
+
+test('5sr: a partial submission does NOT count as answered for last-player reveal', () => {
+  const s = fiveSecondRule.start([1, 2], questionsCfg, { categories: ['couples'] }) as any
+  fiveSecondRule.startTimer!(s, 0)
+  fiveSecondRule.submit!(s, 1, { picks: [0, 1, 2] }, 1) // full
+  fiveSecondRule.submit!(s, 2, { picks: [0] }, 1.5) // partial — only 1 of 3 picks
+  assert.strictEqual(s.revealed, false)
+  fiveSecondRule.submit!(s, 2, { picks: [0, 1] }, 1.8) // still partial
+  assert.strictEqual(s.revealed, false)
+  fiveSecondRule.submit!(s, 2, { picks: [0, 1, 2] }, 2) // now full
+  assert.strictEqual(s.revealed, true)
+})
+
 test('5sr: duplicate picks are deduped', () => {
   const s = fiveSecondRule.start([1], questionsCfg, { categories: ['couples'] }) as any
   fiveSecondRule.startTimer!(s, 0)

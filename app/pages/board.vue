@@ -1,15 +1,9 @@
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue'
-import QRCode from 'qrcode'
+import { computed } from 'vue'
 
 // Passive display — no controls. Meant for a TV/projector: big, no interaction.
 const { gm: state } = useGm()
-const qr = ref('')
-
-watch(
-  () => state.value?.joinUrl,
-  async (url) => { if (url) qr.value = await QRCode.toDataURL(url) },
-)
+const qr = useQrCode(computed(() => state.value?.joinUrl))
 
 const gameName = computed(() => state.value?.games.find((g) => g.id === state.value?.gameId)?.name)
 </script>
@@ -23,7 +17,7 @@ const gameName = computed(() => state.value?.games.find((g) => g.id === state.va
 
     <!-- lobby: big QR so the room can scan and join -->
     <section v-if="state.phase === 'lobby'" class="join center">
-      <img v-if="qr" :src="qr" alt="Join QR code" class="qr" />
+      <div v-if="qr" class="qr" v-html="qr" />
       <div class="url">{{ state.joinUrl }}</div>
       <div class="roster">
         <span v-for="p in state.players" :key="p.id" class="chip" :class="{ gone: p.gone }">{{ p.name }}</span>
@@ -42,7 +36,7 @@ const gameName = computed(() => state.value?.games.find((g) => g.id === state.va
         <li v-if="!state.leaderboard.length" class="empty">No scores yet</li>
       </ol>
       <div class="foot">
-        <img v-if="qr" :src="qr" alt="Join QR code" class="qr-sm" />
+        <div v-if="qr" class="qr-sm" v-html="qr" />
         <span class="url-sm">{{ state.joinUrl }}</span>
       </div>
     </section>
@@ -70,6 +64,7 @@ const gameName = computed(() => state.value?.games.find((g) => g.id === state.va
 
 .join { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3vh; }
 .qr { width: clamp(220px, 24vw, 420px); height: clamp(220px, 24vw, 420px); border-radius: 16px; background: #fff; padding: 16px; }
+.qr :deep(svg) { width: 100%; height: 100%; display: block; }
 .url { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.5rem, 3.5vw, 3rem); color: var(--accent); }
 .roster { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; max-width: 900px; }
 .chip { font-family: var(--font-display); font-weight: 600; font-size: clamp(1rem, 1.6vw, 1.4rem); padding: 10px 20px; border-radius: 999px; background: var(--surface-2); border: 1px solid var(--border); }
@@ -91,5 +86,6 @@ const gameName = computed(() => state.value?.games.find((g) => g.id === state.va
 
 .foot { display: flex; align-items: center; gap: 16px; opacity: 0.75; }
 .qr-sm { width: 64px; height: 64px; border-radius: 8px; background: #fff; padding: 4px; }
+.qr-sm :deep(svg) { width: 100%; height: 100%; display: block; }
 .url-sm { font-family: var(--font-display); font-size: 1.1rem; color: var(--muted); }
 </style>
