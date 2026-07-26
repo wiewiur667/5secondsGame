@@ -38,6 +38,9 @@ export function useHub() {
   function submit(payload: any) {
     if (send && statusRef?.value === 'OPEN') send(JSON.stringify({ type: 'submit', payload }))
   }
+  function action(type: string) {
+    if (send && statusRef?.value === 'OPEN') send(JSON.stringify({ type }))
+  }
 
   if (import.meta.client) {
     const stored = localStorage.getItem('mi_id')
@@ -62,5 +65,12 @@ export function useHub() {
     onScopeDispose(() => clearInterval(timer))
   }
 
-  return { state, id, register, submit }
+  return {
+    state,
+    id,
+    register,
+    submit,
+    startTimer: () => action('start-timer'),
+    reveal: () => action('reveal'),
+  }
 }

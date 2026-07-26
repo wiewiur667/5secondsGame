@@ -1,0 +1,8 @@
+services:
+  party-hub:
+    build: .
+    image: party-hub:latest
+    container_name: party-hub
+    ports:
+      - "3333:3333"
+    restart: unless-stopped

@@ -17,6 +17,9 @@ interface State {
   picks: Record<number, number[]> // pid -> chosen option indices (current question)
   timerSeconds: number
   picksRequired: number
+  startedAt: number | null // elapsed(s) when the timer button was pressed; null = not started
+  revealed: boolean // true once someone reveals the answers
+  revealAt: number | null // elapsed(s) at reveal — auto-advance is 10s after this
 }
 
 function shuffle<T>(a: T[]): T[] {
@@ -46,27 +49,48 @@ const fiveSecondRule: GameModule<State> = {
       picks: {},
       timerSeconds: cfg.timerSeconds || 5,
       picksRequired: cfg.picksRequired || 3,
+      startedAt: null,
+      revealed: false,
+      revealAt: null,
     }
   },
 
-  tick(s, elapsedSec) {
-    return elapsedSec >= s.timerSeconds
+  // Round is "over" (score it) once the answers have been revealed.
+  tick(s) {
+    return s.revealed
   },
 
-  // Hold the reveal for 10s, then auto-advance to the next question.
+  // Auto-advance 10s after reveal (only once revealed).
   autoAdvanceAt(s) {
-    return s.timerSeconds + 10
+    return s.revealed && s.revealAt != null ? s.revealAt + 10 : null
+  },
+
+  // Any player presses "Start" to begin this question's 5s timer.
+  startTimer(s, elapsedSec) {
+    if (s.startedAt == null) s.startedAt = elapsedSec
+  },
+
+  // Any player presses "Reveal" once the answer window has closed.
+  reveal(s, elapsedSec) {
+    if (s.startedAt != null && !s.revealed && elapsedSec >= s.startedAt + s.timerSeconds) {
+      s.revealed = true
+      s.revealAt = elapsedSec
+    }
   },
 
   next(s) {
     if (s.idx + 1 >= s.questions.length) return false // no more questions → end
     s.idx++
     s.picks = {}
+    s.startedAt = null
+    s.revealed = false
+    s.revealAt = null
     return true
   },
 
   submit(s, pid, payload, elapsedSec) {
-    if (elapsedSec > s.timerSeconds) return // server-clock trust boundary — too late
+    if (s.startedAt == null) return // timer not started yet
+    if (elapsedSec > s.startedAt + s.timerSeconds) return // server-clock trust boundary — too late
     const picks: number[] = Array.isArray(payload?.picks) ? payload.picks : []
     const valid = picks.filter((n) => Number.isInteger(n))
     const deduped = [...new Set(valid)].slice(0, s.picksRequired)
@@ -98,12 +122,26 @@ const fiveSecondRule: GameModule<State> = {
       questionCount: s.questions.length,
       yourPicks,
     }
-    if (elapsedSec >= s.timerSeconds) {
+    // Revealed → interstitial with correct answers + auto-advance countdown.
+    if (s.revealed) {
       const gained = yourPicks.filter((p) => q.correct.includes(p)).length
-      const nextIn = Math.max(0, Math.ceil(s.timerSeconds + 10 - elapsedSec)) // auto-advance countdown
+      const nextIn = Math.max(0, Math.ceil((s.revealAt as number) + 10 - elapsedSec))
       return { phase: 'revealed', ...common, correct: q.correct, gained, nextIn }
     }
-    return { phase: 'playing', ...common, remaining }
+    // Not started yet → prompt shown, waiting for someone to start the timer.
+    if (s.startedAt == null) {
+      return { phase: 'playing', ...common, awaitingStart: true, remaining: s.timerSeconds }
+    }
+    // Answer window closed but not revealed → waiting for someone to reveal.
+    if (elapsedSec >= s.startedAt + s.timerSeconds) {
+      return { phase: 'playing', ...common, awaitingReveal: true, remaining: 0 }
+    }
+    // Answering.
+    return {
+      phase: 'playing',
+      ...common,
+      remaining: Math.max(0, Math.ceil(s.startedAt + s.timerSeconds - elapsedSec)),
+    }
   },
 }
 

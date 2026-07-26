@@ -2,7 +2,11 @@
 import type { PlayerView } from '~/composables/useHub'
 
 const props = defineProps<{ state: PlayerView; meId: number | null }>()
-const emit = defineEmits<{ submit: [payload: { picks: number[] }] }>()
+const emit = defineEmits<{
+  submit: [payload: { picks: number[] }]
+  startTimer: []
+  reveal: []
+}>()
 
 // Local selection drives the UI for snappy taps; reset on new question.
 const picks = ref<number[]>([...(props.state.yourPicks ?? [])])
@@ -11,8 +15,11 @@ watch(() => props.state.questionNo, () => {
 })
 
 const picksRequired = computed(() => Number(props.state.picksRequired ?? 1))
-// Timer hit 0 but server reveal not pushed yet — lock so late taps don't look accepted.
-const locked = computed(() => Number(props.state.remaining ?? 0) <= 0)
+const awaitingStart = computed(() => !!props.state.awaitingStart) // timer not started yet
+const awaitingReveal = computed(() => !!props.state.awaitingReveal) // window closed, answers hidden
+const answering = computed(() => !awaitingStart.value && !awaitingReveal.value)
+// Options tappable only while answering.
+const locked = computed(() => !answering.value)
 
 function toggle(i: number) {
   if (locked.value) return
@@ -35,7 +42,13 @@ const board = computed<PlayerView['leaderboard']>(() =>
     <template v-if="state.phase === 'playing'">
       <header class="head">
         <span class="pill">Q{{ state.questionNo }} / {{ state.questionCount }}</span>
-        <span class="timer-badge count" :class="{ hot: remaining <= 2 }">{{ remaining }}</span>
+        <span
+          v-if="answering"
+          class="timer-badge count"
+          :class="{ hot: remaining <= 2 }"
+        >{{ remaining }}</span>
+        <span v-else-if="awaitingStart" class="pill">Ready?</span>
+        <span v-else class="pill hot-pill">Time's up!</span>
       </header>
 
       <div class="card prompt-card">
@@ -56,6 +69,15 @@ const board = computed<PlayerView['leaderboard']>(() =>
           {{ opt }}
         </button>
       </div>
+
+      <!-- gate 1: start the timer -->
+      <button v-if="awaitingStart" class="btn btn-primary gate" @click="emit('startTimer')">
+        ▶ Start timer ({{ state.remaining }}s)
+      </button>
+      <!-- gate 2: reveal the answers -->
+      <button v-else-if="awaitingReveal" class="btn btn-accent gate" @click="emit('reveal')">
+        👀 Reveal answers
+      </button>
     </template>
 
     <!-- interstitial: standings + countdown between questions -->
@@ -127,6 +149,9 @@ const board = computed<PlayerView['leaderboard']>(() =>
 .opt { justify-content: flex-start; text-align: left; gap: 12px; font-size: 1.15rem; min-height: 58px; display: flex; align-items: center; }
 .check { width: 22px; height: 22px; border-radius: 6px; border: 2px solid var(--border); flex: none; transition: background 0.15s, border-color 0.15s; }
 .check.on { background: var(--accent); border-color: var(--accent); }
+
+.gate { min-height: 60px; font-size: 1.25rem; }
+.hot-pill { color: var(--warn); border: 1px solid var(--warn); }
 
 .reveal { padding: 16px; border-radius: var(--r); border: 1px solid var(--border); background: var(--surface-2); position: relative; }
 .reveal .mark { font-family: var(--font-display); font-weight: 700; margin-right: 6px; }

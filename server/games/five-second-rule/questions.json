@@ -487,17 +487,17 @@
           "id": 29,
           "prompt": "Wybierz 3 rzeczy, które mówi się na randce",
           "options": [
-            "Gdzie jest wyjście ewakuacyjne",
+            "Poproszę o fakturę VAT",
             "Opowiedz mi o sobie",
-            "Ile kosztuje bilet",
-            "Poproszę o paragon",
+            "Okaż dowód rejestracyjny",
+            "Ładnie dziś wyglądasz",
             "Miło cię poznać",
-            "Ładnie dziś wyglądasz"
+            "Podpisz protokół odbioru"
           ],
           "correct": [
             1,
-            4,
-            5
+            3,
+            4
           ]
         },
         {
@@ -4070,15 +4070,15 @@
           "prompt": "Wybierz 3 gadżety świecące na festiwalu nocą",
           "options": [
             "Latarka czołowa",
-            "Świeca zapachowa do relaksu",
-            "Lampka nocna dla niemowlaka",
-            "Znicz nagrobny",
+            "Grabie ogrodowe",
+            "Segregator na faktury",
             "Świecące naszyjniki",
+            "Termometr lekarski",
             "Neonowe opaski"
           ],
           "correct": [
             0,
-            4,
+            3,
             5
           ]
         },
@@ -4648,11 +4648,11 @@
           "prompt": "Wybierz 3 rzeczy na imprezie przebierańców",
           "options": [
             "Peruka",
-            "Kombinezon ochronny malarza",
+            "Deklaracja podatkowa",
             "Kostium superbohatera",
             "Maska",
-            "Mundur roboczy hydraulika",
-            "Fartuch rzeźnika"
+            "Wiertarka udarowa",
+            "Segregator z fakturami"
           ],
           "correct": [
             0,

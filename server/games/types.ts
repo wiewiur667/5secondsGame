@@ -31,6 +31,10 @@ export interface GameModule<S = any> {
   // Seconds from round start at which the hub auto-advances (calls next). null = never.
   autoAdvanceAt?(s: S): number | null
 
+  // Any-player buttons (5s): start this question's timer / reveal the answers.
+  startTimer?(s: S, elapsedSec: number): void
+  reveal?(s: S, elapsedSec: number): void
+
   // Player action. The GAME enforces validity server-side (timing, count, dedupe).
   submit?(s: S, pid: number, payload: any, elapsedSec: number): void
 

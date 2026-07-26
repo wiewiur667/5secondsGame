@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import MusicImpostor from '~/components/games/MusicImpostor.vue'
 import FiveSecondRule from '~/components/games/FiveSecondRule.vue'
+import GmBar from '~/components/GmBar.vue'
 
-const { state, id, register, submit } = useHub()
+const { state, id, register, submit, startTimer, reveal } = useHub()
 const name = ref('')
 
 function join() {
@@ -15,6 +16,9 @@ const ownName = computed(() => name.value.trim())
 
 <template>
   <main class="wrap">
+    <!-- host controls, inline, so the game master plays too -->
+    <GmBar v-if="state && state.phase !== 'register' && state.isGm" />
+
     <!-- register / cold start -->
     <section v-if="!state || state.phase === 'register'" class="card center stack">
       <div class="brand">
@@ -35,7 +39,6 @@ const ownName = computed(() => name.value.trim())
         <span v-for="p in state.roster" :key="p" class="chip" :class="{ me: p === ownName }">{{ p }}</span>
       </div>
       <p class="count">{{ state.roster.length }} in the room</p>
-      <a v-if="state.isGm" href="/gm" class="btn btn-accent block gmlink">🎛️ You're the host — open controls</a>
     </section>
 
     <!-- game over — final scores -->
@@ -50,7 +53,6 @@ const ownName = computed(() => name.value.trim())
         </li>
       </ol>
       <p class="muted">Waiting for the next game…</p>
-      <a v-if="state.isGm" href="/gm" class="btn btn-accent block gmlink">🎛️ Open host controls</a>
     </section>
 
     <!-- in a game -->
@@ -60,6 +62,8 @@ const ownName = computed(() => name.value.trim())
       :state="state"
       :me-id="id"
       @submit="submit"
+      @start-timer="startTimer"
+      @reveal="reveal"
     />
   </main>
 </template>

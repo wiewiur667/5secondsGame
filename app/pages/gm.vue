@@ -1,37 +1,10 @@
 <script setup lang="ts">
-import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
+import { computed, ref, watch } from 'vue'
 import QRCode from 'qrcode'
 
-type State = {
-  games: { id: string; name: string }[]
-  gameId: string | null
-  categories: { id: string; name: string }[]
-  selected: string[]
-  autoAdvance: boolean
-  phase: 'lobby' | 'playing' | 'revealed'
-  players: { id: string; name: string; gone: boolean }[]
-  leaderboard: { id: string; name: string; score: number }[]
-  joinUrl: string
-}
-
-const state = ref<State | null>(null)
+// Full-page host controls. Shares state/actions with the inline GmBar.
+const { gm: state, startError, post } = useGm()
 const qr = ref('')
-const startError = ref('')
-
-async function refresh() {
-  try {
-    state.value = await $fetch<State>('/api/gm/state')
-  } catch {}
-}
-
-async function post(action: string, body?: Record<string, unknown>) {
-  const res = await $fetch<{ ok: boolean; error?: string }>(`/api/gm/${action}`, {
-    method: 'POST',
-    body: body ?? {},
-  })
-  if (action === 'start') startError.value = res.ok ? '' : res.error || 'Failed to start.'
-  await refresh()
-}
 
 // Regenerate QR only when joinUrl changes.
 watch(
@@ -45,13 +18,6 @@ const needCategory = computed(
   () => state.value?.gameId === 'five-second-rule' && !state.value?.selected?.length,
 )
 const startDisabled = computed(() => !state.value?.gameId || needCategory.value)
-
-let timer: ReturnType<typeof setInterval> | undefined
-onMounted(() => {
-  refresh()
-  timer = setInterval(refresh, 1000)
-})
-onUnmounted(() => clearInterval(timer))
 </script>
 
 <template>

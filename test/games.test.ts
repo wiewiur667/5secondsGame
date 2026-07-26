@@ -72,15 +72,23 @@ test('5sr: multiple categories pool their questions', () => {
   assert.strictEqual(typeof fiveSecondRule.start([1], questionsCfg, { categories: [] }), 'string')
 })
 
+test('5sr: submit before timer starts is ignored', () => {
+  const s = fiveSecondRule.start([1], questionsCfg, { categories: ['couples'] }) as any
+  fiveSecondRule.submit!(s, 1, { picks: s.questions[s.idx].correct }, 1)
+  assert.strictEqual(s.picks[1], undefined) // timer not started → no answer stored
+})
+
 test('5sr: submit correct picks in time scores count', () => {
   const s = fiveSecondRule.start([1], questionsCfg, { categories: ['couples'] }) as any
   const correct: number[] = s.questions[s.idx].correct
+  fiveSecondRule.startTimer!(s, 0)
   fiveSecondRule.submit!(s, 1, { picks: correct }, 1)
   assert.strictEqual(fiveSecondRule.score!(s)[1], correct.length)
 })
 
 test('5sr: picksRequired caps stored picks', () => {
   const s = fiveSecondRule.start([1], questionsCfg, { categories: ['couples'] }) as any
+  fiveSecondRule.startTimer!(s, 0)
   fiveSecondRule.submit!(s, 1, { picks: [0, 1, 2, 3, 4] }, 1)
   assert(s.picks[1].length <= s.picksRequired)
   assert(fiveSecondRule.score!(s)[1] <= s.picksRequired)
@@ -88,14 +96,27 @@ test('5sr: picksRequired caps stored picks', () => {
 
 test('5sr: late submit is ignored', () => {
   const s = fiveSecondRule.start([1, 2], questionsCfg, { categories: ['couples'] }) as any
-  const correct: number[] = s.questions[s.idx].correct
-  fiveSecondRule.submit!(s, 2, { picks: correct }, 99)
+  fiveSecondRule.startTimer!(s, 0)
+  fiveSecondRule.submit!(s, 2, { picks: s.questions[s.idx].correct }, 99)
   const score = fiveSecondRule.score!(s)[2]
   assert(score === undefined || score === 0)
 })
 
+test('5sr: reveal gates on the closed window + drives auto-advance', () => {
+  const s = fiveSecondRule.start([1], questionsCfg, { categories: ['couples'] }) as any
+  fiveSecondRule.startTimer!(s, 0)
+  fiveSecondRule.reveal!(s, 2) // too early (window still open) → ignored
+  assert.strictEqual(s.revealed, false)
+  assert.strictEqual(fiveSecondRule.autoAdvanceAt!(s), null)
+  fiveSecondRule.reveal!(s, s.timerSeconds + 1) // window closed → reveals
+  assert.strictEqual(s.revealed, true)
+  assert.strictEqual(fiveSecondRule.tick!(s, 99), true) // scored once revealed
+  assert.strictEqual(fiveSecondRule.autoAdvanceAt!(s), s.timerSeconds + 1 + 10)
+})
+
 test('5sr: duplicate picks are deduped', () => {
   const s = fiveSecondRule.start([1], questionsCfg, { categories: ['couples'] }) as any
+  fiveSecondRule.startTimer!(s, 0)
   fiveSecondRule.submit!(s, 1, { picks: [0, 0, 1] }, 1)
   assert.deepStrictEqual(s.picks[1], [0, 1])
 })

@@ -71,13 +71,12 @@ class Hub {
   detach(peer: Peer) {
     const pid = this.peerPid.get(peer)
     this.peerPid.delete(peer)
-    // Only tear down if this peer is STILL the live socket for the pid — a
+    // Only drop the socket if this peer is STILL the live one for the pid — a
     // reconnect may have already replaced it (old close must not drop the new).
-    if (pid != null && this.peers.get(pid) === peer) {
-      this.peers.delete(pid)
-      const p = this.players.get(pid)
-      if (p) p.gone = true
-    }
+    // We do NOT mark the player gone: phones lock and tabs navigate (e.g. to
+    // /gm) all the time at a party; the player stays in the game and the WS
+    // auto-reconnects. Ghost of a truly-departed player is harmless.
+    if (pid != null && this.peers.get(pid) === peer) this.peers.delete(pid)
     this.broadcast()
   }
 
@@ -151,6 +150,19 @@ class Hub {
     const pid = this.peerPid.get(peer)
     if (pid != null) this.submit(pid, payload)
   }
+  // Any-player actions (5s): start the timer / reveal answers. First press wins.
+  startTimer() {
+    if (this.game?.startTimer && this.round) {
+      this.game.startTimer(this.round, this.elapsed())
+      this.broadcast()
+    }
+  }
+  reveal() {
+    if (this.game?.reveal && this.round) {
+      this.game.reveal(this.round, this.elapsed())
+      this.broadcast()
+    }
+  }
 
   // --- clock / scoring ---------------------------------------------------
   private elapsed(): number {
@@ -195,6 +207,7 @@ class Hub {
     if (view.phase === 'playing' || view.phase === 'revealed') {
       ;(view as any).leaderboard = this.leaderboard()
       ;(view as any).autoAdvance = this.autoAdvance
+      ;(view as any).isGm = isGm
     }
     return view
   }
