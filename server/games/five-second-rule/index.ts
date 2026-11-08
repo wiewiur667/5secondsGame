@@ -221,10 +221,15 @@ const fiveSecondRule: GameModule<State> = {
     const picks: number[] = Array.isArray(payload?.picks) ? payload.picks : []
     const valid = picks.filter((n) => Number.isInteger(n) && n >= 0 && n < optionCount)
     const deduped = [...new Set(valid)].slice(0, s.picksRequired)
+    const prev = s.picks[pid] ?? []
     s.picks[pid] = deduped // overwrite, never append
-    // When the answer first became complete — drives the speed bonus.
-    if (deduped.length === s.picksRequired) s.fullAt[pid] ??= elapsedSec - s.startedAt
-    else delete s.fullAt[pid]
+    // When the FINAL answer became complete — drives the speed bonus. Re-sending the
+    // same set keeps the time; swapping to a different full set restarts it, so a
+    // quick blind 3 corrected late doesn't keep the bonus.
+    const same = prev.length === deduped.length && deduped.every((p) => prev.includes(p))
+    if (deduped.length === s.picksRequired) {
+      if (!same || s.fullAt[pid] == null) s.fullAt[pid] = elapsedSec - s.startedAt
+    } else delete s.fullAt[pid]
 
     // Everyone who was in the round has submitted a FULL answer (all
     // picksRequired picks, not just a partial tap) — reveal now instead of

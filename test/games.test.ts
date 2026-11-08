@@ -406,3 +406,18 @@ test('5sr: a late joiner watches the current question and plays from the next on
   fiveSecondRule.submit!(s, 2, { picks: [0, 1, 2] }, 6)
   assert.strictEqual(s.revealed, true)
 })
+
+test('5sr: swapping one full answer for another restarts the speed-bonus clock', () => {
+  const s = fiveSecondRule.start([1, 2], questionsCfg, { categories: ['couples'] }) as any // 2 players → no early reveal
+  const q = s.questions[0]
+  fiveSecondRule.startTimer!(s, 5)
+  fiveSecondRule.submit!(s, 1, { picks: wrongPicks(s) }, 5.2) // blind 3 at 0.2s
+  fiveSecondRule.submit!(s, 1, { picks: q.correct }, 9.8) // corrected at 4.8s of 5s
+  assert.strictEqual(fiveSecondRule.score!(s)[1], 3) // no ⚡
+
+  const t = fiveSecondRule.start([1, 2], questionsCfg, { categories: ['couples'] }) as any
+  fiveSecondRule.startTimer!(t, 5)
+  fiveSecondRule.submit!(t, 1, { picks: t.questions[0].correct }, 6)
+  fiveSecondRule.submit!(t, 1, { picks: [...t.questions[0].correct].reverse() }, 9.8) // same set re-sent
+  assert.strictEqual(fiveSecondRule.score!(t)[1], 4) // keeps the original time
+})

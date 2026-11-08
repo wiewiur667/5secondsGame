@@ -341,6 +341,7 @@ class Hub {
     this.game = null
     this.round = null
     this.scored = false
+    this.pausedAtMs = null // ending while paused must not leave the lobby showing "paused"
     this.broadcast()
   }
   submit(pid: number, payload: any) {
