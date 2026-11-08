@@ -6,10 +6,17 @@ export type GmState = {
   selected: string[]
   autoAdvance: boolean
   revealOnAllAnswered: boolean
+  penalizeWrong: boolean
+  paused: boolean
   timerSeconds: number
+  questionLimit: number
   phase: 'lobby' | 'playing' | 'revealed'
   players: { id: number; name: string; gone: boolean }[]
-  leaderboard: { id: number; name: string; score: number }[]
+  leaderboard: { id: number; name: string; score: number; delta: number }[]
+  // Spectator view of the current question for the TV board (game-specific; null between games).
+  live: Record<string, any> | null
+  finalBoard: { id: number; name: string; score: number }[]
+  finalAwards: { title: string; name: string; detail: string }[]
   joinUrl: string
 }
 

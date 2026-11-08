@@ -1,8 +1,12 @@
 import { games } from '../games'
-import type { GameModule, Leaderboard, PlayerView } from '../games/types'
+import type { FinalAward, GameModule, Leaderboard, PlayerView } from '../games/types'
 import musicCfg from '../games/music-impostor/music.json'
 import questionsCfg from '../games/five-second-rule/questions.json'
 import { lanIp } from './lanIp'
+import { appendFile } from 'node:fs/promises'
+
+// Flagged questions land here, one JSON object per line, for fixing questions.json later.
+const FLAG_FILE = process.env.FLAG_FILE || 'flagged-questions.jsonl'
 
 // Config bundled per game (JSON imports are inlined by the bundler — no runtime fs).
 const configs: Record<string, any> = {
@@ -28,7 +32,12 @@ class Hub {
 
   autoAdvance = true // GM toggle: auto-advance to next question after reveal
   revealOnAllAnswered = true // GM toggle: reveal early once every player has fully answered
+  penalizeWrong = false // GM toggle: each wrong pick cancels a right one
+  pausedAtMs: number | null = null // GM pause: the round clock freezes here until resume
+  lastPts: Record<number, number> = {} // what the last applyScore added, so replay can take it back
   timerSeconds = 5 // GM-chosen answer window for 5 Second Rule
+  questionLimit = 20 // GM-chosen questions per game for 5 Second Rule; 0 = all of the chosen decks
+  usedQuestions = new Set<number>() // question ids already played this session — avoided in later games
   gameId: string | null = null
   categories: string[] = [] // 5s: GM can pick several decks at once
   game: GameModule | null = null
@@ -36,7 +45,9 @@ class Hub {
   startMs = 0
   scored = false
   totals = new Map<number, number>()
+  rankDelta = new Map<number, number>() // pid -> places gained (+) / lost (-) by the last scored question
   finalBoard: Leaderboard = [] // final scores shown to phones after a game ends
+  finalAwards: FinalAward[] = [] // end-of-game titles shown with the final scores
 
   constructor() {
     setInterval(() => this.tick(), 1000)
@@ -73,6 +84,12 @@ class Hub {
     if (this.peers.has(pid) || this.isClaimed(pid)) return false
     this.claims.set(pid, Date.now())
     return true
+  }
+  // Disconnected players a returning phone may take over (tap-to-rejoin list).
+  rejoinable(): { id: number; name: string }[] {
+    return [...this.players]
+      .filter(([id]) => !this.peers.has(id) && !this.isClaimed(id))
+      .map(([id, p]) => ({ id, name: p.name }))
   }
   register(name: string): number {
     const nm = String(name || '').trim().slice(0, 20) || 'Anon'
@@ -161,6 +178,7 @@ class Hub {
     this.gameId = id
     this.categories = []
     this.finalBoard = [] // returning to setup clears the previous game's final screen
+    this.finalAwards = []
     this.broadcast()
   }
   selectCategory(cat: string) {
@@ -177,9 +195,18 @@ class Hub {
     this.revealOnAllAnswered = !!on
     this.broadcast()
   }
+  setPenalizeWrong(on: boolean) {
+    this.penalizeWrong = !!on
+    this.broadcast()
+  }
   setTimer(seconds: number) {
     const n = Math.round(Number(seconds))
     if (Number.isFinite(n)) this.timerSeconds = Math.min(60, Math.max(3, n))
+    this.broadcast()
+  }
+  setQuestionLimit(count: number) {
+    const n = Math.round(Number(count))
+    if (Number.isFinite(n)) this.questionLimit = Math.min(1000, Math.max(0, n))
     this.broadcast()
   }
   // Full wipe: kick everyone back to the name prompt, clear scores/selection.
@@ -197,35 +224,51 @@ class Hub {
     this.round = null
     this.scored = false
     this.totals = new Map()
+    this.rankDelta = new Map()
     this.finalBoard = []
+    this.finalAwards = []
     this.timerSeconds = 5
+    this.questionLimit = 20
+    this.usedQuestions = new Set()
     this.autoAdvance = true
     this.revealOnAllAnswered = true
+    this.penalizeWrong = false
+    this.pausedAtMs = null
   }
   start(): string | null {
-    if (!this.gameId) return 'Pick a game first.'
+    if (!this.gameId) return 'Najpierw wybierz grę.'
     const game = games[this.gameId]
     const res = game.start(this.activeIds(), configs[this.gameId], {
       names: this.names(),
       categories: this.categories,
       timerSeconds: this.timerSeconds,
+      questionCount: this.questionLimit,
+      used: this.usedQuestions,
     })
     if (typeof res === 'string') return res // rejection message
     this.game = game
     this.round = res
     this.startMs = Date.now()
+    this.pausedAtMs = null
     this.scored = false
-    this.totals = new Map()
+    // Scored games list everyone from the first question, not only those who have scored.
+    this.totals = new Map(game.score ? this.activeIds().map((id) => [id, 0]) : [])
+    this.rankDelta = new Map()
     this.finalBoard = []
+    this.finalAwards = []
     this.broadcast()
     return null
   }
-  next() {
+  // `score` = false skips scoring the current question (GM "skip a bad question").
+  next(score = true) {
     if (!this.game || !this.round) return
-    this.applyScore() // score the current round before advancing (GM may press Next before reveal)
+    if (score) this.applyScore() // score the current round before advancing (GM may press Next before reveal)
     if (this.game.next) {
-      const more = this.game.next(this.round)
+      const more = this.game.next(this.round, this.activeIds())
       if (!more) return this.end() // questions exhausted → final scores
+      // ponytail: late joiners start at the current lowest score — not hopeless, not a free lead
+      const floor = this.totals.size ? Math.min(...this.totals.values()) : 0
+      for (const id of this.activeIds()) if (!this.totals.has(id)) this.totals.set(id, floor)
     } else {
       // Games without `next` (e.g. Music Impostor): Next = a fresh round.
       const res = this.game.start(this.activeIds(), configs[this.gameId!], {
@@ -236,21 +279,76 @@ class Hub {
       this.round = res
     }
     this.startMs = Date.now()
+    this.pausedAtMs = null
     this.scored = false
+    this.rankDelta = new Map() // the new question hasn't moved anyone yet
+    this.broadcast()
+  }
+  skip() {
+    this.next(false)
+  }
+  // Re-ask the current question from scratch, taking back any points it already gave.
+  replay() {
+    if (!this.game?.replay || !this.round) return
+    if (this.scored) {
+      for (const [pid, n] of Object.entries(this.lastPts)) {
+        this.totals.set(Number(pid), (this.totals.get(Number(pid)) || 0) - n)
+      }
+    }
+    this.game.replay(this.round)
+    this.startMs = Date.now()
+    this.pausedAtMs = null
+    this.scored = false
+    this.lastPts = {}
+    this.rankDelta = new Map()
+    this.broadcast()
+  }
+  togglePause() {
+    if (!this.round) return
+    if (this.pausedAtMs == null) this.pausedAtMs = Date.now()
+    else {
+      this.startMs += Date.now() - this.pausedAtMs // shift the clock so elapsed() continues where it stopped
+      this.pausedAtMs = null
+    }
+    this.broadcast()
+  }
+  get paused() {
+    return this.pausedAtMs != null
+  }
+  // GM manual correction (±points), e.g. for a disputed answer.
+  adjustScore(pid: number, delta: number) {
+    const d = Math.round(Number(delta))
+    if (!this.players.has(pid) || !Number.isFinite(d)) return
+    this.totals.set(pid, (this.totals.get(pid) || 0) + d)
+    this.broadcast()
+  }
+  flagByPeer(peer: Peer) {
+    const pid = this.peerPid.get(peer)
+    if (pid == null || !this.game?.flag || !this.round) return
+    const f = this.game.flag(this.round, pid)
+    if (!f) return
+    const line = JSON.stringify({ at: new Date().toISOString(), game: this.gameId, ...f, by: this.players.get(pid)?.name })
+    appendFile(FLAG_FILE, line + '\n').catch((e) => console.error('[hub] flag write failed', e))
     this.broadcast()
   }
   end() {
     this.finalBoard = this.leaderboard() // snapshot so phones can show the payoff
+    this.finalAwards = (this.game?.awards?.(this.round) ?? []).map((a) => ({
+      title: a.title,
+      detail: a.detail,
+      name: this.players.get(a.pid)?.name ?? '?',
+    }))
     this.game = null
     this.round = null
     this.scored = false
     this.broadcast()
   }
   submit(pid: number, payload: any) {
-    if (!this.game?.submit || !this.round) return
+    if (!this.game?.submit || !this.round || this.paused) return
     this.game.submit(this.round, pid, payload, this.elapsed(), {
       revealOnAllAnswered: this.revealOnAllAnswered,
     })
+    this.settle()
     this.broadcast()
   }
   submitByPeer(peer: Peer, payload: any) {
@@ -258,42 +356,62 @@ class Hub {
     if (pid != null) this.submit(pid, payload)
   }
   // Any-player actions (5s): start the timer / reveal answers. First press wins.
-  startTimer() {
-    if (this.game?.startTimer && this.round) {
-      this.game.startTimer(this.round, this.elapsed())
+  startTimer(pid?: number) {
+    if (this.game?.startTimer && this.round && !this.paused) {
+      this.game.startTimer(this.round, this.elapsed(), pid)
       this.broadcast()
     }
   }
+  startTimerByPeer(peer: Peer) {
+    const pid = this.peerPid.get(peer)
+    if (pid != null) this.startTimer(pid)
+  }
   reveal() {
-    if (this.game?.reveal && this.round) {
+    if (this.game?.reveal && this.round && !this.paused) {
       this.game.reveal(this.round, this.elapsed())
+      this.settle()
       this.broadcast()
     }
   }
   // Any player unsticks a manual-mode reveal (auto-advance off). Only fires
   // when genuinely stuck — revealed + not auto — so it can't skip a live round.
   playerContinue() {
-    if (!this.autoAdvance && this.scored) this.next()
+    if (!this.autoAdvance && this.scored && !this.paused) this.next()
   }
 
   // --- clock / scoring ---------------------------------------------------
   private elapsed(): number {
-    return this.round ? (Date.now() - this.startMs) / 1000 : 0
+    return this.round ? ((this.pausedAtMs ?? Date.now()) - this.startMs) / 1000 : 0
   }
   private applyScore() {
     if (this.scored || !this.round) return
     if (this.game?.score) {
-      const pts = this.game.score(this.round)
+      const before = this.rankOf()
+      const pts = this.game.score(this.round, { penalizeWrong: this.penalizeWrong })
+      this.lastPts = pts
       for (const [pid, n] of Object.entries(pts)) {
         this.totals.set(Number(pid), (this.totals.get(Number(pid)) || 0) + n)
       }
+      // Rank movement only means something once someone had points before this question.
+      const moved = [...before.values()].some(([, score]) => score > 0)
+      const after = this.rankOf()
+      this.rankDelta = new Map(
+        [...after].map(([pid, [rank]]) => [pid, moved && before.has(pid) ? before.get(pid)![0] - rank : 0]),
+      )
     }
     this.scored = true
   }
+  // pid -> [rank (0-based), score], by current totals (ties keep join order).
+  private rankOf(): Map<number, [number, number]> {
+    return new Map(this.leaderboard().map((r, i) => [r.id, [i, r.score]]))
+  }
+  // Score the round the moment it ends, instead of waiting for the next 1s tick.
+  private settle() {
+    if (this.game?.tick?.(this.round, this.elapsed())) this.applyScore()
+  }
   private tick() {
-    if (!this.game || !this.round) return
-    const over = this.game.tick ? this.game.tick(this.round, this.elapsed()) : false
-    if (over) this.applyScore()
+    if (!this.game || !this.round || this.paused) return
+    this.settle()
     // Auto-advance (5s: 10s after reveal) — GM can still press Next early / turn this off.
     if (this.autoAdvance && this.scored && this.game.autoAdvanceAt) {
       const at = this.game.autoAdvanceAt(this.round)
@@ -308,22 +426,27 @@ class Hub {
   }
 
   // --- views -------------------------------------------------------------
+  // Names come from live players so reveal screens can show everyone, not just you.
   stateFor(pid: number): PlayerView {
     if (!this.players.has(pid)) return { phase: 'register' }
     const isGm = pid === this.currentGm()
     if (!this.game || !this.round) {
-      if (this.finalBoard.length) return { phase: 'gameover', leaderboard: this.finalBoard, isGm }
+      if (this.finalBoard.length)
+        return { phase: 'gameover', leaderboard: this.finalBoard, isGm, awards: this.finalAwards }
       return { phase: 'waiting', roster: this.roster(), isGm }
     }
-    const view = this.game.stateForPlayer(this.round, pid, this.elapsed())
+    const view = this.game.stateForPlayer(this.round, pid, this.elapsed(), this.names())
     if (view.phase === 'playing' || view.phase === 'revealed') {
-      ;(view as any).leaderboard = this.leaderboard()
+      const board = this.leaderboard()
+      ;(view as any).leaderboard =
+        view.phase === 'revealed' ? board.map((r) => ({ ...r, delta: this.rankDelta.get(r.id) ?? 0 })) : board
       ;(view as any).autoAdvance = this.autoAdvance
+      ;(view as any).paused = this.paused
       ;(view as any).isGm = isGm
     }
     return view
   }
-  gmState() {
+  gmState(port: string | number = process.env.PORT || 3333) {
     const catList =
       this.gameId === 'five-second-rule'
         ? (configs['five-second-rule'].categories as any[]).map((c) => ({ id: c.id, name: c.name }))
@@ -337,11 +460,17 @@ class Hub {
       selected: this.categories,
       autoAdvance: this.autoAdvance,
       revealOnAllAnswered: this.revealOnAllAnswered,
+      penalizeWrong: this.penalizeWrong,
+      paused: this.paused,
       timerSeconds: this.timerSeconds,
+      questionLimit: this.questionLimit,
       phase,
       players: [...this.players].map(([id, p]) => ({ id, name: p.name, gone: p.gone })),
-      leaderboard: this.leaderboard(),
-      joinUrl: `http://${lanIp()}:${process.env.PORT || 3333}`,
+      leaderboard: this.leaderboard().map((r) => ({ ...r, delta: phase === 'revealed' ? this.rankDelta.get(r.id) ?? 0 : 0 })),
+      live: this.game?.publicView && this.round ? this.game.publicView(this.round, this.elapsed(), this.names()) : null,
+      finalBoard: this.finalBoard,
+      finalAwards: this.finalAwards,
+      joinUrl: `http://${lanIp()}:${port}`,
     }
   }
 

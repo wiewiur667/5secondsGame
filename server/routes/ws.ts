@@ -8,9 +8,10 @@ export default defineWebSocketHandler({
     try { msg = JSON.parse(message.text()) } catch { return }
     if (msg.type === 'hello') hub.attach(Number(msg.id), peer)
     else if (msg.type === 'submit') hub.submitByPeer(peer, msg.payload)
-    else if (msg.type === 'start-timer') hub.startTimer()
+    else if (msg.type === 'start-timer') hub.startTimerByPeer(peer)
     else if (msg.type === 'reveal') hub.reveal()
     else if (msg.type === 'continue') hub.playerContinue()
+    else if (msg.type === 'flag') hub.flagByPeer(peer)
     else if (msg.type === 'logout') hub.logoutPeer(peer)
   },
   close(peer) { hub.detach(peer) },

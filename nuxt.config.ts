@@ -10,6 +10,7 @@ export default defineNuxtConfig({
   css: ['~/assets/css/theme.css'],
   app: {
     head: {
+      htmlAttrs: { lang: 'pl' },
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1, viewport-fit=cover' },
         { name: 'theme-color', content: '#120a17' },
@@ -26,7 +27,7 @@ export default defineNuxtConfig({
     manifest: {
       name: 'Party Hub',
       short_name: 'Party Hub',
-      description: 'LAN party games — Music Impostor & 5 Second Rule',
+      description: 'Gry imprezowe w sieci LAN — Music Impostor i 5 Second Rule',
       theme_color: '#120a17',
       background_color: '#120a17',
       display: 'standalone',

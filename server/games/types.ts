@@ -3,12 +3,13 @@
 // one Vue component keyed on `state.game`.
 
 export type Leaderboard = Array<{ id: number; name: string; score: number }>
+export type FinalAward = { title: string; name: string; detail: string }
 
 // The only thing a player's phone ever sees. Games attach their own fields.
 export type PlayerView =
   | { phase: 'register' } // unknown/stale id — phone re-prompts for a name
   | { phase: 'waiting'; roster: string[]; isGm: boolean } // lobby; isGm → show /gm link
-  | { phase: 'gameover'; leaderboard: Leaderboard; isGm: boolean } // final scores after a game ends
+  | { phase: 'gameover'; leaderboard: Leaderboard; isGm: boolean; awards: FinalAward[] } // final scores after a game ends
   | ({ phase: 'playing'; game: string; leaderboard: Leaderboard } & Record<string, any>)
   | ({ phase: 'revealed'; game: string; leaderboard: Leaderboard } & Record<string, any>)
 
@@ -26,13 +27,23 @@ export interface GameModule<S = any> {
   tick?(s: S, elapsedSec: number): boolean
 
   // GM "Next". Return false when there is nothing left → hub auto-ends. Default: no-op → end.
-  next?(s: S): boolean
+  // `playerIds` = who is active now; games that snapshot players per question refresh here
+  // (late joiners start playing, leavers stop blocking "everyone answered").
+  next?(s: S, playerIds?: number[]): boolean
+
+  // GM "replay this question": reset the current question and undo its scoring (if any).
+  replay?(s: S): void
+
+  // Player flags the current question as bad/ambiguous. Return what to log, or null if
+  // this player already flagged it.
+  flag?(s: S, pid: number): { id: number; prompt: string } | null
 
   // Seconds from round start at which the hub auto-advances (calls next). null = never.
   autoAdvanceAt?(s: S): number | null
 
   // Any-player buttons (5s): start this question's timer / reveal the answers.
-  startTimer?(s: S, elapsedSec: number): void
+  // `pid` = who pressed Start; omitted for hub-internal callers (no starter rules).
+  startTimer?(s: S, elapsedSec: number, pid?: number): void
   reveal?(s: S, elapsedSec: number): void
 
   // Player action. The GAME enforces validity server-side (timing, count, dedupe).
@@ -42,8 +53,22 @@ export interface GameModule<S = any> {
   submit?(s: S, pid: number, payload: any, elapsedSec: number, hubFlags?: Record<string, any>): void
 
   // Points earned THIS round, per player. Hub applies once on the playing→revealed edge.
-  score?(s: S): Record<number, number>
+  // hubFlags = live GM scoring toggles (e.g. penalizeWrong), read fresh like submit().
+  score?(s: S, hubFlags?: Record<string, any>): Record<number, number>
+
+  // End-of-game titles ("Fastest", "Streak king"…), computed once when the game ends.
+  awards?(s: S): GameAward[]
+
+  // Spectator view for the TV board: the current question without any per-player data.
+  publicView?(s: S, elapsedSec: number, names: Record<number, string>): Record<string, any>
 
   // What this specific player's phone renders. Never throw for an unknown pid.
-  stateForPlayer(s: S, pid: number, elapsedSec: number): PlayerView
+  // `names` = live pid → display name, for showing other players in the view.
+  stateForPlayer(s: S, pid: number, elapsedSec: number, names?: Record<number, string>): PlayerView
+}
+
+export interface GameAward {
+  title: string
+  pid: number
+  detail: string
 }
