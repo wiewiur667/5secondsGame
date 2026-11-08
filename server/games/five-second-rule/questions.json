@@ -12077,7 +12077,7 @@
             "Powstanie warszawskie",
             "Powstanie styczniowe",
             "Powstanie krakowskie",
-            "Powstanie wielkopolskie"
+            "Powstanie w getcie warszawskim"
           ],
           "correct": [
             1,
@@ -13265,7 +13265,7 @@
             "Piastowie",
             "Tudorowie",
             "Burbonowie",
-            "Romanowowie",
+            "Stuartowie",
             "Jagiellonowie",
             "Wazowie"
           ],
@@ -14120,7 +14120,7 @@
           "options": [
             "Kij hokejowy",
             "Rakieta",
-            "Piłka",
+            "Siodło",
             "Krążek",
             "Wiosło",
             "Łyżwy"
@@ -14184,7 +14184,7 @@
         },
         {
           "id": 1132,
-          "prompt": "Wybierz 3 polskich selekcjonerów reprezentacji",
+          "prompt": "Wybierz 3 selekcjonerów reprezentacji Polski, którzy są Polakami",
           "options": [
             "Adam Nawałka",
             "Paulo Sousa",
@@ -14490,7 +14490,7 @@
         },
         {
           "id": 1150,
-          "prompt": "Wybierz 3 kraje z tytułem mistrza świata siatkarzy",
+          "prompt": "Wybierz 3 kraje z tytułem mistrza świata w siatkówce mężczyzn",
           "options": [
             "Polska",
             "Argentyna",
@@ -14611,7 +14611,7 @@
           "id": 1157,
           "prompt": "Wybierz 3 turnieje wygrane przez Igę Świątek",
           "options": [
-            "Wimbledon",
+            "Puchar Davisa",
             "Roland Garros",
             "US Open",
             "Australian Open",
@@ -15313,7 +15313,7 @@
             "Łucznictwo",
             "Strzelanie",
             "Rzut beretem",
-            "Jazda konna"
+            "Pływanie"
           ],
           "correct": [
             1,
@@ -15535,8 +15535,8 @@
           "id": 1211,
           "prompt": "Wybierz 3 amerykańskie marki samochodów",
           "options": [
-            "Vauxhall",
-            "Holden",
+            "Seat",
+            "Škoda",
             "Ford",
             "Rover",
             "Chevrolet",
@@ -16980,7 +16980,7 @@
           "id": 1296,
           "prompt": "Wybierz 3 mistrzów świata w rajdach WRC",
           "options": [
-            "Robert Kubica",
+            "Max Verstappen",
             "Sébastien Loeb",
             "Sébastien Ogier",
             "Lewis Hamilton",
@@ -17616,7 +17616,7 @@
           "prompt": "Wybierz 3 piosenki zespołu Wilki",
           "options": [
             "Baśka",
-            "Eli lama sabachtani",
+            "Arahja",
             "Son of the Blue Sky",
             "Nie pytaj o Polskę",
             "Baśka 2: Powrót Baśki",
@@ -18686,8 +18686,8 @@
           "id": 1396,
           "prompt": "Wybierz 3 piosenki Elvisa Presleya",
           "options": [
-            "Johnny B. Goode",
-            "Great Balls of Fire",
+            "Bohemian Rhapsody",
+            "Smells Like Teen Spirit",
             "Jailhouse Rock",
             "Hound Dog",
             "Can't Help Falling in Love",
