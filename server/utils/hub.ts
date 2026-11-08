@@ -2,6 +2,7 @@ import { games } from '../games'
 import type { FinalAward, GameModule, Leaderboard, PlayerView } from '../games/types'
 import musicCfg from '../games/music-impostor/music.json'
 import questionsCfg from '../games/five-second-rule/questions.json'
+import ripostaCfg from '../games/riposta/prompts.json'
 import { lanIp } from './lanIp'
 import { appendFile } from 'node:fs/promises'
 
@@ -12,6 +13,7 @@ const FLAG_FILE = process.env.FLAG_FILE || 'flagged-questions.jsonl'
 const configs: Record<string, any> = {
   'music-impostor': musicCfg,
   'five-second-rule': questionsCfg,
+  riposta: ripostaCfg,
 }
 
 type Peer = { send: (data: any) => void }
@@ -37,7 +39,11 @@ class Hub {
   lastPts: Record<number, number> = {} // what the last applyScore added, so replay can take it back
   timerSeconds = 5 // GM-chosen answer window for 5 Second Rule
   questionLimit = 20 // GM-chosen questions per game for 5 Second Rule; 0 = all of the chosen decks
-  usedQuestions = new Set<number>() // question ids already played this session — avoided in later games
+  // Question ids already played this session, per game (ids are only unique within
+  // one game's content) — avoided in later games.
+  usedQuestions = new Map<string, Set<number>>()
+  // GM-chosen values for the options a game declares (GameModule.settings), per game.
+  options: Record<string, Record<string, string | number>> = {}
   gameId: string | null = null
   categories: string[] = [] // 5s: GM can pick several decks at once
   game: GameModule | null = null
@@ -204,6 +210,24 @@ class Hub {
     if (Number.isFinite(n)) this.timerSeconds = Math.min(60, Math.max(3, n))
     this.broadcast()
   }
+  // Generic game option (GameModule.settings): only a value the game offers is accepted.
+  setOption(key: string, value: unknown) {
+    const def = this.gameId ? games[this.gameId]?.settings?.find((d) => d.key === key) : undefined
+    const opt = def?.options.find((o) => String(o.value) === String(value))
+    if (!def || !opt) return
+    ;(this.options[this.gameId!] ??= {})[key] = opt.value
+    this.broadcast()
+  }
+  private settingsFor(id: string): Record<string, string | number> {
+    const out: Record<string, string | number> = {}
+    for (const d of games[id]?.settings ?? []) out[d.key] = this.options[id]?.[d.key] ?? d.default
+    return out
+  }
+  private usedFor(id: string): Set<number> {
+    let set = this.usedQuestions.get(id)
+    if (!set) this.usedQuestions.set(id, (set = new Set()))
+    return set
+  }
   setQuestionLimit(count: number) {
     const n = Math.round(Number(count))
     if (Number.isFinite(n)) this.questionLimit = Math.min(1000, Math.max(0, n))
@@ -229,7 +253,8 @@ class Hub {
     this.finalAwards = []
     this.timerSeconds = 5
     this.questionLimit = 20
-    this.usedQuestions = new Set()
+    this.usedQuestions = new Map()
+    this.options = {}
     this.autoAdvance = true
     this.revealOnAllAnswered = true
     this.penalizeWrong = false
@@ -243,7 +268,8 @@ class Hub {
       categories: this.categories,
       timerSeconds: this.timerSeconds,
       questionCount: this.questionLimit,
-      used: this.usedQuestions,
+      used: this.usedFor(this.gameId),
+      settings: this.settingsFor(this.gameId),
     })
     if (typeof res === 'string') return res // rejection message
     this.game = game
@@ -252,7 +278,7 @@ class Hub {
     this.pausedAtMs = null
     this.scored = false
     // Scored games list everyone from the first question, not only those who have scored.
-    this.totals = new Map(game.score ? this.activeIds().map((id) => [id, 0]) : [])
+    this.totals = new Map(game.score ? this.scoringIds().map((id) => [id, 0]) : [])
     this.rankDelta = new Map()
     this.finalBoard = []
     this.finalAwards = []
@@ -268,7 +294,7 @@ class Hub {
       if (!more) return this.end() // questions exhausted → final scores
       // ponytail: late joiners start at the current lowest score — not hopeless, not a free lead
       const floor = this.totals.size ? Math.min(...this.totals.values()) : 0
-      for (const id of this.activeIds()) if (!this.totals.has(id)) this.totals.set(id, floor)
+      for (const id of this.scoringIds()) if (!this.totals.has(id)) this.totals.set(id, floor)
     } else {
       // Games without `next` (e.g. Music Impostor): Next = a fresh round.
       const res = this.game.start(this.activeIds(), configs[this.gameId!], {
@@ -381,6 +407,10 @@ class Hub {
   }
 
   // --- clock / scoring ---------------------------------------------------
+  // Who gets a leaderboard row: the game's scoring players, or everyone active.
+  private scoringIds(): number[] {
+    return this.game?.scoringIds && this.round ? this.game.scoringIds(this.round) : this.activeIds()
+  }
   private elapsed(): number {
     return this.round ? ((this.pausedAtMs ?? Date.now()) - this.startMs) / 1000 : 0
   }
@@ -408,7 +438,7 @@ class Hub {
   }
   // Score the round the moment it ends, instead of waiting for the next 1s tick.
   private settle() {
-    if (this.game?.tick?.(this.round, this.elapsed())) this.applyScore()
+    if (this.game?.tick?.(this.round, this.elapsed(), { activeIds: this.activeIds() })) this.applyScore()
   }
   private tick() {
     if (!this.game || !this.round || this.paused) return
@@ -465,6 +495,12 @@ class Hub {
       paused: this.paused,
       timerSeconds: this.timerSeconds,
       questionLimit: this.questionLimit,
+      settings: (this.gameId ? games[this.gameId]?.settings ?? [] : []).map((d) => ({
+        key: d.key,
+        label: d.label,
+        options: d.options,
+        value: this.settingsFor(this.gameId!)[d.key],
+      })),
       phase,
       players: [...this.players].map(([id, p]) => ({ id, name: p.name, gone: p.gone })),
       leaderboard: this.leaderboard().map((r) => ({ ...r, delta: phase === 'revealed' ? this.rankDelta.get(r.id) ?? 0 : 0 })),

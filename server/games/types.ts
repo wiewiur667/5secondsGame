@@ -13,18 +13,39 @@ export type PlayerView =
   | ({ phase: 'playing'; game: string; leaderboard: Leaderboard } & Record<string, any>)
   | ({ phase: 'revealed'; game: string; leaderboard: Leaderboard } & Record<string, any>)
 
+// A GM-tunable option a game declares; the hub stores the chosen value per game,
+// renders it generically in /gm and passes all values to start() as opts.settings.
+export interface GameSetting {
+  key: string
+  label: string
+  options: Array<{ value: string | number; label: string }>
+  default: string | number
+}
+
+// Live hub context for tick(): who is still in the room right now.
+export interface TickContext {
+  activeIds: number[]
+}
+
 export interface GameModule<S = any> {
   id: string
   name: string
   minPlayers: number
   configFile?: string // e.g. 'music.json' — loaded and passed to start() as cfg
+  settings?: GameSetting[] // GM options shown in /gm for this game (values → opts.settings)
+
+  // Who goes on the leaderboard. Default: every active player. Games with
+  // non-scoring participants (audience) return only their scoring players, so
+  // spectators and late joiners never get a score row.
+  scoringIds?(s: S): number[]
 
   // Build round state. Return a string to reject (e.g. "Need 2 players") — mirrors
   // the current server.js startRound() error-string convention.
   start(playerIds: number[], cfg: any, opts?: any): S | string
 
-  // Per-second advance. Return true once the round is over (triggers reveal + scoring).
-  tick?(s: S, elapsedSec: number): boolean
+  // Per-second advance (also run right after every submit/reveal). Return true once
+  // the round is over (triggers reveal + scoring). ctx = live room info.
+  tick?(s: S, elapsedSec: number, ctx?: TickContext): boolean
 
   // GM "Next". Return false when there is nothing left → hub auto-ends. Default: no-op → end.
   // `playerIds` = who is active now; games that snapshot players per question refresh here

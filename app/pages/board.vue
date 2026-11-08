@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import RipostaBoard from '~/components/board/RipostaBoard.vue'
 
 // Passive display — no controls. Meant for a TV/projector: big, no interaction.
 const { gm: state } = useGm()
@@ -37,7 +38,13 @@ const gameName = computed(() => state.value?.games.find((g) => g.id === state.va
 
     <!-- in a game / between rounds: the live question (if the game has one) beside the leaderboard -->
     <section v-else class="lbwrap" :class="{ split: state.live }">
-      <div v-if="state.live" class="live">
+      <RipostaBoard
+        v-if="state.live && state.live.game === 'riposta'"
+        :live="state.live"
+        :paused="state.paused"
+        :auto-advance="state.autoAdvance"
+      />
+      <div v-else-if="state.live" class="live">
         <div class="qline">
           <span class="qno">Pytanie {{ state.live.questionNo }} / {{ state.live.questionCount }}</span>
           <span v-if="state.paused" class="next">⏸ pauza</span>

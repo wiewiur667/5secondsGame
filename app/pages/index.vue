@@ -2,6 +2,7 @@
 import { useWakeLock } from '@vueuse/core'
 import MusicImpostor from '~/components/games/MusicImpostor.vue'
 import FiveSecondRule from '~/components/games/FiveSecondRule.vue'
+import Riposta from '~/components/games/Riposta.vue'
 
 const { state, id, offline, register, rejoinable, submit, startTimer, reveal, continueRound, flag, logout } = useHub()
 const { muted, toggleMute } = useFeedback()
@@ -131,6 +132,14 @@ function doLogout() {
       @submit="submit"
       @start-timer="startTimer"
       @reveal="reveal"
+      @continue="continueRound"
+      @flag="flag"
+    />
+    <Riposta
+      v-else-if="state.game === 'riposta'"
+      :state="state"
+      :me-id="id"
+      @submit="submit"
       @continue="continueRound"
       @flag="flag"
     />

@@ -10,6 +10,8 @@ export type GmState = {
   paused: boolean
   timerSeconds: number
   questionLimit: number
+  // Options the selected game declares, with the current value.
+  settings: { key: string; label: string; options: { value: string | number; label: string }[]; value: string | number }[]
   phase: 'lobby' | 'playing' | 'revealed'
   players: { id: number; name: string; gone: boolean }[]
   leaderboard: { id: number; name: string; score: number; delta: number }[]

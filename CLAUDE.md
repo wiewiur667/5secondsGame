@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-A Nuxt 4 / Nitro LAN party-game hub ("Party Hub"). Players join from phones, the first player to join is the game master (GM). Two games: Music Impostor and 5 Second Rule (1100 Polish questions across 11 categories). All state is in-memory — one party session per server process; restart to reset.
+A Nuxt 4 / Nitro LAN party-game hub ("Party Hub"). Players join from phones, the first player to join is the game master (GM). Three games: Music Impostor, 5 Second Rule (1100 Polish questions across 11 categories) and Riposta (an original Polish answer-duel game: write funny answers, vote, final round). All state is in-memory — one party session per server process; restart to reset.
 
 ## Commands
 
@@ -26,7 +26,9 @@ docker compose up -d --build                      # NAS/Docker deploy
 ### Hub / game-module seam
 `server/utils/hub.ts` is a singleton stored on `globalThis` (survives dev HMR). It owns everything game-agnostic: players map, WS peers, GM role, round clock (`startMs`/`elapsed()`), score totals, 1s tick loop, broadcast. Games implement `GameModule` (`server/games/types.ts` — `start/tick/next/submit/score/stateForPlayer` plus any-player hooks `startTimer`/`reveal`) and register in `server/games/index.ts`.
 
-**Adding a game** = a folder under `server/games/<id>/` (module + config JSON) + one registry line + one Vue component in `app/components/games/` dispatched on `state.game`.
+**Adding a game** = a folder under `server/games/<id>/` (module + config JSON) + one registry line in `server/games/index.ts` + the config import in the `configs` map in `hub.ts` + one Vue component in `app/components/games/` dispatched on `state.game` (and optionally a TV component in `app/components/board/`, dispatched in `board.vue` on `live.game`).
+
+Optional `GameModule` hooks: `settings` (GM options rendered generically in `/gm`, set via the `set-option` action, passed to `start()` as `opts.settings`), `scoringIds` (who gets a leaderboard row — lets a game have non-scoring audience members), and `tick(s, t, ctx)` receives `ctx.activeIds`. `usedQuestions` is tracked per game id.
 
 ### Per-player state — never a shared broadcast
 `hub.stateFor(pid)` builds a personalized `PlayerView` for each phone (Music Impostor sends the impostor a *different* videoId than everyone else). The hub keeps `Map<pid, peer>` and calls `peer.send()` per player; crossws channel pub/sub is deliberately not used — a shared payload would leak/break per-player views.
@@ -46,6 +48,9 @@ GM = earliest-registered *active* player, computed live by `currentGm()`. It rea
 Per question (`server/games/five-second-rule/index.ts`): `awaitingStart` (Start disabled for `readWait` seconds) → any player presses Start → answer window (`timerSeconds`, GM-configurable 3–60s) → reveal via any-player button after timeout, **or early** as soon as every player in the round-start `playerIds` snapshot has submitted a *full* `picksRequired`-length answer → `revealed` interstitial (scores applied exactly once, guarded by `scored`) → auto-advance 10s later (toggleable) or an any-player Continue button.
 
 The register/rejoin flow uses a claims map (`hub.claimRejoin` + TTL) to close a TOCTOU race where two browsers could claim the same disconnected player's name concurrently — don't simplify it into a plain check-then-grant.
+
+### Riposta flow
+`server/games/riposta/`: one hub "question" = one duel. Rounds 1–2: every player gets 2 prompts, each prompt 2 players (`assign.ts`, random cycle); the writing stage lives inside the first duel of the round, later duels start straight in voting. Final = one more question (everyone answers one prompt, players spread 3 tokens, audience 1). Players = first 8 active at start; everyone else (incl. late joiners) is **audience**: votes, never scores (`scoringIds`). Timeout auto-fills the player's unsent draft, else a server-picked "Gotowiec" (half points). Point maths in `scoring.ts` (values from `reports/Polska gra w stylu Quiplash.md`). `publicView` must never contain authors, prompt assignments or live vote splits before a reveal — `/api/gm/state` is unauthenticated. Prompt bank is generated from `scripts/build-riposta-prompts.py` (edit the lists there, rerun it); keep the blank at the end of the prompt after a colon (Polish declension), content is original, CC BY 4.0 (`LICENSE-CONTENT`).
 
 ### Question content
 `server/games/five-second-rule/questions.json`: 11 Polish categories × 100 questions (ids are unique across categories; players' 🚩 reports append to `FLAG_FILE`, default `flagged-questions.jsonl`); `correct` = exactly 3 indices into exactly 6 `options`. Scoring is exact-index auto-match, so distractors are deliberately same-topic near-misses that must remain **unambiguously wrong** — when editing questions, a distractor a reasonable player could defend as valid is a scoring bug, not a nit. `server/games/music-impostor/music.json` = YouTube URLs; ≥2 required or `start` fails.

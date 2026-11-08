@@ -5,7 +5,9 @@ export default defineWebSocketHandler({
   open() {}, // wait for hello
   message(peer, message) {
     let msg: any
-    try { msg = JSON.parse(message.text()) } catch { return }
+    const text = message.text()
+    if (text.length > 4096) return // every legit message is tiny — don't parse junk
+    try { msg = JSON.parse(text) } catch { return }
     if (msg.type === 'hello') hub.attach(Number(msg.id), peer)
     else if (msg.type === 'submit') hub.submitByPeer(peer, msg.payload)
     else if (msg.type === 'start-timer') hub.startTimerByPeer(peer)

@@ -62,6 +62,20 @@ async function startGame() {
         </button>
       </div>
 
+      <!-- options the selected game declares (GameModule.settings) -->
+      <template v-for="opt in state.settings" :key="opt.key">
+        <p class="section-label">{{ opt.label }}</p>
+        <div class="grid">
+          <button
+            v-for="o in opt.options"
+            :key="String(o.value)"
+            class="btn"
+            :class="{ sel: opt.value === o.value }"
+            @click="post('set-option', { key: opt.key, value: o.value })"
+          >{{ o.label }}</button>
+        </div>
+      </template>
+
       <template v-if="state.gameId === 'five-second-rule' && state.categories.length">
         <p class="section-label">Kategorie <span class="hint">· wybierz jedną lub więcej</span></p>
         <div class="grid">
@@ -100,9 +114,10 @@ async function startGame() {
       </template>
     </div>
 
-    <label v-if="state.gameId === 'five-second-rule'" class="auto">
+    <label v-if="state.gameId === 'five-second-rule' || state.gameId === 'riposta'" class="auto">
       <input type="checkbox" :checked="state.autoAdvance" @change="post('set-auto', { on: ($event.target as HTMLInputElement).checked })" />
-      <span>Automatycznie przejdź do następnego pytania (10 s po odpowiedziach)</span>
+      <span v-if="state.gameId === 'riposta'">Automatycznie przejdź do następnego pojedynku (8 s po wynikach)</span>
+      <span v-else>Automatycznie przejdź do następnego pytania (10 s po odpowiedziach)</span>
     </label>
     <label v-if="state.gameId === 'five-second-rule'" class="auto">
       <input type="checkbox" :checked="state.revealOnAllAnswered" @change="post('set-reveal-on-answer', { on: ($event.target as HTMLInputElement).checked })" />
