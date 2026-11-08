@@ -89,7 +89,9 @@ test('5sr: submit correct picks in time scores count', () => {
 test('5sr: picksRequired caps stored picks', () => {
   const s = fiveSecondRule.start([1], questionsCfg, { categories: ['couples'] }) as any
   fiveSecondRule.startTimer!(s, 5)
-  fiveSecondRule.submit!(s, 1, { picks: [0, 1, 2, 3, 4] }, 6)
+  // late in the window: [0,1,2] is the right answer for ~1 in 20 questions, and a
+  // fast perfect answer earns a +1 speed bonus (> picksRequired) — keep this about the cap
+  fiveSecondRule.submit!(s, 1, { picks: [0, 1, 2, 3, 4] }, 9.5)
   assert(s.picks[1].length <= s.picksRequired)
   assert(fiveSecondRule.score!(s)[1] <= s.picksRequired)
 })
