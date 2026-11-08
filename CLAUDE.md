@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-A Nuxt 4 / Nitro LAN party-game hub ("Party Hub"). Players join from phones, the first player to join is the game master (GM). Two games: Music Impostor and 5 Second Rule (600 Polish questions across 6 categories). All state is in-memory — one party session per server process; restart to reset.
+A Nuxt 4 / Nitro LAN party-game hub ("Party Hub"). Players join from phones, the first player to join is the game master (GM). Two games: Music Impostor and 5 Second Rule (1100 Polish questions across 11 categories). All state is in-memory — one party session per server process; restart to reset.
 
 ## Commands
 
@@ -13,13 +13,13 @@ npm test                                          # Node built-in runner (node -
 node --test --test-name-pattern="5sr: reveal"     # single test by name pattern
 npm run build                                     # Nuxt/Nitro build → .output/
 HOST=0.0.0.0 PORT=3333 node .output/server/index.mjs   # prod run — use this for real play
-npm run dev                                       # dev on 0.0.0.0:3333 with QR (has --publicURL baked in)
+npm run dev                                       # dev on 0.0.0.0:8080 with QR (--port overrides devServer.port)
 docker compose up -d --build                      # NAS/Docker deploy
 ```
 
 - Tests run as native TypeScript via Node 24 type-stripping — no flags, no framework, plain `node:test` + `assert`.
 - **Run the prod build for actual play.** Dev-mode WebSockets are flaky: the Nitro dev worker drops WS upgrades during HMR reloads ("No worker available").
-- `postinstall` runs `patch-package`: `patches/vue-router+5.2.0.patch` null-guards an unconditional upstream crash (`instance.__vrv_devtools` on a null component instance — a mobile-Safari timing race present in every vue-router 5.2.0 dist build). The Dockerfile copies `patches/` **before** `npm ci` so the build-stage install can apply it — keep that order.
+- `vue-router` is pinned as a direct devDependency at `^5.4.0`: 5.2.0 crashed on mobile Safari (`instance.__vrv_devtools` set on a null component instance) and was previously patched with patch-package; 5.4.0 ships the null guard upstream, so the patch was dropped. Don't let it resolve below 5.4.0.
 
 ## Architecture
 
@@ -48,7 +48,7 @@ Per question (`server/games/five-second-rule/index.ts`): `awaitingStart` (Start 
 The register/rejoin flow uses a claims map (`hub.claimRejoin` + TTL) to close a TOCTOU race where two browsers could claim the same disconnected player's name concurrently — don't simplify it into a plain check-then-grant.
 
 ### Question content
-`server/games/five-second-rule/questions.json`: 6 Polish categories × 100 questions; `correct` = exactly 3 indices into exactly 6 `options`. Scoring is exact-index auto-match, so distractors are deliberately same-topic near-misses that must remain **unambiguously wrong** — when editing questions, a distractor a reasonable player could defend as valid is a scoring bug, not a nit. `server/games/music-impostor/music.json` = YouTube URLs; ≥2 required or `start` fails.
+`server/games/five-second-rule/questions.json`: 11 Polish categories × 100 questions (ids are unique across categories; players' 🚩 reports append to `FLAG_FILE`, default `flagged-questions.jsonl`); `correct` = exactly 3 indices into exactly 6 `options`. Scoring is exact-index auto-match, so distractors are deliberately same-topic near-misses that must remain **unambiguously wrong** — when editing questions, a distractor a reasonable player could defend as valid is a scoring bug, not a nit. `server/games/music-impostor/music.json` = YouTube URLs; ≥2 required or `start` fails.
 
 ## Gotchas
 
