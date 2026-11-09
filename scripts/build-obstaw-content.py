@@ -37,12 +37,10 @@ SKILL = [
  ("Ułóż na szyjce butelki 4 widelce w poprzek tak, żeby żaden nie spadł przez 15 sekund.", None, 60),
  ("Połóż kostkę na stopie i podrzuć ją tak, by wpadła do szklanki stojącej metr dalej. Liczy się też kostka, która wypadnie po tym, jak była w środku.", "5 prób", None),
  ("Umieść na stopie wieszak ubraniowy i podrzuć go tak, by zawisł na wyciągniętym palcu wskazującym.", "3 próby", None),
- ("Zrób telefonem dwa selfie, wstaw je do mediów społecznościowych i w ciągu minuty zbierz dwa polubienia.", None, 60),
  ("Trzymając szklankę na górze stopy, obejdź dookoła stół w ciągu minuty. Jeśli szklanka spadnie, próba jest nieudana.", None, 60),
  ("Znajdź i połóż na stole 3 przedmioty, których nazwa zaczyna się na literę „P”.", None, 60),
  ("Stój 30 sekund na lewej nodze z zamkniętymi oczami.", None, 30),
  ("Zrób 3 małe kulki z papieru toaletowego i „przyssij” je po kolei nosem, a następnie przenieś do szklanki oddalonej o 2 metry.", None, 60),
- ("Napisz na telefonie znany tekst (np. fragment wiersza lub piosenki) złożony z 10 słów.", None, 15),
  ("Stojąc na jednej nodze, podnieś z podłogi kostkę leżącą pół metra od Ciebie.", None, None),
  ("Zabierz rękę, zanim przeciwnik zdąży ją klepnąć. Siedzicie naprzeciw siebie z rękami na stole.", "2 udane próby z 5", None),
  ("Wyrzuć dwie monety zza pleców do góry i złap je.", "2 próby", None),
@@ -53,7 +51,6 @@ SKILL = [
  ("Wstań z pozycji leżącej na plecach, nie podpierając się ramionami ani rękami.", None, None),
  ("Z odległości 2 metrów wrzuć 3 karty do pudełka.", "5 prób", None),
  ("Z zamkniętymi oczami, z rozłożonymi szeroko rękami, zetknij ze sobą palce wskazujące.", "3 udane próby z 5", None),
- ("Zamrugaj obydwoma oczami, a potem każdym z osobna.", None, None),
  ("Trzy razy odbij kostkę udem i złap ją w powietrzu.", None, 30),
  ("Wyciągnij kartkę spod butelki tak, żeby butelka się nie przewróciła.", "3 próby", None),
  ("Rozkręć na wyciągniętym palcu 3 wieszaki i utrzymaj je w ruchu przez minutę.", "3 próby", 60),
@@ -61,7 +58,6 @@ SKILL = [
  ("Połóż kartę na szczycie butelki i zrzuć ją rzutem kostki z odległości 2 metrów.", "2 udane próby z 5", None),
  ("Wachluj gazetą tak, żeby przesunąć kartkę o 1,5 metra na wyznaczone miejsce.", None, 30),
  ("Zapisz na telefonie w 15 sekund ciąg „Cba” powtórzony 10 razy, z odstępem między kolejnymi „Cba” (Cba Cba Cba…). C musi być wielką literą.", None, 15),
- ("Zapisz na telefonie w 30 sekund ciąg „AbCd” powtórzony 10 razy, z odstępem między kolejnymi (AbCd AbCd…). A i C muszą być wielkimi literami.", None, 30),
 ]
 
 # (question, sec, sample answers or [])
@@ -114,10 +110,38 @@ MENTAL = [
  ("Czy zdołasz wymienić 5 planet w kolejności od Słońca?", 30, ["Merkury", "Wenus", "Ziemia", "Mars", "Jowisz"]),
 ]
 
+import importlib.util, random
+HERE = pathlib.Path(__file__).parent
+spec = importlib.util.spec_from_file_location("pool", HERE / "obstaw-acting-pool.py")
+pool = importlib.util.module_from_spec(spec); spec.loader.exec_module(pool)
+
+SCR = pathlib.Path("/tmp/claude-0/-home-user-5secondsGame/f28202e3-3eee-5a6b-b267-e7999b646afd/scratchpad")
+EXTRA_A = HERE / "obstaw-acting-extra.json"   # extra phrases (generated, reviewed)
+EXTRA_M = HERE / "obstaw-mental-extra.json"
+subjects = [x.strip() for x in pool.SUBJECTS if x.strip()]
+actions = [x.strip() for x in pool.ACTIONS if x.strip()]
+if EXTRA_A.exists():
+    e = json.loads(EXTRA_A.read_text()); subjects += e["subjects"]; actions += e["actions"]
+mental_extra = json.loads(EXTRA_M.read_text()) if EXTRA_M.exists() else []
+
+TOTAL_ACTING, TOTAL_MENTAL, TOTAL_SKILL = 188, 50, 50
+
 def card(i, **kw): return {"id": i, **kw}
 skill = [card(1 + i, text=t, **({"tries": tr} if tr else {}), sec=s) for i, (t, tr, s) in enumerate(SKILL)]
-mental = [card(101 + i, q=q, sec=s, hints=h) for i, (q, s, h) in enumerate(MENTAL)]
+allm = list(MENTAL) + [(m["q"], m["sec"], m["hints"]) for m in mental_extra]
+mental = [card(101 + i, q=q, sec=s, hints=h) for i, (q, s, h) in enumerate(allm[:TOTAL_MENTAL])]
+
 old = json.loads(pathlib.Path("server/games/obstaw/content.json").read_text())
-out = {"skill": skill, "mental": mental, "acting": old["acting"]}
+acting = [c for c in old["acting"] if c["id"] <= 224]   # the 24 hand-written cards are kept as they are
+rng = random.Random(2024)
+used = {p for c in acting for p in (*c["first"], *c["second"])}
+S = [x for x in subjects if x not in used]; A = [x for x in actions if x not in used]
+rng.shuffle(S); rng.shuffle(A)
+need = TOTAL_ACTING - len(acting)
+assert len(S) >= 2 * need and len(A) >= 2 * need, (len(S), len(A), need)
+for k in range(need):
+    acting.append({"id": 225 + k, "first": [S[2 * k], S[2 * k + 1]], "second": [A[2 * k], A[2 * k + 1]]})
+
+out = {"skill": skill, "mental": mental, "acting": acting}
 pathlib.Path("server/games/obstaw/content.json").write_text(json.dumps(out, ensure_ascii=False, indent=1) + "\n")
-print(len(skill), len(mental), len(out["acting"]))
+print(len(skill), len(mental), len(acting), "total", len(skill) + len(mental) + len(acting))

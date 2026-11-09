@@ -8,3 +8,4 @@ dist/
 
 # player-reported bad questions (server/utils/hub.ts flagByPeer)
 flagged-questions.jsonl
+scripts/__pycache__/
