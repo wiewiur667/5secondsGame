@@ -163,136 +163,116 @@
   },
   {
    "id": 30,
-   "text": "Zrób telefonem dwa selfie, wstaw je do mediów społecznościowych i w ciągu minuty zbierz dwa polubienia.",
-   "sec": 60
-  },
-  {
-   "id": 31,
    "text": "Trzymając szklankę na górze stopy, obejdź dookoła stół w ciągu minuty. Jeśli szklanka spadnie, próba jest nieudana.",
    "sec": 60
   },
   {
-   "id": 32,
+   "id": 31,
    "text": "Znajdź i połóż na stole 3 przedmioty, których nazwa zaczyna się na literę „P”.",
    "sec": 60
   },
   {
-   "id": 33,
+   "id": 32,
    "text": "Stój 30 sekund na lewej nodze z zamkniętymi oczami.",
    "sec": 30
   },
   {
-   "id": 34,
+   "id": 33,
    "text": "Zrób 3 małe kulki z papieru toaletowego i „przyssij” je po kolei nosem, a następnie przenieś do szklanki oddalonej o 2 metry.",
    "sec": 60
   },
   {
-   "id": 35,
-   "text": "Napisz na telefonie znany tekst (np. fragment wiersza lub piosenki) złożony z 10 słów.",
-   "sec": 15
-  },
-  {
-   "id": 36,
+   "id": 34,
    "text": "Stojąc na jednej nodze, podnieś z podłogi kostkę leżącą pół metra od Ciebie.",
    "sec": null
   },
   {
-   "id": 37,
+   "id": 35,
    "text": "Zabierz rękę, zanim przeciwnik zdąży ją klepnąć. Siedzicie naprzeciw siebie z rękami na stole.",
    "tries": "2 udane próby z 5",
    "sec": null
   },
   {
-   "id": 38,
+   "id": 36,
    "text": "Wyrzuć dwie monety zza pleców do góry i złap je.",
    "tries": "2 próby",
    "sec": null
   },
   {
-   "id": 39,
+   "id": 37,
    "text": "Przez 30 sekund unikaj odpowiedzi „nie” na pytania zadawane przez innych graczy. Nie możesz się zastanawiać dłużej niż 2 sekundy.",
    "sec": 30
   },
   {
-   "id": 40,
+   "id": 38,
    "text": "Zapisz na telefonie tekst z 12 słów w ciągu 30 sekund. Inny gracz zapisuje tekst na kartce i czyta go na głos, a potem zapisuje go ten, kto wykonuje zadanie.",
    "sec": 30
   },
   {
-   "id": 41,
+   "id": 39,
    "text": "Upuść kartę z wysokości 1,5 metra tak, żeby wylądowała tekstem do góry.",
    "tries": "3 udane próby z 5",
    "sec": null
   },
   {
-   "id": 42,
+   "id": 40,
    "text": "Napisz swoje nazwisko wspak w ciągu minuty.",
    "sec": 60
   },
   {
-   "id": 43,
+   "id": 41,
    "text": "Wstań z pozycji leżącej na plecach, nie podpierając się ramionami ani rękami.",
    "sec": null
   },
   {
-   "id": 44,
+   "id": 42,
    "text": "Z odległości 2 metrów wrzuć 3 karty do pudełka.",
    "tries": "5 prób",
    "sec": null
   },
   {
-   "id": 45,
+   "id": 43,
    "text": "Z zamkniętymi oczami, z rozłożonymi szeroko rękami, zetknij ze sobą palce wskazujące.",
    "tries": "3 udane próby z 5",
    "sec": null
   },
   {
-   "id": 46,
-   "text": "Zamrugaj obydwoma oczami, a potem każdym z osobna.",
-   "sec": null
-  },
-  {
-   "id": 47,
+   "id": 44,
    "text": "Trzy razy odbij kostkę udem i złap ją w powietrzu.",
    "sec": 30
   },
   {
-   "id": 48,
+   "id": 45,
    "text": "Wyciągnij kartkę spod butelki tak, żeby butelka się nie przewróciła.",
    "tries": "3 próby",
    "sec": null
   },
   {
-   "id": 49,
+   "id": 46,
    "text": "Rozkręć na wyciągniętym palcu 3 wieszaki i utrzymaj je w ruchu przez minutę.",
    "tries": "3 próby",
    "sec": 60
   },
   {
-   "id": 50,
+   "id": 47,
    "text": "Napełnij miskę wodą. Przenoś wodę ustami do szklanki stojącej 2 metry dalej, aż szklanka będzie pełna.",
    "sec": null
   },
   {
-   "id": 51,
+   "id": 48,
    "text": "Połóż kartę na szczycie butelki i zrzuć ją rzutem kostki z odległości 2 metrów.",
    "tries": "2 udane próby z 5",
    "sec": null
   },
   {
-   "id": 52,
+   "id": 49,
    "text": "Wachluj gazetą tak, żeby przesunąć kartkę o 1,5 metra na wyznaczone miejsce.",
    "sec": 30
   },
   {
-   "id": 53,
+   "id": 50,
    "text": "Zapisz na telefonie w 15 sekund ciąg „Cba” powtórzony 10 razy, z odstępem między kolejnymi „Cba” (Cba Cba Cba…). C musi być wielką literą.",
    "sec": 15
-  },
-  {
-   "id": 54,
-   "text": "Zapisz na telefonie w 30 sekund ciąg „AbCd” powtórzony 10 razy, z odstępem między kolejnymi (AbCd AbCd…). A i C muszą być wielkimi literami.",
-   "sec": 30
   }
  ],
  "mental": [
@@ -819,6 +799,49 @@
     "Mars",
     "Jowisz"
    ]
+  },
+  {
+   "id": 147,
+   "q": "Czy zdołasz wymienić 5 gatunków drzew?",
+   "sec": 30,
+   "hints": [
+    "dąb",
+    "brzoza",
+    "sosna",
+    "buk",
+    "świerk",
+    "lipa",
+    "topola",
+    "klon",
+    "jodła",
+    "wierzba",
+    "jesion",
+    "olcha",
+    "grab"
+   ]
+  },
+  {
+   "id": 148,
+   "q": "Czy zdołasz wymienić 4 instrumenty muzyczne na 6 liter?",
+   "sec": 30,
+   "hints": [
+    "gitara",
+    "trąbka",
+    "organy",
+    "kornet"
+   ]
+  },
+  {
+   "id": 149,
+   "q": "Czy znajdziesz 5 słów zawierających „KRA”? (np. kraj, kratka)",
+   "sec": 30,
+   "hints": []
+  },
+  {
+   "id": 150,
+   "q": "Czy zdołasz ocenić na oko wysokość drzwi w pomieszczeniu (±10 cm)? Sędzia sprawdza miarką lub metrem.",
+   "sec": 15,
+   "hints": []
   }
  ],
  "acting": [
@@ -1084,6 +1107,1810 @@
    "second": [
     "opiekuje się małym dzieckiem",
     "pierwszy raz jedzie na nartach"
+   ]
+  },
+  {
+   "id": 225,
+   "first": [
+    "Treser lwów",
+    "Zmartwiony rolnik"
+   ],
+   "second": [
+    "nakłada makijaż",
+    "kroi cebulę i płacze"
+   ]
+  },
+  {
+   "id": 226,
+   "first": [
+    "Król Lew",
+    "Zebra"
+   ],
+   "second": [
+    "oświadcza się",
+    "skacze ze spadochronem"
+   ]
+  },
+  {
+   "id": 227,
+   "first": [
+    "Baletnica",
+    "Królewna Śnieżka"
+   ],
+   "second": [
+    "pcha ciężką szafę",
+    "wyławia monetę z fontanny"
+   ]
+  },
+  {
+   "id": 228,
+   "first": [
+    "Rozbawiony klaun",
+    "Stary pirat"
+   ],
+   "second": [
+    "macha na pożegnanie",
+    "wiesza obraz na ścianie"
+   ]
+  },
+  {
+   "id": 229,
+   "first": [
+    "Kot w butach",
+    "Leniwy kocur"
+   ],
+   "second": [
+    "je spaghetti",
+    "czeka w gabinecie lekarskim"
+   ]
+  },
+  {
+   "id": 230,
+   "first": [
+    "Rycerz-tchórz",
+    "Farmaceuta"
+   ],
+   "second": [
+    "wyciąga ciężki wóz z błota",
+    "zjeżdża ze zjeżdżalni"
+   ]
+  },
+  {
+   "id": 231,
+   "first": [
+    "Pracowity bóbr",
+    "Sztangista"
+   ],
+   "second": [
+    "rzuca oszczepem",
+    "pcha zepsuty samochód"
+   ]
+  },
+  {
+   "id": 232,
+   "first": [
+    "Stylista",
+    "Hipopotam"
+   ],
+   "second": [
+    "podpiera się o wiejący wiatr",
+    "żegna się na dworcu"
+   ]
+  },
+  {
+   "id": 233,
+   "first": [
+    "Flaming",
+    "Kominiarz"
+   ],
+   "second": [
+    "zbiera jagody",
+    "odlicza do startu rakiety"
+   ]
+  },
+  {
+   "id": 234,
+   "first": [
+    "Zapaśnik sumo",
+    "Murarz"
+   ],
+   "second": [
+    "prowadzi traktor",
+    "szuka telefonu po omacku"
+   ]
+  },
+  {
+   "id": 235,
+   "first": [
+    "Kierowca ciężarówki",
+    "Terapeuta"
+   ],
+   "second": [
+    "wiosłuje pod prąd",
+    "biegnie maraton"
+   ]
+  },
+  {
+   "id": 236,
+   "first": [
+    "Rzeźbiarz",
+    "Fotograf amator"
+   ],
+   "second": [
+    "steruje statkiem",
+    "podlewa kwiaty"
+   ]
+  },
+  {
+   "id": 237,
+   "first": [
+    "Kruk z serem",
+    "Pan z gazetą"
+   ],
+   "second": [
+    "rozmawia z lustrem",
+    "pasie owce"
+   ]
+  },
+  {
+   "id": 238,
+   "first": [
+    "Skoczek do wody",
+    "Baba Jaga"
+   ],
+   "second": [
+    "tańczy walca",
+    "wchodzi do zimnej wody"
+   ]
+  },
+  {
+   "id": 239,
+   "first": [
+    "Wesoły gondolier",
+    "Gwiazdor rocka"
+   ],
+   "second": [
+    "walczy na miecze",
+    "niesie za dużo toreb"
+   ]
+  },
+  {
+   "id": 240,
+   "first": [
+    "Skaut z kompasem",
+    "Trener piłkarski"
+   ],
+   "second": [
+    "usiłuje otworzyć zacięte drzwi",
+    "siedzi w korku"
+   ]
+  },
+  {
+   "id": 241,
+   "first": [
+    "Nowy pracownik",
+    "Pielęgniarka"
+   ],
+   "second": [
+    "usypia dziecko",
+    "rzuca śnieżkami"
+   ]
+  },
+  {
+   "id": 242,
+   "first": [
+    "Kasjerka w sklepie",
+    "Pani doktor"
+   ],
+   "second": [
+    "podnosi ciężką sztangę",
+    "zaprzęga konia"
+   ]
+  },
+  {
+   "id": 243,
+   "first": [
+    "Pinokio",
+    "DJ na imprezie"
+   ],
+   "second": [
+    "czyta na głos",
+    "przeprasza za spóźnienie"
+   ]
+  },
+  {
+   "id": 244,
+   "first": [
+    "Rzeźnik",
+    "Gruba kura"
+   ],
+   "second": [
+    "śpiewa kołysankę",
+    "zagląda przez dziurkę od klucza"
+   ]
+  },
+  {
+   "id": 245,
+   "first": [
+    "Znany naukowiec",
+    "Szachista"
+   ],
+   "second": [
+    "rozrzuca siano",
+    "spada z krzesła"
+   ]
+  },
+  {
+   "id": 246,
+   "first": [
+    "Znany piosenkarz",
+    "Dzielna strażaczka"
+   ],
+   "second": [
+    "naprawia rower",
+    "trzyma się poręczy w tramwaju"
+   ]
+  },
+  {
+   "id": 247,
+   "first": [
+    "Kleopatra",
+    "Król Artur"
+   ],
+   "second": [
+    "huśta się na lianie",
+    "miauczy pod drzwiami"
+   ]
+  },
+  {
+   "id": 248,
+   "first": [
+    "Łucznik",
+    "Reksio"
+   ],
+   "second": [
+    "gubi klucze od domu",
+    "prowadzi pod prąd"
+   ]
+  },
+  {
+   "id": 249,
+   "first": [
+    "Szermierz",
+    "Bohater wojenny"
+   ],
+   "second": [
+    "goni własny cień",
+    "próbuje wejść do tłocznej windy"
+   ]
+  },
+  {
+   "id": 250,
+   "first": [
+    "Gwardzista przed pałacem",
+    "Spadochroniarz"
+   ],
+   "second": [
+    "nerwowo chodzi po pokoju",
+    "udaje zombie"
+   ]
+  },
+  {
+   "id": 251,
+   "first": [
+    "Złodziej-amator",
+    "Zwinny akrobata"
+   ],
+   "second": [
+    "kopie dół łopatą",
+    "nurkuje po skarb"
+   ]
+  },
+  {
+   "id": 252,
+   "first": [
+    "Najmłodszy z krasnali",
+    "Pani od polskiego"
+   ],
+   "second": [
+    "biegnie po rozżarzonych węglach",
+    "wkręca żarówkę"
+   ]
+  },
+  {
+   "id": 253,
+   "first": [
+    "Robin Hood",
+    "Szekspir"
+   ],
+   "second": [
+    "ma czkawkę",
+    "suszy włosy suszarką"
+   ]
+  },
+  {
+   "id": 254,
+   "first": [
+    "Mama z wózkiem",
+    "Śpiąca Królewna"
+   ],
+   "second": [
+    "układa wysoką wieżę z książek",
+    "chodzi przez sen"
+   ]
+  },
+  {
+   "id": 255,
+   "first": [
+    "Wampir na diecie",
+    "Rozkojarzona nauczycielka"
+   ],
+   "second": [
+    "słucha muzyki w słuchawkach",
+    "bije się z wiatrakami"
+   ]
+  },
+  {
+   "id": 256,
+   "first": [
+    "Mały wróbel",
+    "Dozorca"
+   ],
+   "second": [
+    "śmieje się do rozpuku",
+    "obserwuje gwiazdy przez teleskop"
+   ]
+  },
+  {
+   "id": 257,
+   "first": [
+    "Szczęśliwy zwycięzca",
+    "Masażysta"
+   ],
+   "second": [
+    "wygłasza przemówienie",
+    "jedzie na rowerze pod górę"
+   ]
+  },
+  {
+   "id": 258,
+   "first": [
+    "Ogromny słoń",
+    "Pan z walizką"
+   ],
+   "second": [
+    "spaceruje z psem",
+    "zamawia pizzę przez telefon"
+   ]
+  },
+  {
+   "id": 259,
+   "first": [
+    "Zmęczony górnik",
+    "Roztargniony profesor"
+   ],
+   "second": [
+    "trenuje boks",
+    "strzepuje kurz z dywanu"
+   ]
+  },
+  {
+   "id": 260,
+   "first": [
+    "Jaś",
+    "Pani w turbanie"
+   ],
+   "second": [
+    "wspina się po drabinie",
+    "wiesza lampki na choince"
+   ]
+  },
+  {
+   "id": 261,
+   "first": [
+    "Stary zegarmistrz",
+    "Zdziwiony struś"
+   ],
+   "second": [
+    "miesza kawę",
+    "parkuje w ciasnym miejscu"
+   ]
+  },
+  {
+   "id": 262,
+   "first": [
+    "Wąż w trawie",
+    "Barman"
+   ],
+   "second": [
+    "rąbie drewno",
+    "kosi trawnik"
+   ]
+  },
+  {
+   "id": 263,
+   "first": [
+    "Wiedźma z bajki",
+    "Dumny ojciec"
+   ],
+   "second": [
+    "stoi w deszczu na przystanku",
+    "czesze długie włosy"
+   ]
+  },
+  {
+   "id": 264,
+   "first": [
+    "Dumny paw",
+    "Sprzedawca lodów"
+   ],
+   "second": [
+    "wchodzi na szczyt góry",
+    "uciska bolący ząb"
+   ]
+  },
+  {
+   "id": 265,
+   "first": [
+    "Rycerz w zbroi",
+    "Skoczny kangur"
+   ],
+   "second": [
+    "goni autobus",
+    "układa puzzle"
+   ]
+  },
+  {
+   "id": 266,
+   "first": [
+    "Wyścigowy kierowca",
+    "Stary młynarz"
+   ],
+   "second": [
+    "pozdrawia tłum z balkonu",
+    "schodzi do jaskini"
+   ]
+  },
+  {
+   "id": 267,
+   "first": [
+    "Świąteczny elf",
+    "Rybak z wędką"
+   ],
+   "second": [
+    "śpi na lekcji",
+    "robi pompki"
+   ]
+  },
+  {
+   "id": 268,
+   "first": [
+    "Mały smok",
+    "Rozbitek na bezludnej wyspie"
+   ],
+   "second": [
+    "przełącza kanały",
+    "pakuje walizkę"
+   ]
+  },
+  {
+   "id": 269,
+   "first": [
+    "Lis-szczwany",
+    "Zbuntowany nastolatek"
+   ],
+   "second": [
+    "tasuje karty",
+    "opowiada dowcip"
+   ]
+  },
+  {
+   "id": 270,
+   "first": [
+    "Bibliotekarka",
+    "Śpiewak uliczny"
+   ],
+   "second": [
+    "karmi kury",
+    "buduje wieżę z klocków"
+   ]
+  },
+  {
+   "id": 271,
+   "first": [
+    "Pani w szlafroku",
+    "Sherlock Holmes"
+   ],
+   "second": [
+    "opowiada straszną historię",
+    "strzela rzut karny"
+   ]
+  },
+  {
+   "id": 272,
+   "first": [
+    "Wielki mors",
+    "Rozmarzony poeta"
+   ],
+   "second": [
+    "wypatruje lądu",
+    "macha skrzydłami"
+   ]
+  },
+  {
+   "id": 273,
+   "first": [
+    "Biegacz",
+    "Dyrygent orkiestry"
+   ],
+   "second": [
+    "przeciska się przez ciasne przejście",
+    "udaje małpę"
+   ]
+  },
+  {
+   "id": 274,
+   "first": [
+    "Dozorca nocny",
+    "Wielki olbrzym"
+   ],
+   "second": [
+    "strzela z łuku",
+    "zbiera ziemniaki"
+   ]
+  },
+  {
+   "id": 275,
+   "first": [
+    "Dyrektor szkoły",
+    "Mała dziewczynka w kaloszach"
+   ],
+   "second": [
+    "zakrada się do cudzego ogrodu",
+    "prowadzi samochód we mgle"
+   ]
+  },
+  {
+   "id": 276,
+   "first": [
+    "Znudzony strażnik",
+    "Wiewiórka"
+   ],
+   "second": [
+    "robi sobie zdjęcie",
+    "szuka igły w stogu siana"
+   ]
+  },
+  {
+   "id": 277,
+   "first": [
+    "Bocian",
+    "Tajny agent"
+   ],
+   "second": [
+    "targuje się na bazarze",
+    "karmi niemowlę"
+   ]
+  },
+  {
+   "id": 278,
+   "first": [
+    "Koziołek Matołek",
+    "Policjant na rowerze"
+   ],
+   "second": [
+    "pełza jak wąż",
+    "zakrada się do lodówki"
+   ]
+  },
+  {
+   "id": 279,
+   "first": [
+    "Kucharz-amator",
+    "Święty Mikołaj"
+   ],
+   "second": [
+    "sprząta po psie",
+    "boi się pająka"
+   ]
+  },
+  {
+   "id": 280,
+   "first": [
+    "Zdolny garncarz",
+    "Dziecko na placu zabaw"
+   ],
+   "second": [
+    "pompuje dętkę",
+    "czyta prognozę pogody"
+   ]
+  },
+  {
+   "id": 281,
+   "first": [
+    "Jeż",
+    "Małpka"
+   ],
+   "second": [
+    "śpiewa pod prysznicem",
+    "płynie pod wodospadem"
+   ]
+  },
+  {
+   "id": 282,
+   "first": [
+    "Pływak z basenu",
+    "Przedszkolak"
+   ],
+   "second": [
+    "celuje z procy",
+    "nasłuchuje dziwnego dźwięku"
+   ]
+  },
+  {
+   "id": 283,
+   "first": [
+    "Księgowy",
+    "Kopciuszek"
+   ],
+   "second": [
+    "tańczy z miotłą",
+    "zbiera muszelki"
+   ]
+  },
+  {
+   "id": 284,
+   "first": [
+    "Orzeł",
+    "Wesoła pszczoła"
+   ],
+   "second": [
+    "rysuje portret",
+    "uczy się do egzaminu"
+   ]
+  },
+  {
+   "id": 285,
+   "first": [
+    "Pianista",
+    "Skrzypek"
+   ],
+   "second": [
+    "gra w klasy",
+    "wnosi pianino po schodach"
+   ]
+  },
+  {
+   "id": 286,
+   "first": [
+    "Nieufny recepcjonista",
+    "Strażnik zamku"
+   ],
+   "second": [
+    "wchodzi na drzewo po kota",
+    "czeka na zielone światło"
+   ]
+  },
+  {
+   "id": 287,
+   "first": [
+    "Gadatliwa papuga",
+    "Marynarz"
+   ],
+   "second": [
+    "zdmuchuje świeczki na torcie",
+    "ucieka przed lwem"
+   ]
+  },
+  {
+   "id": 288,
+   "first": [
+    "Wróżka",
+    "Dziecko z lizakiem"
+   ],
+   "second": [
+    "karmi kaczki",
+    "tankuje samochód"
+   ]
+  },
+  {
+   "id": 289,
+   "first": [
+    "Ochroniarz",
+    "Człowiek-orkiestra"
+   ],
+   "second": [
+    "gołębi się na dachu",
+    "młóci zboże"
+   ]
+  },
+  {
+   "id": 290,
+   "first": [
+    "Linoskoczek",
+    "Kamerdyner"
+   ],
+   "second": [
+    "jedzie metrem",
+    "gwiżdże na taksówkę"
+   ]
+  },
+  {
+   "id": 291,
+   "first": [
+    "Napoleon",
+    "Zapracowany listonosz"
+   ],
+   "second": [
+    "pływa kraulem",
+    "czeka na resztę"
+   ]
+  },
+  {
+   "id": 292,
+   "first": [
+    "Trębacz",
+    "Żółw w pośpiechu"
+   ],
+   "second": [
+    "balansuje na jednej nodze",
+    "wciąga żagiel"
+   ]
+  },
+  {
+   "id": 293,
+   "first": [
+    "Mądra sowa",
+    "Elektryk"
+   ],
+   "second": [
+    "ziewa na wykładzie",
+    "chowa się za drzewem"
+   ]
+  },
+  {
+   "id": 294,
+   "first": [
+    "Fryzjerka",
+    "Szef kuchni w restauracji"
+   ],
+   "second": [
+    "żongluje talerzami",
+    "łapie piłkę"
+   ]
+  },
+  {
+   "id": 295,
+   "first": [
+    "Kaczor Donald",
+    "Krzysztof Kolumb"
+   ],
+   "second": [
+    "wiosłuje na jeziorze",
+    "płaci rachunek w restauracji"
+   ]
+  },
+  {
+   "id": 296,
+   "first": [
+    "Pływaczka",
+    "Wnuczek"
+   ],
+   "second": [
+    "idzie po linie",
+    "myje zęby"
+   ]
+  },
+  {
+   "id": 297,
+   "first": [
+    "Mała mysz",
+    "Cichy leśniczy"
+   ],
+   "second": [
+    "rozpakowuje prezent",
+    "ugniata ciasto"
+   ]
+  },
+  {
+   "id": 298,
+   "first": [
+    "Stolarz",
+    "Maturzysta"
+   ],
+   "second": [
+    "zwija liny",
+    "zamiata podwórko"
+   ]
+  },
+  {
+   "id": 299,
+   "first": [
+    "Wieloryb",
+    "Gitarzysta"
+   ],
+   "second": [
+    "przenosi tacę z napojami",
+    "liczy owce"
+   ]
+  },
+  {
+   "id": 300,
+   "first": [
+    "Silny drwal",
+    "Reporter z mikrofonem"
+   ],
+   "second": [
+    "robi zastrzyk",
+    "chrapie głośno"
+   ]
+  },
+  {
+   "id": 301,
+   "first": [
+    "Hodowca gołębi",
+    "Surowy sędzia"
+   ],
+   "second": [
+    "czyta ogłoszenia",
+    "składa życzenia"
+   ]
+  },
+  {
+   "id": 302,
+   "first": [
+    "Astronauta na Księżycu",
+    "Wydawca"
+   ],
+   "second": [
+    "woła o pomoc",
+    "skrada się na palcach"
+   ]
+  },
+  {
+   "id": 303,
+   "first": [
+    "Student po sesji",
+    "Don Kichot"
+   ],
+   "second": [
+    "wygląda przez okno",
+    "czeka na spóźniony pociąg"
+   ]
+  },
+  {
+   "id": 304,
+   "first": [
+    "Śpiący borsuk",
+    "Gimnastyczka"
+   ],
+   "second": [
+    "zbiera grzyby",
+    "upiekł ciasto i je wyjmuje z piekarnika"
+   ]
+  },
+  {
+   "id": 305,
+   "first": [
+    "Spocony maratończyk",
+    "Szpieg"
+   ],
+   "second": [
+    "pcha niewidzialną ścianę",
+    "gra w szachy"
+   ]
+  },
+  {
+   "id": 306,
+   "first": [
+    "Fizjoterapeuta",
+    "Maszynista"
+   ],
+   "second": [
+    "sadzi drzewo",
+    "plewi grządki"
+   ]
+  },
+  {
+   "id": 307,
+   "first": [
+    "Wielki niedźwiedź",
+    "Sąsiad z góry"
+   ],
+   "second": [
+    "goli się przed lustrem",
+    "zgubił portfel"
+   ]
+  },
+  {
+   "id": 308,
+   "first": [
+    "Wędrowny grajek",
+    "Leonardo da Vinci"
+   ],
+   "second": [
+    "pływa jak ryba",
+    "targuje cenę"
+   ]
+  },
+  {
+   "id": 309,
+   "first": [
+    "Smutny klaun",
+    "Wilkołak"
+   ],
+   "second": [
+    "myje szybę",
+    "szuka pilota"
+   ]
+  },
+  {
+   "id": 310,
+   "first": [
+    "Gwiazda filmowa",
+    "Dumny sokolnik"
+   ],
+   "second": [
+    "sadzi kwiaty",
+    "ściąga na sprawdzianie"
+   ]
+  },
+  {
+   "id": 311,
+   "first": [
+    "Zagubiony turysta",
+    "Grabarz"
+   ],
+   "second": [
+    "przewraca się na bananie",
+    "robi zakupy z długą listą"
+   ]
+  },
+  {
+   "id": 312,
+   "first": [
+    "Płochliwa sarna",
+    "Pelikan"
+   ],
+   "second": [
+    "czyta książkę przy świecy",
+    "udaje, że jest bogaty"
+   ]
+  },
+  {
+   "id": 313,
+   "first": [
+    "Panda",
+    "Stary rybak"
+   ],
+   "second": [
+    "pilnuje domu",
+    "bawi się w chowanego"
+   ]
+  },
+  {
+   "id": 314,
+   "first": [
+    "Shrek",
+    "Pracowity kowal"
+   ],
+   "second": [
+    "gra na pianinie",
+    "szuka drogi w ciemnym korytarzu"
+   ]
+  },
+  {
+   "id": 315,
+   "first": [
+    "Pippi Pończoszanka",
+    "Księżniczka w wieży"
+   ],
+   "second": [
+    "zmywa stos naczyń",
+    "szuka mapy skarbów"
+   ]
+  },
+  {
+   "id": 316,
+   "first": [
+    "Czarodziej-nieudacznik",
+    "Rekin"
+   ],
+   "second": [
+    "goni komara",
+    "woła „człowiek za burtą!”"
+   ]
+  },
+  {
+   "id": 317,
+   "first": [
+    "Malarz",
+    "Woźny"
+   ],
+   "second": [
+    "rozmawia z teściową przez telefon",
+    "dyryguje chórem"
+   ]
+  },
+  {
+   "id": 318,
+   "first": [
+    "Konduktor w pociągu",
+    "Sprzedawca na targu"
+   ],
+   "second": [
+    "przechodzi przez ulicę",
+    "odbiera nagrodę"
+   ]
+  },
+  {
+   "id": 319,
+   "first": [
+    "Nieśmiały duch",
+    "Tancerz flamenco"
+   ],
+   "second": [
+    "płaci w sklepie samymi drobnymi",
+    "podpisuje autografy"
+   ]
+  },
+  {
+   "id": 320,
+   "first": [
+    "Czujna surykatka",
+    "Pewna siebie gwiazda"
+   ],
+   "second": [
+    "godzi się z przyjacielem",
+    "drzemie w pociągu"
+   ]
+  },
+  {
+   "id": 321,
+   "first": [
+    "Skąpy sknera",
+    "Pani z parasolem"
+   ],
+   "second": [
+    "recytuje wiersz",
+    "czeka na wiadomość"
+   ]
+  },
+  {
+   "id": 322,
+   "first": [
+    "Zakochany kucharz",
+    "Pan od WF-u"
+   ],
+   "second": [
+    "zapina zepsuty zamek",
+    "taszczy plecak pod górę"
+   ]
+  },
+  {
+   "id": 323,
+   "first": [
+    "Zaspany pilot",
+    "Żołnierz na warcie"
+   ],
+   "second": [
+    "mierzy ciśnienie",
+    "prowadzi orkiestrę"
+   ]
+  },
+  {
+   "id": 324,
+   "first": [
+    "Cierpliwy szewc",
+    "Małgosia"
+   ],
+   "second": [
+    "zbiera plony",
+    "udaje, że śpi"
+   ]
+  },
+  {
+   "id": 325,
+   "first": [
+    "Zorro",
+    "Narciarz"
+   ],
+   "second": [
+    "zawiązuje sznurowadła",
+    "przybija gwoździe"
+   ]
+  },
+  {
+   "id": 326,
+   "first": [
+    "Osiołek",
+    "Mumia"
+   ],
+   "second": [
+    "pisze na tablicy",
+    "maluje płot"
+   ]
+  },
+  {
+   "id": 327,
+   "first": [
+    "Szop pracz",
+    "Śpiący wilk"
+   ],
+   "second": [
+    "przewija lalkę",
+    "odpowiada przy tablicy"
+   ]
+  },
+  {
+   "id": 328,
+   "first": [
+    "Indiana Jones",
+    "Syrena"
+   ],
+   "second": [
+    "prowadzi dziecko za rękę",
+    "szuka wyjścia z labiryntu"
+   ]
+  },
+  {
+   "id": 329,
+   "first": [
+    "Dziadek do orzechów",
+    "Jednonogi pirat"
+   ],
+   "second": [
+    "zbiera liście grabiami",
+    "chodzi po cienkim lodzie"
+   ]
+  },
+  {
+   "id": 330,
+   "first": [
+    "Miś koala",
+    "Projektant mody"
+   ],
+   "second": [
+    "zmienia koło w samochodzie",
+    "stoi na pasach"
+   ]
+  },
+  {
+   "id": 331,
+   "first": [
+    "Pani sekretarka",
+    "Pocieszny pingwinek"
+   ],
+   "second": [
+    "żegluje podczas sztormu",
+    "szuka okularów, które ma na nosie"
+   ]
+  },
+  {
+   "id": 332,
+   "first": [
+    "Kolarz",
+    "Chopin"
+   ],
+   "second": [
+    "podsłuchuje pod drzwiami",
+    "zgubił bilet"
+   ]
+  },
+  {
+   "id": 333,
+   "first": [
+    "Zjazdowiec",
+    "Znużony strażak"
+   ],
+   "second": [
+    "poci się ze strachu",
+    "szlocha jak bóbr"
+   ]
+  },
+  {
+   "id": 334,
+   "first": [
+    "Samotny kowboj",
+    "Przestraszony zając"
+   ],
+   "second": [
+    "skacze o tyczce",
+    "blefuje przy pokerze"
+   ]
+  },
+  {
+   "id": 335,
+   "first": [
+    "Tenisista",
+    "Mała biedronka"
+   ],
+   "second": [
+    "gasi pożar wiadrem wody",
+    "ścigana przez policję"
+   ]
+  },
+  {
+   "id": 336,
+   "first": [
+    "Uparta lama",
+    "Rowerzysta"
+   ],
+   "second": [
+    "układa domino",
+    "przycina krzaki"
+   ]
+  },
+  {
+   "id": 337,
+   "first": [
+    "Kameleon",
+    "Mistrz karate"
+   ],
+   "second": [
+    "jedzie pod prąd rzeki",
+    "gra w tenisa"
+   ]
+  },
+  {
+   "id": 338,
+   "first": [
+    "Uprzejma stewardesa",
+    "Pilot helikoptera"
+   ],
+   "second": [
+    "brnie przez głęboki śnieg",
+    "udaje robota"
+   ]
+  },
+  {
+   "id": 339,
+   "first": [
+    "Młody mnich",
+    "Pierwszoklasista"
+   ],
+   "second": [
+    "udaje posąg",
+    "doi krowę"
+   ]
+  },
+  {
+   "id": 340,
+   "first": [
+    "Smerfetka",
+    "Zagłodzony lis"
+   ],
+   "second": [
+    "prowadzi wywiad",
+    "woła echo w górach"
+   ]
+  },
+  {
+   "id": 341,
+   "first": [
+    "Pani z bukietem",
+    "Położna"
+   ],
+   "second": [
+    "kłóci się z sąsiadem",
+    "przecina wstęgę"
+   ]
+  },
+  {
+   "id": 342,
+   "first": [
+    "Mały Książę",
+    "Szatniarz"
+   ],
+   "second": [
+    "jedzie na rowerze po bruku",
+    "ćwiczy jogę"
+   ]
+  },
+  {
+   "id": 343,
+   "first": [
+    "Operowa diwa",
+    "Ogrodniczka"
+   ],
+   "second": [
+    "dmucha w gorącą zupę",
+    "zaprasza do tańca"
+   ]
+  },
+  {
+   "id": 344,
+   "first": [
+    "Weterynarz",
+    "Kret"
+   ],
+   "second": [
+    "przymierza buty",
+    "przedziera się przez gęsty las"
+   ]
+  },
+  {
+   "id": 345,
+   "first": [
+    "Modelka na wybiegu",
+    "Robot w kuchni"
+   ],
+   "second": [
+    "zbiera rozsypane groszki",
+    "rzuca bumerangiem"
+   ]
+  },
+  {
+   "id": 346,
+   "first": [
+    "Pani z psem",
+    "Raper"
+   ],
+   "second": [
+    "wita gości w drzwiach",
+    "przegrywa w karty"
+   ]
+  },
+  {
+   "id": 347,
+   "first": [
+    "Pan Twardowski",
+    "Lekarz na dyżurze"
+   ],
+   "second": [
+    "ratuje tonącego",
+    "spóźnia się na lekcję"
+   ]
+  },
+  {
+   "id": 348,
+   "first": [
+    "Babcia z laską",
+    "Zdenerwowany pan młody"
+   ],
+   "second": [
+    "niesie jajka w koszyku",
+    "udaje, że nie widzi"
+   ]
+  },
+  {
+   "id": 349,
+   "first": [
+    "Zakurzony archeolog",
+    "Pasterz owiec"
+   ],
+   "second": [
+    "odgania muchę",
+    "rozbija namiot w deszczu"
+   ]
+  },
+  {
+   "id": 350,
+   "first": [
+    "Gnom ogrodowy",
+    "Gniewny troll"
+   ],
+   "second": [
+    "siekierą rozbija lód",
+    "spaceruje po lodzie"
+   ]
+  },
+  {
+   "id": 351,
+   "first": [
+    "Leniwy krokodyl",
+    "Harcerz"
+   ],
+   "second": [
+    "liczy pieniądze",
+    "ogląda mecz w telewizji"
+   ]
+  },
+  {
+   "id": 352,
+   "first": [
+    "Zmęczony kelner",
+    "Słynny detektyw"
+   ],
+   "second": [
+    "zjeżdża na sankach",
+    "szoruje pokład"
+   ]
+  },
+  {
+   "id": 353,
+   "first": [
+    "Szalony wynalazca",
+    "Zakręcona ciocia"
+   ],
+   "second": [
+    "składa pranie",
+    "chodzi jak kaczka"
+   ]
+  },
+  {
+   "id": 354,
+   "first": [
+    "Samotny łoś",
+    "Fryzjer gwiazd"
+   ],
+   "second": [
+    "wyciąga królika z kapelusza",
+    "gra na perkusji"
+   ]
+  },
+  {
+   "id": 355,
+   "first": [
+    "Poczciwy dziadek",
+    "Wojownik ninja"
+   ],
+   "second": [
+    "gotuje zupę i ciągle ją próbuje",
+    "udaje, że pływa"
+   ]
+  },
+  {
+   "id": 356,
+   "first": [
+    "Głodny nurek",
+    "Diabeł"
+   ],
+   "second": [
+    "trzęsie się z zimna",
+    "pisze dyktando"
+   ]
+  },
+  {
+   "id": 357,
+   "first": [
+    "Anioł",
+    "Mikołaj Kopernik"
+   ],
+   "second": [
+    "pisze na maszynie",
+    "niesie pełną filiżankę po schodach"
+   ]
+  },
+  {
+   "id": 358,
+   "first": [
+    "Zgubiony pies",
+    "Krawiec"
+   ],
+   "second": [
+    "przedziera się przez tłum",
+    "pije gorącą herbatę"
+   ]
+  },
+  {
+   "id": 359,
+   "first": [
+    "Bibliofil",
+    "Piotruś Pan"
+   ],
+   "second": [
+    "trzyma się za brzuch ze śmiechu",
+    "odkrywa starożytną mumię"
+   ]
+  },
+  {
+   "id": 360,
+   "first": [
+    "Sędzia na meczu",
+    "Mrówka-robotnica"
+   ],
+   "second": [
+    "odśnieża chodnik",
+    "rozpala ognisko"
+   ]
+  },
+  {
+   "id": 361,
+   "first": [
+    "Kot Behemot",
+    "Golfista"
+   ],
+   "second": [
+    "wsiada na motor",
+    "smakuje cytrynę"
+   ]
+  },
+  {
+   "id": 362,
+   "first": [
+    "Pani z lodami",
+    "Bokser"
+   ],
+   "second": [
+    "skacze na skakance",
+    "żongluje trzema piłkami"
+   ]
+  },
+  {
+   "id": 363,
+   "first": [
+    "Odważny kaskader",
+    "Wiejski sołtys"
+   ],
+   "second": [
+    "łapie uciekającą rybę",
+    "wygrywa w totka"
+   ]
+  },
+  {
+   "id": 364,
+   "first": [
+    "Hydraulik",
+    "Żongler"
+   ],
+   "second": [
+    "wiąże krawat",
+    "pozuje do zdjęcia"
+   ]
+  },
+  {
+   "id": 365,
+   "first": [
+    "Okulista",
+    "Mały krasnoludek"
+   ],
+   "second": [
+    "szczeka na listonosza",
+    "szuka drugiej skarpetki"
+   ]
+  },
+  {
+   "id": 366,
+   "first": [
+    "Początkujący kierowca",
+    "Grający na skrzypcach"
+   ],
+   "second": [
+    "chowa pieniądze pod materac",
+    "gra na trąbce"
+   ]
+  },
+  {
+   "id": 367,
+   "first": [
+    "Kapitan statku",
+    "Rozespany niedźwiadek"
+   ],
+   "second": [
+    "liczy kasę",
+    "je arbuza"
+   ]
+  },
+  {
+   "id": 368,
+   "first": [
+    "Mecenas w todze",
+    "Pan w garniturze"
+   ],
+   "second": [
+    "odmierza sznurkiem odległość",
+    "śpi na leżaku"
+   ]
+  },
+  {
+   "id": 369,
+   "first": [
+    "Smok z bajki",
+    "Mim w parku"
+   ],
+   "second": [
+    "rumieni się",
+    "kicha bez końca"
+   ]
+  },
+  {
+   "id": 370,
+   "first": [
+    "Kłapouchy",
+    "Piekarz"
+   ],
+   "second": [
+    "tańczy breakdance",
+    "huśta się na huśtawce"
+   ]
+  },
+  {
+   "id": 371,
+   "first": [
+    "Mistrz szachowy",
+    "Juliusz Cezar"
+   ],
+   "second": [
+    "rzeźbi w glinie",
+    "opatruje ranę"
+   ]
+  },
+  {
+   "id": 372,
+   "first": [
+    "Yeti",
+    "Kubuś Puchatek"
+   ],
+   "second": [
+    "głaszcze puszystego kotka",
+    "pisze list miłosny"
+   ]
+  },
+  {
+   "id": 373,
+   "first": [
+    "Skłodowska-Curie",
+    "Ratownik na plaży"
+   ],
+   "second": [
+    "gratuluje zwycięzcy",
+    "łowi ryby z pomostu"
+   ]
+  },
+  {
+   "id": 374,
+   "first": [
+    "Gospodyni domowa",
+    "Majestatyczny lew"
+   ],
+   "second": [
+    "bada pacjenta",
+    "zarzuca kotwicę"
+   ]
+  },
+  {
+   "id": 375,
+   "first": [
+    "Bramkarz",
+    "Taksówkarz"
+   ],
+   "second": [
+    "skacze przez kałuże",
+    "buduje zamek z piasku"
+   ]
+  },
+  {
+   "id": 376,
+   "first": [
+    "Kosmita",
+    "Pilny uczeń"
+   ],
+   "second": [
+    "dźwiga walizki",
+    "idzie pod wiatr"
+   ]
+  },
+  {
+   "id": 377,
+   "first": [
+    "Pani w kapeluszu",
+    "Dyrektor firmy"
+   ],
+   "second": [
+    "piecze chleb",
+    "leczy złamaną rękę"
+   ]
+  },
+  {
+   "id": 378,
+   "first": [
+    "Szewczyk Dratewka",
+    "Prezenter pogody"
+   ],
+   "second": [
+    "odkurza dywan",
+    "szuka skarbu"
+   ]
+  },
+  {
+   "id": 379,
+   "first": [
+    "Zawodnik rugby",
+    "Motocyklista w skórze"
+   ],
+   "second": [
+    "sprawdza paragon",
+    "jeździ na nartach"
+   ]
+  },
+  {
+   "id": 380,
+   "first": [
+    "Rozgniewany kogut",
+    "Aktor teatralny"
+   ],
+   "second": [
+    "chowa się przed deszczem",
+    "prezentuje nową kolekcję"
+   ]
+  },
+  {
+   "id": 381,
+   "first": [
+    "Łowca skarbów",
+    "Kosmetyczka"
+   ],
+   "second": [
+    "skacze jak żaba",
+    "tańczy tango"
+   ]
+  },
+  {
+   "id": 382,
+   "first": [
+    "Alpinista",
+    "Lekarz weterynarii"
+   ],
+   "second": [
+    "je ostrą papryczkę",
+    "pływa żabką"
+   ]
+  },
+  {
+   "id": 383,
+   "first": [
+    "Alicja z Krainy Czarów",
+    "Chórzysta"
+   ],
+   "second": [
+    "pcha wózek",
+    "szuka drogi z mapą"
+   ]
+  },
+  {
+   "id": 384,
+   "first": [
+    "Pracownik biura",
+    "Czerwony Kapturek"
+   ],
+   "second": [
+    "prasuje koszulę",
+    "rzuca kostką do gry"
+   ]
+  },
+  {
+   "id": 385,
+   "first": [
+    "Programista",
+    "Pełen energii szczeniak"
+   ],
+   "second": [
+    "wygląda z bocianiego gniazda",
+    "lepi bałwana"
+   ]
+  },
+  {
+   "id": 386,
+   "first": [
+    "Perkusista",
+    "Oficer na mostku"
+   ],
+   "second": [
+    "łapie motyla",
+    "odpoczywa po pracy"
+   ]
+  },
+  {
+   "id": 387,
+   "first": [
+    "Wesoła staruszka",
+    "Mały chłopiec z balonem"
+   ],
+   "second": [
+    "pije mleko ze szklanki",
+    "udaje pingwina"
+   ]
+  },
+  {
+   "id": 388,
+   "first": [
+    "Gołąb na dachu",
+    "Tajemniczy iluzjonista"
+   ],
+   "second": [
+    "walczy z niewidzialnym smokiem",
+    "puszcza latawiec"
    ]
   }
  ]
