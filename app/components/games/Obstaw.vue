@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { PlayerView } from '~/composables/useHub'
 import ObstawMap from '~/components/board/ObstawMap.vue'
+import Money from '~/components/Money.vue'
 
 // Obstaw! on a phone. Every rule is enforced on the server; disabled buttons are hints.
 const props = defineProps<{ state: PlayerView; meId: number | null }>()
@@ -59,14 +60,13 @@ watch(
       <span v-if="state.phase === 'playing'" class="count" :class="{ hot: remaining <= 5 }">{{ remaining }}</span>
     </header>
 
+    <div v-if="state.money != null" class="card cash"><Money :amount="state.money" small /></div>
     <div class="card kind">
       <b>{{ state.kindLabel }}</b>
       <span v-if="state.combo"> · hasło {{ state.combo }}</span>
       <span v-if="state.taskLabel && state.kind === 'blind'"> · wybrano: {{ state.taskLabel }}</span>
       <p class="hint">Gra: <b>{{ state.performer }}</b><template v-if="state.partner"> · partner: <b>{{ state.partner }}</b></template><template v-if="state.opponent"> · rywal: <b>{{ state.opponent }}</b></template></p>
     </div>
-
-    <div v-if="state.phase === 'playing'" class="card map"><ObstawMap :board="state.board" compact /></div>
 
     <!-- ===== roll ===== -->
     <template v-if="state.phase === 'playing' && stage === 'roll'">
@@ -108,13 +108,13 @@ watch(
     <!-- ===== bet ===== -->
     <template v-else-if="state.phase === 'playing' && stage === 'bet'">
       <div v-if="state.content" class="card task"><p class="task-text">{{ state.content.text }}</p>
-        <p v-if="state.content.need > 1" class="hint">Wymagane odpowiedzi: {{ state.content.need }} · czas: {{ state.content.sec }} s</p>
-        <p v-else-if="state.content.sec" class="hint">Czas: {{ state.content.sec }} s</p>
+        <p v-if="state.content.tries" class="hint">{{ state.content.tries }}</p>
+        <p class="hint">{{ state.content.sec ? `⏳ klepsydra ${state.content.sec} s` : 'bez klepsydry' }}</p>
       </div>
       <div v-else-if="state.canBet" class="card task"><p class="task-text">🙈 Treść zadania zostanie ujawniona po zakładach</p></div>
 
       <div v-if="state.canBet" class="card stack">
-        <h3>Czy {{ state.performer }} da radę?<template v-if="role === 'judge'"> <small>(jesteś też sędzią)</small></template></h3>
+        <h3>Czy {{ state.performer }} da radę?<template v-if="role === 'judge'">&nbsp;<small>(jesteś też sędzią)</small></template></h3>
         <div class="two">
           <button class="btn choice" :class="{ sel: yes === true }" @click="yes = true">✅ TAK</button>
           <button class="btn choice" :class="{ sel: yes === false }" @click="yes = false">❌ NIE</button>
@@ -143,7 +143,7 @@ watch(
     <template v-else-if="state.phase === 'playing'">
       <div v-if="state.content" class="card task">
         <p class="task-text">{{ state.content.text }}</p>
-        <p v-if="state.content.need > 1" class="hint">Potrzeba odpowiedzi: {{ state.content.need }}</p>
+        <p v-if="state.content.tries" class="hint">{{ state.content.tries }}</p>
       </div>
       <div v-if="state.hints && role === 'judge'" class="card task"><p class="hint">Przykładowe poprawne odpowiedzi (tylko dla Ciebie):</p><p class="task-text small">{{ state.hints.join(' · ') }}</p></div>
       <div v-else-if="role === 'partner'" class="card center"><p class="big">🗣️ Odgaduj na głos!</p><p class="hint">Hasło zostanie uznane, gdy powiesz całe wyrażenie.</p></div>
@@ -215,6 +215,7 @@ watch(
       </div>
       <button v-if="!state.autoAdvance" class="btn btn-primary gate" :disabled="state.paused" @click="emit('continue')">▶ Dalej</button>
     </template>
+    <div v-if="state.phase === 'playing'" class="card map"><ObstawMap :board="state.board" compact /></div>
   </section>
 </template>
 
@@ -229,6 +230,7 @@ watch(
 .kind, .task { padding: 12px 14px; }
 .kind p { margin: 4px 0 0; }
 .map { padding: 6px; }
+.cash { padding: 8px 10px; }
 .task-text.small { font-size: 1rem; }
 .task-text { margin: 0; font-size: clamp(1.1rem, 5vw, 1.4rem); font-weight: 700; line-height: 1.3; }
 .stack { display: flex; flex-direction: column; gap: 10px; padding: 14px; }

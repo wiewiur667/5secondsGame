@@ -16,6 +16,7 @@ const begin = (n = 5, settings: Record<string, any> = {}, questionCount = 0) =>
 function fresh(type: string, n = 5, settings: Record<string, any> = {}): any {
   for (let g = 0; g < 1000; g++) {
     const s = begin(n, settings)
+    s.pos[s.turn.performer] = Math.floor(Math.random() * s.board.length) // the classic board starts everyone on START
     for (let i = 0; i < 6 && s.turn.stage === 'roll'; i++) obstaw.submit!(s, s.turn.performer, { kind: 'roll' }, 0)
     if (s.turn.kind === type && s.turn.stage !== 'roll' && s.turn.stage !== 'revealed') return s
   }
@@ -23,17 +24,20 @@ function fresh(type: string, n = 5, settings: Record<string, any> = {}): any {
 }
 
 test('obstaw: content is well formed', () => {
-  for (const c of cfg.mental) assert.ok(c.valid.length >= c.need && [15, 30, 60].includes(c.sec))
-  for (const c of cfg.skill) assert.ok(c.text.length > 10 && [15, 30, 60].includes(c.sec))
+  for (const c of cfg.mental) assert.ok(c.q.length > 10 && Array.isArray(c.hints) && [15, 30, 60, null].includes(c.sec))
+  for (const c of cfg.skill) assert.ok(c.text.length > 10 && [15, 30, 60, null].includes(c.sec))
   for (const c of cfg.acting) assert.ok(c.first.length === 2 && c.second.length === 2)
   const all = [...cfg.skill, ...cfg.mental, ...cfg.acting].map((c: any) => c.id)
   assert.strictEqual(new Set(all).size, all.length, 'ids are unique')
 })
 
-test('obstaw: the board grows with the number of players', () => {
-  const sizes = [3, 4, 6, 8, 10].map((n) => makeBoard(n).length)
-  assert.deepStrictEqual(sizes, [3, 4, 6, 8, 10].map(boardSize))
+test('obstaw: the board grows with the number of players; 5–6 players get the classic 32-field layout', () => {
+  const sizes = [3, 5, 7, 9].map((n) => makeBoard(n).length)
+  assert.deepStrictEqual(sizes, [24, 32, 40, 48])
   assert.ok(sizes.every((v, i) => i === 0 || v > sizes[i - 1]))
+  const classic = makeBoard(6)
+  const count = (t: string) => classic.filter((c) => c.t === t).length
+  assert.deepStrictEqual([count('start'), count('acting'), count('skill'), count('mental'), count('dice'), count('blind'), count('arrow')], [1, 11, 5, 5, 4, 3, 3])
   for (let n = 3; n <= 10; n++) {
     const b = makeBoard(n)
     assert.strictEqual(b[0].t, 'start')
@@ -231,13 +235,16 @@ test('obstaw: dice duel needs strictly more; a tie loses', () => {
     const tk = s.turn
     const opp = s.players.find((p: number) => p !== tk.performer)
     const m = { ...s.money }
-    obstaw.submit!(s, tk.performer, { kind: 'pick', opponent: opp, stake: 50 }, 1) // above half → ignored
+    obstaw.submit!(s, tk.performer, { kind: 'pick', opponent: opp, stake: maxBet(s.money[tk.performer]) + 10 }, 1) // above half → ignored
     assert.strictEqual(tk.stage, 'choose')
     const seq = [...roll]
     const orig = Math.random
     Math.random = () => (seq.shift()! - 1) / 6 + 0.01
+    s.money[tk.performer] = 80
+    const m2 = { ...s.money }
     obstaw.submit!(s, tk.performer, { kind: 'pick', opponent: opp, stake: 30 }, 1)
     Math.random = orig
+    Object.assign(m, m2)
     assert.strictEqual(tk.success, win)
     assert.strictEqual(s.money[tk.performer], m[tk.performer] + (win ? 30 : -30))
     assert.strictEqual(s.money[opp], m[opp] + (win ? 0 : 30), 'loser pays the opponent, not the bank')

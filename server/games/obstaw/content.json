@@ -1,87 +1,1090 @@
 {
-  "skill": [
-    { "id": 1, "sec": 30, "text": "Ułóż z 5 monet wieżę, która ustoi co najmniej 3 sekundy." },
-    { "id": 2, "sec": 15, "text": "Stań na jednej nodze z zamkniętymi oczami i wytrzymaj 10 sekund." },
-    { "id": 3, "sec": 30, "text": "Powiedz bez pomyłki 3 razy pod rząd: „Stół z powyłamywanymi nogami”." },
-    { "id": 4, "sec": 30, "text": "Wbij monetę do pustej szklanki rzutem z odległości 1 metra (1 próba na rzut, do skutku)." },
-    { "id": 5, "sec": 15, "text": "Zrób 15 przysiadów, licząc na głos." },
-    { "id": 6, "sec": 30, "text": "Narysuj kółko jedną ręką, a drugą jednocześnie kwadrat — na dwóch osobnych kartkach." },
-    { "id": 7, "sec": 15, "text": "Wypij pełną szklankę wody bez odrywania ust i bez używania rąk do przytrzymywania szklanki." },
-    { "id": 8, "sec": 30, "text": "Wyrecytuj alfabet od tyłu, zaczynając od Ż, bez dłuższej przerwy niż 2 sekundy." },
-    { "id": 9, "sec": 15, "text": "Utrzymaj długopis na czubku palca wskazującego przez 5 sekund." },
-    { "id": 10, "sec": 30, "text": "Zrób 10 pompek (mogą być na kolanach)." },
-    { "id": 11, "sec": 30, "text": "Zawiąż sobie jedną ręką (drugą trzymaj za plecami) sznurowadło lub wstążkę w kokardę." },
-    { "id": 12, "sec": 15, "text": "Przejdź 6 kroków po prostej linii „pięta do palców”, patrząc cały czas w sufit." },
-    { "id": 13, "sec": 30, "text": "Przetasuj talię kart i rozdaj 4 karty dla 4 osób — żadna karta nie może spaść na podłogę." },
-    { "id": 14, "sec": 15, "text": "Powiedz 10 różnych owoców w 10 sekund, bez powtórzeń." },
-    { "id": 15, "sec": 30, "text": "Złóż kartkę papieru tak, by powstał samolot, który przeleci co najmniej 2 metry." },
-    { "id": 16, "sec": 30, "text": "Nie śmiej się ani nie uśmiechaj, gdy wszyscy pozostali przez 15 sekund robią do ciebie głupie miny." },
-    { "id": 17, "sec": 15, "text": "Klaskaj w rytm, gdy jedna ręka robi 'góra-dół', a druga 'lewo-prawo', przez 10 sekund." },
-    { "id": 18, "sec": 30, "text": "Zrób stos z 6 plastikowych kubków lub szklanek (piramida 3-2-1) bez zrzucenia żadnej." },
-    { "id": 19, "sec": 15, "text": "Policz na głos od 100 do 70 co 3 (100, 97, 94…) bez pomyłki." },
-    { "id": 20, "sec": 30, "text": "Zjedz suchy herbatnik (lub krakersa) i gwizdnij melodię — w ciągu 30 sekund." },
-    { "id": 21, "sec": 15, "text": "Przeskocz obunóż 10 razy na jednym miejscu, mówiąc cały czas swoje imię od tyłu." },
-    { "id": 22, "sec": 30, "text": "Przeczytaj na głos wybrany przez pozostałych akapit z telefonu bez jednego potknięcia." },
-    { "id": 23, "sec": 30, "text": "Zrób „żabkę”: przejdź w przysiadzie 5 kroków i wstań bez podpierania się rękami." },
-    { "id": 24, "sec": 15, "text": "Zamknij oczy i dotknij palcem wskazującym czubka własnego nosa 5 razy pod rząd (na zmianę prawą i lewą ręką)." },
-    { "id": 25, "sec": 30, "text": "Zbuduj z kart lub pudełka wieżę z 3 pięter, która ustoi 3 sekundy." },
-    { "id": 26, "sec": 15, "text": "Wymień 8 miast w Polsce w 15 sekund." },
-    { "id": 27, "sec": 30, "text": "Przerzuć monetę z wierzchu dłoni do chwytu (podrzuć i złap) 5 razy pod rząd bez upuszczenia." },
-    { "id": 28, "sec": 30, "text": "Powiedz zdanie „W Szczebrzeszynie chrząszcz brzmi w trzcinie” 3 razy pod rząd bez pomyłki." },
-    { "id": 29, "sec": 15, "text": "Wytrzymaj w pozycji deski (plank) 15 sekund." },
-    { "id": 30, "sec": 30, "text": "Na oczach wszystkich napisz swoje imię i nazwisko lewą (lub niedominującą) ręką — czytelnie, bez odrywania długopisu." }
-  ],
-  "mental": [
-    { "id": 101, "sec": 30, "need": 4, "q": "Wymień 4 polskie rzeki.", "valid": ["Wisła", "Odra", "Warta", "Narew", "Bug", "San", "Pilica", "Noteć", "Wieprz", "Bóbr", "Dunajec", "Wkra", "Biebrza", "Prosna", "Brda", "Drwęca", "Wda", "Gwda", "Wisłoka", "Rega", "Parsęta", "Słupia", "Łyna", "Bzura", "Nysa Łużycka", "Nysa Kłodzka", "Mała Panew", "Kwisa", "Czarna Hańcza", "Supraśl"] },
-    { "id": 102, "sec": 15, "need": 4, "q": "Wymień 4 kolory tęczy.", "valid": ["czerwony", "pomarańczowy", "żółty", "zielony", "niebieski", "granatowy", "fioletowy"] },
-    { "id": 103, "sec": 30, "need": 5, "q": "Wymień 5 państw graniczących z Polską.", "valid": ["Niemcy", "Czechy", "Słowacja", "Ukraina", "Białoruś", "Litwa", "Rosja"] },
-    { "id": 104, "sec": 15, "need": 4, "q": "Wymień 4 planety Układu Słonecznego.", "valid": ["Merkury", "Wenus", "Ziemia", "Mars", "Jowisz", "Saturn", "Uran", "Neptun"] },
-    { "id": 105, "sec": 30, "need": 3, "q": "Wymień 3 polskie pasma górskie lub szczyty.", "valid": ["Tatry", "Beskidy", "Sudety", "Bieszczady", "Gorce", "Pieniny", "Karkonosze", "Karpaty", "Góry Świętokrzyskie", "Góry Stołowe", "Beskid Niski", "Beskid Śląski", "Beskid Żywiecki", "Beskid Sądecki", "Beskid Mały", "Góry Izerskie", "Góry Sowie", "Rysy", "Giewont", "Śnieżka", "Babia Góra", "Kasprowy Wierch", "Turbacz", "Łysica", "Śnieżnik", "Szczeliniec"] },
-    { "id": 106, "sec": 30, "need": 5, "q": "Wymień 5 miast będących stolicami województw.", "valid": ["Warszawa", "Kraków", "Łódź", "Wrocław", "Poznań", "Gdańsk", "Szczecin", "Bydgoszcz", "Toruń", "Lublin", "Białystok", "Katowice", "Kielce", "Rzeszów", "Olsztyn", "Opole", "Zielona Góra", "Gorzów Wielkopolski"] },
-    { "id": 107, "sec": 30, "need": 3, "q": "Wymień 3 owoce z pestką.", "valid": ["wiśnia", "wiśnie", "czereśnia", "czereśnie", "śliwka", "śliwki", "śliwa", "brzoskwinia", "brzoskwinie", "morela", "morele", "nektarynka", "nektarynki", "daktyl", "daktyle", "mango"] },
-    { "id": 108, "sec": 30, "need": 5, "q": "Wymień 5 zwierząt, których nazwa zaczyna się na literę K.", "valid": ["kot", "koń", "krowa", "kura", "kaczka", "koza", "kruk", "kret", "królik", "kangur", "krokodyl", "koala", "karp", "kuna", "kozica", "kania", "kormoran", "kukułka", "krab", "kogut", "kondor", "kozioł", "kobra", "kawka", "kos", "komar", "karaluch", "kameleon", "kalmar", "kijanka", "kłusak"] },
-    { "id": 109, "sec": 15, "need": 1, "q": "Jak się nazywa stolica Australii?", "valid": ["Canberra"] },
-    { "id": 110, "sec": 15, "need": 1, "q": "Ile boków ma sześciokąt?", "valid": ["6", "sześć", "szesc"] },
-    { "id": 111, "sec": 15, "need": 1, "q": "Kto napisał „Pana Tadeusza”?", "valid": ["Mickiewicz", "Adam Mickiewicz"] },
-    { "id": 112, "sec": 15, "need": 1, "q": "Jaka jest najdłuższa rzeka w Polsce?", "valid": ["Wisła"] },
-    { "id": 113, "sec": 15, "need": 1, "q": "Jaki jest symbol chemiczny złota?", "valid": ["Au"] },
-    { "id": 114, "sec": 15, "need": 1, "q": "Ile to jest 7 × 8?", "valid": ["56", "pięćdziesiąt sześć"] },
-    { "id": 115, "sec": 15, "need": 1, "q": "Który miesiąc ma 28 lub 29 dni?", "valid": ["luty", "lutego"] },
-    { "id": 116, "sec": 15, "need": 1, "q": "Jak się nazywa stolica Włoch?", "valid": ["Rzym"] },
-    { "id": 117, "sec": 15, "need": 1, "q": "Jak nazywa się największy ocean na Ziemi?", "valid": ["Spokojny", "Ocean Spokojny", "Pacyfik", "Wielki"] },
-    { "id": 118, "sec": 15, "need": 1, "q": "Kto napisał „Quo vadis”?", "valid": ["Sienkiewicz", "Henryk Sienkiewicz"] },
-    { "id": 119, "sec": 15, "need": 1, "q": "Ilu zawodników jednej drużyny jest jednocześnie na boisku w meczu piłki nożnej (z bramkarzem)?", "valid": ["11", "jedenastu", "jedenaście"] },
-    { "id": 120, "sec": 15, "need": 1, "q": "Jaki jest symbol chemiczny tlenu?", "valid": ["O"] },
-    { "id": 121, "sec": 15, "need": 1, "q": "Ile zer ma milion?", "valid": ["6", "sześć", "szesc"] },
-    { "id": 122, "sec": 15, "need": 1, "q": "Jak się nazywa stolica Hiszpanii?", "valid": ["Madryt"] },
-    { "id": 123, "sec": 15, "need": 1, "q": "Który miesiąc jest czwartym miesiącem roku?", "valid": ["kwiecień", "kwietnia"] },
-    { "id": 124, "sec": 15, "need": 1, "q": "Którą planetę nazywamy Czerwoną Planetą?", "valid": ["Mars"] },
-    { "id": 125, "sec": 15, "need": 1, "q": "Ile dni ma rok przestępny?", "valid": ["366"] }
-  ],
-  "acting": [
-    { "id": 201, "first": ["Kot", "Dentysta"], "second": ["wspina się na drzewo", "gotuje rosół"] },
-    { "id": 202, "first": ["Pirat", "Listonosz"], "second": ["szuka zaginionego skarbu", "uczy się tańczyć walca"] },
-    { "id": 203, "first": ["Pingwin", "Kucharz"], "second": ["traci klucze do domu", "boi się wysokości"] },
-    { "id": 204, "first": ["Astronauta", "Babcia"], "second": ["łapie uciekającego psa", "wygrywa w loterii"] },
-    { "id": 205, "first": ["Żółw", "Policjant"], "second": ["biegnie na autobus", "gra na gitarze"] },
-    { "id": 206, "first": ["Magik", "Krowa"], "second": ["próbuje wejść do zamkniętego domu", "robi sobie selfie"] },
-    { "id": 207, "first": ["Fryzjer", "Niedźwiedź"], "second": ["goni za własnym cieniem", "zasypia na wykładzie"] },
-    { "id": 208, "first": ["Rycerz", "Kelner"], "second": ["walczy ze smokiem", "ucieka przed osą"] },
-    { "id": 209, "first": ["Kierowca", "Małpa"], "second": ["maluje obraz", "pływa w jeziorze"] },
-    { "id": 210, "first": ["Detektyw", "Lew"], "second": ["szuka okularów", "udaje, że jest chory"] },
-    { "id": 211, "first": ["Dziadek", "Kangur"], "second": ["strzela gola", "składa mebel z instrukcji"] },
-    { "id": 212, "first": ["Śpiewak operowy", "Słoń"], "second": ["zbiera grzyby w lesie", "przegrywa w szachy"] },
-    { "id": 213, "first": ["Strażak", "Kaczka"], "second": ["uczy się jeździć na rowerze", "zamawia pizzę"] },
-    { "id": 214, "first": ["Wampir", "Ogrodnik"], "second": ["opala się na plaży", "dostaje mandat"] },
-    { "id": 215, "first": ["Mim", "Pies"], "second": ["wlecze się po schodach z zakupami", "rozwiązuje trudną zagadkę"] },
-    { "id": 216, "first": ["Zombie", "Pszczelarz"], "second": ["jedzie na łyżwach", "gubi się w centrum handlowym"] },
-    { "id": 217, "first": ["Szef kuchni", "Wielbłąd"], "second": ["tańczy na weselu", "wchodzi do windy pełnej ludzi"] },
-    { "id": 218, "first": ["Lekarz", "Dinozaur"], "second": ["rozmawia przez telefon z teściową", "gra w siatkówkę"] },
-    { "id": 219, "first": ["Złodziej", "Żyrafa"], "second": ["próbuje zjeść zbyt gorącą zupę", "robi pranie"] },
-    { "id": 220, "first": ["Nauczyciel", "Mysz"], "second": ["leci samolotem w turbulencjach", "zbiera jabłka z drzewa"] },
-    { "id": 221, "first": ["Król", "Papuga"], "second": ["wybiera prezent dla mamy", "przechodzi przez rwącą rzekę"] },
-    { "id": 222, "first": ["Śpiący student", "Wilk"], "second": ["zdobywa szczyt góry", "stoi w długiej kolejce"] },
-    { "id": 223, "first": ["Turysta", "Pająk"], "second": ["nurkuje w morzu", "szuka wolnego miejsca w pociągu"] },
-    { "id": 224, "first": ["Ninja", "Foka"], "second": ["opiekuje się małym dzieckiem", "pierwszy raz jedzie na nartach"] }
-  ]
+ "skill": [
+  {
+   "id": 1,
+   "text": "Znajdź na stole 5 niebieskich przedmiotów i połóż je razem.",
+   "sec": 60
+  },
+  {
+   "id": 2,
+   "text": "Z odległości około metra wrzuć plastikową butelkę (0,5 l, napełnioną do jednej czwartej wodą) na stół tak, żeby stanęła.",
+   "tries": "5 prób",
+   "sec": null
+  },
+  {
+   "id": 3,
+   "text": "Wygraj z innym graczem w kamień-papier-nożyce.",
+   "tries": "3 wygrane w 5 partiach",
+   "sec": null
+  },
+  {
+   "id": 4,
+   "text": "Stojąc, połóż cukierek na leżącym ołówku, unieś ołówek i złap cukierek ustami, zanim spadnie.",
+   "tries": "3 próby",
+   "sec": null
+  },
+  {
+   "id": 5,
+   "text": "Usiądź na ręczniku i przesuń się nim po podłodze do przodu o około 2 metry.",
+   "sec": 60
+  },
+  {
+   "id": 6,
+   "text": "Przeczołgaj się pod stołem z łyżką w ustach, a na niej kostką do gry. Kostka nie może spaść.",
+   "tries": "3 próby",
+   "sec": null
+  },
+  {
+   "id": 7,
+   "text": "Wygłoś minutową przemowę o wybranym przez siebie owocu. Bez powtórek i bez zawahania dłuższego niż 3 sekundy.",
+   "sec": 60
+  },
+  {
+   "id": 8,
+   "text": "Podbij grzbietem dłoni kartę leżącą na krawędzi stołu i złap ją w locie.",
+   "tries": "4 udane próby z 6",
+   "sec": null
+  },
+  {
+   "id": 9,
+   "text": "Stojąc na jednej nodze, pocałuj się w stopę.",
+   "sec": null
+  },
+  {
+   "id": 10,
+   "text": "Połóż klepsydrę na przedramieniu przy łokciu, zegnij rękę i przetocz ją po splecionych przedramionach aż do łokcia.",
+   "tries": "3 próby",
+   "sec": null
+  },
+  {
+   "id": 11,
+   "text": "Zwiń język w rurkę.",
+   "sec": 60
+  },
+  {
+   "id": 12,
+   "text": "Pstryknij palcem klepsydrę tak, żeby strąciła drugą, stojącą około 50 cm dalej.",
+   "tries": "2 udane próby z 5",
+   "sec": null
+  },
+  {
+   "id": 13,
+   "text": "Podnieś inną osobę o podobnej wadze i utrzymaj ją w powietrzu przez 30 sekund. Osobę wybierz przed zakładami.",
+   "sec": 30
+  },
+  {
+   "id": 14,
+   "text": "Przytrzymaj ustami dwa suche makarony spaghetti, połóż na nich trzeci w poprzek i utrzymaj go tak 5 sekund bez dotykania ustami.",
+   "sec": 60
+  },
+  {
+   "id": 15,
+   "text": "Połóż 5 ołówków na wierzchu dłoni, podrzuć je i złap wszystkie, zanim spadną.",
+   "tries": "3 udane próby z 5",
+   "sec": null
+  },
+  {
+   "id": 16,
+   "text": "Utrzymaj łyżeczkę na czubku nosa przez 30 sekund.",
+   "sec": null
+  },
+  {
+   "id": 17,
+   "text": "Ktoś robi zdjęcie przedmiotu z otoczenia, mocno je powiększa i pokazuje tylko jego fragment. Znajdź ten przedmiot.",
+   "sec": 15
+  },
+  {
+   "id": 18,
+   "text": "Dwoma ołówkami jak pałeczkami przenieś kolejno pionek, kostkę i klepsydrę na odległość 1,5 metra do kubka.",
+   "sec": 30
+  },
+  {
+   "id": 19,
+   "text": "Bez pomocy rąk stań na jednej nodze, usiądź na krześle i wstań z powrotem.",
+   "sec": null
+  },
+  {
+   "id": 20,
+   "text": "Powiedz pięć razy pod rząd, szybko i bez pomyłki: „W czasie suszy suchą szosą Sasza sobie szedł”.",
+   "tries": "3 próby",
+   "sec": null
+  },
+  {
+   "id": 21,
+   "text": "Utrzymaj półtoralitrową plastikową butelkę w równowadze na palcu przez 15 sekund.",
+   "tries": "2 próby",
+   "sec": 15
+  },
+  {
+   "id": 22,
+   "text": "Połóż 2 monety na łokciu, podrzuć je i złap w dłoń.",
+   "sec": null
+  },
+  {
+   "id": 23,
+   "text": "Podrzuć stopą własny but tak, żeby wylądował na krześle stojącym około 2 metry dalej.",
+   "tries": "4 próby",
+   "sec": null
+  },
+  {
+   "id": 24,
+   "text": "Połóż klepsydrę na stole, a 50 cm dalej kostkę. Jednym pchnięciem klepsydry uderz w kostkę.",
+   "tries": "2 udane próby z 5",
+   "sec": null
+  },
+  {
+   "id": 25,
+   "text": "Podrzuć kostkę do góry, obróć się o 360 stopni i złap ją.",
+   "tries": "3 udane próby z 5",
+   "sec": null
+  },
+  {
+   "id": 26,
+   "text": "Usiądź na podłodze i wstań, trzymając na głowie książkę, która nie może spaść.",
+   "tries": "2 próby",
+   "sec": null
+  },
+  {
+   "id": 27,
+   "text": "Ułóż na szyjce butelki 4 widelce w poprzek tak, żeby żaden nie spadł przez 15 sekund.",
+   "sec": 60
+  },
+  {
+   "id": 28,
+   "text": "Połóż kostkę na stopie i podrzuć ją tak, by wpadła do szklanki stojącej metr dalej. Liczy się też kostka, która wypadnie po tym, jak była w środku.",
+   "tries": "5 prób",
+   "sec": null
+  },
+  {
+   "id": 29,
+   "text": "Umieść na stopie wieszak ubraniowy i podrzuć go tak, by zawisł na wyciągniętym palcu wskazującym.",
+   "tries": "3 próby",
+   "sec": null
+  },
+  {
+   "id": 30,
+   "text": "Zrób telefonem dwa selfie, wstaw je do mediów społecznościowych i w ciągu minuty zbierz dwa polubienia.",
+   "sec": 60
+  },
+  {
+   "id": 31,
+   "text": "Trzymając szklankę na górze stopy, obejdź dookoła stół w ciągu minuty. Jeśli szklanka spadnie, próba jest nieudana.",
+   "sec": 60
+  },
+  {
+   "id": 32,
+   "text": "Znajdź i połóż na stole 3 przedmioty, których nazwa zaczyna się na literę „P”.",
+   "sec": 60
+  },
+  {
+   "id": 33,
+   "text": "Stój 30 sekund na lewej nodze z zamkniętymi oczami.",
+   "sec": 30
+  },
+  {
+   "id": 34,
+   "text": "Zrób 3 małe kulki z papieru toaletowego i „przyssij” je po kolei nosem, a następnie przenieś do szklanki oddalonej o 2 metry.",
+   "sec": 60
+  },
+  {
+   "id": 35,
+   "text": "Napisz na telefonie znany tekst (np. fragment wiersza lub piosenki) złożony z 10 słów.",
+   "sec": 15
+  },
+  {
+   "id": 36,
+   "text": "Stojąc na jednej nodze, podnieś z podłogi kostkę leżącą pół metra od Ciebie.",
+   "sec": null
+  },
+  {
+   "id": 37,
+   "text": "Zabierz rękę, zanim przeciwnik zdąży ją klepnąć. Siedzicie naprzeciw siebie z rękami na stole.",
+   "tries": "2 udane próby z 5",
+   "sec": null
+  },
+  {
+   "id": 38,
+   "text": "Wyrzuć dwie monety zza pleców do góry i złap je.",
+   "tries": "2 próby",
+   "sec": null
+  },
+  {
+   "id": 39,
+   "text": "Przez 30 sekund unikaj odpowiedzi „nie” na pytania zadawane przez innych graczy. Nie możesz się zastanawiać dłużej niż 2 sekundy.",
+   "sec": 30
+  },
+  {
+   "id": 40,
+   "text": "Zapisz na telefonie tekst z 12 słów w ciągu 30 sekund. Inny gracz zapisuje tekst na kartce i czyta go na głos, a potem zapisuje go ten, kto wykonuje zadanie.",
+   "sec": 30
+  },
+  {
+   "id": 41,
+   "text": "Upuść kartę z wysokości 1,5 metra tak, żeby wylądowała tekstem do góry.",
+   "tries": "3 udane próby z 5",
+   "sec": null
+  },
+  {
+   "id": 42,
+   "text": "Napisz swoje nazwisko wspak w ciągu minuty.",
+   "sec": 60
+  },
+  {
+   "id": 43,
+   "text": "Wstań z pozycji leżącej na plecach, nie podpierając się ramionami ani rękami.",
+   "sec": null
+  },
+  {
+   "id": 44,
+   "text": "Z odległości 2 metrów wrzuć 3 karty do pudełka.",
+   "tries": "5 prób",
+   "sec": null
+  },
+  {
+   "id": 45,
+   "text": "Z zamkniętymi oczami, z rozłożonymi szeroko rękami, zetknij ze sobą palce wskazujące.",
+   "tries": "3 udane próby z 5",
+   "sec": null
+  },
+  {
+   "id": 46,
+   "text": "Zamrugaj obydwoma oczami, a potem każdym z osobna.",
+   "sec": null
+  },
+  {
+   "id": 47,
+   "text": "Trzy razy odbij kostkę udem i złap ją w powietrzu.",
+   "sec": 30
+  },
+  {
+   "id": 48,
+   "text": "Wyciągnij kartkę spod butelki tak, żeby butelka się nie przewróciła.",
+   "tries": "3 próby",
+   "sec": null
+  },
+  {
+   "id": 49,
+   "text": "Rozkręć na wyciągniętym palcu 3 wieszaki i utrzymaj je w ruchu przez minutę.",
+   "tries": "3 próby",
+   "sec": 60
+  },
+  {
+   "id": 50,
+   "text": "Napełnij miskę wodą. Przenoś wodę ustami do szklanki stojącej 2 metry dalej, aż szklanka będzie pełna.",
+   "sec": null
+  },
+  {
+   "id": 51,
+   "text": "Połóż kartę na szczycie butelki i zrzuć ją rzutem kostki z odległości 2 metrów.",
+   "tries": "2 udane próby z 5",
+   "sec": null
+  },
+  {
+   "id": 52,
+   "text": "Wachluj gazetą tak, żeby przesunąć kartkę o 1,5 metra na wyznaczone miejsce.",
+   "sec": 30
+  },
+  {
+   "id": 53,
+   "text": "Zapisz na telefonie w 15 sekund ciąg „Cba” powtórzony 10 razy, z odstępem między kolejnymi „Cba” (Cba Cba Cba…). C musi być wielką literą.",
+   "sec": 15
+  },
+  {
+   "id": 54,
+   "text": "Zapisz na telefonie w 30 sekund ciąg „AbCd” powtórzony 10 razy, z odstępem między kolejnymi (AbCd AbCd…). A i C muszą być wielkimi literami.",
+   "sec": 30
+  }
+ ],
+ "mental": [
+  {
+   "id": 101,
+   "q": "Czy wymienisz 3 znane osoby o imieniu Władysław?",
+   "sec": 30,
+   "hints": [
+    "Władysław Jagiełło",
+    "Władysław Łokietek",
+    "Władysław Reymont",
+    "Władysław Szpilman",
+    "Władysław Broniewski",
+    "Władysław Gomułka",
+    "Władysław Sikorski",
+    "Władysław Bartoszewski"
+   ]
+  },
+  {
+   "id": 102,
+   "q": "Czy wymienisz 4 marki kawy?",
+   "sec": 30,
+   "hints": []
+  },
+  {
+   "id": 103,
+   "q": "Czy wymienisz 7 miast w Polsce zaczynających się na literę W?",
+   "sec": 60,
+   "hints": [
+    "Warszawa",
+    "Wrocław",
+    "Włocławek",
+    "Wałbrzych",
+    "Wieliczka",
+    "Wejherowo",
+    "Wadowice",
+    "Wągrowiec",
+    "Wolsztyn",
+    "Wołomin",
+    "Wieluń",
+    "Wisła",
+    "Władysławowo",
+    "Wodzisław Śląski"
+   ]
+  },
+  {
+   "id": 104,
+   "q": "Czy znajdziesz 5 słów zawierających „TOR”? (np. kurator, tort)",
+   "sec": 30,
+   "hints": []
+  },
+  {
+   "id": 105,
+   "q": "Czy znajdziesz 5 słów zawierających „STO”? (np. stokrotka, stoper)",
+   "sec": 30,
+   "hints": []
+  },
+  {
+   "id": 106,
+   "q": "Czy wymienisz 6 kuchennych przyrządów na 5 lub 6 liter?",
+   "sec": 60,
+   "hints": []
+  },
+  {
+   "id": 107,
+   "q": "Gracz odgaduje zwierzę, o którym myśli ktoś inny, zadając 10 pytań, na które odpowiedź brzmi „tak” lub „nie”. Zwierzę uzgodnijcie przed zakładami.",
+   "sec": 60,
+   "hints": []
+  },
+  {
+   "id": 108,
+   "q": "Czy wymienisz 8 królów Polski?",
+   "sec": 60,
+   "hints": [
+    "Mieszko I",
+    "Bolesław Chrobry",
+    "Mieszko II",
+    "Kazimierz Odnowiciel",
+    "Bolesław Śmiały",
+    "Władysław Herman",
+    "Bolesław Krzywousty",
+    "Władysław Łokietek",
+    "Kazimierz Wielki",
+    "Ludwik Węgierski",
+    "Władysław Jagiełło",
+    "Kazimierz Jagiellończyk",
+    "Jan Olbracht",
+    "Zygmunt Stary",
+    "Zygmunt August",
+    "Stefan Batory",
+    "Zygmunt III Waza",
+    "Jan Kazimierz",
+    "Jan III Sobieski",
+    "August II Mocny",
+    "Stanisław August Poniatowski"
+   ]
+  },
+  {
+   "id": 109,
+   "q": "Czy wymienisz nazwiska 3 znanych kucharzy?",
+   "sec": 30,
+   "hints": []
+  },
+  {
+   "id": 110,
+   "q": "Czy wymienisz 4 rasy kotów?",
+   "sec": 15,
+   "hints": [
+    "perski",
+    "syjamski",
+    "maine coon",
+    "brytyjski krótkowłosy",
+    "sfinks",
+    "ragdoll",
+    "bengalski",
+    "norweski leśny",
+    "abisyński",
+    "birmański",
+    "devon rex",
+    "syberyjski"
+   ]
+  },
+  {
+   "id": 111,
+   "q": "Czy wymienisz 4 części samochodu na 5 lub 6 liter?",
+   "sec": 60,
+   "hints": []
+  },
+  {
+   "id": 112,
+   "q": "Czy wymienisz 6 miast w Polsce zaczynających się na literę K?",
+   "sec": 60,
+   "hints": [
+    "Kraków",
+    "Katowice",
+    "Kielce",
+    "Koszalin",
+    "Kalisz",
+    "Konin",
+    "Kołobrzeg",
+    "Kętrzyn",
+    "Kłodzko",
+    "Krosno",
+    "Kutno",
+    "Kościan",
+    "Kartuzy",
+    "Kościerzyna",
+    "Kluczbork"
+   ]
+  },
+  {
+   "id": 113,
+   "q": "Jeden gracz zapisuje proste równanie, używając tylko plusów i minusów (np. 87 − 6 + 2 + 1 = 84), po czym usuwa te znaki. Czy rozgrywający zdoła wstawić plusy i minusy tak, żeby wynik był poprawny?",
+   "sec": 60,
+   "hints": []
+  },
+  {
+   "id": 114,
+   "q": "Czy wymienisz nazwy dziesięciu stacji telewizyjnych?",
+   "sec": 60,
+   "hints": []
+  },
+  {
+   "id": 115,
+   "q": "Czy wymienisz 4 znane muzea?",
+   "sec": 30,
+   "hints": []
+  },
+  {
+   "id": 116,
+   "q": "Czy wymienisz 8 rodzajów ryb?",
+   "sec": 60,
+   "hints": [
+    "karp",
+    "szczupak",
+    "sandacz",
+    "okoń",
+    "leszcz",
+    "pstrąg",
+    "łosoś",
+    "dorsz",
+    "śledź",
+    "sum",
+    "węgorz",
+    "płoć",
+    "tuńczyk",
+    "makrela",
+    "flądra",
+    "lin",
+    "boleń",
+    "jesiotr"
+   ]
+  },
+  {
+   "id": 117,
+   "q": "Czy wypowiesz 6 wyrazów, które zawierają słowo „SKLEP”?",
+   "sec": 60,
+   "hints": []
+  },
+  {
+   "id": 118,
+   "q": "Czy wymienisz 3 owoce na 5 liter?",
+   "sec": 60,
+   "hints": [
+    "banan",
+    "mango",
+    "śliwa",
+    "limka"
+   ]
+  },
+  {
+   "id": 119,
+   "q": "Czy wymienisz 5 walut? (np. euro)",
+   "sec": 30,
+   "hints": [
+    "euro",
+    "dolar",
+    "funt",
+    "frank",
+    "złoty",
+    "jen",
+    "korona",
+    "forint",
+    "rubel",
+    "juan",
+    "lej",
+    "peso",
+    "rupia",
+    "lira",
+    "real"
+   ]
+  },
+  {
+   "id": 120,
+   "q": "Czy wymienisz 7 przedmiotów, które można znaleźć w szpitalu?",
+   "sec": 30,
+   "hints": []
+  },
+  {
+   "id": 121,
+   "q": "Czy wymienisz 5 synonimów słowa „PIENIĄDZE”?",
+   "sec": 60,
+   "hints": [
+    "gotówka",
+    "forsa",
+    "kasa",
+    "szmal",
+    "grosz",
+    "mamona",
+    "fundusze",
+    "środki",
+    "dutki",
+    "pieniądz",
+    "waluta",
+    "gotowizna"
+   ]
+  },
+  {
+   "id": 122,
+   "q": "Czy wymienisz 8 znaków interpunkcyjnych? Przykład: kropka, przecinek, myślnik.",
+   "sec": 60,
+   "hints": [
+    "kropka",
+    "przecinek",
+    "średnik",
+    "dwukropek",
+    "myślnik",
+    "nawias",
+    "cudzysłów",
+    "pytajnik",
+    "wykrzyknik",
+    "wielokropek",
+    "łącznik",
+    "apostrof",
+    "ukośnik"
+   ]
+  },
+  {
+   "id": 123,
+   "q": "Czy wymienisz 4 owoce lub warzywa zaczynające się na literę B?",
+   "sec": 30,
+   "hints": [
+    "banan",
+    "burak",
+    "bakłażan",
+    "brokuł",
+    "brzoskwinia",
+    "bób",
+    "borówka",
+    "brukselka",
+    "botwina",
+    "bataty"
+   ]
+  },
+  {
+   "id": 124,
+   "q": "Czy wymienisz 5 słów zawierających „ŚLA”? (np. ślad, koślawy)",
+   "sec": 30,
+   "hints": []
+  },
+  {
+   "id": 125,
+   "q": "Czy ocenisz, ile stron ma dowolna gazeta lub magazyn (±10 stron), bez zaglądania do środka?",
+   "sec": 30,
+   "hints": []
+  },
+  {
+   "id": 126,
+   "q": "Czy w ciągu 30 sekund odnajdziesz słowo „NIKT” w dowolnej gazecie lub magazynie?",
+   "sec": 30,
+   "hints": []
+  },
+  {
+   "id": 127,
+   "q": "Czy gracz odgadnie, kiedy upłynie 30 sekund (można się pomylić o 5 sekund)?",
+   "sec": 30,
+   "hints": []
+  },
+  {
+   "id": 128,
+   "q": "Wymień 7 rodzajów płynów nadających się do spożycia. Chodzi o typ napoju, a nie jego markę (np. woda, kawa).",
+   "sec": 30,
+   "hints": [
+    "woda",
+    "kawa",
+    "herbata",
+    "mleko",
+    "sok",
+    "piwo",
+    "wino",
+    "lemoniada",
+    "kompot",
+    "kakao",
+    "cola",
+    "wódka",
+    "kefir",
+    "napar",
+    "smoothie",
+    "cydr",
+    "whisky"
+   ]
+  },
+  {
+   "id": 129,
+   "q": "Czy wymienisz nazwy 5 zwierząt zaczynających się na literę K?",
+   "sec": 60,
+   "hints": [
+    "kot",
+    "koń",
+    "krowa",
+    "kura",
+    "kaczka",
+    "koza",
+    "kruk",
+    "kret",
+    "królik",
+    "kangur",
+    "krokodyl",
+    "koala",
+    "karp",
+    "kuna",
+    "kozica",
+    "kania",
+    "kormoran",
+    "kukułka",
+    "krab",
+    "kogut",
+    "kondor",
+    "kobra",
+    "kawka",
+    "kos",
+    "komar",
+    "kameleon"
+   ]
+  },
+  {
+   "id": 130,
+   "q": "Czy gracz odgadnie, o którym słynnym piłkarzu chodzi, zadając 10 pytań z odpowiedzią „tak” lub „nie”? Piłkarza wybierzcie przed zakładami.",
+   "sec": 60,
+   "hints": []
+  },
+  {
+   "id": 131,
+   "q": "Czy zdołasz wymienić 4 żeńskie imiona na 5 liter?",
+   "sec": 30,
+   "hints": []
+  },
+  {
+   "id": 132,
+   "q": "Czy zdołasz wymienić nazwy 3 owoców na 6 liter?",
+   "sec": 15,
+   "hints": [
+    "jagoda",
+    "daktyl",
+    "agrest",
+    "malina",
+    "morela",
+    "wiśnia",
+    "śliwki",
+    "banany"
+   ]
+  },
+  {
+   "id": 133,
+   "q": "Gracz rzuca kostką 7 razy z rzędu. Czy zapamiętasz w odpowiedniej kolejności, co wyrzucił?",
+   "sec": 60,
+   "hints": []
+  },
+  {
+   "id": 134,
+   "q": "Czy zdołasz wymienić 4 męskie imiona na 5 liter?",
+   "sec": 30,
+   "hints": []
+  },
+  {
+   "id": 135,
+   "q": "Czy zdołasz wymienić 4 owoce lub warzywa zaczynające się na literę P?",
+   "sec": 30,
+   "hints": [
+    "pomidor",
+    "papryka",
+    "pietruszka",
+    "pomarańcza",
+    "porzeczka",
+    "pór",
+    "pigwa",
+    "pomelo",
+    "pasternak"
+   ]
+  },
+  {
+   "id": 136,
+   "q": "Ktoś odczytuje pełne nazwiska i numery telefonów 2 kontaktów ze swojego telefonu. Czy rozgrywający zapamięta je?",
+   "sec": 60,
+   "hints": []
+  },
+  {
+   "id": 137,
+   "q": "Czy zdołasz wymienić nazwy 5 planet?",
+   "sec": 15,
+   "hints": [
+    "Merkury",
+    "Wenus",
+    "Ziemia",
+    "Mars",
+    "Jowisz",
+    "Saturn",
+    "Uran",
+    "Neptun"
+   ]
+  },
+  {
+   "id": 138,
+   "q": "Czy zdołasz wymienić 3 męskie imiona na 6 liter?",
+   "sec": 15,
+   "hints": []
+  },
+  {
+   "id": 139,
+   "q": "Czy zdołasz ocenić, ile stron ma dowolna książka (±30 stron), nie otwierając jej?",
+   "sec": 30,
+   "hints": []
+  },
+  {
+   "id": 140,
+   "q": "Czy zdołasz w ciągu 30 sekund odnaleźć słowo „WIĘC” w dowolnej gazecie lub magazynie?",
+   "sec": 60,
+   "hints": []
+  },
+  {
+   "id": 141,
+   "q": "Czy zdołasz wymienić 3 żeńskie imiona na 6 liter?",
+   "sec": 30,
+   "hints": []
+  },
+  {
+   "id": 142,
+   "q": "Czy wymienisz nazwiska 3 znanych aktorów lub aktorek na literę T?",
+   "sec": 30,
+   "hints": []
+  },
+  {
+   "id": 143,
+   "q": "Czy wymienisz 5 rodzajów obuwia?",
+   "sec": 30,
+   "hints": [
+    "adidasy",
+    "kozaki",
+    "szpilki",
+    "klapki",
+    "trampki",
+    "sandały",
+    "mokasyny",
+    "baletki",
+    "półbuty",
+    "kalosze",
+    "japonki",
+    "botki",
+    "sztyblety",
+    "półkozaki",
+    "kapcie"
+   ]
+  },
+  {
+   "id": 144,
+   "q": "Jeden z graczy przypisuje literom A, B i C dowolne cyfry od 0 do 9 (np. A = 4, B = 6, C = 9). Rozgrywający patrzy na listę 10 sekund. Inny gracz układa równanie z samych liter (nie więcej niż czterech), np. A + C + A − C = ?. Czy rozgrywający poda poprawny wynik?",
+   "sec": 60,
+   "hints": []
+  },
+  {
+   "id": 145,
+   "q": "Ktoś pokazuje na telefonie przez 10 sekund jakiś obrazek. Czy rozgrywający zapamięta 2 dowolne szczegóły, o które zostanie zapytany? (np. jakiego koloru był sweter?)",
+   "sec": 30,
+   "hints": []
+  },
+  {
+   "id": 146,
+   "q": "Czy zdołasz wymienić 5 planet w kolejności od Słońca?",
+   "sec": 30,
+   "hints": [
+    "Merkury",
+    "Wenus",
+    "Ziemia",
+    "Mars",
+    "Jowisz"
+   ]
+  }
+ ],
+ "acting": [
+  {
+   "id": 201,
+   "first": [
+    "Kot",
+    "Dentysta"
+   ],
+   "second": [
+    "wspina się na drzewo",
+    "gotuje rosół"
+   ]
+  },
+  {
+   "id": 202,
+   "first": [
+    "Pirat",
+    "Listonosz"
+   ],
+   "second": [
+    "szuka zaginionego skarbu",
+    "uczy się tańczyć walca"
+   ]
+  },
+  {
+   "id": 203,
+   "first": [
+    "Pingwin",
+    "Kucharz"
+   ],
+   "second": [
+    "traci klucze do domu",
+    "boi się wysokości"
+   ]
+  },
+  {
+   "id": 204,
+   "first": [
+    "Astronauta",
+    "Babcia"
+   ],
+   "second": [
+    "łapie uciekającego psa",
+    "wygrywa w loterii"
+   ]
+  },
+  {
+   "id": 205,
+   "first": [
+    "Żółw",
+    "Policjant"
+   ],
+   "second": [
+    "biegnie na autobus",
+    "gra na gitarze"
+   ]
+  },
+  {
+   "id": 206,
+   "first": [
+    "Magik",
+    "Krowa"
+   ],
+   "second": [
+    "próbuje wejść do zamkniętego domu",
+    "robi sobie selfie"
+   ]
+  },
+  {
+   "id": 207,
+   "first": [
+    "Fryzjer",
+    "Niedźwiedź"
+   ],
+   "second": [
+    "goni za własnym cieniem",
+    "zasypia na wykładzie"
+   ]
+  },
+  {
+   "id": 208,
+   "first": [
+    "Rycerz",
+    "Kelner"
+   ],
+   "second": [
+    "walczy ze smokiem",
+    "ucieka przed osą"
+   ]
+  },
+  {
+   "id": 209,
+   "first": [
+    "Kierowca",
+    "Małpa"
+   ],
+   "second": [
+    "maluje obraz",
+    "pływa w jeziorze"
+   ]
+  },
+  {
+   "id": 210,
+   "first": [
+    "Detektyw",
+    "Lew"
+   ],
+   "second": [
+    "szuka okularów",
+    "udaje, że jest chory"
+   ]
+  },
+  {
+   "id": 211,
+   "first": [
+    "Dziadek",
+    "Kangur"
+   ],
+   "second": [
+    "strzela gola",
+    "składa mebel z instrukcji"
+   ]
+  },
+  {
+   "id": 212,
+   "first": [
+    "Śpiewak operowy",
+    "Słoń"
+   ],
+   "second": [
+    "zbiera grzyby w lesie",
+    "przegrywa w szachy"
+   ]
+  },
+  {
+   "id": 213,
+   "first": [
+    "Strażak",
+    "Kaczka"
+   ],
+   "second": [
+    "uczy się jeździć na rowerze",
+    "zamawia pizzę"
+   ]
+  },
+  {
+   "id": 214,
+   "first": [
+    "Wampir",
+    "Ogrodnik"
+   ],
+   "second": [
+    "opala się na plaży",
+    "dostaje mandat"
+   ]
+  },
+  {
+   "id": 215,
+   "first": [
+    "Mim",
+    "Pies"
+   ],
+   "second": [
+    "wlecze się po schodach z zakupami",
+    "rozwiązuje trudną zagadkę"
+   ]
+  },
+  {
+   "id": 216,
+   "first": [
+    "Zombie",
+    "Pszczelarz"
+   ],
+   "second": [
+    "jedzie na łyżwach",
+    "gubi się w centrum handlowym"
+   ]
+  },
+  {
+   "id": 217,
+   "first": [
+    "Szef kuchni",
+    "Wielbłąd"
+   ],
+   "second": [
+    "tańczy na weselu",
+    "wchodzi do windy pełnej ludzi"
+   ]
+  },
+  {
+   "id": 218,
+   "first": [
+    "Lekarz",
+    "Dinozaur"
+   ],
+   "second": [
+    "rozmawia przez telefon z teściową",
+    "gra w siatkówkę"
+   ]
+  },
+  {
+   "id": 219,
+   "first": [
+    "Złodziej",
+    "Żyrafa"
+   ],
+   "second": [
+    "próbuje zjeść zbyt gorącą zupę",
+    "robi pranie"
+   ]
+  },
+  {
+   "id": 220,
+   "first": [
+    "Nauczyciel",
+    "Mysz"
+   ],
+   "second": [
+    "leci samolotem w turbulencjach",
+    "zbiera jabłka z drzewa"
+   ]
+  },
+  {
+   "id": 221,
+   "first": [
+    "Król",
+    "Papuga"
+   ],
+   "second": [
+    "wybiera prezent dla mamy",
+    "przechodzi przez rwącą rzekę"
+   ]
+  },
+  {
+   "id": 222,
+   "first": [
+    "Śpiący student",
+    "Wilk"
+   ],
+   "second": [
+    "zdobywa szczyt góry",
+    "stoi w długiej kolejce"
+   ]
+  },
+  {
+   "id": 223,
+   "first": [
+    "Turysta",
+    "Pająk"
+   ],
+   "second": [
+    "nurkuje w morzu",
+    "szuka wolnego miejsca w pociągu"
+   ]
+  },
+  {
+   "id": 224,
+   "first": [
+    "Ninja",
+    "Foka"
+   ],
+   "second": [
+    "opiekuje się małym dzieckiem",
+    "pierwszy raz jedzie na nartach"
+   ]
+  }
+ ]
 }

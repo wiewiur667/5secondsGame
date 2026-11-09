@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import ObstawMap from './ObstawMap.vue'
+import Money from '../Money.vue'
 // TV view of an Obstaw! turn. `live` = the game's publicView: bets and the acting
 // phrase are never in it before the reveal (enforced on the server).
 const props = defineProps<{ live: Record<string, any>; paused: boolean; autoAdvance: boolean }>()
@@ -38,7 +39,8 @@ const sign = (n: number) => (n > 0 ? `+${n}` : `${n}`)
       <template v-else>
         <h2 v-if="l.content" class="task">{{ l.content.text }}</h2>
         <h2 v-else-if="l.task === 'acting'" class="task">🎭 Pokaż bez słów — {{ l.partner }} odgaduje!</h2>
-        <p v-if="l.task === 'mental' && l.content?.need > 1" class="sub">Potrzeba {{ l.content.need }} odpowiedzi — {{ l.performer }} mówi na głos, {{ l.judge }} ocenia</p>
+        <p v-if="l.content?.tries" class="sub">{{ l.content.tries }}</p>
+        <p v-if="l.task === 'mental'" class="sub">{{ l.performer }} odpowiada na głos, {{ l.judge }} ocenia</p>
         <p v-if="l.stage === 'ready'" class="sub">{{ l.performer }} szykuje się do startu…</p>
         <p v-if="l.stage === 'judge'" class="sub">⚖️ {{ l.judge }} wydaje werdykt…</p>
       </template>

@@ -16,8 +16,9 @@ type CellType = 'start' | 'arrow' | 'skill' | 'mental' | 'acting' | 'blind' | 'd
 type Task = 'skill' | 'mental' | 'acting'
 type Stage = 'roll' | 'choose' | 'bet' | 'ready' | 'act' | 'judge' | 'revealed'
 
-interface Skill { id: number; sec: number; text: string }
-interface Mental { id: number; sec: number; need: number; q: string; valid: string[] }
+// sec = hourglass seconds (15 yellow / 30 red / 60 black); null = the card shows no hourglass
+interface Skill { id: number; sec: number | null; text: string; tries?: string }
+interface Mental { id: number; sec: number | null; q: string; hints: string[] }
 interface Acting { id: number; first: [string, string]; second: [string, string] }
 interface Config { skill: Skill[]; mental: Mental[]; acting: Acting[] }
 interface Cell { t: CellType; c: number } // c = combo 0..3 (bit1 → first part 2, bit0 → second part B); acting only
@@ -92,7 +93,9 @@ const TASK_LABEL: Record<Task, string> = { skill: 'zręcznościowe', mental: 'um
 
 // Largest allowed bet: at most half of the money, in steps of 10.
 export const maxBet = (money: number) => Math.max(0, Math.floor(money / 2 / STEP) * STEP)
-export const boardSize = (players: number) => 12 + 3 * players
+// 24 fields for 3–4 players, 32 (the layout of the classic board) for 5–6, 40 for 7–8, 48 for 9–10.
+export const boardSize = (players: number) => (players <= 4 ? 24 : players <= 6 ? 32 : players <= 8 ? 40 : 48)
+const NO_HOURGLASS_SECONDS = 180 // soft cap for cards without an hourglass
 export const comboLabel = (c: number) => `${(c >> 1) + 1}${'AB'[c & 1]}`
 
 function shuffle<T>(a: T[], rng = Math.random): T[] {
@@ -106,34 +109,38 @@ function shuffle<T>(a: T[], rng = Math.random): T[] {
 const oneOf = <T>(a: T[]): T => a[Math.floor(Math.random() * a.length)]
 const clock = (s: State, t: number) => Math.max(0, Math.ceil(s.turn.deadline - t))
 
-// The board grows with the number of players: 12 + 3 fields per player.
-// Cell 0 is START; the rest is a shuffled mix (re-shuffled if two re-roll fields touch).
-export function makeBoard(players: number, rng = Math.random): Cell[] {
-  const n = boardSize(players)
-  const arrow = Math.max(1, Math.round(n / 12))
-  const blind = Math.max(1, Math.round(n / 10))
-  const dice = Math.max(1, Math.round(n / 9))
-  const rest = n - 1 - arrow - blind - dice
-  const acting = Math.round(rest * 0.4)
-  const skill = Math.round(rest * 0.3)
-  const types: CellType[] = [
-    ...Array(arrow).fill('arrow'),
-    ...Array(blind).fill('blind'),
-    ...Array(dice).fill('dice'),
-    ...Array(acting).fill('acting'),
-    ...Array(skill).fill('skill'),
-    ...Array(rest - acting - skill).fill('mental'),
-  ]
-  let order = types
-  for (let i = 0; i < 50; i++) {
-    order = shuffle(types, rng)
-    const ring: CellType[] = ['start', ...order]
-    const bad = ring.some((t, k) => (t === 'arrow' || t === 'start') && (ring[(k + 1) % n] === 'arrow'))
-    if (!bad) break
+// The board follows the layout of the classic 32-field board (clockwise from START:
+// M mental, S skill, D dice duel, B blind bet, R arrow, <n><L> acting with its 1A–2B
+// symbols) and is shrunk / extended by removing / inserting ordinary fields for other
+// player counts. Cell 0 is START.
+const CLASSIC = 'M 1A S D 1B M 2A R D S 2B B M 1A S R 1B M 2A D S 2B B R D 1A M B 1B S 2A'.split(' ')
+const FILL_CYCLE = ['2B', 'S', 'M', '1A', 'D', 'M', '1B', 'S', '2A', 'M', 'S', '2B']
+function parseCell(tok: string): Cell {
+  if (/^[12][AB]$/.test(tok)) return { t: 'acting', c: (Number(tok[0]) - 1) * 2 + (tok[1] === 'B' ? 1 : 0) }
+  const t: Record<string, CellType> = { M: 'mental', S: 'skill', D: 'dice', B: 'blind', R: 'arrow' }
+  return { t: t[tok], c: 0 }
+}
+export function makeBoard(players: number): Cell[] {
+  const target = boardSize(players) - 1
+  let toks = [...CLASSIC]
+  const isFill = (tok: string) => /^[12][AB]$|^[MS]$/.test(tok)
+  if (target < toks.length) {
+    const fill = toks.map((tok, i) => (isFill(tok) ? i : -1)).filter((i) => i >= 0)
+    const k = toks.length - target
+    const drop = new Set(Array.from({ length: k }, (_, j) => fill[Math.floor(((j + 0.5) * fill.length) / k)]))
+    toks = toks.filter((_, i) => !drop.has(i))
+  } else if (target > toks.length) {
+    const k = target - toks.length
+    const after = Array.from({ length: k }, (_, j) => Math.floor(((j + 0.5) * toks.length) / k))
+    const out: string[] = []
+    let n = 0
+    toks.forEach((tok, i) => {
+      out.push(tok)
+      after.filter((a) => a === i).forEach(() => out.push(FILL_CYCLE[n++ % FILL_CYCLE.length]))
+    })
+    toks = out
   }
-  let combo = 0
-  const combos = shuffle([0, 1, 2, 3], rng)
-  return [{ t: 'start', c: 0 }, ...order.map((t) => ({ t, c: t === 'acting' ? combos[combo++ % 4] : 0 }))]
+  return [{ t: 'start', c: 0 }, ...toks.map(parseCell)]
 }
 
 // Unused cards first, then the rest, each shuffled.
@@ -308,7 +315,7 @@ function lockBets(s: State, t: number) {
 function startAct(s: State, t: number) {
   const tk = s.turn
   tk.stage = 'act'
-  tk.deadline = t + (tk.task === 'acting' ? ACTING_SECONDS : (tk.card as Skill | Mental).sec)
+  tk.deadline = t + (tk.task === 'acting' ? ACTING_SECONDS : (tk.card as Skill | Mental).sec ?? NO_HOURGLASS_SECONDS)
 }
 
 function toJudge(s: State, t: number) {
@@ -374,9 +381,9 @@ function taskFor(s: State, v: Viewer): Record<string, any> | null {
   const reveal = tk.stage === 'revealed'
   const afterBets = tk.stage === 'ready' || tk.stage === 'act' || tk.stage === 'judge' || reveal
   const body = () => {
-    if (tk.task === 'skill') return { text: (tk.card as Skill).text, sec: (tk.card as Skill).sec }
-    if (tk.task === 'mental') return { text: (tk.card as Mental).q, need: (tk.card as Mental).need, sec: (tk.card as Mental).sec }
-    return { text: tk.phrase!, sec: ACTING_SECONDS }
+    if (tk.task === 'skill') return { text: (tk.card as Skill).text, tries: (tk.card as Skill).tries ?? null, sec: (tk.card as Skill).sec }
+    if (tk.task === 'mental') return { text: (tk.card as Mental).q, tries: null, sec: (tk.card as Mental).sec }
+    return { text: tk.phrase!, tries: null, sec: ACTING_SECONDS }
   }
   if (reveal) return body()
   if (v === 'partner') return null
@@ -389,7 +396,8 @@ function taskFor(s: State, v: Viewer): Record<string, any> | null {
 // Sample correct answers: only the judge (after the bets) and everyone after the reveal.
 function hintsFor(tk: Turn, show: boolean): string[] | null {
   if (!show || tk.task !== 'mental' || !tk.card) return null
-  return (tk.card as Mental).valid.slice(0, 12)
+  const hints = (tk.card as Mental).hints
+  return hints.length ? hints.slice(0, 14) : null
 }
 
 function pawns(s: State, names: Record<number, string>) {
