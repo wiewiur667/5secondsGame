@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import RipostaBoard from '~/components/board/RipostaBoard.vue'
+import ObstawBoard from '~/components/board/ObstawBoard.vue'
 
 // Passive display — no controls. Meant for a TV/projector: big, no interaction.
 const { gm: state } = useGm()
@@ -40,6 +41,12 @@ const gameName = computed(() => state.value?.games.find((g) => g.id === state.va
     <section v-else class="lbwrap" :class="{ split: state.live }">
       <RipostaBoard
         v-if="state.live && state.live.game === 'riposta'"
+        :live="state.live"
+        :paused="state.paused"
+        :auto-advance="state.autoAdvance"
+      />
+      <ObstawBoard
+        v-else-if="state.live && state.live.game === 'obstaw'"
         :live="state.live"
         :paused="state.paused"
         :auto-advance="state.autoAdvance"

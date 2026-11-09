@@ -3,6 +3,7 @@ import type { FinalAward, GameModule, Leaderboard, PlayerView } from '../games/t
 import musicCfg from '../games/music-impostor/music.json'
 import questionsCfg from '../games/five-second-rule/questions.json'
 import ripostaCfg from '../games/riposta/prompts.json'
+import obstawCfg from '../games/obstaw/content.json'
 import { lanIp } from './lanIp'
 import { appendFile } from 'node:fs/promises'
 
@@ -14,6 +15,7 @@ const configs: Record<string, any> = {
   'music-impostor': musicCfg,
   'five-second-rule': questionsCfg,
   riposta: ripostaCfg,
+  obstaw: obstawCfg,
 }
 
 type Peer = { send: (data: any) => void }

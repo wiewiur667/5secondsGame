@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-A Nuxt 4 / Nitro LAN party-game hub ("Party Hub"). Players join from phones, the first player to join is the game master (GM). Three games: Music Impostor, 5 Second Rule (1100 Polish questions across 11 categories) and Riposta (an original Polish answer-duel game: write funny answers, vote, final round). All state is in-memory — one party session per server process; restart to reset.
+A Nuxt 4 / Nitro LAN party-game hub ("Party Hub"). Players join from phones, the first player to join is the game master (GM). Four games: Music Impostor, 5 Second Rule (1100 Polish questions across 11 categories), Riposta (an original Polish answer-duel game: write funny answers, vote, final round) and Obstaw! (an original betting game: one player attempts a challenge, the rest bet YES/NO with part of their money). All state is in-memory — one party session per server process; restart to reset.
 
 ## Commands
 
@@ -52,6 +52,9 @@ The register/rejoin flow uses a claims map (`hub.claimRejoin` + TTL) to close a 
 
 ### Riposta flow
 `server/games/riposta/`: one hub "question" = one duel. Rounds 1–2: every player gets 2 prompts, each prompt 2 players (`assign.ts`, random cycle); the writing stage lives inside the first duel of the round, later duels start straight in voting. Final = one more question (everyone answers one prompt, players spread 3 tokens, audience 1). Players = first 8 active at start; everyone else (incl. late joiners) is **audience**: votes, never scores (`scoringIds`). Timeout auto-fills the player's unsent draft, else a server-picked "Gotowiec" (half points). Point maths in `scoring.ts` (values from `reports/Polska gra w stylu Quiplash.md`). `publicView` must never contain authors, prompt assignments or live vote splits before a reveal — `/api/gm/state` is unauthenticated. Prompt bank is generated from `scripts/build-riposta-prompts.py` (edit the lists there, rerun it); keep the blank at the end of the prompt after a colon (Polish declension), content is original, CC BY 4.0 (`LICENSE-CONTENT`).
+
+### Obstaw! flow
+`server/games/obstaw/`: one hub question = one turn, performers rotate (4–10 players, rest = spectators). Turn kinds drawn at random: skill / mental / acting / blind (performer picks the type) / dice duel. Stages: `choose → bet → ready → act → judge → revealed`; all deadlines are absolute `t` of the current turn (hub clock restarts at 0 each turn). Bets are secret until the reveal, max half of the money in steps of 10; performer (+ acting partner) take the whole pool, right bets win their stake from the bank, wrong ones lose it. Mental answers are checked by the server (`valid` lists, `sameKey`); skill/acting are ruled by a *judge* (next seat, does not bet). `score()` returns money delta since last report so the hub leaderboard == money. The TV never shows the acting phrase or the task before bets close. Cards: `content.json` (ids 1–99 skill, 101–199 mental, 201–299 acting).
 
 ### Question content
 `server/games/five-second-rule/questions.json`: 11 Polish categories × 100 questions (ids are unique across categories; players' 🚩 reports append to `FLAG_FILE`, default `flagged-questions.jsonl`); `correct` = exactly 3 indices into exactly 6 `options`. Scoring is exact-index auto-match, so distractors are deliberately same-topic near-misses that must remain **unambiguously wrong** — when editing questions, a distractor a reasonable player could defend as valid is a scoring bug, not a nit. `server/games/music-impostor/music.json` = YouTube URLs; ≥2 required or `start` fails.

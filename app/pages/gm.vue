@@ -114,9 +114,10 @@ async function startGame() {
       </template>
     </div>
 
-    <label v-if="state.gameId === 'five-second-rule' || state.gameId === 'riposta'" class="auto">
+    <label v-if="['five-second-rule', 'riposta', 'obstaw'].includes(state.gameId ?? '')" class="auto">
       <input type="checkbox" :checked="state.autoAdvance" @change="post('set-auto', { on: ($event.target as HTMLInputElement).checked })" />
       <span v-if="state.gameId === 'riposta'">Automatycznie przejdź do następnego pojedynku (8 s po wynikach)</span>
+      <span v-else-if="state.gameId === 'obstaw'">Automatycznie przejdź do następnej tury (12 s po wyniku)</span>
       <span v-else>Automatycznie przejdź do następnego pytania (10 s po odpowiedziach)</span>
     </label>
     <label v-if="state.gameId === 'five-second-rule'" class="auto">
