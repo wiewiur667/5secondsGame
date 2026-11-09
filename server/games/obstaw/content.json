@@ -2,133 +2,137 @@
  "skill": [
   {
    "id": 1,
-   "text": "Znajdź na stole 5 niebieskich przedmiotów i połóż je razem.",
+   "text": "Znajdź w pokoju 5 niebieskich przedmiotów i połóż je razem na stole. Sędzia rozstrzyga, co jest niebieskie.",
    "sec": 60
   },
   {
    "id": 2,
-   "text": "Z odległości około metra wrzuć plastikową butelkę (0,5 l, napełnioną do jednej czwartej wodą) na stół tak, żeby stanęła.",
+   "text": "Z odległości około metra rzuć plastikową butelką (0,5 l, napełnioną do jednej czwartej wodą) tak, żeby po obrocie wylądowała na stole na dnie i stała.",
    "tries": "5 prób",
    "sec": null
   },
   {
    "id": 3,
-   "text": "Wygraj z innym graczem w kamień-papier-nożyce.",
-   "tries": "3 wygrane w 5 partiach",
+   "text": "Wygraj 3 z 5 partii kamień-papier-nożyce z wybranym graczem (remis się powtarza i nie liczy).",
+   "tries": "5 partii",
    "sec": null
   },
   {
    "id": 4,
-   "text": "Stojąc, połóż cukierek na leżącym ołówku, unieś ołówek i złap cukierek ustami, zanim spadnie.",
+   "text": "Połóż cukierek na końcu długopisu trzymanego poziomo w dłoni, podrzuć go długopisem i złap ustami, zanim spadnie.",
    "tries": "3 próby",
    "sec": null
   },
   {
    "id": 5,
-   "text": "Usiądź na ręczniku i przesuń się nim po podłodze do przodu o około 2 metry.",
+   "text": "Usiądź na ręczniku na gładkiej podłodze i odpychając się rękami, przesuń się do przodu o około 2 metry, nie wstając.",
    "sec": 60
   },
   {
    "id": 6,
-   "text": "Przeczołgaj się pod stołem z łyżką w ustach, a na niej kostką do gry. Kostka nie może spaść.",
+   "text": "Przeczołgaj się pod stołem z jednej strony na drugą, trzymając w ustach łyżkę z kostką do gry. Kostka nie może spaść. (Stół musi być dość wysoki; nie wstawaj gwałtownie.)",
    "tries": "3 próby",
    "sec": null
   },
   {
    "id": 7,
-   "text": "Wygłoś minutową przemowę o wybranym przez siebie owocu. Bez powtórek i bez zawahania dłuższego niż 3 sekundy.",
+   "text": "Mów nieprzerwanie przez minutę o wybranym owocu, bez przerwy dłuższej niż 3 sekundy i bez powtarzania tego samego zdania.",
    "sec": 60
   },
   {
    "id": 8,
-   "text": "Podbij grzbietem dłoni kartę leżącą na krawędzi stołu i złap ją w locie.",
-   "tries": "4 udane próby z 6",
+   "text": "Uderz od spodu grzbietem dłoni w kartę leżącą na krawędzi stołu i złap ją w locie.",
+   "tries": "3 udane próby z 6",
    "sec": null
   },
   {
    "id": 9,
-   "text": "Stojąc na jednej nodze, pocałuj się w stopę.",
-   "sec": null
+   "text": "Stojąc na jednej nodze, chwyć drugą stopę zgiętą za plecami i utrzymaj ją 10 sekund.",
+   "sec": null,
+   "tries": "2 próby"
   },
   {
    "id": 10,
-   "text": "Połóż klepsydrę na przedramieniu przy łokciu, zegnij rękę i przetocz ją po splecionych przedramionach aż do łokcia.",
+   "text": "Przetocz monetę po wierzchu dłoni, od palca wskazującego do małego, bez dotykania jej drugą ręką.",
    "tries": "3 próby",
    "sec": null
   },
   {
    "id": 11,
-   "text": "Zwiń język w rurkę.",
-   "sec": 60
+   "text": "Zwiń język w rurkę i utrzymaj tak 10 sekund.",
+   "sec": 15
   },
   {
    "id": 12,
-   "text": "Pstryknij palcem klepsydrę tak, żeby strąciła drugą, stojącą około 50 cm dalej.",
+   "text": "Pstryknij palcem monetę tak, żeby strąciła stojący 50 cm dalej pusty plastikowy kubek.",
    "tries": "2 udane próby z 5",
    "sec": null
   },
   {
    "id": 13,
-   "text": "Podnieś inną osobę o podobnej wadze i utrzymaj ją w powietrzu przez 30 sekund. Osobę wybierz przed zakładami.",
+   "text": "Utrzymaj pozycję deski (plank) na łokciach przez 30 sekund.",
    "sec": 30
   },
   {
    "id": 14,
-   "text": "Przytrzymaj ustami dwa suche makarony spaghetti, połóż na nich trzeci w poprzek i utrzymaj go tak 5 sekund bez dotykania ustami.",
-   "sec": 60
+   "text": "Przytrzymaj zębami dwa długopisy poziomo, połóż na nich trzeci w poprzek (ręką) i utrzymaj go tak 5 sekund bez dotykania go rękami.",
+   "sec": 60,
+   "tries": "3 próby"
   },
   {
    "id": 15,
-   "text": "Połóż 5 ołówków na wierzchu dłoni, podrzuć je i złap wszystkie, zanim spadną.",
-   "tries": "3 udane próby z 5",
+   "text": "Połóż 3 monety na grzbiecie dłoni, podrzuć je i złap wszystkie w tę samą dłoń.",
+   "tries": "2 udane próby z 5",
    "sec": null
   },
   {
    "id": 16,
-   "text": "Utrzymaj łyżeczkę na czubku nosa przez 30 sekund.",
-   "sec": null
+   "text": "Utrzymaj łyżeczkę na czubku nosa przez 10 sekund.",
+   "sec": 15,
+   "tries": "3 próby"
   },
   {
    "id": 17,
-   "text": "Ktoś robi zdjęcie przedmiotu z otoczenia, mocno je powiększa i pokazuje tylko jego fragment. Znajdź ten przedmiot.",
-   "sec": 15
-  },
-  {
-   "id": 18,
-   "text": "Dwoma ołówkami jak pałeczkami przenieś kolejno pionek, kostkę i klepsydrę na odległość 1,5 metra do kubka.",
+   "text": "Sędzia robi telefonem zdjęcie z dużym zoomem fragmentu przedmiotu w pokoju (rozgrywający nie patrzy) i pokazuje je. Znajdź ten przedmiot i dotknij go.",
    "sec": 30
   },
   {
+   "id": 18,
+   "text": "Dwoma długopisami jak pałeczkami przenieś kolejno 3 zakrętki od butelek na odległość 1,5 metra do kubka.",
+   "sec": 60
+  },
+  {
    "id": 19,
-   "text": "Bez pomocy rąk stań na jednej nodze, usiądź na krześle i wstań z powrotem.",
+   "text": "Z rękami skrzyżowanymi na piersi usiądź na krześle i wstań, nie opierając drugiej stopy o podłogę. (Krzesło oprzyj o ścianę.)",
    "sec": null
   },
   {
    "id": 20,
-   "text": "Powiedz pięć razy pod rząd, szybko i bez pomyłki: „W czasie suszy suchą szosą Sasza sobie szedł”.",
+   "text": "Powiedz trzy razy pod rząd, szybko i bez pomyłki: „W czasie suszy suchą szosą szedł Sasza”.",
    "tries": "3 próby",
-   "sec": null
+   "sec": 15
   },
   {
    "id": 21,
-   "text": "Utrzymaj półtoralitrową plastikową butelkę w równowadze na palcu przez 15 sekund.",
+   "text": "Utrzymaj pustą butelkę 1,5 l z zakrętką w równowadze, dnem do dołu, na otwartej dłoni przez 15 sekund.",
    "tries": "2 próby",
    "sec": 15
   },
   {
    "id": 22,
-   "text": "Połóż 2 monety na łokciu, podrzuć je i złap w dłoń.",
-   "sec": null
+   "text": "Połóż 2 monety na łokciu, podrzuć je i złap obie w tę samą dłoń.",
+   "sec": null,
+   "tries": "3 próby"
   },
   {
    "id": 23,
-   "text": "Podrzuć stopą własny but tak, żeby wylądował na krześle stojącym około 2 metry dalej.",
+   "text": "Podrzuć stopą własny but tak, żeby wylądował na siedzisku krzesła stojącego około 2 metry dalej. (Tor lotu musi być wolny od osób.)",
    "tries": "4 próby",
    "sec": null
   },
   {
    "id": 24,
-   "text": "Połóż klepsydrę na stole, a 50 cm dalej kostkę. Jednym pchnięciem klepsydry uderz w kostkę.",
+   "text": "Połóż na stole zakrętkę od butelki, a 50 cm dalej kostkę. Jednym pstryknięciem zakrętki trafij w kostkę.",
    "tries": "2 udane próby z 5",
    "sec": null
   },
@@ -146,7 +150,7 @@
   },
   {
    "id": 27,
-   "text": "Ułóż na szyjce butelki 4 widelce w poprzek tak, żeby żaden nie spadł przez 15 sekund.",
+   "text": "W ciągu 60 sekund ułóż na szyjce butelki 3 widelce w poprzek i utrzymaj je 15 sekund tak, żeby żaden nie spadł.",
    "sec": 60
   },
   {
@@ -157,18 +161,18 @@
   },
   {
    "id": 29,
-   "text": "Umieść na stopie wieszak ubraniowy i podrzuć go tak, by zawisł na wyciągniętym palcu wskazującym.",
+   "text": "Podrzuć plastikowy wieszak ubraniowy z dłoni tak, żeby zawisł hakiem na wyciągniętym palcu wskazującym. (Nikt nie stoi blisko.)",
    "tries": "3 próby",
    "sec": null
   },
   {
    "id": 30,
-   "text": "Trzymając szklankę na górze stopy, obejdź dookoła stół w ciągu minuty. Jeśli szklanka spadnie, próba jest nieudana.",
+   "text": "Z plastikowym kubkiem na górze stopy przejdź dookoła stołu w ciągu minuty. Jeśli kubek spadnie, próba jest nieudana.",
    "sec": 60
   },
   {
    "id": 31,
-   "text": "Znajdź i połóż na stole 3 przedmioty, których nazwa zaczyna się na literę „P”.",
+   "text": "Znajdź w pokoju 3 przedmioty, których nazwa zaczyna się na literę „P”, i połóż je na stole.",
    "sec": 60
   },
   {
@@ -178,55 +182,55 @@
   },
   {
    "id": 33,
-   "text": "Zrób 3 małe kulki z papieru toaletowego i „przyssij” je po kolei nosem, a następnie przenieś do szklanki oddalonej o 2 metry.",
+   "text": "Przenieś łyżką trzymaną w zębach 3 kulki z papieru toaletowego do szklanki oddalonej o 2 metry.",
    "sec": 60
   },
   {
    "id": 34,
-   "text": "Stojąc na jednej nodze, podnieś z podłogi kostkę leżącą pół metra od Ciebie.",
+   "text": "Stojąc na jednej nodze, podnieś z podłogi kostkę leżącą pół metra od Ciebie, bez stawiania drugiej stopy i bez podpierania się.",
    "sec": null
   },
   {
    "id": 35,
-   "text": "Zabierz rękę, zanim przeciwnik zdąży ją klepnąć. Siedzicie naprzeciw siebie z rękami na stole.",
+   "text": "Połóż dłonie na dłoniach przeciwnika, który próbuje lekko klepnąć je od spodu. Zabierz dłonie, zanim to zrobi.",
    "tries": "2 udane próby z 5",
    "sec": null
   },
   {
    "id": 36,
-   "text": "Wyrzuć dwie monety zza pleców do góry i złap je.",
+   "text": "Podrzuć dwie monety zza pleców do góry i złap obie w dłonie.",
    "tries": "2 próby",
    "sec": null
   },
   {
    "id": 37,
-   "text": "Przez 30 sekund unikaj odpowiedzi „nie” na pytania zadawane przez innych graczy. Nie możesz się zastanawiać dłużej niż 2 sekundy.",
+   "text": "Przez 30 sekund nie mów słowa „nie” na pytania zadawane przez innych graczy. Nie możesz się zastanawiać dłużej niż 2 sekundy.",
    "sec": 30
   },
   {
    "id": 38,
-   "text": "Zapisz na telefonie tekst z 12 słów w ciągu 30 sekund. Inny gracz zapisuje tekst na kartce i czyta go na głos, a potem zapisuje go ten, kto wykonuje zadanie.",
-   "sec": 30
+   "text": "Sędzia czyta na głos zdanie z 12 słów. Zapisz je na telefonie bez błędów w ciągu 60 sekund.",
+   "sec": 60
   },
   {
    "id": 39,
-   "text": "Upuść kartę z wysokości 1,5 metra tak, żeby wylądowała tekstem do góry.",
+   "text": "Upuść kartę z wysokości 1,5 metra tak, żeby wylądowała stroną z obrazkiem do góry.",
    "tries": "3 udane próby z 5",
    "sec": null
   },
   {
    "id": 40,
-   "text": "Napisz swoje nazwisko wspak w ciągu minuty.",
+   "text": "Napisz swoje nazwisko wspak w ciągu minuty, czytelnie i bez skreśleń.",
    "sec": 60
   },
   {
    "id": 41,
-   "text": "Wstań z pozycji leżącej na plecach, nie podpierając się ramionami ani rękami.",
+   "text": "Z pozycji leżącej na plecach wstań, mając ręce skrzyżowane na piersi i bez podpierania się rękami.",
    "sec": null
   },
   {
    "id": 42,
-   "text": "Z odległości 2 metrów wrzuć 3 karty do pudełka.",
+   "text": "Z odległości 2 metrów wrzuć 3 karty do kosza lub miski. Zadanie zaliczone przy 3 trafieniach.",
    "tries": "5 prób",
    "sec": null
   },
@@ -238,41 +242,42 @@
   },
   {
    "id": 44,
-   "text": "Trzy razy odbij kostkę udem i złap ją w powietrzu.",
-   "sec": 30
+   "text": "Trzy razy z rzędu podbij kolanem zmiętą kulkę z papieru, nie pozwalając jej upaść, i złap ją.",
+   "sec": 30,
+   "tries": "3 próby"
   },
   {
    "id": 45,
-   "text": "Wyciągnij kartkę spod butelki tak, żeby butelka się nie przewróciła.",
+   "text": "Połóż kartkę pod pełną plastikową butelką (0,5 l). Szarpnięciem wyciągnij kartkę tak, żeby butelka się nie przewróciła.",
    "tries": "3 próby",
    "sec": null
   },
   {
    "id": 46,
-   "text": "Rozkręć na wyciągniętym palcu 3 wieszaki i utrzymaj je w ruchu przez minutę.",
+   "text": "Rozkręć wieszak ubraniowy zawieszony hakiem na wyciągniętym palcu wskazującym i utrzymaj go w ruchu obrotowym przez 15 sekund.",
    "tries": "3 próby",
-   "sec": 60
+   "sec": 15
   },
   {
    "id": 47,
-   "text": "Napełnij miskę wodą. Przenoś wodę ustami do szklanki stojącej 2 metry dalej, aż szklanka będzie pełna.",
-   "sec": null
+   "text": "W ciągu 60 sekund przenieś łyżką trzymaną w zębach wodę z miski do szklanki oddalonej o 2 metry, aż w szklance będzie warstwa wody na 3 cm. (Podłóż ręcznik.)",
+   "sec": 60
   },
   {
    "id": 48,
-   "text": "Połóż kartę na szczycie butelki i zrzuć ją rzutem kostki z odległości 2 metrów.",
+   "text": "Połóż kartę na szczycie butelki i zrzuć ją rzutem kostki z odległości 2 metrów. Karta ma spaść; butelka może się przewrócić.",
    "tries": "2 udane próby z 5",
    "sec": null
   },
   {
    "id": 49,
-   "text": "Wachluj gazetą tak, żeby przesunąć kartkę o 1,5 metra na wyznaczone miejsce.",
+   "text": "Używając okładki książki jako wachlarza, przesuń leżącą na podłodze kartkę o 1,5 metra do linii wyznaczonej długopisem lub ręcznikiem.",
    "sec": 30
   },
   {
    "id": 50,
-   "text": "Zapisz na telefonie w 15 sekund ciąg „Cba” powtórzony 10 razy, z odstępem między kolejnymi „Cba” (Cba Cba Cba…). C musi być wielką literą.",
-   "sec": 15
+   "text": "Zapisz na telefonie w 30 sekund ciąg „Cba” powtórzony 10 razy, rozdzielony spacjami (Cba Cba Cba…). C musi być wielką literą, autokorekta wyłączona.",
+   "sec": 30
   }
  ],
  "mental": [
@@ -326,19 +331,35 @@
   },
   {
    "id": 105,
-   "q": "Czy znajdziesz 5 słów zawierających „STO”? (np. stokrotka, stoper)",
+   "q": "Czy znajdziesz 5 słów zawierających „STO”? (np. stokrotka, stoper) („stół” się nie liczy)",
    "sec": 30,
-   "hints": []
+   "hints": [
+    "stos",
+    "stolica",
+    "sto",
+    "stoisko",
+    "stonka"
+   ]
   },
   {
    "id": 106,
-   "q": "Czy wymienisz 6 kuchennych przyrządów na 5 lub 6 liter?",
+   "q": "Czy wymienisz 6 przyborów lub sprzętów kuchennych, których nazwa ma 5 lub 6 liter?",
    "sec": 60,
-   "hints": []
+   "hints": [
+    "tarka",
+    "sitko",
+    "wałek",
+    "łyżka",
+    "miska",
+    "mikser",
+    "toster",
+    "garnek",
+    "rondel"
+   ]
   },
   {
    "id": 107,
-   "q": "Gracz odgaduje zwierzę, o którym myśli ktoś inny, zadając 10 pytań, na które odpowiedź brzmi „tak” lub „nie”. Zwierzę uzgodnijcie przed zakładami.",
+   "q": "Czy odgadniesz zwierzę, o którym myśli sędzia, zadając maksymalnie 10 pytań, na które odpowiedź brzmi „tak” lub „nie”? (Sędzia zapisuje zwierzę przed grą i nikomu go nie zdradza.)",
    "sec": 60,
    "hints": []
   },
@@ -347,13 +368,9 @@
    "q": "Czy wymienisz 8 królów Polski?",
    "sec": 60,
    "hints": [
-    "Mieszko I",
     "Bolesław Chrobry",
     "Mieszko II",
-    "Kazimierz Odnowiciel",
     "Bolesław Śmiały",
-    "Władysław Herman",
-    "Bolesław Krzywousty",
     "Władysław Łokietek",
     "Kazimierz Wielki",
     "Ludwik Węgierski",
@@ -367,7 +384,13 @@
     "Jan Kazimierz",
     "Jan III Sobieski",
     "August II Mocny",
-    "Stanisław August Poniatowski"
+    "Stanisław August Poniatowski",
+    "Władysław IV Waza",
+    "Michał Korybut Wiśniowiecki",
+    "August III Sas",
+    "Aleksander Jagiellończyk",
+    "Przemysł II",
+    "Wacław II"
    ]
   },
   {
@@ -399,7 +422,19 @@
    "id": 111,
    "q": "Czy wymienisz 4 części samochodu na 5 lub 6 liter?",
    "sec": 60,
-   "hints": []
+   "hints": [
+    "opona",
+    "felga",
+    "silnik",
+    "szyba",
+    "maska",
+    "drzwi",
+    "filtr",
+    "lampa",
+    "klamka",
+    "tłumik",
+    "gaźnik"
+   ]
   },
   {
    "id": 112,
@@ -425,7 +460,7 @@
   },
   {
    "id": 113,
-   "q": "Jeden gracz zapisuje proste równanie, używając tylko plusów i minusów (np. 87 − 6 + 2 + 1 = 84), po czym usuwa te znaki. Czy rozgrywający zdoła wstawić plusy i minusy tak, żeby wynik był poprawny?",
+   "q": "Jeden gracz zapisuje proste równanie, używając tylko plusów i minusów (np. 87 − 6 + 2 + 1 = 84), po czym usuwa te znaki. Czy rozgrywający zdoła wstawić plusy i minusy tak, żeby wynik był poprawny? (Potrzebna kartka i długopis. Znak „=” i liczby zostają; rozgrywający musi wstawić plusy i minusy tak, żeby równanie było prawdziwe.)",
    "sec": 60,
    "hints": []
   },
@@ -468,9 +503,18 @@
   },
   {
    "id": 117,
-   "q": "Czy wypowiesz 6 wyrazów, które zawierają słowo „SKLEP”?",
+   "q": "Czy wymienisz 6 różnych wyrazów zawierających ciąg liter „SKLEP”? (Sam wyraz „sklep” i jego odmiany się nie liczą.)",
    "sec": 60,
-   "hints": []
+   "hints": [
+    "sklepik",
+    "sklepikarz",
+    "sklepikarka",
+    "sklepowa",
+    "sklepowy",
+    "supersklep",
+    "minisklep",
+    "sklepienie"
+   ]
   },
   {
    "id": 118,
@@ -480,7 +524,10 @@
     "banan",
     "mango",
     "śliwa",
-    "limka"
+    "melon",
+    "pigwa",
+    "guawa",
+    "liczi"
    ]
   },
   {
@@ -520,19 +567,19 @@
     "forsa",
     "kasa",
     "szmal",
-    "grosz",
     "mamona",
     "fundusze",
     "środki",
     "dutki",
-    "pieniądz",
-    "waluta",
-    "gotowizna"
+    "gotowizna",
+    "hajs",
+    "kapusta",
+    "szeląg"
    ]
   },
   {
    "id": 122,
-   "q": "Czy wymienisz 8 znaków interpunkcyjnych? Przykład: kropka, przecinek, myślnik.",
+   "q": "Czy wymienisz 8 znaków interpunkcyjnych? Przykład: kropka, przecinek, myślnik. (Synonimy tego samego znaku liczą się jako jeden.)",
    "sec": 60,
    "hints": [
     "kropka",
@@ -546,8 +593,10 @@
     "wykrzyknik",
     "wielokropek",
     "łącznik",
-    "apostrof",
-    "ukośnik"
+    "znak zapytania",
+    "znak wykrzyknienia",
+    "pauza",
+    "dywiz"
    ]
   },
   {
@@ -564,18 +613,25 @@
     "borówka",
     "brukselka",
     "botwina",
-    "bataty"
+    "batat"
    ]
   },
   {
    "id": 124,
-   "q": "Czy wymienisz 5 słów zawierających „ŚLA”? (np. ślad, koślawy)",
+   "q": "Czy wymienisz 5 słów zawierających „ŚLA”? (np. ślad, koślawy) („Śląsk” nie zawiera „ŚLA”.)",
    "sec": 30,
-   "hints": []
+   "hints": [
+    "ślad",
+    "koślawy",
+    "naśladować",
+    "pośladek",
+    "ślamazarny",
+    "ślaz"
+   ]
   },
   {
    "id": 125,
-   "q": "Czy ocenisz, ile stron ma dowolna gazeta lub magazyn (±10 stron), bez zaglądania do środka?",
+   "q": "Czy ocenisz, ile stron ma dowolna gazeta lub magazyn (±10 stron, razem z okładkami), bez zaglądania do środka?",
    "sec": 30,
    "hints": []
   },
@@ -588,7 +644,7 @@
   {
    "id": 127,
    "q": "Czy gracz odgadnie, kiedy upłynie 30 sekund (można się pomylić o 5 sekund)?",
-   "sec": 30,
+   "sec": null,
    "hints": []
   },
   {
@@ -618,7 +674,7 @@
   {
    "id": 129,
    "q": "Czy wymienisz nazwy 5 zwierząt zaczynających się na literę K?",
-   "sec": 60,
+   "sec": 30,
    "hints": [
     "kot",
     "koń",
@@ -650,7 +706,7 @@
   },
   {
    "id": 130,
-   "q": "Czy gracz odgadnie, o którym słynnym piłkarzu chodzi, zadając 10 pytań z odpowiedzią „tak” lub „nie”? Piłkarza wybierzcie przed zakładami.",
+   "q": "Czy gracz odgadnie, o którym słynnym piłkarzu chodzi, zadając maksymalnie 8 pytań z odpowiedzią „tak” lub „nie”? (Piłkarza wybierają pozostali, nie rozgrywający.)",
    "sec": 60,
    "hints": []
   },
@@ -658,7 +714,23 @@
    "id": 131,
    "q": "Czy zdołasz wymienić 4 żeńskie imiona na 5 liter?",
    "sec": 30,
-   "hints": []
+   "hints": [
+    "Kasia",
+    "Basia",
+    "Zofia",
+    "Maria",
+    "Agata",
+    "Ilona",
+    "Julia",
+    "Marta",
+    "Alina",
+    "Edyta",
+    "Hanna",
+    "Irena",
+    "Aneta",
+    "Iwona",
+    "Wanda"
+   ]
   },
   {
    "id": 132,
@@ -671,13 +743,17 @@
     "malina",
     "morela",
     "wiśnia",
-    "śliwki",
-    "banany"
+    "śliwka",
+    "jabłko",
+    "pomelo",
+    "papaja",
+    "granat",
+    "cytron"
    ]
   },
   {
    "id": 133,
-   "q": "Gracz rzuca kostką 7 razy z rzędu. Czy zapamiętasz w odpowiedniej kolejności, co wyrzucił?",
+   "q": "Gracz rzuca kostką 7 razy z rzędu. Czy zapamiętasz w odpowiedniej kolejności, co wyrzucił? (Ktoś rzuca i podaje wyniki na głos.)",
    "sec": 60,
    "hints": []
   },
@@ -685,7 +761,20 @@
    "id": 134,
    "q": "Czy zdołasz wymienić 4 męskie imiona na 5 liter?",
    "sec": 30,
-   "hints": []
+   "hints": [
+    "Marek",
+    "Jacek",
+    "Karol",
+    "Piotr",
+    "Paweł",
+    "Artur",
+    "Kamil",
+    "Dawid",
+    "Jerzy",
+    "Józef",
+    "Rafał",
+    "Bruno"
+   ]
   },
   {
    "id": 135,
@@ -705,14 +794,14 @@
   },
   {
    "id": 136,
-   "q": "Ktoś odczytuje pełne nazwiska i numery telefonów 2 kontaktów ze swojego telefonu. Czy rozgrywający zapamięta je?",
+   "q": "Ktoś odczytuje jeden raz pełne nazwiska i numery telefonów 2 kontaktów ze swojego telefonu. Czy rozgrywający zapamięta je?",
    "sec": 60,
    "hints": []
   },
   {
    "id": 137,
-   "q": "Czy zdołasz wymienić nazwy 5 planet?",
-   "sec": 15,
+   "q": "Czy zdołasz wymienić nazwy 6 planet?",
+   "sec": 30,
    "hints": [
     "Merkury",
     "Wenus",
@@ -728,31 +817,71 @@
    "id": 138,
    "q": "Czy zdołasz wymienić 3 męskie imiona na 6 liter?",
    "sec": 15,
-   "hints": []
+   "hints": [
+    "Michał",
+    "Marcin",
+    "Robert",
+    "Henryk",
+    "Szymon",
+    "Łukasz",
+    "Tomasz",
+    "Janusz",
+    "Stefan",
+    "Witold",
+    "Leszek",
+    "Marian"
+   ]
   },
   {
    "id": 139,
-   "q": "Czy zdołasz ocenić, ile stron ma dowolna książka (±30 stron), nie otwierając jej?",
+   "q": "Czy zdołasz ocenić, ile stron ma dowolna książka (±30 stron), nie otwierając jej? (Książkę wybiera ktoś inny.)",
    "sec": 30,
    "hints": []
   },
   {
    "id": 140,
    "q": "Czy zdołasz w ciągu 30 sekund odnaleźć słowo „WIĘC” w dowolnej gazecie lub magazynie?",
-   "sec": 60,
+   "sec": 30,
    "hints": []
   },
   {
    "id": 141,
    "q": "Czy zdołasz wymienić 3 żeńskie imiona na 6 liter?",
    "sec": 30,
-   "hints": []
+   "hints": [
+    "Monika",
+    "Sylwia",
+    "Halina",
+    "Renata",
+    "Alicja",
+    "Dorota",
+    "Joanna",
+    "Danuta",
+    "Teresa",
+    "Karina",
+    "Lucyna"
+   ]
   },
   {
    "id": 142,
-   "q": "Czy wymienisz nazwiska 3 znanych aktorów lub aktorek na literę T?",
+   "q": "Czy wymienisz 3 znanych aktorów lub aktorki, których nazwisko zaczyna się na literę T?",
    "sec": 30,
-   "hints": []
+   "hints": [
+    "Travolta",
+    "Theron",
+    "Thurman",
+    "Tatum",
+    "Tyszkiewicz",
+    "Trela",
+    "Thornton",
+    "Tautou",
+    "Tennant",
+    "Thompson",
+    "Turner",
+    "Tucci",
+    "Tomei",
+    "Tyler"
+   ]
   },
   {
    "id": 143,
@@ -778,7 +907,7 @@
   },
   {
    "id": 144,
-   "q": "Jeden z graczy przypisuje literom A, B i C dowolne cyfry od 0 do 9 (np. A = 4, B = 6, C = 9). Rozgrywający patrzy na listę 10 sekund. Inny gracz układa równanie z samych liter (nie więcej niż czterech), np. A + C + A − C = ?. Czy rozgrywający poda poprawny wynik?",
+   "q": "Jeden z graczy przypisuje literom A, B i C dowolne cyfry od 0 do 9 (np. A = 4, B = 6, C = 9). Rozgrywający patrzy na listę 10 sekund. Inny gracz układa równanie z samych liter (nie więcej niż czterech), np. A + C + A − C = ?. Czy rozgrywający poda poprawny wynik? (Potrzebna kartka i długopis albo notatnik w telefonie.)",
    "sec": 60,
    "hints": []
   },
@@ -790,7 +919,7 @@
   },
   {
    "id": 146,
-   "q": "Czy zdołasz wymienić 5 planet w kolejności od Słońca?",
+   "q": "Czy zdołasz wymienić 5 pierwszych planet Układu Słonecznego w kolejności od Słońca (od Merkurego)?",
    "sec": 30,
    "hints": [
     "Merkury",
@@ -828,18 +957,36 @@
     "gitara",
     "trąbka",
     "organy",
-    "kornet"
+    "kornet",
+    "lutnia",
+    "sakson",
+    "fujara",
+    "djembe"
    ]
   },
   {
    "id": 149,
-   "q": "Czy znajdziesz 5 słów zawierających „KRA”? (np. kraj, kratka)",
+   "q": "Czy znajdziesz 5 różnych słów zawierających „KRA”? (np. kraj, kratka; odmiany tego samego słowa się nie liczą)",
    "sec": 30,
-   "hints": []
+   "hints": [
+    "kraj",
+    "kratka",
+    "kran",
+    "krata",
+    "krawat",
+    "kraina",
+    "krasnal",
+    "kradzież",
+    "kraść",
+    "Ukraina",
+    "Kraków",
+    "skrajny",
+    "okrasa"
+   ]
   },
   {
    "id": 150,
-   "q": "Czy zdołasz ocenić na oko wysokość drzwi w pomieszczeniu (±10 cm)? Sędzia sprawdza miarką lub metrem.",
+   "q": "Czy zdołasz ocenić na oko wysokość drzwi w pomieszczeniu (±5 cm)? Sędzia sprawdza miarką. (Jeśli nie ma miarki, pomiń kartę.)",
    "sec": 15,
    "hints": []
   }
@@ -974,7 +1121,7 @@
    ],
    "second": [
     "zbiera grzyby w lesie",
-    "przegrywa w szachy"
+    "zastanawia się nad ruchem w szachach"
    ]
   },
   {
@@ -996,7 +1143,7 @@
    ],
    "second": [
     "opala się na plaży",
-    "dostaje mandat"
+    "rzuca frisbee"
    ]
   },
   {
@@ -1007,7 +1154,7 @@
    ],
    "second": [
     "wlecze się po schodach z zakupami",
-    "rozwiązuje trudną zagadkę"
+    "pisze długi list"
    ]
   },
   {
@@ -1018,7 +1165,7 @@
    ],
    "second": [
     "jedzie na łyżwach",
-    "gubi się w centrum handlowym"
+    "rozgląda się za wyjściem"
    ]
   },
   {
@@ -1039,7 +1186,7 @@
     "Dinozaur"
    ],
    "second": [
-    "rozmawia przez telefon z teściową",
+    "rozmawia głośno przez telefon",
     "gra w siatkówkę"
    ]
   },
@@ -1072,7 +1219,7 @@
     "Papuga"
    ],
    "second": [
-    "wybiera prezent dla mamy",
+    "pakuje prezent",
     "przechodzi przez rwącą rzekę"
    ]
   },
@@ -1123,7 +1270,7 @@
   {
    "id": 226,
    "first": [
-    "Król Lew",
+    "Młody lew",
     "Zebra"
    ],
    "second": [
@@ -1161,13 +1308,13 @@
    ],
    "second": [
     "je spaghetti",
-    "czeka w gabinecie lekarskim"
+    "mierzy gorączkę"
    ]
   },
   {
    "id": 230,
    "first": [
-    "Rycerz-tchórz",
+    "Giermek",
     "Farmaceuta"
    ],
    "second": [
@@ -1193,8 +1340,8 @@
     "Hipopotam"
    ],
    "second": [
-    "podpiera się o wiejący wiatr",
-    "żegna się na dworcu"
+    "idzie pod silny wiatr",
+    "składa parasol"
    ]
   },
   {
@@ -1222,7 +1369,7 @@
   {
    "id": 235,
    "first": [
-    "Kierowca ciężarówki",
+    "Traktorzysta",
     "Terapeuta"
    ],
    "second": [
@@ -1244,8 +1391,8 @@
   {
    "id": 237,
    "first": [
-    "Kruk z serem",
-    "Pan z gazetą"
+    "Kruk",
+    "Starszy pan"
    ],
    "second": [
     "rozmawia z lustrem",
@@ -1259,7 +1406,7 @@
     "Baba Jaga"
    ],
    "second": [
-    "tańczy walca",
+    "tańczy polkę",
     "wchodzi do zimnej wody"
    ]
   },
@@ -1277,7 +1424,7 @@
   {
    "id": 240,
    "first": [
-    "Skaut z kompasem",
+    "Skaut",
     "Trener piłkarski"
    ],
    "second": [
@@ -1304,7 +1451,7 @@
    ],
    "second": [
     "podnosi ciężką sztangę",
-    "zaprzęga konia"
+    "jeździ konno"
    ]
   },
   {
@@ -1315,17 +1462,17 @@
    ],
    "second": [
     "czyta na głos",
-    "przeprasza za spóźnienie"
+    "pisze wiadomość na telefonie"
    ]
   },
   {
    "id": 244,
    "first": [
     "Rzeźnik",
-    "Gruba kura"
+    "Dumna kura"
    ],
    "second": [
-    "śpiewa kołysankę",
+    "gra na harfie",
     "zagląda przez dziurkę od klucza"
    ]
   },
@@ -1369,19 +1516,19 @@
     "Reksio"
    ],
    "second": [
-    "gubi klucze od domu",
-    "prowadzi pod prąd"
+    "szuka kluczy w kieszeniach",
+    "pcha taczkę"
    ]
   },
   {
    "id": 249,
    "first": [
     "Szermierz",
-    "Bohater wojenny"
+    "Bohater dnia"
    ],
    "second": [
-    "goni własny cień",
-    "próbuje wejść do tłocznej windy"
+    "ściga muchę",
+    "wyciera zaparowane okulary"
    ]
   },
   {
@@ -1403,7 +1550,7 @@
    ],
    "second": [
     "kopie dół łopatą",
-    "nurkuje po skarb"
+    "wspina się po linie"
    ]
   },
   {
@@ -1431,7 +1578,7 @@
   {
    "id": 254,
    "first": [
-    "Mama z wózkiem",
+    "Młoda mama",
     "Śpiąca Królewna"
    ],
    "second": [
@@ -1442,19 +1589,19 @@
   {
    "id": 255,
    "first": [
-    "Wampir na diecie",
+    "Przyjazny duch",
     "Rozkojarzona nauczycielka"
    ],
    "second": [
     "słucha muzyki w słuchawkach",
-    "bije się z wiatrakami"
+    "odgania komary"
    ]
   },
   {
    "id": 256,
    "first": [
     "Mały wróbel",
-    "Dozorca"
+    "Stróż"
    ],
    "second": [
     "śmieje się do rozpuku",
@@ -1475,12 +1622,12 @@
   {
    "id": 258,
    "first": [
-    "Ogromny słoń",
-    "Pan z walizką"
+    "Ogromny nosorożec",
+    "Zdenerwowany pan"
    ],
    "second": [
     "spaceruje z psem",
-    "zamawia pizzę przez telefon"
+    "rozmawia przez telefon na spacerze"
    ]
   },
   {
@@ -1498,7 +1645,7 @@
    "id": 260,
    "first": [
     "Jaś",
-    "Pani w turbanie"
+    "Pani w chustce"
    ],
    "second": [
     "wspina się po drabinie",
@@ -1530,7 +1677,7 @@
   {
    "id": 263,
    "first": [
-    "Wiedźma z bajki",
+    "Dobra wróżka",
     "Dumny ojciec"
    ],
    "second": [
@@ -1545,18 +1692,18 @@
     "Sprzedawca lodów"
    ],
    "second": [
-    "wchodzi na szczyt góry",
-    "uciska bolący ząb"
+    "schodzi z góry po kamieniach",
+    "trzyma się za bolący ząb"
    ]
   },
   {
    "id": 265,
    "first": [
     "Rycerz w zbroi",
-    "Skoczny kangur"
+    "Skoczny zając"
    ],
    "second": [
-    "goni autobus",
+    "wsiada na karuzelę",
     "układa puzzle"
    ]
   },
@@ -1575,10 +1722,10 @@
    "id": 267,
    "first": [
     "Świąteczny elf",
-    "Rybak z wędką"
+    "Rybak"
    ],
    "second": [
-    "śpi na lekcji",
+    "robi pajacyki",
     "robi pompki"
    ]
   },
@@ -1596,12 +1743,12 @@
   {
    "id": 269,
    "first": [
-    "Lis-szczwany",
+    "Szczwany lis",
     "Zbuntowany nastolatek"
    ],
    "second": [
     "tasuje karty",
-    "opowiada dowcip"
+    "robi szpagat"
    ]
   },
   {
@@ -1612,18 +1759,18 @@
    ],
    "second": [
     "karmi kury",
-    "buduje wieżę z klocków"
+    "układa klocki w pudełku"
    ]
   },
   {
    "id": 271,
    "first": [
-    "Pani w szlafroku",
-    "Sherlock Holmes"
+    "Pani o poranku",
+    "Wielki wynalazca"
    ],
    "second": [
-    "opowiada straszną historię",
-    "strzela rzut karny"
+    "boi się burzy",
+    "rzuca do kosza"
    ]
   },
   {
@@ -1652,7 +1799,7 @@
    "id": 274,
    "first": [
     "Dozorca nocny",
-    "Wielki olbrzym"
+    "Dobry olbrzym"
    ],
    "second": [
     "strzela z łuku",
@@ -1663,7 +1810,7 @@
    "id": 275,
    "first": [
     "Dyrektor szkoły",
-    "Mała dziewczynka w kaloszach"
+    "Mała dziewczynka"
    ],
    "second": [
     "zakrada się do cudzego ogrodu",
@@ -1673,11 +1820,11 @@
   {
    "id": 276,
    "first": [
-    "Znudzony strażnik",
+    "Znudzony portier",
     "Wiewiórka"
    ],
    "second": [
-    "robi sobie zdjęcie",
+    "robi zdjęcie aparatem",
     "szuka igły w stogu siana"
    ]
   },
@@ -1696,7 +1843,7 @@
    "id": 278,
    "first": [
     "Koziołek Matołek",
-    "Policjant na rowerze"
+    "Strażnik miejski"
    ],
    "second": [
     "pełza jak wąż",
@@ -1718,11 +1865,11 @@
    "id": 280,
    "first": [
     "Zdolny garncarz",
-    "Dziecko na placu zabaw"
+    "Małe dziecko"
    ],
    "second": [
     "pompuje dętkę",
-    "czyta prognozę pogody"
+    "sprawdza, czy pada deszcz"
    ]
   },
   {
@@ -1805,8 +1952,8 @@
   {
    "id": 288,
    "first": [
-    "Wróżka",
-    "Dziecko z lizakiem"
+    "Czarodziej",
+    "Chłopiec z psem"
    ],
    "second": [
     "karmi kaczki",
@@ -1820,8 +1967,8 @@
     "Człowiek-orkiestra"
    ],
    "second": [
-    "gołębi się na dachu",
-    "młóci zboże"
+    "płoszy gołębie na dachu",
+    "zbiera zboże kosą"
    ]
   },
   {
@@ -1832,25 +1979,25 @@
    ],
    "second": [
     "jedzie metrem",
-    "gwiżdże na taksówkę"
+    "zatrzymuje taksówkę"
    ]
   },
   {
    "id": 291,
    "first": [
     "Napoleon",
-    "Zapracowany listonosz"
+    "Zapracowany kurier"
    ],
    "second": [
     "pływa kraulem",
-    "czeka na resztę"
+    "liczy monety"
    ]
   },
   {
    "id": 292,
    "first": [
     "Trębacz",
-    "Żółw w pośpiechu"
+    "Ślimak w pośpiechu"
    ],
    "second": [
     "balansuje na jednej nodze",
@@ -1864,7 +2011,7 @@
     "Elektryk"
    ],
    "second": [
-    "ziewa na wykładzie",
+    "liczy owce przed snem",
     "chowa się za drzewem"
    ]
   },
@@ -1872,7 +2019,7 @@
    "id": 294,
    "first": [
     "Fryzjerka",
-    "Szef kuchni w restauracji"
+    "Cukiernik"
    ],
    "second": [
     "żongluje talerzami",
@@ -1949,11 +2096,11 @@
    "id": 301,
    "first": [
     "Hodowca gołębi",
-    "Surowy sędzia"
+    "Surowy dyrektor"
    ],
    "second": [
     "czyta ogłoszenia",
-    "składa życzenia"
+    "wznosi toast"
    ]
   },
   {
@@ -1985,8 +2132,8 @@
     "Gimnastyczka"
    ],
    "second": [
-    "zbiera grzyby",
-    "upiekł ciasto i je wyjmuje z piekarnika"
+    "zbiera szyszki",
+    "piecze ciasto i wyjmuje je z piekarnika"
    ]
   },
   {
@@ -2019,7 +2166,7 @@
    ],
    "second": [
     "goli się przed lustrem",
-    "zgubił portfel"
+    "szuka portfela po kieszeniach"
    ]
   },
   {
@@ -2029,7 +2176,7 @@
     "Leonardo da Vinci"
    ],
    "second": [
-    "pływa jak ryba",
+    "trzepocze się jak ryba na lądzie",
     "targuje cenę"
    ]
   },
@@ -2041,7 +2188,7 @@
    ],
    "second": [
     "myje szybę",
-    "szuka pilota"
+    "szuka pilota do telewizora"
    ]
   },
   {
@@ -2059,11 +2206,11 @@
    "id": 311,
    "first": [
     "Zagubiony turysta",
-    "Grabarz"
+    "Tragarz"
    ],
    "second": [
     "przewraca się na bananie",
-    "robi zakupy z długą listą"
+    "szuka wolnej półki w sklepie"
    ]
   },
   {
@@ -2074,7 +2221,7 @@
    ],
    "second": [
     "czyta książkę przy świecy",
-    "udaje, że jest bogaty"
+    "wysypuje monety z sakiewki"
    ]
   },
   {
@@ -2096,7 +2243,7 @@
    ],
    "second": [
     "gra na pianinie",
-    "szuka drogi w ciemnym korytarzu"
+    "idzie po omacku w ciemności"
    ]
   },
   {
@@ -2107,7 +2254,7 @@
    ],
    "second": [
     "zmywa stos naczyń",
-    "szuka mapy skarbów"
+    "rysuje mapę skarbów"
    ]
   },
   {
@@ -2150,7 +2297,7 @@
     "Tancerz flamenco"
    ],
    "second": [
-    "płaci w sklepie samymi drobnymi",
+    "szuka klucza w torbie",
     "podpisuje autografy"
    ]
   },
@@ -2158,22 +2305,22 @@
    "id": 320,
    "first": [
     "Czujna surykatka",
-    "Pewna siebie gwiazda"
+    "Pewna siebie primadonna"
    ],
    "second": [
-    "godzi się z przyjacielem",
+    "ściska dłoń na zgodę",
     "drzemie w pociągu"
    ]
   },
   {
    "id": 321,
    "first": [
-    "Skąpy sknera",
+    "Sknera w szlafroku",
     "Pani z parasolem"
    ],
    "second": [
     "recytuje wiersz",
-    "czeka na wiadomość"
+    "wpatruje się w telefon"
    ]
   },
   {
@@ -2195,7 +2342,7 @@
    ],
    "second": [
     "mierzy ciśnienie",
-    "prowadzi orkiestrę"
+    "podaje kawę wszystkim naokoło"
    ]
   },
   {
@@ -2239,7 +2386,7 @@
    ],
    "second": [
     "przewija lalkę",
-    "odpowiada przy tablicy"
+    "podnosi rękę do odpowiedzi"
    ]
   },
   {
@@ -2257,7 +2404,7 @@
    "id": 329,
    "first": [
     "Dziadek do orzechów",
-    "Jednonogi pirat"
+    "Wąsaty pirat"
    ],
    "second": [
     "zbiera liście grabiami",
@@ -2272,7 +2419,7 @@
    ],
    "second": [
     "zmienia koło w samochodzie",
-    "stoi na pasach"
+    "zakłada skarpetki jedną ręką"
    ]
   },
   {
@@ -2283,7 +2430,7 @@
    ],
    "second": [
     "żegluje podczas sztormu",
-    "szuka okularów, które ma na nosie"
+    "szuka długopisu, który ma za uchem"
    ]
   },
   {
@@ -2293,8 +2440,8 @@
     "Chopin"
    ],
    "second": [
-    "podsłuchuje pod drzwiami",
-    "zgubił bilet"
+    "nasłuchuje przy ścianie",
+    "szuka biletu po kieszeniach"
    ]
   },
   {
@@ -2304,8 +2451,8 @@
     "Znużony strażak"
    ],
    "second": [
-    "poci się ze strachu",
-    "szlocha jak bóbr"
+    "drży ze strachu",
+    "ryczy jak bóbr"
    ]
   },
   {
@@ -2327,7 +2474,7 @@
    ],
    "second": [
     "gasi pożar wiadrem wody",
-    "ścigana przez policję"
+    "ucieka przed policją"
    ]
   },
   {
@@ -2348,7 +2495,7 @@
     "Mistrz karate"
    ],
    "second": [
-    "jedzie pod prąd rzeki",
+    "skacze po kamieniach przez strumień",
     "gra w tenisa"
    ]
   },
@@ -2356,7 +2503,7 @@
    "id": 338,
    "first": [
     "Uprzejma stewardesa",
-    "Pilot helikoptera"
+    "Pilot rajdowy"
    ],
    "second": [
     "brnie przez głęboki śnieg",
@@ -2382,7 +2529,7 @@
    ],
    "second": [
     "prowadzi wywiad",
-    "woła echo w górach"
+    "woła w górach i słucha echa"
    ]
   },
   {
@@ -2403,7 +2550,7 @@
     "Szatniarz"
    ],
    "second": [
-    "jedzie na rowerze po bruku",
+    "jedzie na hulajnodze",
     "ćwiczy jogę"
    ]
   },
@@ -2414,7 +2561,7 @@
     "Ogrodniczka"
    ],
    "second": [
-    "dmucha w gorącą zupę",
+    "stroi się przed lustrem",
     "zaprasza do tańca"
    ]
   },
@@ -2436,7 +2583,7 @@
     "Robot w kuchni"
    ],
    "second": [
-    "zbiera rozsypane groszki",
+    "zbiera rozsypany groszek",
     "rzuca bumerangiem"
    ]
   },
@@ -2470,7 +2617,7 @@
    ],
    "second": [
     "niesie jajka w koszyku",
-    "udaje, że nie widzi"
+    "podskakuje i wypatruje autobusu"
    ]
   },
   {
@@ -2492,7 +2639,7 @@
    ],
    "second": [
     "siekierą rozbija lód",
-    "spaceruje po lodzie"
+    "ślizga się na lodowisku"
    ]
   },
   {
@@ -2532,7 +2679,7 @@
    "id": 354,
    "first": [
     "Samotny łoś",
-    "Fryzjer gwiazd"
+    "Stylista fryzur"
    ],
    "second": [
     "wyciąga królika z kapelusza",
@@ -2547,18 +2694,18 @@
    ],
    "second": [
     "gotuje zupę i ciągle ją próbuje",
-    "udaje, że pływa"
+    "jeździ na wrotkach"
    ]
   },
   {
    "id": 356,
    "first": [
     "Głodny nurek",
-    "Diabeł"
+    "Rogaty chochlik"
    ],
    "second": [
     "trzęsie się z zimna",
-    "pisze dyktando"
+    "rozwiązuje krzyżówkę"
    ]
   },
   {
@@ -2568,7 +2715,7 @@
     "Mikołaj Kopernik"
    ],
    "second": [
-    "pisze na maszynie",
+    "pije kawę z termosu",
     "niesie pełną filiżankę po schodach"
    ]
   },
@@ -2580,7 +2727,7 @@
    ],
    "second": [
     "przedziera się przez tłum",
-    "pije gorącą herbatę"
+    "zdejmuje ciężki plecak"
    ]
   },
   {
@@ -2608,7 +2755,7 @@
   {
    "id": 361,
    "first": [
-    "Kot Behemot",
+    "Kot w kapeluszu",
     "Golfista"
    ],
    "second": [
@@ -2619,12 +2766,12 @@
   {
    "id": 362,
    "first": [
-    "Pani z lodami",
+    "Pani z balonikami",
     "Bokser"
    ],
    "second": [
     "skacze na skakance",
-    "żongluje trzema piłkami"
+    "robi hula-hoop"
    ]
   },
   {
@@ -2635,7 +2782,7 @@
    ],
    "second": [
     "łapie uciekającą rybę",
-    "wygrywa w totka"
+    "łamie kijem pinatę"
    ]
   },
   {
@@ -2664,7 +2811,7 @@
    "id": 366,
    "first": [
     "Początkujący kierowca",
-    "Grający na skrzypcach"
+    "Pan w meloniku"
    ],
    "second": [
     "chowa pieniądze pod materac",
@@ -2678,7 +2825,7 @@
     "Rozespany niedźwiadek"
    ],
    "second": [
-    "liczy kasę",
+    "ogląda banknot pod światło",
     "je arbuza"
    ]
   },
@@ -2689,18 +2836,18 @@
     "Pan w garniturze"
    ],
    "second": [
-    "odmierza sznurkiem odległość",
+    "mierzy odległość krokami",
     "śpi na leżaku"
    ]
   },
   {
    "id": 369,
    "first": [
-    "Smok z bajki",
+    "Ognisty smok",
     "Mim w parku"
    ],
    "second": [
-    "rumieni się",
+    "chowa twarz w dłoniach ze wstydu",
     "kicha bez końca"
    ]
   },
@@ -2734,7 +2881,7 @@
    ],
    "second": [
     "głaszcze puszystego kotka",
-    "pisze list miłosny"
+    "pisze kartkę urodzinową"
    ]
   },
   {
@@ -2788,7 +2935,7 @@
     "Dyrektor firmy"
    ],
    "second": [
-    "piecze chleb",
+    "wykłada towary na półkę",
     "leczy złamaną rękę"
    ]
   },
@@ -2800,7 +2947,7 @@
    ],
    "second": [
     "odkurza dywan",
-    "szuka skarbu"
+    "kopie w ogródku za monetą"
    ]
   },
   {
@@ -2811,7 +2958,7 @@
    ],
    "second": [
     "sprawdza paragon",
-    "jeździ na nartach"
+    "zjeżdża po poręczy"
    ]
   },
   {
@@ -2840,7 +2987,7 @@
    "id": 382,
    "first": [
     "Alpinista",
-    "Lekarz weterynarii"
+    "Lekarz pogotowia"
    ],
    "second": [
     "je ostrą papryczkę",
@@ -2854,8 +3001,8 @@
     "Chórzysta"
    ],
    "second": [
-    "pcha wózek",
-    "szuka drogi z mapą"
+    "jedzie na deskorolce",
+    "składa mapę, która się nie chce złożyć"
    ]
   },
   {
@@ -2873,10 +3020,10 @@
    "id": 385,
    "first": [
     "Programista",
-    "Pełen energii szczeniak"
+    "Rozbrykany szczeniak"
    ],
    "second": [
-    "wygląda z bocianiego gniazda",
+    "wspina się po maszcie",
     "lepi bałwana"
    ]
   },
@@ -2888,7 +3035,7 @@
    ],
    "second": [
     "łapie motyla",
-    "odpoczywa po pracy"
+    "wyciera pot z czoła"
    ]
   },
   {

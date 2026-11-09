@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-"""Builds server/games/obstaw/content.json. Card texts are original paraphrases
+"""INITIAL generator of server/games/obstaw/content.json. After the card review, content.json
+is edited directly (re-running this script would overwrite the reviewed skill/mental cards!).
+Builds server/games/obstaw/content.json. Card texts are original paraphrases
 of the task ideas (the physical card wording is NOT copied).
   sec: hourglass (15 yellow / 30 red / 60 black) or None = no hourglass.
   tries: attempts note shown under the task, e.g. "3 próby", "2 z 5 prób".
@@ -132,15 +134,18 @@ allm = list(MENTAL) + [(m["q"], m["sec"], m["hints"]) for m in mental_extra]
 mental = [card(101 + i, q=q, sec=s, hints=h) for i, (q, s, h) in enumerate(allm[:TOTAL_MENTAL])]
 
 old = json.loads(pathlib.Path("server/games/obstaw/content.json").read_text())
-acting = [c for c in old["acting"] if c["id"] <= 224]   # the 24 hand-written cards are kept as they are
+# content.json is the source of truth for acting cards (they were reviewed and edited by hand);
+# this script only generates the missing ones.
+acting = list(old["acting"])
 rng = random.Random(2024)
 used = {p for c in acting for p in (*c["first"], *c["second"])}
 S = [x for x in subjects if x not in used]; A = [x for x in actions if x not in used]
+next_id = max([c["id"] for c in acting] + [224]) + 1
 rng.shuffle(S); rng.shuffle(A)
-need = TOTAL_ACTING - len(acting)
+need = max(0, TOTAL_ACTING - len(acting))
 assert len(S) >= 2 * need and len(A) >= 2 * need, (len(S), len(A), need)
 for k in range(need):
-    acting.append({"id": 225 + k, "first": [S[2 * k], S[2 * k + 1]], "second": [A[2 * k], A[2 * k + 1]]})
+    acting.append({"id": next_id + k, "first": [S[2 * k], S[2 * k + 1]], "second": [A[2 * k], A[2 * k + 1]]})
 
 out = {"skill": skill, "mental": mental, "acting": acting}
 pathlib.Path("server/games/obstaw/content.json").write_text(json.dumps(out, ensure_ascii=False, indent=1) + "\n")
