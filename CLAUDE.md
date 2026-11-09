@@ -12,6 +12,7 @@ A Nuxt 4 / Nitro LAN party-game hub ("Party Hub"). Players join from phones, the
 npm test                                          # Node built-in runner (node --test), discovers test/*.test.ts
 node --test --test-name-pattern="5sr: reveal"     # single test by name pattern
 npm run build                                     # Nuxt/Nitro build → .output/
+npm run e2e                                       # Riposta end-to-end over real WebSockets (needs a build; starts its own server)
 HOST=0.0.0.0 PORT=3333 node .output/server/index.mjs   # prod run — use this for real play
 npm run dev                                       # dev on 0.0.0.0:8080 with QR (--port overrides devServer.port)
 docker compose up -d --build                      # NAS/Docker deploy
