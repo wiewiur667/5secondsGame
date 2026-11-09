@@ -107,7 +107,8 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 700; line-height: 1.
   box-shadow: 0 0 0 1px var(--accent) inset;
 }
 
-input.field {
+input.field,
+textarea.field {
   font-family: var(--font-body);
   font-size: 1.125rem;
   padding: 14px 16px;
@@ -117,8 +118,10 @@ input.field {
   border: 1px solid var(--border);
   border-radius: var(--r);
 }
-input.field:focus-visible { outline: none; box-shadow: var(--ring); border-color: var(--accent); }
-input.field::placeholder { color: var(--muted); }
+input.field:focus-visible,
+textarea.field:focus-visible { outline: none; box-shadow: var(--ring); border-color: var(--accent); }
+input.field::placeholder,
+textarea.field::placeholder { color: var(--muted); }
 
 .pill { font-family: var(--font-display); font-weight: 600; padding: 4px 12px; border-radius: 999px; background: var(--surface-2); color: var(--muted); font-size: 0.9rem; }
 

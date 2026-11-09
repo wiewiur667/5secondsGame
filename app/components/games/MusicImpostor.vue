@@ -34,19 +34,19 @@ const timer = computed(() => {
         />
         <button v-else class="tap" @click="started = true">
           <span class="play">▶</span>
-          <span>Tap to start</span>
+          <span>Dotknij, aby zacząć</span>
         </button>
       </div>
 
-      <div class="card ask">Listen closely.<br /><b>Who's the impostor?</b></div>
+      <div class="card ask">Słuchaj uważnie.<br /><b>Kto jest impostorem?</b></div>
     </template>
 
     <template v-else-if="state.phase === 'revealed'">
       <div class="card center reveal">
-        <p class="label">The impostor was</p>
+        <p class="label">Impostorem był(a)</p>
         <h2 class="name">{{ state.impostorName }}</h2>
-        <div v-if="state.youWereImpostor" class="you">😈 It was YOU!</div>
-        <p class="muted">Waiting for the next round…</p>
+        <div v-if="state.youWereImpostor" class="you">😈 To TY!</div>
+        <p class="muted">Czekamy na następną rundę…</p>
       </div>
     </template>
   </section>

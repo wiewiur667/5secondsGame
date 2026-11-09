@@ -1,0 +1,2035 @@
+{
+ "version": 1,
+ "license": "CC BY 4.0 — see LICENSE-CONTENT",
+ "tiers": [
+  "family",
+  "adult",
+  "18+"
+ ],
+ "prompts": [
+  {
+   "id": 1,
+   "text": "Najgorsza rzecz, jaką można znaleźć w pierogu:",
+   "tier": "family"
+  },
+  {
+   "id": 2,
+   "text": "Prezent od babci, którego nikt nie chce:",
+   "tier": "family"
+  },
+  {
+   "id": 3,
+   "text": "Prawdziwy powód, dla którego pociąg się spóźnia:",
+   "tier": "family"
+  },
+  {
+   "id": 4,
+   "text": "Co naprawdę oznacza „zaraz będę”:",
+   "tier": "family"
+  },
+  {
+   "id": 5,
+   "text": "Nowy smak chipsów, którego nikt nie kupi:",
+   "tier": "family"
+  },
+  {
+   "id": 6,
+   "text": "Najgorsze imię dla psa:",
+   "tier": "family"
+  },
+  {
+   "id": 7,
+   "text": "Napis na koszulce, którą nosi każdy wujek na grillu:",
+   "tier": "family"
+  },
+  {
+   "id": 8,
+   "text": "Tytuł najnudniejszego filmu świata:",
+   "tier": "family"
+  },
+  {
+   "id": 9,
+   "text": "Co krzyczy kibic, który nie wie, co się dzieje na boisku:",
+   "tier": "family"
+  },
+  {
+   "id": 10,
+   "text": "Najgorszy pomysł na pracę z plastyki:",
+   "tier": "family"
+  },
+  {
+   "id": 11,
+   "text": "Hasło reklamowe dla działki pod miastem:",
+   "tier": "family"
+  },
+  {
+   "id": 12,
+   "text": "Rzecz, którą znajdziesz w każdej kuchennej szufladzie:",
+   "tier": "family"
+  },
+  {
+   "id": 13,
+   "text": "Co mówi nawigacja, kiedy ma dość kierowcy:",
+   "tier": "family"
+  },
+  {
+   "id": 14,
+   "text": "Nowa dyscyplina olimpijska dla emerytów:",
+   "tier": "family"
+  },
+  {
+   "id": 15,
+   "text": "Najgorsza rzecz, jaką może powiedzieć pilot samolotu:",
+   "tier": "family"
+  },
+  {
+   "id": 16,
+   "text": "Co robią koty, kiedy nikogo nie ma w domu:",
+   "tier": "family"
+  },
+  {
+   "id": 17,
+   "text": "Nazwa zespołu disco polo z twojej okolicy:",
+   "tier": "family"
+  },
+  {
+   "id": 18,
+   "text": "Najmniej przydatna supermoc:",
+   "tier": "family"
+  },
+  {
+   "id": 19,
+   "text": "Historia, którą dziadek opowiada przy każdym obiedzie:",
+   "tier": "family"
+  },
+  {
+   "id": 20,
+   "text": "Tytuł książki napisanej przez kota:",
+   "tier": "family"
+  },
+  {
+   "id": 21,
+   "text": "Wymówka za spóźnienie do szkoły, która nigdy nie działa:",
+   "tier": "family"
+  },
+  {
+   "id": 22,
+   "text": "Najdziwniejsze danie na wigilijnym stole:",
+   "tier": "family"
+  },
+  {
+   "id": 23,
+   "text": "Co jest napisane drobnym drukiem w umowie na telefon:",
+   "tier": "family"
+  },
+  {
+   "id": 24,
+   "text": "Najgorsza rzecz do powiedzenia na wywiadówce:",
+   "tier": "family"
+  },
+  {
+   "id": 25,
+   "text": "Nowa aplikacja, której nikt nie potrzebuje:",
+   "tier": "family"
+  },
+  {
+   "id": 26,
+   "text": "Co mówi lodówka, gdy otwierasz ją piąty raz w ciągu godziny:",
+   "tier": "family"
+  },
+  {
+   "id": 27,
+   "text": "Nazwa nowego święta państwowego:",
+   "tier": "family"
+  },
+  {
+   "id": 28,
+   "text": "Najgorszy tekst na kartce urodzinowej:",
+   "tier": "family"
+  },
+  {
+   "id": 29,
+   "text": "Rzecz, którą słychać w każdej kolejce w urzędzie:",
+   "tier": "family"
+  },
+  {
+   "id": 30,
+   "text": "Hasło, które powinno wisieć nad każdym okienkiem w urzędzie:",
+   "tier": "family"
+  },
+  {
+   "id": 31,
+   "text": "Najgorsza nazwa dla nowego batonika:",
+   "tier": "family"
+  },
+  {
+   "id": 32,
+   "text": "Prawdziwy powód, dla którego skarpetki znikają w pralce:",
+   "tier": "family"
+  },
+  {
+   "id": 33,
+   "text": "Co nauczyciel naprawdę myśli, kiedy mówi „ciekawa odpowiedź”:",
+   "tier": "family"
+  },
+  {
+   "id": 34,
+   "text": "Najgorszy pomysł na atrakcję w aquaparku:",
+   "tier": "family"
+  },
+  {
+   "id": 35,
+   "text": "Co powiedziałby gołąb, gdyby umiał mówić:",
+   "tier": "family"
+  },
+  {
+   "id": 36,
+   "text": "Najdziwniejszy produkt w sklepie „wszystko po 5 zł”:",
+   "tier": "family"
+  },
+  {
+   "id": 37,
+   "text": "Najgorsza rzecz, jaką można usłyszeć od fryzjera:",
+   "tier": "family"
+  },
+  {
+   "id": 38,
+   "text": "Tytuł nowego hitu na sylwestrowym koncercie:",
+   "tier": "family"
+  },
+  {
+   "id": 39,
+   "text": "Rzecz, której nie powinno się robić w windzie:",
+   "tier": "family"
+  },
+  {
+   "id": 40,
+   "text": "Najgorsze imię dla smoka:",
+   "tier": "family"
+  },
+  {
+   "id": 41,
+   "text": "Co znaleźli archeolodzy pod Pałacem Kultury:",
+   "tier": "family"
+  },
+  {
+   "id": 42,
+   "text": "Najgorszy temat wypracowania na maturze:",
+   "tier": "family"
+  },
+  {
+   "id": 43,
+   "text": "Nowa zasada w szkole, która zdenerwowałaby wszystkich:",
+   "tier": "family"
+  },
+  {
+   "id": 44,
+   "text": "Tajny składnik pasty do zębów:",
+   "tier": "family"
+  },
+  {
+   "id": 45,
+   "text": "Pierwsze słowa robota, który właśnie się obudził:",
+   "tier": "family"
+  },
+  {
+   "id": 46,
+   "text": "Najgorsza rzecz do zabrania na kemping:",
+   "tier": "family"
+  },
+  {
+   "id": 47,
+   "text": "Hasło reklamowe najgorszego hotelu nad morzem:",
+   "tier": "family"
+  },
+  {
+   "id": 48,
+   "text": "Temat, o który zawsze kłóci się rodzina przy stole:",
+   "tier": "family"
+  },
+  {
+   "id": 49,
+   "text": "Nowy program w telewizji śniadaniowej:",
+   "tier": "family"
+  },
+  {
+   "id": 50,
+   "text": "Co mówi sąsiad z wiertarką w niedzielę o 8 rano:",
+   "tier": "family"
+  },
+  {
+   "id": 51,
+   "text": "Najgorszy prezent na Dzień Matki:",
+   "tier": "family"
+  },
+  {
+   "id": 52,
+   "text": "Najdziwniejsza rzecz w plecaku ucznia:",
+   "tier": "family"
+  },
+  {
+   "id": 53,
+   "text": "Tytuł piosenki, którą śpiewa twoja pralka:",
+   "tier": "family"
+  },
+  {
+   "id": 54,
+   "text": "Co mówią krowy, kiedy nikt nie słucha:",
+   "tier": "family"
+  },
+  {
+   "id": 55,
+   "text": "Najgorsza nazwa dla budki z kebabem:",
+   "tier": "family"
+  },
+  {
+   "id": 56,
+   "text": "Prawdziwy powód, dla którego ludzie noszą skarpety do sandałów:",
+   "tier": "family"
+  },
+  {
+   "id": 57,
+   "text": "Najgorsza rzecz do napisania w wiadomości do szefa:",
+   "tier": "family"
+  },
+  {
+   "id": 58,
+   "text": "Nowy znak drogowy, którego naprawdę potrzebujemy:",
+   "tier": "family"
+  },
+  {
+   "id": 59,
+   "text": "Co Mikołaj robi przez resztę roku:",
+   "tier": "family"
+  },
+  {
+   "id": 60,
+   "text": "Najgorszy smak lodów:",
+   "tier": "family"
+  },
+  {
+   "id": 61,
+   "text": "Najgorsze miejsce na pierwszą randkę:",
+   "tier": "family"
+  },
+  {
+   "id": 62,
+   "text": "Co kryje się na dnie torebki mamy:",
+   "tier": "family"
+  },
+  {
+   "id": 63,
+   "text": "Najkrótsza bajka świata:",
+   "tier": "family"
+  },
+  {
+   "id": 64,
+   "text": "Tytuł reality show o emerytach na działkach:",
+   "tier": "family"
+  },
+  {
+   "id": 65,
+   "text": "Najgorsza rzecz do powiedzenia po obiedzie u teściowej:",
+   "tier": "family"
+  },
+  {
+   "id": 66,
+   "text": "Hasło wyborcze kandydata na sołtysa:",
+   "tier": "family"
+  },
+  {
+   "id": 67,
+   "text": "Nowa nazwa dla poniedziałku:",
+   "tier": "family"
+  },
+  {
+   "id": 68,
+   "text": "Co szepcze choinka w połowie stycznia:",
+   "tier": "family"
+  },
+  {
+   "id": 69,
+   "text": "Najdziwniejszy powód, żeby zadzwonić na infolinię:",
+   "tier": "family"
+  },
+  {
+   "id": 70,
+   "text": "Pierwsze, co robi kosmita po wylądowaniu w Polsce:",
+   "tier": "family"
+  },
+  {
+   "id": 71,
+   "text": "Najgorszy pomysł na rodzinne zdjęcie do ramki:",
+   "tier": "family"
+  },
+  {
+   "id": 72,
+   "text": "Rzecz, którą każdy wozi w schowku samochodowym:",
+   "tier": "family"
+  },
+  {
+   "id": 73,
+   "text": "Co mówi pies na widok listonosza:",
+   "tier": "family"
+  },
+  {
+   "id": 74,
+   "text": "Najgorsza nazwa dla nowej linii metra:",
+   "tier": "family"
+  },
+  {
+   "id": 75,
+   "text": "Sekretny składnik bigosu cioci:",
+   "tier": "family"
+  },
+  {
+   "id": 76,
+   "text": "Najgorszy moment na kichnięcie:",
+   "tier": "family"
+  },
+  {
+   "id": 77,
+   "text": "Najgorsza zabawka, jaką można dać dziecku:",
+   "tier": "family"
+  },
+  {
+   "id": 78,
+   "text": "Nowa konkurencja weselna, która skończy się źle:",
+   "tier": "family"
+  },
+  {
+   "id": 79,
+   "text": "Najgorsze hasło do wi-fi:",
+   "tier": "family"
+  },
+  {
+   "id": 80,
+   "text": "Wiadomość, którą mama wysyła na rodzinnej grupie:",
+   "tier": "family"
+  },
+  {
+   "id": 81,
+   "text": "Co gołąb robi na pomniku przez cały dzień:",
+   "tier": "family"
+  },
+  {
+   "id": 82,
+   "text": "Najgorszy pomysł na niespodziankę urodzinową:",
+   "tier": "family"
+  },
+  {
+   "id": 83,
+   "text": "Najbardziej polski sport ekstremalny:",
+   "tier": "family"
+  },
+  {
+   "id": 84,
+   "text": "Nazwa dinozaura odkrytego właśnie w Bieszczadach:",
+   "tier": "family"
+  },
+  {
+   "id": 85,
+   "text": "Co mówi trener, gdy drużyna przegrywa 0:7:",
+   "tier": "family"
+  },
+  {
+   "id": 86,
+   "text": "Rzecz, której nikt nigdy nie przeczytał do końca:",
+   "tier": "family"
+  },
+  {
+   "id": 87,
+   "text": "Najgorsza mowa na pogrzebie chomika:",
+   "tier": "family"
+  },
+  {
+   "id": 88,
+   "text": "Nowy owoc, który właśnie wyhodowali naukowcy:",
+   "tier": "family"
+  },
+  {
+   "id": 89,
+   "text": "Co robi nocny stróż w muzeum, kiedy się nudzi:",
+   "tier": "family"
+  },
+  {
+   "id": 90,
+   "text": "Najgorsze hasło na transparencie na meczu:",
+   "tier": "family"
+  },
+  {
+   "id": 91,
+   "text": "Najdziwniejsza nazwa ulicy w Polsce:",
+   "tier": "family"
+  },
+  {
+   "id": 92,
+   "text": "Co mówi ślimak, kiedy w końcu dociera do celu:",
+   "tier": "family"
+  },
+  {
+   "id": 93,
+   "text": "Najgorsza rzecz do powiedzenia egzaminatorowi na prawie jazdy:",
+   "tier": "family"
+  },
+  {
+   "id": 94,
+   "text": "Pamiątka, którą wujek zawsze przywozi z wakacji:",
+   "tier": "family"
+  },
+  {
+   "id": 95,
+   "text": "Najgorszy pomysł na lekcję WF-u:",
+   "tier": "family"
+  },
+  {
+   "id": 96,
+   "text": "Wymówka, żeby nie zmywać naczyń:",
+   "tier": "family"
+  },
+  {
+   "id": 97,
+   "text": "Nowy obowiązkowy przedmiot w szkole:",
+   "tier": "family"
+  },
+  {
+   "id": 98,
+   "text": "Co mówi bałwan, kiedy przychodzi wiosna:",
+   "tier": "family"
+  },
+  {
+   "id": 99,
+   "text": "Najgorszy dzwonek w telefonie:",
+   "tier": "family"
+  },
+  {
+   "id": 100,
+   "text": "Rzecz, którą można kupić tylko na stacji benzynowej o 2 w nocy:",
+   "tier": "family"
+  },
+  {
+   "id": 201,
+   "text": "Prawdziwy powód, dla którego szef zwołał spotkanie o 16:55:",
+   "tier": "adult"
+  },
+  {
+   "id": 202,
+   "text": "Co wujek krzyczy po trzecim kieliszku:",
+   "tier": "adult"
+  },
+  {
+   "id": 203,
+   "text": "Najgorsza rzecz do powiedzenia na pierwszej randce:",
+   "tier": "adult"
+  },
+  {
+   "id": 204,
+   "text": "Co jest naprawdę w kebabie o trzeciej w nocy:",
+   "tier": "adult"
+  },
+  {
+   "id": 205,
+   "text": "Najgorszy tekst na podryw w dyskoncie:",
+   "tier": "adult"
+  },
+  {
+   "id": 206,
+   "text": "Wymówka, żeby nie przyjść na firmową wigilię:",
+   "tier": "adult"
+  },
+  {
+   "id": 207,
+   "text": "Najgorsza rzecz do znalezienia w telefonie partnera:",
+   "tier": "adult"
+  },
+  {
+   "id": 208,
+   "text": "Nazwa nowej wódki smakowej:",
+   "tier": "adult"
+  },
+  {
+   "id": 209,
+   "text": "Co naprawdę znaczy „musimy porozmawiać”:",
+   "tier": "adult"
+  },
+  {
+   "id": 210,
+   "text": "Najgorszy toast weselny:",
+   "tier": "adult"
+  },
+  {
+   "id": 211,
+   "text": "Prawdziwa treść maila „zgodnie z moją poprzednią wiadomością”:",
+   "tier": "adult"
+  },
+  {
+   "id": 212,
+   "text": "Najgorszy opis profilu w aplikacji randkowej:",
+   "tier": "adult"
+  },
+  {
+   "id": 213,
+   "text": "Co robi księgowa po godzinach:",
+   "tier": "adult"
+  },
+  {
+   "id": 214,
+   "text": "Hasło reklamowe piwa bezalkoholowego:",
+   "tier": "adult"
+  },
+  {
+   "id": 215,
+   "text": "Najgorsza rzecz do powiedzenia teściowej przy pierwszym spotkaniu:",
+   "tier": "adult"
+  },
+  {
+   "id": 216,
+   "text": "Co mówi barman, kiedy ma cię dość:",
+   "tier": "adult"
+  },
+  {
+   "id": 217,
+   "text": "Najgorszy powód do rozwodu:",
+   "tier": "adult"
+  },
+  {
+   "id": 218,
+   "text": "Co naprawdę dzieje się na wyjeździe integracyjnym:",
+   "tier": "adult"
+  },
+  {
+   "id": 219,
+   "text": "Najgorsza nazwa dla drinka:",
+   "tier": "adult"
+  },
+  {
+   "id": 220,
+   "text": "Kac w trzech słowach:",
+   "tier": "adult"
+  },
+  {
+   "id": 221,
+   "text": "Prawdziwy powód, dla którego kolega z pracy zawsze pracuje zdalnie:",
+   "tier": "adult"
+  },
+  {
+   "id": 222,
+   "text": "Co ludzie wpisują w wyszukiwarkę o 4 nad ranem:",
+   "tier": "adult"
+  },
+  {
+   "id": 223,
+   "text": "Najgorsza rzecz do powiedzenia na rozmowie o podwyżkę:",
+   "tier": "adult"
+  },
+  {
+   "id": 224,
+   "text": "Nowe hasło motywacyjne w korporacji:",
+   "tier": "adult"
+  },
+  {
+   "id": 225,
+   "text": "Najgorszy moment na telefon od eks:",
+   "tier": "adult"
+  },
+  {
+   "id": 226,
+   "text": "Co sąsiedzi słyszą przez ścianę w sobotę wieczorem:",
+   "tier": "adult"
+  },
+  {
+   "id": 227,
+   "text": "Najgorszy pomysł na wieczór kawalerski:",
+   "tier": "adult"
+  },
+  {
+   "id": 228,
+   "text": "Najgorszy pomysł na wieczór panieński:",
+   "tier": "adult"
+  },
+  {
+   "id": 229,
+   "text": "Co naprawdę robi informatyk, kiedy mówi „kompiluje się”:",
+   "tier": "adult"
+  },
+  {
+   "id": 230,
+   "text": "Najgorsza rzecz do powiedzenia na ślubie przyjaciół:",
+   "tier": "adult"
+  },
+  {
+   "id": 231,
+   "text": "Sekretny składnik nalewki dziadka:",
+   "tier": "adult"
+  },
+  {
+   "id": 232,
+   "text": "Co mówi Polak przy szwedzkim stole w Egipcie:",
+   "tier": "adult"
+  },
+  {
+   "id": 233,
+   "text": "Najgorsza wymówka, żeby nie iść na siłownię:",
+   "tier": "adult"
+  },
+  {
+   "id": 234,
+   "text": "Prawdziwy powód, dla którego para kupuje psa:",
+   "tier": "adult"
+  },
+  {
+   "id": 235,
+   "text": "Najgorsza wiadomość do wysłania po pijaku:",
+   "tier": "adult"
+  },
+  {
+   "id": 236,
+   "text": "Zasada, która wisi w każdym klubie nocnym:",
+   "tier": "adult"
+  },
+  {
+   "id": 237,
+   "text": "Tytuł romansu dla wędkarzy:",
+   "tier": "adult"
+  },
+  {
+   "id": 238,
+   "text": "Najgorszy prezent na rocznicę:",
+   "tier": "adult"
+  },
+  {
+   "id": 239,
+   "text": "Co kryje się w historii przeglądarki szefa:",
+   "tier": "adult"
+  },
+  {
+   "id": 240,
+   "text": "Najgorsza nazwa dla biura matrymonialnego:",
+   "tier": "adult"
+  },
+  {
+   "id": 241,
+   "text": "Co naprawdę znaczy „wpadnę tylko na jedno piwo”:",
+   "tier": "adult"
+  },
+  {
+   "id": 242,
+   "text": "Najgorsze miejsce na oświadczyny:",
+   "tier": "adult"
+  },
+  {
+   "id": 243,
+   "text": "Co mówi lekarz, gdy zobaczy wyniki twojej wątroby:",
+   "tier": "adult"
+  },
+  {
+   "id": 244,
+   "text": "Najgorsze zdanie w ogłoszeniu o pracę:",
+   "tier": "adult"
+  },
+  {
+   "id": 245,
+   "text": "Rzecz, do której nikt się nie przyzna, że robi w samochodzie:",
+   "tier": "adult"
+  },
+  {
+   "id": 246,
+   "text": "Najgorszy pomysł na pierwszy taniec weselny:",
+   "tier": "adult"
+  },
+  {
+   "id": 247,
+   "text": "Wymówka, żeby wyjść wcześniej z imprezy:",
+   "tier": "adult"
+  },
+  {
+   "id": 248,
+   "text": "Co naprawdę jest w zielonej butelce na weselu:",
+   "tier": "adult"
+  },
+  {
+   "id": 249,
+   "text": "Najgorsza rzecz do powiedzenia w sypialni:",
+   "tier": "adult"
+  },
+  {
+   "id": 250,
+   "text": "Prawdziwy powód, dla którego sąsiadka zawsze patrzy przez wizjer:",
+   "tier": "adult"
+  },
+  {
+   "id": 251,
+   "text": "Najgorszy temat na rozmowę z szefem przy kawie:",
+   "tier": "adult"
+  },
+  {
+   "id": 252,
+   "text": "Doświadczenie zawodowe w CV kogoś, kto codziennie imprezuje:",
+   "tier": "adult"
+  },
+  {
+   "id": 253,
+   "text": "Najmniej romantyczne wyznanie miłości:",
+   "tier": "adult"
+  },
+  {
+   "id": 254,
+   "text": "Najgorszy prezent od firmy na święta:",
+   "tier": "adult"
+  },
+  {
+   "id": 255,
+   "text": "Co mówi kierowca nocnego autobusu:",
+   "tier": "adult"
+  },
+  {
+   "id": 256,
+   "text": "Nowy dzień wolny od pracy, który wszyscy by uszanowali:",
+   "tier": "adult"
+  },
+  {
+   "id": 257,
+   "text": "Najgorsza nazwa dla sklepu z bielizną:",
+   "tier": "adult"
+  },
+  {
+   "id": 258,
+   "text": "Co znajdziesz w szufladzie pod łóżkiem singla:",
+   "tier": "adult"
+  },
+  {
+   "id": 259,
+   "text": "Najgorsze hasło reklamowe aplikacji randkowej:",
+   "tier": "adult"
+  },
+  {
+   "id": 260,
+   "text": "Co naprawdę dzieje się w open space w piątek po 15:",
+   "tier": "adult"
+  },
+  {
+   "id": 261,
+   "text": "Najgorsza rzecz do powiedzenia policjantowi podczas kontroli:",
+   "tier": "adult"
+  },
+  {
+   "id": 262,
+   "text": "Piosenka, którą puszczają na każdej osiemnastce o 2 w nocy:",
+   "tier": "adult"
+  },
+  {
+   "id": 263,
+   "text": "Najgorszy pomysł na Walentynki:",
+   "tier": "adult"
+  },
+  {
+   "id": 264,
+   "text": "Hasło reklamowe najtańszego dentysty w mieście:",
+   "tier": "adult"
+  },
+  {
+   "id": 265,
+   "text": "Najgorsza rzecz do zrobienia na firmowej wideokonferencji:",
+   "tier": "adult"
+  },
+  {
+   "id": 266,
+   "text": "Najgorszy temat rozmowy w saunie:",
+   "tier": "adult"
+  },
+  {
+   "id": 267,
+   "text": "Co myśli kelner, kiedy zostawiasz 2 złote napiwku:",
+   "tier": "adult"
+  },
+  {
+   "id": 268,
+   "text": "Nowa nazwa dla kredytu hipotecznego:",
+   "tier": "adult"
+  },
+  {
+   "id": 269,
+   "text": "Co naprawdę znaczy „jestem już w drodze”:",
+   "tier": "adult"
+  },
+  {
+   "id": 270,
+   "text": "Najgorsza rzecz do powiedzenia rodzicom partnera:",
+   "tier": "adult"
+  },
+  {
+   "id": 271,
+   "text": "Prawdziwa treść wiadomości „hej, śpisz?”:",
+   "tier": "adult"
+  },
+  {
+   "id": 272,
+   "text": "Co mówi szef, kiedy prosisz o urlop w sierpniu:",
+   "tier": "adult"
+  },
+  {
+   "id": 273,
+   "text": "Najgorszy pomysł na start-up:",
+   "tier": "adult"
+  },
+  {
+   "id": 274,
+   "text": "Co ludzie robią w windzie, kiedy myślą, że nikt nie widzi:",
+   "tier": "adult"
+  },
+  {
+   "id": 275,
+   "text": "Nowy znak zodiaku dla ludzi po trzydziestce:",
+   "tier": "adult"
+  },
+  {
+   "id": 276,
+   "text": "Najgorsza nazwa dla piwa kraftowego:",
+   "tier": "adult"
+  },
+  {
+   "id": 277,
+   "text": "Co robi para po dziesięciu latach małżeństwa w piątkowy wieczór:",
+   "tier": "adult"
+  },
+  {
+   "id": 278,
+   "text": "Najgorszy powód, żeby zadzwonić na 112:",
+   "tier": "adult"
+  },
+  {
+   "id": 279,
+   "text": "Pierwsza wiadomość od kogoś poznanego na siłowni:",
+   "tier": "adult"
+  },
+  {
+   "id": 280,
+   "text": "Najgorsza rzecz do wrzucenia na portal dla profesjonalistów:",
+   "tier": "adult"
+  },
+  {
+   "id": 281,
+   "text": "Co mówi taksówkarz o 4 nad ranem:",
+   "tier": "adult"
+  },
+  {
+   "id": 282,
+   "text": "Prawdziwy powód, dla którego nikt nie odbiera telefonu z banku:",
+   "tier": "adult"
+  },
+  {
+   "id": 283,
+   "text": "Najgorszy pomysł na tatuaż po pijaku:",
+   "tier": "adult"
+  },
+  {
+   "id": 284,
+   "text": "Co przepowie wróżka na weselu kuzyna:",
+   "tier": "adult"
+  },
+  {
+   "id": 285,
+   "text": "Najgorszy sposób na zerwanie:",
+   "tier": "adult"
+  },
+  {
+   "id": 286,
+   "text": "Rzecz, którą każdy robi na kacu, a nikt się nie przyznaje:",
+   "tier": "adult"
+  },
+  {
+   "id": 287,
+   "text": "Najgorsza rzecz do wpisania w CV:",
+   "tier": "adult"
+  },
+  {
+   "id": 288,
+   "text": "Prawdziwy powód, dla którego goście zostają na weselu do piątej rano:",
+   "tier": "adult"
+  },
+  {
+   "id": 289,
+   "text": "Najgorsza nazwa dla zespołu weselnego:",
+   "tier": "adult"
+  },
+  {
+   "id": 290,
+   "text": "Co mówi nawigacja, kiedy jedziesz do teściów:",
+   "tier": "adult"
+  },
+  {
+   "id": 291,
+   "text": "Nowy napis na tablicy przed salą weselną:",
+   "tier": "adult"
+  },
+  {
+   "id": 292,
+   "text": "Najgorsza rzecz do zamówienia na pierwszej randce:",
+   "tier": "adult"
+  },
+  {
+   "id": 293,
+   "text": "Co naprawdę jest w „kawie” sąsiada:",
+   "tier": "adult"
+  },
+  {
+   "id": 294,
+   "text": "Najgorsze życzenia z okazji rozwodu:",
+   "tier": "adult"
+  },
+  {
+   "id": 295,
+   "text": "Co mówi DJ, kiedy nikt nie tańczy:",
+   "tier": "adult"
+  },
+  {
+   "id": 296,
+   "text": "Prawdziwy powód, dla którego firma kupiła piłkarzyki:",
+   "tier": "adult"
+  },
+  {
+   "id": 297,
+   "text": "Najgorsza rzecz do powiedzenia po pierwszym pocałunku:",
+   "tier": "adult"
+  },
+  {
+   "id": 298,
+   "text": "Nazwa nowego leku na kaca:",
+   "tier": "adult"
+  },
+  {
+   "id": 299,
+   "text": "Co rodzice piszą na grupie klasowej po 22:",
+   "tier": "adult"
+  },
+  {
+   "id": 300,
+   "text": "Najgorsza rzecz do usłyszenia od mechanika:",
+   "tier": "adult"
+  },
+  {
+   "id": 401,
+   "text": "Najgorsza rzecz do krzyknięcia w trakcie seksu:",
+   "tier": "18+"
+  },
+  {
+   "id": 402,
+   "text": "Nazwa nowej zabawki erotycznej dla emerytów:",
+   "tier": "18+"
+  },
+  {
+   "id": 403,
+   "text": "Co naprawdę robią ludzie w przymierzalni:",
+   "tier": "18+"
+  },
+  {
+   "id": 404,
+   "text": "Najgorsze hasło na opakowaniu prezerwatyw:",
+   "tier": "18+"
+  },
+  {
+   "id": 405,
+   "text": "Tytuł filmu dla dorosłych o urzędnikach skarbówki:",
+   "tier": "18+"
+  },
+  {
+   "id": 406,
+   "text": "Co szepnąć w łóżku, żeby natychmiast zepsuć nastrój:",
+   "tier": "18+"
+  },
+  {
+   "id": 407,
+   "text": "Najgorszy pseudonim gwiazdy porno:",
+   "tier": "18+"
+  },
+  {
+   "id": 408,
+   "text": "Najgorsza rzecz w seksie pod namiotem:",
+   "tier": "18+"
+  },
+  {
+   "id": 409,
+   "text": "Kolor bielizny erotycznej, który nikogo nie podnieca:",
+   "tier": "18+"
+  },
+  {
+   "id": 410,
+   "text": "Najgorsza rzecz do znalezienia w hotelowym łóżku:",
+   "tier": "18+"
+  },
+  {
+   "id": 411,
+   "text": "Co mówi seksuolog po wysłuchaniu twojej historii:",
+   "tier": "18+"
+  },
+  {
+   "id": 412,
+   "text": "Najgorsze hasło bezpieczeństwa:",
+   "tier": "18+"
+  },
+  {
+   "id": 413,
+   "text": "Prawdziwy powód, dla którego sąsiad kupił wodoodporny materac:",
+   "tier": "18+"
+  },
+  {
+   "id": 414,
+   "text": "Tytuł erotyku napisanego przez księgowego:",
+   "tier": "18+"
+  },
+  {
+   "id": 415,
+   "text": "Najgorsza rzecz do usłyszenia od lekarza podczas badania prostaty:",
+   "tier": "18+"
+  },
+  {
+   "id": 416,
+   "text": "Najmniej seksowne miejsce na szybki numerek:",
+   "tier": "18+"
+  },
+  {
+   "id": 417,
+   "text": "Co mówi urolog po trzydziestym pacjencie danego dnia:",
+   "tier": "18+"
+  },
+  {
+   "id": 418,
+   "text": "Nazwa pozycji seksualnej inspirowanej składaniem mebli:",
+   "tier": "18+"
+  },
+  {
+   "id": 419,
+   "text": "Najgorsza rzecz do wysłania podczas sekstingu:",
+   "tier": "18+"
+  },
+  {
+   "id": 420,
+   "text": "Tatuaż nad pośladkami, którego się żałuje:",
+   "tier": "18+"
+  },
+  {
+   "id": 421,
+   "text": "Najgorsza wymówka, gdy ktoś przyłapie cię nago:",
+   "tier": "18+"
+  },
+  {
+   "id": 422,
+   "text": "Co krzyczy pijany wujek, zdejmując koszulę na weselu:",
+   "tier": "18+"
+  },
+  {
+   "id": 423,
+   "text": "Najgorsza wiadomość od eks o trzeciej w nocy:",
+   "tier": "18+"
+  },
+  {
+   "id": 424,
+   "text": "Co naprawdę leży w szufladzie nocnej szanującej się babci:",
+   "tier": "18+"
+  },
+  {
+   "id": 425,
+   "text": "Nazwa nowej choroby wenerycznej:",
+   "tier": "18+"
+  },
+  {
+   "id": 426,
+   "text": "Najgorsza rzecz do powiedzenia nago:",
+   "tier": "18+"
+  },
+  {
+   "id": 427,
+   "text": "Najbardziej polskie przekleństwo na określenie poniedziałku:",
+   "tier": "18+"
+  },
+  {
+   "id": 428,
+   "text": "Co jest napisane na ścianie w dworcowej toalecie:",
+   "tier": "18+"
+  },
+  {
+   "id": 429,
+   "text": "Najgorszy pomysł na grę wstępną:",
+   "tier": "18+"
+  },
+  {
+   "id": 430,
+   "text": "Tytuł polskiego pornosa z lat 90.:",
+   "tier": "18+"
+  },
+  {
+   "id": 431,
+   "text": "Co mówią jądra, kiedy jest zimno:",
+   "tier": "18+"
+  },
+  {
+   "id": 432,
+   "text": "Najgorsza nazwa dla agencji towarzyskiej:",
+   "tier": "18+"
+  },
+  {
+   "id": 433,
+   "text": "Rzecz, której nie mówi się podczas striptizu:",
+   "tier": "18+"
+  },
+  {
+   "id": 434,
+   "text": "Najgorsza rzecz w porannym seksie:",
+   "tier": "18+"
+  },
+  {
+   "id": 435,
+   "text": "Najgorszy tekst na podryw w saunie:",
+   "tier": "18+"
+  },
+  {
+   "id": 436,
+   "text": "Prawdziwa przyczyna złamanego łóżka w hotelu:",
+   "tier": "18+"
+  },
+  {
+   "id": 437,
+   "text": "Najgorszy prezent od kochanka:",
+   "tier": "18+"
+  },
+  {
+   "id": 438,
+   "text": "Co robi Polak, kiedy skończy się papier toaletowy:",
+   "tier": "18+"
+  },
+  {
+   "id": 439,
+   "text": "Nazwa żelu intymnego o smaku polskiego dania:",
+   "tier": "18+"
+  },
+  {
+   "id": 440,
+   "text": "Najgorszy dźwięk podczas seksu:",
+   "tier": "18+"
+  },
+  {
+   "id": 441,
+   "text": "Co szepcze do siebie koks przed lustrem na siłowni:",
+   "tier": "18+"
+  },
+  {
+   "id": 442,
+   "text": "Najgorszy moment na puszczenie bąka:",
+   "tier": "18+"
+  },
+  {
+   "id": 443,
+   "text": "Co jest w kopercie od skąpego wujka na weselu:",
+   "tier": "18+"
+  },
+  {
+   "id": 444,
+   "text": "Najgorsze imię dla penisa:",
+   "tier": "18+"
+  },
+  {
+   "id": 445,
+   "text": "Najgorsze imię dla biustu:",
+   "tier": "18+"
+  },
+  {
+   "id": 446,
+   "text": "Co ludzie naprawdę oglądają w nocy w hotelu:",
+   "tier": "18+"
+  },
+  {
+   "id": 447,
+   "text": "Najgorsza rzecz do powiedzenia na plaży nudystów:",
+   "tier": "18+"
+  },
+  {
+   "id": 448,
+   "text": "Hasło reklamowe wibratora na baterie słoneczne:",
+   "tier": "18+"
+  },
+  {
+   "id": 449,
+   "text": "Co mówi plemnik, który przegrał wyścig:",
+   "tier": "18+"
+  },
+  {
+   "id": 450,
+   "text": "Najgorsza nazwa dla klubu swingersów:",
+   "tier": "18+"
+  },
+  {
+   "id": 451,
+   "text": "Najgorsza rzecz w seksie po kebabie:",
+   "tier": "18+"
+  },
+  {
+   "id": 452,
+   "text": "Najgorszy fetysz do wyznania na pierwszej randce:",
+   "tier": "18+"
+  },
+  {
+   "id": 453,
+   "text": "Co mówi łóżko w hotelu po weselu:",
+   "tier": "18+"
+  },
+  {
+   "id": 454,
+   "text": "Najgorsza rzecz do zrobienia w jacuzzi z nieznajomymi:",
+   "tier": "18+"
+  },
+  {
+   "id": 455,
+   "text": "Nowa nazwa na kaca giganta:",
+   "tier": "18+"
+  },
+  {
+   "id": 456,
+   "text": "Co naprawdę znaczy „wejdziesz na kawę?”:",
+   "tier": "18+"
+  },
+  {
+   "id": 457,
+   "text": "Jak nazwać wczorajszą imprezę, której nikt nie pamięta:",
+   "tier": "18+"
+  },
+  {
+   "id": 458,
+   "text": "Co robi pies, kiedy widzi, że się całujecie:",
+   "tier": "18+"
+  },
+  {
+   "id": 459,
+   "text": "Najgorsze miejsce na zgubienie stringów:",
+   "tier": "18+"
+  },
+  {
+   "id": 460,
+   "text": "Co mówi kac morderca o 7 rano:",
+   "tier": "18+"
+  },
+  {
+   "id": 461,
+   "text": "Najgorsze hasło w kalendarzu z nagimi strażakami:",
+   "tier": "18+"
+  },
+  {
+   "id": 462,
+   "text": "Nazwa drinka, po którym budzisz się w Czechach:",
+   "tier": "18+"
+  },
+  {
+   "id": 463,
+   "text": "Co krzyczy sąsiadka zza ściany:",
+   "tier": "18+"
+  },
+  {
+   "id": 464,
+   "text": "Najgorsza rzecz do zrobienia po pijaku w całodobowym sklepie:",
+   "tier": "18+"
+  },
+  {
+   "id": 465,
+   "text": "Najgorsza literówka w erotycznej wiadomości:",
+   "tier": "18+"
+  },
+  {
+   "id": 466,
+   "text": "Co naprawdę robią kosmici z porwanymi ludźmi:",
+   "tier": "18+"
+  },
+  {
+   "id": 467,
+   "text": "Najgorsza rzecz do znalezienia w historii przeglądarki dziadka:",
+   "tier": "18+"
+  },
+  {
+   "id": 468,
+   "text": "Nazwa salonu masażu z „dodatkowymi usługami”:",
+   "tier": "18+"
+  },
+  {
+   "id": 469,
+   "text": "Co mówi biust po zdjęciu stanika:",
+   "tier": "18+"
+  },
+  {
+   "id": 470,
+   "text": "Najgorszy opis zdjęcia na portalu dla dorosłych:",
+   "tier": "18+"
+  },
+  {
+   "id": 471,
+   "text": "Najgorszy sposób na obudzenie partnera:",
+   "tier": "18+"
+  },
+  {
+   "id": 472,
+   "text": "Napis na majtkach na pierwszą randkę:",
+   "tier": "18+"
+  },
+  {
+   "id": 473,
+   "text": "Najgorsze zdanie do powiedzenia przy rodzinnym stole po wódce:",
+   "tier": "18+"
+  },
+  {
+   "id": 474,
+   "text": "Co dziadek robi z tabletkami na potencję, których nie potrzebuje:",
+   "tier": "18+"
+  },
+  {
+   "id": 475,
+   "text": "Najgorszy powód, żeby pójść do sex shopu:",
+   "tier": "18+"
+  },
+  {
+   "id": 476,
+   "text": "Co robi Polak na all inclusive po dziesięciu drinkach:",
+   "tier": "18+"
+  },
+  {
+   "id": 477,
+   "text": "Najgorsza rzecz do zrobienia na pierwszym spotkaniu z aplikacji randkowej:",
+   "tier": "18+"
+  },
+  {
+   "id": 478,
+   "text": "Tytuł piosenki disco polo o romansie z sąsiadką:",
+   "tier": "18+"
+  },
+  {
+   "id": 479,
+   "text": "Co mówi prezerwatywa, kiedy pęka:",
+   "tier": "18+"
+  },
+  {
+   "id": 480,
+   "text": "Najgorszy napis na wycieraczce w domu swingersów:",
+   "tier": "18+"
+  },
+  {
+   "id": 481,
+   "text": "Co ludzie piszą w anonimowych wyznaniach o 2 w nocy:",
+   "tier": "18+"
+  },
+  {
+   "id": 482,
+   "text": "Najgorszy moment na rozwolnienie:",
+   "tier": "18+"
+  },
+  {
+   "id": 483,
+   "text": "Co mówi partner na widok twoich nowych majtek:",
+   "tier": "18+"
+  },
+  {
+   "id": 484,
+   "text": "Najgorsze imię do pomylenia w łóżku:",
+   "tier": "18+"
+  },
+  {
+   "id": 485,
+   "text": "Jak nazwać zapach w łazience po wujku:",
+   "tier": "18+"
+  },
+  {
+   "id": 486,
+   "text": "Najgorsza rzecz w seksie przez telefon:",
+   "tier": "18+"
+  },
+  {
+   "id": 487,
+   "text": "Najgorszy pomysł na kostium erotyczny:",
+   "tier": "18+"
+  },
+  {
+   "id": 488,
+   "text": "Prawdziwy powód, dla którego sąsiad ma przyciemniane szyby:",
+   "tier": "18+"
+  },
+  {
+   "id": 489,
+   "text": "Najgorsza rzecz do powiedzenia, kiedy partner się rozbiera:",
+   "tier": "18+"
+  },
+  {
+   "id": 490,
+   "text": "Co szepcze striptizer do emerytki na wieczorze panieńskim:",
+   "tier": "18+"
+  },
+  {
+   "id": 491,
+   "text": "Nazwa nowej pigułki na potencję:",
+   "tier": "18+"
+  },
+  {
+   "id": 492,
+   "text": "Co krzyczysz, budząc się obok nieznajomej osoby:",
+   "tier": "18+"
+  },
+  {
+   "id": 493,
+   "text": "Najgorsze miejsce na nagie selfie:",
+   "tier": "18+"
+  },
+  {
+   "id": 494,
+   "text": "Co mówi tyłek po ostrym curry:",
+   "tier": "18+"
+  },
+  {
+   "id": 495,
+   "text": "Najgorszy pomysł na domowy film dla dorosłych:",
+   "tier": "18+"
+  },
+  {
+   "id": 496,
+   "text": "Najgorsza rzecz w nudyzmie zimą:",
+   "tier": "18+"
+  },
+  {
+   "id": 497,
+   "text": "Najgorszy podpis pod nagim zdjęciem:",
+   "tier": "18+"
+  },
+  {
+   "id": 498,
+   "text": "Rzecz, po której każdy krzyczy „o kurwa!”:",
+   "tier": "18+"
+  },
+  {
+   "id": 499,
+   "text": "Co mówi lekarz na SOR-ze, wyciągając coś z czyjegoś tyłka:",
+   "tier": "18+"
+  },
+  {
+   "id": 500,
+   "text": "Najgorsza rzecz, jaką można powiedzieć w trakcie stosunku:",
+   "tier": "18+"
+  }
+ ],
+ "finalPrompts": [
+  {
+   "id": 1001,
+   "text": "Rzecz, którą słychać na każdej wywiadówce:",
+   "tier": "family"
+  },
+  {
+   "id": 1002,
+   "text": "Najgorszy pomysł na rodzinny wyjazd:",
+   "tier": "family"
+  },
+  {
+   "id": 1003,
+   "text": "Co znajdziesz w lodówce studenta:",
+   "tier": "family"
+  },
+  {
+   "id": 1004,
+   "text": "Nowy przysmak na odpuście:",
+   "tier": "family"
+  },
+  {
+   "id": 1005,
+   "text": "Prawdziwa treść listu do Mikołaja od dorosłego:",
+   "tier": "family"
+  },
+  {
+   "id": 1006,
+   "text": "Najgorsza nazwa dla statku wycieczkowego:",
+   "tier": "family"
+  },
+  {
+   "id": 1007,
+   "text": "Co krzyczy pan z megafonem na plaży:",
+   "tier": "family"
+  },
+  {
+   "id": 1008,
+   "text": "Pierwsze zdanie najgorszej bajki na dobranoc:",
+   "tier": "family"
+  },
+  {
+   "id": 1009,
+   "text": "Nowy zawód przyszłości:",
+   "tier": "family"
+  },
+  {
+   "id": 1010,
+   "text": "Najgorszy powód, żeby dzwonić do babci o północy:",
+   "tier": "family"
+  },
+  {
+   "id": 1011,
+   "text": "Dokąd naprawdę uciekają skarpetki z pralki:",
+   "tier": "family"
+  },
+  {
+   "id": 1012,
+   "text": "Hasło na kubek dla najgorszego szefa świata:",
+   "tier": "family"
+  },
+  {
+   "id": 1013,
+   "text": "Nowa atrakcja w zoo:",
+   "tier": "family"
+  },
+  {
+   "id": 1014,
+   "text": "Co naprawdę znaczy „pip” mikrofalówki:",
+   "tier": "family"
+  },
+  {
+   "id": 1015,
+   "text": "Najdziwniejsza rzecz w kolejce do kasy w hipermarkecie:",
+   "tier": "family"
+  },
+  {
+   "id": 1016,
+   "text": "Najgorszy pomysł na kostium na bal przebierańców:",
+   "tier": "family"
+  },
+  {
+   "id": 1017,
+   "text": "Co mówi Polak na widok promocji:",
+   "tier": "family"
+  },
+  {
+   "id": 1018,
+   "text": "Tytuł filmu o życiu twojej lodówki:",
+   "tier": "family"
+  },
+  {
+   "id": 1019,
+   "text": "Pierwsze słowa dziecka urodzonego w 2050 roku:",
+   "tier": "family"
+  },
+  {
+   "id": 1020,
+   "text": "Rzecz, której nie wolno robić w bibliotece:",
+   "tier": "family"
+  },
+  {
+   "id": 1101,
+   "text": "Tradycja weselna, która powinna zniknąć:",
+   "tier": "adult"
+  },
+  {
+   "id": 1102,
+   "text": "Co naprawdę dzieje się w szatni amatorskiej ligi piłkarskiej:",
+   "tier": "adult"
+  },
+  {
+   "id": 1103,
+   "text": "Najgorszy pomysł na firmową imprezę:",
+   "tier": "adult"
+  },
+  {
+   "id": 1104,
+   "text": "Co mówi wujek, kiedy skończy się wódka:",
+   "tier": "adult"
+  },
+  {
+   "id": 1105,
+   "text": "Najgorsza wymówka, żeby nie oddzwonić:",
+   "tier": "adult"
+  },
+  {
+   "id": 1106,
+   "text": "Prawdziwy powód, dla którego sąsiedzi wyprowadzili się w nocy:",
+   "tier": "adult"
+  },
+  {
+   "id": 1107,
+   "text": "Hasło reklamowe motelu przy autostradzie:",
+   "tier": "adult"
+  },
+  {
+   "id": 1108,
+   "text": "Co znajdziesz w kieszeni marynarki po weselu:",
+   "tier": "adult"
+  },
+  {
+   "id": 1109,
+   "text": "Najgorszy pomysł na randkę w ciemno:",
+   "tier": "adult"
+  },
+  {
+   "id": 1110,
+   "text": "Nowa kategoria w aplikacji randkowej:",
+   "tier": "adult"
+  },
+  {
+   "id": 1111,
+   "text": "Najgorsze zdanie w małżeńskiej kłótni:",
+   "tier": "adult"
+  },
+  {
+   "id": 1112,
+   "text": "Co naprawdę robi szef w zamkniętym gabinecie:",
+   "tier": "adult"
+  },
+  {
+   "id": 1113,
+   "text": "Najgorsze życzenia na czterdziestkę:",
+   "tier": "adult"
+  },
+  {
+   "id": 1114,
+   "text": "Pierwsze słowa po przebudzeniu na cudzej kanapie:",
+   "tier": "adult"
+  },
+  {
+   "id": 1115,
+   "text": "Nazwa nowego telewizyjnego programu randkowego:",
+   "tier": "adult"
+  },
+  {
+   "id": 1116,
+   "text": "Najgorszy powód, żeby się oświadczyć:",
+   "tier": "adult"
+  },
+  {
+   "id": 1117,
+   "text": "Co mówi Polak, który przegrywa w kasynie:",
+   "tier": "adult"
+  },
+  {
+   "id": 1118,
+   "text": "Prawdziwa treść notatki służbowej „w sprawie lodówki”:",
+   "tier": "adult"
+  },
+  {
+   "id": 1119,
+   "text": "Najgorsza rzecz do powiedzenia na rozmowie kwalifikacyjnej:",
+   "tier": "adult"
+  },
+  {
+   "id": 1120,
+   "text": "Co naprawdę znaczy „zostańmy przyjaciółmi”:",
+   "tier": "adult"
+  },
+  {
+   "id": 1201,
+   "text": "Najgorsza rzecz do powiedzenia po seksie:",
+   "tier": "18+"
+  },
+  {
+   "id": 1202,
+   "text": "Nazwa nowej pozycji seksualnej:",
+   "tier": "18+"
+  },
+  {
+   "id": 1203,
+   "text": "Co naprawdę dzieje się na wieczorze kawalerskim w Pradze:",
+   "tier": "18+"
+  },
+  {
+   "id": 1204,
+   "text": "Najgorszy napis na koszulce w sex shopie:",
+   "tier": "18+"
+  },
+  {
+   "id": 1205,
+   "text": "Co mówi Polak, który pierwszy raz widzi nudystów:",
+   "tier": "18+"
+  },
+  {
+   "id": 1206,
+   "text": "Najgorsze zdanie w erotyku napisanym przez sztuczną inteligencję:",
+   "tier": "18+"
+  },
+  {
+   "id": 1207,
+   "text": "Co znajdziesz w telefonie po weselu:",
+   "tier": "18+"
+  },
+  {
+   "id": 1208,
+   "text": "Najgorszy powód, żeby się rozebrać:",
+   "tier": "18+"
+  },
+  {
+   "id": 1209,
+   "text": "Tytuł wspomnień starej kanapy z akademika:",
+   "tier": "18+"
+  },
+  {
+   "id": 1210,
+   "text": "Najgorsza rzecz do wyszeptania komuś do ucha w autobusie:",
+   "tier": "18+"
+  },
+  {
+   "id": 1211,
+   "text": "Co mówi sąsiad, który wszystko słyszał:",
+   "tier": "18+"
+  },
+  {
+   "id": 1212,
+   "text": "Najgorsza nazwa dla prezerwatyw:",
+   "tier": "18+"
+  },
+  {
+   "id": 1213,
+   "text": "Co ludzie robią w toalecie w samolocie:",
+   "tier": "18+"
+  },
+  {
+   "id": 1214,
+   "text": "Najgorszy moment na zdjęcie spodni:",
+   "tier": "18+"
+  },
+  {
+   "id": 1215,
+   "text": "Pierwsze słowa po przebudzeniu na potężnym kacu:",
+   "tier": "18+"
+  },
+  {
+   "id": 1216,
+   "text": "Najgorsza rzecz w seksie w samochodzie:",
+   "tier": "18+"
+  },
+  {
+   "id": 1217,
+   "text": "Najgorszy prezent na wieczór panieński:",
+   "tier": "18+"
+  },
+  {
+   "id": 1218,
+   "text": "Co krzyczy pijany wujek do DJ-a:",
+   "tier": "18+"
+  },
+  {
+   "id": 1219,
+   "text": "Najgorsza rzecz do pomylenia w ciemności:",
+   "tier": "18+"
+  },
+  {
+   "id": 1220,
+   "text": "Co mówi materac po dwudziestu latach małżeństwa:",
+   "tier": "18+"
+  }
+ ],
+ "safetyQuips": [
+  {
+   "id": 5001,
+   "text": "Skarpetki nie do pary",
+   "tier": "family"
+  },
+  {
+   "id": 5002,
+   "text": "Coś, o czym lepiej nie mówić przy babci",
+   "tier": "family"
+  },
+  {
+   "id": 5003,
+   "text": "Ziemniaki. Zawsze ziemniaki.",
+   "tier": "family"
+  },
+  {
+   "id": 5004,
+   "text": "Zupa pomidorowa z wczorajszego rosołu",
+   "tier": "family"
+  },
+  {
+   "id": 5005,
+   "text": "Kartofel w kapeluszu",
+   "tier": "family"
+  },
+  {
+   "id": 5006,
+   "text": "Zgubione klucze",
+   "tier": "family"
+  },
+  {
+   "id": 5007,
+   "text": "Paragon sprzed trzech lat",
+   "tier": "family"
+  },
+  {
+   "id": 5008,
+   "text": "Gołąb z ambicjami",
+   "tier": "family"
+  },
+  {
+   "id": 5009,
+   "text": "Rosół w niedzielę o 13:00",
+   "tier": "family"
+  },
+  {
+   "id": 5010,
+   "text": "Kapcie po dziadku",
+   "tier": "family"
+  },
+  {
+   "id": 5011,
+   "text": "Wielka dmuchana kaczka",
+   "tier": "family"
+  },
+  {
+   "id": 5012,
+   "text": "Kot, który wszystko widział",
+   "tier": "family"
+  },
+  {
+   "id": 5013,
+   "text": "Pierogi ruskie na zimno",
+   "tier": "family"
+  },
+  {
+   "id": 5014,
+   "text": "Wujek z wąsem i kijkami do nordic walking",
+   "tier": "family"
+  },
+  {
+   "id": 5015,
+   "text": "Cisza w słuchawce",
+   "tier": "family"
+  },
+  {
+   "id": 5016,
+   "text": "Reklamówka pełna reklamówek",
+   "tier": "family"
+  },
+  {
+   "id": 5017,
+   "text": "Gąbka do naczyń",
+   "tier": "family"
+  },
+  {
+   "id": 5018,
+   "text": "Stara nokia, która wciąż działa",
+   "tier": "family"
+  },
+  {
+   "id": 5019,
+   "text": "Kompot z suszu",
+   "tier": "family"
+  },
+  {
+   "id": 5020,
+   "text": "Sandały ze skarpetkami",
+   "tier": "family"
+  },
+  {
+   "id": 5101,
+   "text": "Trzeci kieliszek",
+   "tier": "adult"
+  },
+  {
+   "id": 5102,
+   "text": "Eks, który wciąż lajkuje zdjęcia",
+   "tier": "adult"
+  },
+  {
+   "id": 5103,
+   "text": "Niedzielny kac",
+   "tier": "adult"
+  },
+  {
+   "id": 5104,
+   "text": "Mail od szefa w piątek o 17:00",
+   "tier": "adult"
+  },
+  {
+   "id": 5105,
+   "text": "Zbyt szczera teściowa",
+   "tier": "adult"
+  },
+  {
+   "id": 5106,
+   "text": "Rachunek za prąd",
+   "tier": "adult"
+  },
+  {
+   "id": 5107,
+   "text": "Nalewka wujka Mietka",
+   "tier": "adult"
+  },
+  {
+   "id": 5108,
+   "text": "Kredyt na 30 lat",
+   "tier": "adult"
+  },
+  {
+   "id": 5109,
+   "text": "Grill u sąsiada bez zaproszenia",
+   "tier": "adult"
+  },
+  {
+   "id": 5110,
+   "text": "„Hej, śpisz?” o drugiej w nocy",
+   "tier": "adult"
+  },
+  {
+   "id": 5111,
+   "text": "Wyjazd integracyjny nad morze",
+   "tier": "adult"
+  },
+  {
+   "id": 5112,
+   "text": "Ostatni nocny autobus",
+   "tier": "adult"
+  },
+  {
+   "id": 5201,
+   "text": "Pomyłka w ciemności",
+   "tier": "18+"
+  },
+  {
+   "id": 5202,
+   "text": "Majtki na żyrandolu",
+   "tier": "18+"
+  },
+  {
+   "id": 5203,
+   "text": "Nalewka i złe decyzje",
+   "tier": "18+"
+  },
+  {
+   "id": 5204,
+   "text": "Kac moralny w rozmiarze XXL",
+   "tier": "18+"
+  },
+  {
+   "id": 5205,
+   "text": "Coś, czego nie pokażę na grupie rodzinnej",
+   "tier": "18+"
+  },
+  {
+   "id": 5206,
+   "text": "Gołe pośladki w świetle księżyca",
+   "tier": "18+"
+  },
+  {
+   "id": 5207,
+   "text": "Prezerwatywa z promocji",
+   "tier": "18+"
+  },
+  {
+   "id": 5208,
+   "text": "Wąsaty striptizer z Radomia",
+   "tier": "18+"
+  },
+  {
+   "id": 5209,
+   "text": "Krzyk sąsiadki zza ściany",
+   "tier": "18+"
+  },
+  {
+   "id": 5210,
+   "text": "Pozycja na leniwego żółwia",
+   "tier": "18+"
+  },
+  {
+   "id": 5211,
+   "text": "Zgubione stringi",
+   "tier": "18+"
+  },
+  {
+   "id": 5212,
+   "text": "Wujek w samych slipach",
+   "tier": "18+"
+  }
+ ]
+}

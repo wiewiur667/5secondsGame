@@ -27,9 +27,9 @@ const musicImpostor: GameModule<Round> = {
   configFile: 'music.json',
 
   start(playerIds, cfg: string[], opts?: { names?: Record<number, string> }) {
-    if (playerIds.length < 2) return 'Need at least 2 players.'
+    if (playerIds.length < 2) return 'Potrzeba co najmniej 2 graczy.'
     const videoIds = (cfg || []).map(videoId).filter(Boolean) as string[]
-    if (videoIds.length < 2) return 'Need at least 2 links in music.json.'
+    if (videoIds.length < 2) return 'Potrzeba co najmniej 2 linków w music.json.'
     const mainId = pick(videoIds)
     let impId = mainId
     while (impId === mainId) impId = pick(videoIds)

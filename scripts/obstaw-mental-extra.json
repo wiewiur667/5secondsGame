@@ -1,0 +1,8 @@
+[
+ {"q": "Czy zdołasz wymienić 5 gatunków drzew?", "sec": 30, "hints": ["dąb", "brzoza", "sosna", "buk", "świerk", "lipa", "topola", "klon", "jodła", "wierzba", "jesion", "olcha", "grab"]},
+ {"q": "Czy zdołasz wymienić 4 instrumenty muzyczne na 6 liter?", "sec": 30, "hints": ["gitara", "trąbka", "organy", "kornet"]},
+ {"q": "Czy znajdziesz 5 słów zawierających „KRA”? (np. kraj, kratka)", "sec": 30, "hints": []},
+ {"q": "Czy zdołasz ocenić na oko wysokość drzwi w pomieszczeniu (±10 cm)? Sędzia sprawdza miarką lub metrem.", "sec": 15, "hints": []},
+ {"q": "Jeden gracz powoli czyta 6 dowolnych słów (np. stół, rower, jabłko…). Czy rozgrywający powtórzy co najmniej 5 z nich w dowolnej kolejności?", "sec": 30, "hints": []},
+ {"q": "Czy zdołasz wymienić 5 polskich rzek?", "sec": 30, "hints": ["Wisła", "Odra", "Warta", "Bug", "Narew", "San", "Noteć", "Pilica", "Wieprz", "Bóbr"]}
+]

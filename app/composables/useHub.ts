@@ -11,6 +11,8 @@ export interface PlayerView {
 export function useHub() {
   const state = ref<PlayerView | null>(null)
   const id = ref<number | null>(null)
+  // True once the socket has been down long enough to matter (not a brief blip).
+  const offline = ref(false)
 
   let send: ((d: string) => void) | null = null
   let statusRef: { value: string } | null = null
@@ -31,34 +33,22 @@ export function useHub() {
     if (send && statusRef?.value === 'OPEN') send(hello())
   }
 
-  type RegisterResult = { ok: true } | { ok: false; reason: 'taken' | 'declined' }
+  type RegisterResult = { ok: true } | { ok: false; reason: 'taken' | 'rejoin' }
 
-  // Names must be unique. If the name belongs to a player with no live
-  // socket, offer to rejoin as them (confirm-gated); otherwise reject.
-  async function register(name: string): Promise<RegisterResult> {
+  // Names must be unique. A name held by a player with no live socket answers
+  // 'rejoin' — the register screen then offers that seat via the rejoin list,
+  // and tapping it calls this again with rejoinId.
+  async function register(name: string, rejoinId?: number): Promise<RegisterResult> {
     type Res = { id?: number; conflict?: 'taken' | 'rejoin' }
-    const res = await $fetch<Res>('/api/register', { method: 'POST', body: { name } })
-    if (res.id != null) {
-      acceptId(res.id)
-      return { ok: true }
-    }
-    if (res.conflict === 'rejoin' && res.id != null) {
-      const existingId = res.id
-      const wantsRejoin = confirm(`"${name}" is already in the game but not connected. Rejoin as them?`)
-      if (wantsRejoin) {
-        const res2 = await $fetch<Res>('/api/register', {
-          method: 'POST',
-          body: { name, rejoinId: existingId },
-        })
-        if (res2.id != null) {
-          acceptId(res2.id)
-          return { ok: true }
-        }
-      }
-      return { ok: false, reason: 'declined' }
-    }
-    return { ok: false, reason: 'taken' }
+    const res = await $fetch<Res>('/api/register', { method: 'POST', body: { name, rejoinId } })
+    if (res.conflict) return { ok: false, reason: res.conflict }
+    if (res.id == null) return { ok: false, reason: 'taken' }
+    acceptId(res.id)
+    return { ok: true }
   }
+
+  // Seats whose phone is currently disconnected — a returning player can take one back.
+  const rejoinable = () => $fetch<{ id: number; name: string }[]>('/api/rejoinable').catch(() => [])
 
   function submit(payload: any) {
     if (send && statusRef?.value === 'OPEN') send(JSON.stringify({ type: 'submit', payload }))
@@ -86,6 +76,13 @@ export function useHub() {
     })
     send = ws.send
     statusRef = ws.status
+    let offlineTimer: ReturnType<typeof setTimeout> | undefined
+    watch(ws.status, (st) => {
+      clearTimeout(offlineTimer)
+      if (st === 'OPEN') offline.value = false
+      else offlineTimer = setTimeout(() => { offline.value = true }, 1500)
+    }, { immediate: true })
+    onScopeDispose(() => clearTimeout(offlineTimer))
     watch(ws.data, (d) => {
       if (!d) return
       try { apply(JSON.parse(d)) } catch {}
@@ -111,11 +108,14 @@ export function useHub() {
   return {
     state,
     id,
+    offline,
     register,
+    rejoinable,
     submit,
     startTimer: () => action('start-timer'),
     reveal: () => action('reveal'),
     continueRound: () => action('continue'),
+    flag: () => action('flag'),
     logout,
   }
 }

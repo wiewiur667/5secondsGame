@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-A Nuxt 4 / Nitro LAN party-game hub ("Party Hub"). Players join from phones, the first player to join is the game master (GM). Two games: Music Impostor and 5 Second Rule (600 Polish questions across 6 categories). All state is in-memory — one party session per server process; restart to reset.
+A Nuxt 4 / Nitro LAN party-game hub ("Party Hub"). Players join from phones, the first player to join is the game master (GM). Four games: Music Impostor, 5 Second Rule (1100 Polish questions across 11 categories), Riposta (an original Polish answer-duel game: write funny answers, vote, final round) and Obstaw! (an original betting game: one player attempts a challenge, the rest bet YES/NO with part of their money). All state is in-memory — one party session per server process; restart to reset.
 
 ## Commands
 
@@ -12,21 +12,24 @@ A Nuxt 4 / Nitro LAN party-game hub ("Party Hub"). Players join from phones, the
 npm test                                          # Node built-in runner (node --test), discovers test/*.test.ts
 node --test --test-name-pattern="5sr: reveal"     # single test by name pattern
 npm run build                                     # Nuxt/Nitro build → .output/
+npm run e2e                                       # Riposta end-to-end over real WebSockets (needs a build; starts its own server)
 HOST=0.0.0.0 PORT=3333 node .output/server/index.mjs   # prod run — use this for real play
-npm run dev                                       # dev on 0.0.0.0:3333 with QR (has --publicURL baked in)
+npm run dev                                       # dev on 0.0.0.0:8080 with QR (--port overrides devServer.port)
 docker compose up -d --build                      # NAS/Docker deploy
 ```
 
 - Tests run as native TypeScript via Node 24 type-stripping — no flags, no framework, plain `node:test` + `assert`.
 - **Run the prod build for actual play.** Dev-mode WebSockets are flaky: the Nitro dev worker drops WS upgrades during HMR reloads ("No worker available").
-- `postinstall` runs `patch-package`: `patches/vue-router+5.2.0.patch` null-guards an unconditional upstream crash (`instance.__vrv_devtools` on a null component instance — a mobile-Safari timing race present in every vue-router 5.2.0 dist build). The Dockerfile copies `patches/` **before** `npm ci` so the build-stage install can apply it — keep that order.
+- `vue-router` is pinned as a direct devDependency at `^5.4.0`: 5.2.0 crashed on mobile Safari (`instance.__vrv_devtools` set on a null component instance) and was previously patched with patch-package; 5.4.0 ships the null guard upstream, so the patch was dropped. Don't let it resolve below 5.4.0.
 
 ## Architecture
 
 ### Hub / game-module seam
 `server/utils/hub.ts` is a singleton stored on `globalThis` (survives dev HMR). It owns everything game-agnostic: players map, WS peers, GM role, round clock (`startMs`/`elapsed()`), score totals, 1s tick loop, broadcast. Games implement `GameModule` (`server/games/types.ts` — `start/tick/next/submit/score/stateForPlayer` plus any-player hooks `startTimer`/`reveal`) and register in `server/games/index.ts`.
 
-**Adding a game** = a folder under `server/games/<id>/` (module + config JSON) + one registry line + one Vue component in `app/components/games/` dispatched on `state.game`.
+**Adding a game** = a folder under `server/games/<id>/` (module + config JSON) + one registry line in `server/games/index.ts` + the config import in the `configs` map in `hub.ts` + one Vue component in `app/components/games/` dispatched on `state.game` (and optionally a TV component in `app/components/board/`, dispatched in `board.vue` on `live.game`).
+
+Optional `GameModule` hooks: `settings` (GM options rendered generically in `/gm`, set via the `set-option` action, passed to `start()` as `opts.settings`), `scoringIds` (who gets a leaderboard row — lets a game have non-scoring audience members), and `tick(s, t, ctx)` receives `ctx.activeIds`. `usedQuestions` is tracked per game id.
 
 ### Per-player state — never a shared broadcast
 `hub.stateFor(pid)` builds a personalized `PlayerView` for each phone (Music Impostor sends the impostor a *different* videoId than everyone else). The hub keeps `Map<pid, peer>` and calls `peer.send()` per player; crossws channel pub/sub is deliberately not used — a shared payload would leak/break per-player views.
@@ -47,8 +50,14 @@ Per question (`server/games/five-second-rule/index.ts`): `awaitingStart` (Start 
 
 The register/rejoin flow uses a claims map (`hub.claimRejoin` + TTL) to close a TOCTOU race where two browsers could claim the same disconnected player's name concurrently — don't simplify it into a plain check-then-grant.
 
+### Riposta flow
+`server/games/riposta/`: one hub "question" = one duel. Rounds 1–2: every player gets 2 prompts, each prompt 2 players (`assign.ts`, random cycle); the writing stage lives inside the first duel of the round, later duels start straight in voting. Final = one more question (everyone answers one prompt, players spread 3 tokens, audience 1). Players = first 8 active at start; everyone else (incl. late joiners) is **audience**: votes, never scores (`scoringIds`). Timeout auto-fills the player's unsent draft, else a server-picked "Gotowiec" (half points). Point maths in `scoring.ts` (values from `reports/Polska gra w stylu Quiplash.md`). `publicView` must never contain authors, prompt assignments or live vote splits before a reveal — `/api/gm/state` is unauthenticated. Prompt bank is generated from `scripts/build-riposta-prompts.py` (edit the lists there, rerun it); keep the blank at the end of the prompt after a colon (Polish declension), content is original, CC BY 4.0 (`LICENSE-CONTENT`).
+
+### Obstaw! flow
+`server/games/obstaw/`: follows the rules of the classic "bet on your friends" board game. One hub question = one TURN (re-rolls on START/arrow stay inside the turn). 3–10 players (rest = spectators), board of 24 / 32 / 40 / 48 fields for 3–4 / 5–6 / 7–8 / 9–10 players (`makeBoard`; 32 = the layout of the classic board, drawn as a square ring in `ObstawMap.vue`; banknotes in `Money.vue`), pawn per player, die, bank (GM setting, per player or unlimited), +50 for passing START, a partner marker per opponent (spent on acting tasks; no marker → turn passes). Field types: start / arrow (roll again) / skill / mental / acting (field carries the 1A–2B combo that picks the phrase) / blind (performer picks skill|mental, content hidden while betting) / dice duel (strictly more wins; a tie loses). Stages: `roll → choose → bet → ready → act → judge → revealed`; deadlines are absolute `t` of the current turn (hub clock restarts at 0 each turn). Bets are secret until the reveal, max half of the money in steps of 10; performer (+ acting partner) take the whole pool, right bets win their stake from the bank, wrong ones lose it. **Every** skill/mental/acting task is ruled by the *judge* = player to the left (skipping the partner); the judge bets too unless the GM turns that off (`judgeBets`). Mental cards carry sample answers shown only to the judge after the bets. Game ends at the turn limit (hub `questionLimit`, GM free number, 0 = none), empty bank, or no markers left. `score()` returns the money delta since the last report so the hub leaderboard == money. The TV never shows the acting phrase or the task before bets close. Cards: `content.json` is generated by `scripts/build-obstaw-content.py` for skill/mental (original paraphrases of the card ideas; `sec` = hourglass 15/30/60 or null, `tries` = attempts note, `hints` = sample answers for the judge) while acting cards are edited in the JSON (ids 1–99 skill, 101–199 mental, 201–299 acting).
+
 ### Question content
-`server/games/five-second-rule/questions.json`: 6 Polish categories × 100 questions; `correct` = exactly 3 indices into exactly 6 `options`. Scoring is exact-index auto-match, so distractors are deliberately same-topic near-misses that must remain **unambiguously wrong** — when editing questions, a distractor a reasonable player could defend as valid is a scoring bug, not a nit. `server/games/music-impostor/music.json` = YouTube URLs; ≥2 required or `start` fails.
+`server/games/five-second-rule/questions.json`: 11 Polish categories × 100 questions (ids are unique across categories; players' 🚩 reports append to `FLAG_FILE`, default `flagged-questions.jsonl`); `correct` = exactly 3 indices into exactly 6 `options`. Scoring is exact-index auto-match, so distractors are deliberately same-topic near-misses that must remain **unambiguously wrong** — when editing questions, a distractor a reasonable player could defend as valid is a scoring bug, not a nit. `server/games/music-impostor/music.json` = YouTube URLs; ≥2 required or `start` fails.
 
 ## Gotchas
 
