@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { PlayerView } from '~/composables/useHub'
+import ObstawMap from '~/components/board/ObstawMap.vue'
 
 // Obstaw! on a phone. Every rule is enforced on the server; disabled buttons are hints.
 const props = defineProps<{ state: PlayerView; meId: number | null }>()
@@ -32,23 +33,6 @@ const bet = () => yes.value != null && send({ kind: 'bet', yes: yes.value, amoun
 const stake = ref(10)
 const stakeStep = (d: number) => (stake.value = Math.min(max.value, Math.max(10, stake.value + d * 10)))
 
-// --- mental answers ------------------------------------------------------------------
-const text = ref('')
-const wrong = ref<string[]>([])
-function answer() {
-  const t = text.value.trim()
-  if (!t) return
-  send({ kind: 'answer', text: t })
-  text.value = ''
-}
-watch(
-  () => s.value.turnNo,
-  () => {
-    text.value = ''
-    wrong.value = []
-  },
-)
-
 const board = computed<any[]>(() => [...(s.value.leaderboard ?? [])].sort((a: any, b: any) => b.score - a.score))
 const moved = (d: number) => (d > 0 ? `▲${d}` : `▼${-d}`)
 const sign = (n: number) => (n > 0 ? `+${n}` : `${n}`)
@@ -68,19 +52,35 @@ watch(
     <div v-if="state.paused" class="paused" role="status">⏸ Pauza — gospodarz zatrzymał grę</div>
 
     <header class="head">
-      <span class="pill">Tura {{ state.turnNo }} / {{ state.turnCount }}</span>
+      <span class="pill">Tura {{ state.turnNo }}<template v-if="state.turnCount"> / {{ state.turnCount }}</template></span>
       <span v-if="state.money != null" class="pill money">💰 {{ state.money }}</span>
+      <span v-if="state.money != null" class="pill" title="Znaczniki partnerów (zadania aktorskie)">🎭 {{ state.myMarkers }}</span>
+      <span v-if="state.bank != null" class="pill">🏦 {{ state.bank }}</span>
       <span v-if="state.phase === 'playing'" class="count" :class="{ hot: remaining <= 5 }">{{ remaining }}</span>
     </header>
 
     <div class="card kind">
       <b>{{ state.kindLabel }}</b>
+      <span v-if="state.combo"> · hasło {{ state.combo }}</span>
       <span v-if="state.taskLabel && state.kind === 'blind'"> · wybrano: {{ state.taskLabel }}</span>
       <p class="hint">Gra: <b>{{ state.performer }}</b><template v-if="state.partner"> · partner: <b>{{ state.partner }}</b></template><template v-if="state.opponent"> · rywal: <b>{{ state.opponent }}</b></template></p>
     </div>
 
+    <div v-if="state.phase === 'playing'" class="card map"><ObstawMap :board="state.board" compact /></div>
+
+    <!-- ===== roll ===== -->
+    <template v-if="state.phase === 'playing' && stage === 'roll'">
+      <div class="card stack center">
+        <p v-if="state.again === 'start'" class="big">🏁 Pole startowe — rzucasz jeszcze raz!</p>
+        <p v-else-if="state.again === 'arrow'" class="big">↩️ Strzałka — rzucasz jeszcze raz!</p>
+        <p v-if="state.rolls.length" class="hint">Wyrzucono: {{ state.rolls.join(' → ') }}</p>
+        <button v-if="role === 'performer'" class="btn btn-primary gate" :disabled="state.paused" @click="send({ kind: 'roll' })">🎲 Rzuć kostką</button>
+        <p v-else class="big">🎲 {{ state.performer }} rzuca kostką…</p>
+      </div>
+    </template>
+
     <!-- ===== choose ===== -->
-    <template v-if="state.phase === 'playing' && stage === 'choose'">
+    <template v-else-if="state.phase === 'playing' && stage === 'choose'">
       <div v-if="role === 'performer'" class="card stack">
         <template v-if="state.kind === 'blind'">
           <h3>Wybierz rodzaj zadania — reszta obstawia w ciemno</h3>
@@ -111,10 +111,10 @@ watch(
         <p v-if="state.content.need > 1" class="hint">Wymagane odpowiedzi: {{ state.content.need }} · czas: {{ state.content.sec }} s</p>
         <p v-else-if="state.content.sec" class="hint">Czas: {{ state.content.sec }} s</p>
       </div>
-      <div v-else-if="role === 'bettor'" class="card task"><p class="task-text">🙈 Treść zadania zostanie ujawniona po zakładach</p></div>
+      <div v-else-if="state.canBet" class="card task"><p class="task-text">🙈 Treść zadania zostanie ujawniona po zakładach</p></div>
 
-      <div v-if="role === 'bettor'" class="card stack">
-        <h3>Czy {{ state.performer }} da radę?</h3>
+      <div v-if="state.canBet" class="card stack">
+        <h3>Czy {{ state.performer }} da radę?<template v-if="role === 'judge'"> <small>(jesteś też sędzią)</small></template></h3>
         <div class="two">
           <button class="btn choice" :class="{ sel: yes === true }" @click="yes = true">✅ TAK</button>
           <button class="btn choice" :class="{ sel: yes === false }" @click="yes = false">❌ NIE</button>
@@ -133,7 +133,7 @@ watch(
       <div v-else class="card center">
         <p v-if="role === 'performer'" class="big">🙈 Nie podglądaj — reszta obstawia</p>
         <p v-else-if="role === 'partner'" class="big">🤝 Jesteś partnerem — nie obstawiasz</p>
-        <p v-else-if="role === 'judge'" class="big">⚖️ Jesteś sędzią — nie obstawiasz</p>
+        <p v-else-if="role === 'judge'" class="big">⚖️ Jesteś sędzią (gracz po lewej) — nie obstawiasz</p>
         <p v-else class="big">👀 Oglądasz</p>
       </div>
       <p class="hint center">🪙 Obstawili: {{ state.bettorsIn }} / {{ state.bettorsTotal }}</p>
@@ -143,8 +143,9 @@ watch(
     <template v-else-if="state.phase === 'playing'">
       <div v-if="state.content" class="card task">
         <p class="task-text">{{ state.content.text }}</p>
-        <p v-if="state.content.need > 1" class="hint">Potrzeba odpowiedzi: {{ state.content.need }} · znaleziono: {{ state.found }}</p>
+        <p v-if="state.content.need > 1" class="hint">Potrzeba odpowiedzi: {{ state.content.need }}</p>
       </div>
+      <div v-if="state.hints && role === 'judge'" class="card task"><p class="hint">Przykładowe poprawne odpowiedzi (tylko dla Ciebie):</p><p class="task-text small">{{ state.hints.join(' · ') }}</p></div>
       <div v-else-if="role === 'partner'" class="card center"><p class="big">🗣️ Odgaduj na głos!</p><p class="hint">Hasło zostanie uznane, gdy powiesz całe wyrażenie.</p></div>
 
       <!-- ready -->
@@ -156,14 +157,10 @@ watch(
       <!-- act -->
       <template v-else-if="stage === 'act'">
         <template v-if="role === 'performer'">
-          <template v-if="state.task === 'mental'">
-            <input v-model="text" class="field" maxlength="60" placeholder="Wpisz odpowiedź" enterkeyhint="send" @keyup.enter="answer" />
-            <button class="btn btn-primary gate" :disabled="!text.trim()" @click="answer">Wyślij</button>
-            <p class="hint center">Znaleziono {{ state.found }}</p>
-          </template>
-          <button v-else class="btn btn-primary gate" :disabled="state.paused" @click="send({ kind: 'done' })">
-            {{ state.task === 'acting' ? '🎯 Odgadnięto!' : '✋ Gotowe' }}
+          <button class="btn btn-primary gate" :disabled="state.paused" @click="send({ kind: 'done' })">
+            {{ state.task === 'acting' ? '🎯 Odgadnięto!' : state.task === 'mental' ? '✋ Odpowiedziałem' : '✋ Gotowe' }}
           </button>
+          <p v-if="state.task === 'mental'" class="hint center">Odpowiadaj na głos — sędzia zdecyduje, czy dobrze.</p>
         </template>
         <p v-else-if="role === 'judge'" class="hint center">⚖️ Obserwuj — zaraz wydasz werdykt.</p>
         <p v-else class="hint center">🎬 {{ state.performer }} działa…</p>
@@ -189,12 +186,14 @@ watch(
         <div v-if="state.autoAdvance && state.nextIn > 0" class="ring"><span class="ring-n">{{ state.nextIn }}</span><span class="ring-l">dalej</span></div>
         <span v-if="state.money != null" class="score-flash" :class="state.myDelta > 0 ? 'good' : state.myDelta < 0 ? 'bad' : 'zero'">{{ sign(state.myDelta) }}</span>
       </div>
-      <p class="banner" :class="state.result.success ? 'gold' : ''">
+      <p v-if="state.skipped" class="banner">🎭 {{ state.performer }} nie ma już znaczników — kolejka przechodzi dalej</p>
+      <p v-if="state.result.startPay" class="hint center">🏁 Przejście przez START: +{{ state.result.startPay }}</p>
+      <p v-if="!state.skipped" class="banner" :class="state.result.success ? 'gold' : ''">
         <template v-if="state.kind === 'dice'">🎲 {{ state.performer }} {{ state.result.dice[0] }} : {{ state.result.dice[1] }} {{ state.opponent }} — {{ state.result.success ? 'wygrana!' : 'porażka' }}</template>
         <template v-else>{{ state.result.success ? '✅ Udało się!' : '❌ Nie udało się' }}</template>
       </p>
       <div v-if="state.content" class="card task"><p class="task-text">{{ state.content.text }}</p></div>
-      <p v-if="state.result.answers" class="hint center">Przykładowe poprawne: {{ state.result.answers.join(', ') }}</p>
+      <p v-if="state.hints" class="hint center">Przykładowe poprawne: {{ state.hints.join(', ') }}</p>
       <ul v-if="state.result.bets.length" class="entries">
         <li v-for="b in state.result.bets" :key="b.pid" class="entry" :class="{ me: b.pid === meId }">
           <span class="txt">{{ b.name }} — {{ b.yes ? 'TAK' : 'NIE' }} {{ b.amount }}</span>
@@ -202,6 +201,7 @@ watch(
         </li>
       </ul>
 
+      <div class="card map"><ObstawMap :board="state.board" compact /></div>
       <div class="board card">
         <h3 class="board-title">Stan kont</h3>
         <ol class="lb">
@@ -228,6 +228,8 @@ watch(
 .count.hot { color: var(--warn); border-color: var(--warn); }
 .kind, .task { padding: 12px 14px; }
 .kind p { margin: 4px 0 0; }
+.map { padding: 6px; }
+.task-text.small { font-size: 1rem; }
 .task-text { margin: 0; font-size: clamp(1.1rem, 5vw, 1.4rem); font-weight: 700; line-height: 1.3; }
 .stack { display: flex; flex-direction: column; gap: 10px; padding: 14px; }
 .stack h3 { margin: 0; font-size: 1.05rem; }

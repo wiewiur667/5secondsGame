@@ -76,6 +76,15 @@ async function startGame() {
         </div>
       </template>
 
+      <template v-if="state.gameId === 'obstaw'">
+        <p class="section-label">Liczba tur <span class="hint">· dowolna; 0 = do końca banku lub znaczników</span></p>
+        <input
+          type="number" min="0" max="1000" class="field" inputmode="numeric"
+          :value="state.questionLimit"
+          @change="post('set-length', { count: Number(($event.target as HTMLInputElement).value) })"
+        />
+      </template>
+
       <template v-if="state.gameId === 'five-second-rule' && state.categories.length">
         <p class="section-label">Kategorie <span class="hint">· wybierz jedną lub więcej</span></p>
         <div class="grid">

@@ -1,55 +1,64 @@
 import type { GameAward, GameModule, PlayerView, TickContext } from '../types'
-import { cleanAnswer, sameKey } from '../riposta/normalize.ts'
 
-// Obstaw! — an original Polish betting party game. Each turn one player attempts
-// a challenge (a dexterity stunt, a quiz question, acting a phrase for a partner,
-// or a dice duel) while everybody else bets, secretly, YES or NO with part of
-// their money. Money comes from a bank; the richest player after the last turn wins.
+// Obstaw! — an original Polish betting party game, following the rules of the
+// classic "bet on your friends" board game (see reports/ + CLAUDE.md):
+// a board with a pawn per player, a die, a bank, 3 task decks, YES/NO bets of at
+// most half your money, "blind bet", dice duel, start-field bonus, one partner
+// marker per opponent for acting tasks. The board grows with the number of players.
 //
-// Hub mapping: one hub "question" = one turn. The hub clock restarts at 0 for
-// every turn, so all deadlines here are stored as absolute `t` values of the
-// current turn. `score()` returns the money delta since the last report, so the
-// hub leaderboard always equals the players' money.
-//
-// Betting rules inspired by classic "bet on your friends" board games; the
-// content (cards) is original — see content.json.
+// Hub mapping: one hub "question" = one TURN (several rolls if the pawn lands on
+// START or an arrow). The hub clock restarts at 0 for every turn, so all deadlines
+// are absolute `t` values of the current turn. `score()` returns the money delta
+// since the last report, so the hub leaderboard always equals the players' money.
+// All card texts are original — see content.json.
 
-type Kind = 'skill' | 'mental' | 'acting' | 'blind' | 'dice'
+type CellType = 'start' | 'arrow' | 'skill' | 'mental' | 'acting' | 'blind' | 'dice'
 type Task = 'skill' | 'mental' | 'acting'
-type Stage = 'choose' | 'bet' | 'ready' | 'act' | 'judge' | 'revealed'
+type Stage = 'roll' | 'choose' | 'bet' | 'ready' | 'act' | 'judge' | 'revealed'
 
 interface Skill { id: number; sec: number; text: string }
 interface Mental { id: number; sec: number; need: number; q: string; valid: string[] }
 interface Acting { id: number; first: [string, string]; second: [string, string] }
 interface Config { skill: Skill[]; mental: Mental[]; acting: Acting[] }
+interface Cell { t: CellType; c: number } // c = combo 0..3 (bit1 → first part 2, bit0 → second part B); acting only
 
 interface Bet { yes: boolean; amount: number }
 interface Turn {
   no: number
-  kind: Kind
-  task: Task | null // what is actually played (blind: chosen by the performer)
   performer: number
-  partner: number | null // acting only: guesses the phrase
-  judge: number | null // skill + acting: rules whether it worked; does not bet
+  rolls: number[] // every die roll of this turn (arrow / start re-rolls)
+  field: number // cell the pawn stands on
+  kind: CellType // type of that cell
+  again: 'start' | 'arrow' | null // last roll landed on a re-roll field
+  task: Task | null // what is actually played (blind: chosen by the performer)
+  partner: number | null // acting only
+  judge: number | null // player to the left; rules whether it worked
   opponent: number | null // dice only
   stake: number // dice only
   card: Skill | Mental | Acting | null
   phrase: string | null
   bets: Record<number, Bet>
-  found: string[] // mental: distinct valid answers so far (comparison keys)
   stage: Stage
-  deadline: number // t at which the current stage times out
+  deadline: number
   success: boolean | null
   dice: [number, number] | null
+  skipped: boolean // acting field but the performer has no markers left
+  startPay: number // start-field bonus paid this turn
   delta: Record<number, number> // money change caused by this turn's result
   revealAt: number | null
 }
 interface State {
   players: number[]
   money: Record<number, number>
-  reported: Record<number, number> // what the hub leaderboard already holds
+  reported: Record<number, number>
+  pos: Record<number, number>
+  markers: Record<number, number[]> // pid → opponents whose marker they still hold
+  board: Cell[]
+  bank: number
+  bankLimited: boolean
+  turnLimit: number // 0 = no limit
+  judgeBets: boolean
   turn: Turn
-  total: number // turns in the whole game
   betSeconds: number
   queues: { skill: Skill[]; mental: Mental[]; acting: Acting[] }
   cfg: Config
@@ -57,20 +66,22 @@ interface State {
   stats: Record<number, { right: number; wrong: number; done: number; biggest: number }>
 }
 
-export const MIN_PLAYERS = 4
+export const MIN_PLAYERS = 3
 export const MAX_PLAYERS = 10
 export const START_MONEY = 80
-export const MIN_MONEY = 20 // anyone below this gets topped up by the bank at the start of a turn
+export const START_BONUS = 50
 const STEP = 10
 const GRACE = 1.5
+const ROLL_SECONDS = 20
 const CHOOSE_SECONDS = 25
 const READY_SECONDS = 25
 const JUDGE_SECONDS = 40
 const ACTING_SECONDS = 90
 const RESULT_SECONDS = 12
 
-const KIND_WEIGHTS: Array<[Kind, number]> = [['skill', 0.3], ['mental', 0.25], ['acting', 0.25], ['blind', 0.1], ['dice', 0.1]]
-const KIND_LABEL: Record<Kind, string> = {
+const FIELD_LABEL: Record<CellType, string> = {
+  start: '🏁 Start',
+  arrow: '↩️ Strzałka',
   skill: '🤹 Zadanie zręcznościowe',
   mental: '🧠 Zadanie umysłowe',
   acting: '🎭 Zadanie aktorskie',
@@ -81,6 +92,8 @@ const TASK_LABEL: Record<Task, string> = { skill: 'zręcznościowe', mental: 'um
 
 // Largest allowed bet: at most half of the money, in steps of 10.
 export const maxBet = (money: number) => Math.max(0, Math.floor(money / 2 / STEP) * STEP)
+export const boardSize = (players: number) => 12 + 3 * players
+export const comboLabel = (c: number) => `${(c >> 1) + 1}${'AB'[c & 1]}`
 
 function shuffle<T>(a: T[], rng = Math.random): T[] {
   const out = [...a]
@@ -93,25 +106,48 @@ function shuffle<T>(a: T[], rng = Math.random): T[] {
 const oneOf = <T>(a: T[]): T => a[Math.floor(Math.random() * a.length)]
 const clock = (s: State, t: number) => Math.max(0, Math.ceil(s.turn.deadline - t))
 
+// The board grows with the number of players: 12 + 3 fields per player.
+// Cell 0 is START; the rest is a shuffled mix (re-shuffled if two re-roll fields touch).
+export function makeBoard(players: number, rng = Math.random): Cell[] {
+  const n = boardSize(players)
+  const arrow = Math.max(1, Math.round(n / 12))
+  const blind = Math.max(1, Math.round(n / 10))
+  const dice = Math.max(1, Math.round(n / 9))
+  const rest = n - 1 - arrow - blind - dice
+  const acting = Math.round(rest * 0.4)
+  const skill = Math.round(rest * 0.3)
+  const types: CellType[] = [
+    ...Array(arrow).fill('arrow'),
+    ...Array(blind).fill('blind'),
+    ...Array(dice).fill('dice'),
+    ...Array(acting).fill('acting'),
+    ...Array(skill).fill('skill'),
+    ...Array(rest - acting - skill).fill('mental'),
+  ]
+  let order = types
+  for (let i = 0; i < 50; i++) {
+    order = shuffle(types, rng)
+    const ring: CellType[] = ['start', ...order]
+    const bad = ring.some((t, k) => (t === 'arrow' || t === 'start') && (ring[(k + 1) % n] === 'arrow'))
+    if (!bad) break
+  }
+  let combo = 0
+  const combos = shuffle([0, 1, 2, 3], rng)
+  return [{ t: 'start', c: 0 }, ...order.map((t) => ({ t, c: t === 'acting' ? combos[combo++ % 4] : 0 }))]
+}
+
 // Unused cards first, then the rest, each shuffled.
 function queueOf<T extends { id: number }>(pool: T[], used?: Set<number>): T[] {
   return [...shuffle(pool.filter((c) => !used?.has(c.id))), ...shuffle(pool.filter((c) => used?.has(c.id)))]
 }
 function draw<T extends { id: number }>(s: State, key: Task): T {
-  const q = s.queues[key] as unknown as T[]
-  if (!q.length) (s.queues as any)[key] = queueOf(s.cfg[key] as unknown as T[])
-  const card = (s.queues[key] as unknown as T[]).shift()!
+  if (!s.queues[key].length) (s.queues as any)[key] = queueOf(s.cfg[key] as any)
+  const card = (s.queues[key] as any[]).shift() as T
   s.used?.add(card.id)
   return card
 }
 
-function pickKind(): Kind {
-  let r = Math.random()
-  for (const [k, w] of KIND_WEIGHTS) if ((r -= w) < 0) return k
-  return 'skill'
-}
-
-// Next player after `performer` in seating order who is not in `skip`.
+// The player to the left (next seat) who is not in `skip`.
 function neighbour(s: State, performer: number, skip: number[] = []): number {
   const i = s.players.indexOf(performer)
   for (let k = 1; k < s.players.length; k++) {
@@ -122,33 +158,53 @@ function neighbour(s: State, performer: number, skip: number[] = []): number {
 }
 
 function bettors(tk: Turn, s: State): number[] {
-  return s.players.filter((p) => p !== tk.performer && p !== tk.partner && p !== tk.judge)
+  return s.players.filter((p) => p !== tk.performer && p !== tk.partner && (s.judgeBets || p !== tk.judge))
 }
 
-function actingPhrase(c: Acting): string {
-  return `${oneOf(c.first)} ${oneOf(c.second)}`
-}
-
-// Fix what is played this turn. Called when it becomes known (immediately, or
-// after the performer's choice for acting / blind).
-function setTask(s: State, task: Task, t: number) {
+// --- bank ------------------------------------------------------------------
+// Apply a turn's money flows. `gains` are paid by the bank, `losses` are paid into
+// it; `transfers` move between players. With a limited bank, gains are scaled
+// down (to whole 10s) when the bank cannot cover them.
+function settle(s: State, gains: Record<number, number>, losses: Record<number, number>, transfers: Array<[number, number, number]> = []) {
   const tk = s.turn
-  tk.task = task
-  tk.card = draw(s, task)
-  if (task === 'acting') tk.phrase = actingPhrase(tk.card as Acting)
-  if (task !== 'mental') tk.judge = neighbour(s, tk.performer, tk.partner != null ? [tk.partner] : [])
-  tk.stage = 'bet'
-  tk.deadline = t + s.betSeconds
+  const inflow = Object.values(losses).reduce((a, b) => a + b, 0)
+  const demand = Object.values(gains).reduce((a, b) => a + b, 0)
+  let scale = 1
+  if (s.bankLimited) {
+    const available = s.bank + inflow
+    if (demand > available) scale = demand ? available / demand : 1
+  }
+  let paid = 0
+  for (const [pid, g] of Object.entries(gains)) {
+    const amount = scale === 1 ? g : Math.floor((g * scale) / STEP) * STEP
+    paid += amount
+    s.money[Number(pid)] += amount
+    tk.delta[Number(pid)] = (tk.delta[Number(pid)] ?? 0) + amount
+  }
+  for (const [pid, l] of Object.entries(losses)) {
+    s.money[Number(pid)] = Math.max(0, s.money[Number(pid)] - l)
+    tk.delta[Number(pid)] = (tk.delta[Number(pid)] ?? 0) - l
+  }
+  for (const [from, to, amount] of transfers) {
+    s.money[from] = Math.max(0, s.money[from] - amount)
+    s.money[to] += amount
+    tk.delta[from] = (tk.delta[from] ?? 0) - amount
+    tk.delta[to] = (tk.delta[to] ?? 0) + amount
+  }
+  if (s.bankLimited) s.bank = Math.max(0, s.bank + inflow - paid)
 }
 
+// --- turn flow -------------------------------------------------------------
 function newTurn(s: State, t: number) {
-  for (const p of s.players) if (s.money[p] < MIN_MONEY) s.money[p] = MIN_MONEY // bank top-up
-  const kind = pickKind()
-  const tk: Turn = {
-    no: s.turn ? s.turn.no + 1 : 0,
-    kind,
+  const no = s.turn ? s.turn.no + 1 : 0
+  s.turn = {
+    no,
+    performer: s.players[no % s.players.length],
+    rolls: [],
+    field: 0,
+    kind: 'start',
+    again: null,
     task: null,
-    performer: s.players[(s.turn ? s.turn.no + 1 : 0) % s.players.length],
     partner: null,
     judge: null,
     opponent: null,
@@ -156,27 +212,90 @@ function newTurn(s: State, t: number) {
     card: null,
     phrase: null,
     bets: {},
-    found: [],
-    stage: 'choose',
-    deadline: t + CHOOSE_SECONDS,
+    stage: 'roll',
+    deadline: t + ROLL_SECONDS,
     success: null,
     dice: null,
+    skipped: false,
+    startPay: 0,
     delta: {},
     revealAt: null,
   }
-  s.turn = tk
-  if (kind === 'skill' || kind === 'mental') setTask(s, kind, t)
+  s.turn.field = s.pos[s.turn.performer]
+  s.turn.kind = s.board[s.turn.field].t
 }
 
-// --- stages ----------------------------------------------------------------
+function setTask(s: State, task: Task, t: number) {
+  const tk = s.turn
+  tk.task = task
+  tk.card = draw(s, task)
+  if (task === 'acting') {
+    const c = s.board[tk.field].c
+    const a = tk.card as Acting
+    tk.phrase = `${a.first[c >> 1]} ${a.second[c & 1]}`
+  }
+  tk.judge = neighbour(s, tk.performer, tk.partner != null ? [tk.partner] : [])
+  tk.stage = 'bet'
+  tk.deadline = t + s.betSeconds
+}
+
+function roll(s: State, t: number) {
+  const tk = s.turn
+  const d = 1 + Math.floor(Math.random() * 6)
+  const L = s.board.length
+  const old = s.pos[tk.performer]
+  const raw = old + d
+  s.pos[tk.performer] = raw % L
+  tk.rolls.push(d)
+  tk.field = s.pos[tk.performer]
+  tk.kind = s.board[tk.field].t
+  tk.again = null
+  if (raw > L) {
+    // passed START
+    const before = tk.delta[tk.performer] ?? 0
+    settle(s, { [tk.performer]: START_BONUS }, {})
+    tk.startPay += (tk.delta[tk.performer] ?? 0) - before
+  }
+  switch (tk.kind) {
+    case 'start':
+    case 'arrow':
+      tk.again = tk.kind
+      tk.stage = 'roll'
+      tk.deadline = t + ROLL_SECONDS
+      break
+    case 'skill':
+    case 'mental':
+      setTask(s, tk.kind, t)
+      break
+    case 'acting':
+      if (!s.markers[tk.performer].length) {
+        tk.skipped = true
+        tk.stage = 'revealed'
+        tk.revealAt = t
+      } else {
+        tk.stage = 'choose'
+        tk.deadline = t + CHOOSE_SECONDS
+      }
+      break
+    default: // blind, dice
+      tk.stage = 'choose'
+      tk.deadline = t + CHOOSE_SECONDS
+  }
+}
+
+function pickPartner(s: State, partner: number, t: number) {
+  const tk = s.turn
+  tk.partner = partner
+  s.markers[tk.performer] = s.markers[tk.performer].filter((p) => p !== partner)
+  setTask(s, 'acting', t)
+}
+
 function autoChoose(s: State, t: number) {
   const tk = s.turn
   const others = s.players.filter((p) => p !== tk.performer)
   if (tk.kind === 'blind') setTask(s, oneOf<Task>(['skill', 'mental']), t)
-  else if (tk.kind === 'acting') {
-    tk.partner = oneOf(others)
-    setTask(s, 'acting', t)
-  } else if (tk.kind === 'dice') rollDice(s, t, oneOf(others), Math.max(STEP, maxBet(s.money[tk.performer])))
+  else if (tk.kind === 'acting') pickPartner(s, oneOf(s.markers[tk.performer]), t)
+  else if (tk.kind === 'dice') duel(s, t, oneOf(others), Math.max(0, maxBet(s.money[tk.performer])))
 }
 
 function lockBets(s: State, t: number) {
@@ -197,76 +316,59 @@ function toJudge(s: State, t: number) {
   s.turn.deadline = t + JUDGE_SECONDS
 }
 
-function rollDice(s: State, t: number, opponent: number, stake: number) {
+// Dice duel: both roll; the performer must roll strictly more (a tie loses).
+function duel(s: State, t: number, opponent: number, stake: number) {
   const tk = s.turn
   tk.opponent = opponent
   tk.stake = Math.min(stake, maxBet(s.money[tk.performer]))
-  let a = 0
-  let b = 0
-  while (a === b) {
-    a = 1 + Math.floor(Math.random() * 6) // ties are re-rolled
-    b = 1 + Math.floor(Math.random() * 6)
-  }
+  const a = 1 + Math.floor(Math.random() * 6)
+  const b = 1 + Math.floor(Math.random() * 6)
   tk.dice = [a, b]
-  const win = a > b
-  tk.success = win
-  tk.delta = { [tk.performer]: win ? tk.stake : -tk.stake }
-  if (!win) tk.delta[opponent] = tk.stake
-  settleMoney(s, t)
+  tk.success = a > b
+  if (tk.success) settle(s, { [tk.performer]: tk.stake }, {})
+  else settle(s, {}, {}, [[tk.performer, opponent, tk.stake]])
+  tk.stage = 'revealed'
+  tk.revealAt = t
 }
 
-// Turn result for the betting tasks: performer (and the acting partner) take the
-// whole pool from the bank; right bets win their stake from the bank, wrong ones lose it.
+// Bet tasks: the performer (and the acting partner) get the whole pool from the
+// bank; right bets win their stake from the bank, wrong ones lose it to the bank.
 function resolve(s: State, t: number, success: boolean) {
   const tk = s.turn
   tk.success = success
-  const delta: Record<number, number> = {}
+  const gains: Record<number, number> = {}
+  const losses: Record<number, number> = {}
   const pool = Object.values(tk.bets).reduce((n, b) => n + b.amount, 0)
   if (success) {
-    delta[tk.performer] = pool
-    if (tk.partner != null) delta[tk.partner] = pool
+    gains[tk.performer] = pool
+    if (tk.partner != null) gains[tk.partner] = pool
   }
   for (const [pid, b] of Object.entries(tk.bets)) {
     const p = Number(pid)
+    if (!b.amount) continue
     const right = b.yes === success
-    if (b.amount) delta[p] = (delta[p] ?? 0) + (right ? b.amount : -b.amount)
+    if (right) gains[p] = (gains[p] ?? 0) + b.amount
+    else losses[p] = (losses[p] ?? 0) + b.amount
     const st = s.stats[p]
-    if (b.amount && st) {
-      if (right) st.right++
-      else st.wrong++
-      st.biggest = Math.max(st.biggest, b.amount)
-    }
+    if (right) st.right++
+    else st.wrong++
+    st.biggest = Math.max(st.biggest, b.amount)
   }
   if (success) {
     s.stats[tk.performer].done++
     if (tk.partner != null) s.stats[tk.partner].done++
   }
-  tk.delta = delta
-  settleMoney(s, t)
-}
-
-function settleMoney(s: State, t: number) {
-  const tk = s.turn
-  for (const [pid, d] of Object.entries(tk.delta)) s.money[Number(pid)] = Math.max(0, s.money[Number(pid)] + d)
+  settle(s, gains, losses)
   tk.stage = 'revealed'
   tk.revealAt = t
 }
 
 // --- views -----------------------------------------------------------------
-type Role = 'performer' | 'partner' | 'judge' | 'opponent' | 'bettor' | 'audience'
-function roleOf(s: State, pid: number): Role {
-  const tk = s.turn
-  if (!s.players.includes(pid)) return 'audience'
-  if (pid === tk.performer) return 'performer'
-  if (pid === tk.partner) return 'partner'
-  if (pid === tk.judge) return 'judge'
-  if (pid === tk.opponent) return 'opponent'
-  return 'bettor'
-}
+type Viewer = 'performer' | 'partner' | 'judge' | 'bettor' | 'tv'
 
-// The task text a given viewer may see right now. Never the acting phrase for the
-// partner (until the reveal), never anything to the performer before bets close.
-function taskFor(s: State, role: Role | 'tv'): Record<string, any> | null {
+// The task text a viewer may see right now. Never the acting phrase for the
+// partner (until the reveal) or the TV, never anything to the performer before bets close.
+function taskFor(s: State, v: Viewer): Record<string, any> | null {
   const tk = s.turn
   if (!tk.task || !tk.card) return null
   const reveal = tk.stage === 'revealed'
@@ -277,17 +379,28 @@ function taskFor(s: State, role: Role | 'tv'): Record<string, any> | null {
     return { text: tk.phrase!, sec: ACTING_SECONDS }
   }
   if (reveal) return body()
-  if (role === 'performer') return afterBets ? body() : null
-  if (role === 'partner') return null
-  if (role === 'judge') return afterBets ? body() : null
-  if (role === 'tv') {
-    // The TV must not show the phrase (the partner may be looking at it), nor the task before bets close.
-    if (!afterBets || tk.task === 'acting') return null
-    return body()
-  }
-  // bettors / audience: see it while betting, except in a blind bet
-  if (tk.stage === 'bet' && tk.kind === 'blind') return null
+  if (v === 'partner') return null
+  if (v === 'performer' || v === 'judge') return afterBets ? body() : null
+  if (v === 'tv') return afterBets && tk.task !== 'acting' ? body() : null
+  if (tk.stage === 'bet' && tk.kind === 'blind') return null // blind bet: content unknown while betting
   return body()
+}
+
+// Sample correct answers: only the judge (after the bets) and everyone after the reveal.
+function hintsFor(tk: Turn, show: boolean): string[] | null {
+  if (!show || tk.task !== 'mental' || !tk.card) return null
+  return (tk.card as Mental).valid.slice(0, 12)
+}
+
+function pawns(s: State, names: Record<number, string>) {
+  return s.players.map((p, i) => ({
+    id: p,
+    name: names[p] ?? '?',
+    color: i,
+    pos: s.pos[p],
+    money: s.money[p],
+    markers: s.markers[p].length,
+  }))
 }
 
 function header(s: State, t: number, names: Record<number, string>) {
@@ -295,16 +408,23 @@ function header(s: State, t: number, names: Record<number, string>) {
   return {
     game: 'obstaw',
     turnNo: tk.no + 1,
-    turnCount: s.total,
+    turnCount: s.turnLimit,
     stage: tk.stage,
     kind: tk.kind,
-    kindLabel: KIND_LABEL[tk.kind],
+    kindLabel: FIELD_LABEL[tk.kind],
+    combo: tk.kind === 'acting' ? comboLabel(s.board[tk.field].c) : null,
     task: tk.task,
     taskLabel: tk.task ? TASK_LABEL[tk.task] : null,
+    rolls: tk.rolls,
+    again: tk.again,
+    skipped: tk.skipped,
     performer: names[tk.performer] ?? '?',
     partner: tk.partner != null ? names[tk.partner] ?? '?' : null,
     judge: tk.judge != null ? names[tk.judge] ?? '?' : null,
     opponent: tk.opponent != null ? names[tk.opponent] ?? '?' : null,
+    bank: s.bankLimited ? s.bank : null,
+    judgeBets: s.judgeBets,
+    board: { cells: s.board.map((c) => ({ t: c.t, c: c.t === 'acting' ? comboLabel(c.c) : null })), pawns: pawns(s, names), current: tk.field },
     remaining: tk.stage === 'revealed' ? 0 : clock(s, t),
     nextIn: tk.revealAt != null ? Math.max(0, Math.ceil(tk.revealAt + RESULT_SECONDS - t)) : 0,
   }
@@ -316,9 +436,8 @@ function resultView(s: State, names: Record<number, string>) {
     success: tk.success,
     dice: tk.dice,
     stake: tk.stake,
+    startPay: tk.startPay,
     pool: Object.values(tk.bets).reduce((n, b) => n + b.amount, 0),
-    answers: tk.task === 'mental' ? (tk.card as Mental).valid.slice(0, 6) : null,
-    found: tk.found.length,
     bets: Object.entries(tk.bets).map(([pid, b]) => ({
       pid: Number(pid),
       name: names[Number(pid)] ?? '?',
@@ -338,10 +457,15 @@ const obstaw: GameModule<State> = {
   configFile: 'content.json',
   settings: [
     {
-      key: 'rounds',
-      label: 'Liczba kolejek (tur na gracza)',
-      default: 3,
-      options: [2, 3, 4].map((n) => ({ value: n, label: `${n}` })),
+      key: 'bank',
+      label: 'Bank (na gracza)',
+      default: 150,
+      options: [
+        { value: 100, label: '100' },
+        { value: 150, label: '150' },
+        { value: 250, label: '250' },
+        { value: 0, label: '♾️ bez limitu' },
+      ],
     },
     {
       key: 'betSeconds',
@@ -349,20 +473,35 @@ const obstaw: GameModule<State> = {
       default: 30,
       options: [20, 30, 45].map((n) => ({ value: n, label: `${n} s` })),
     },
+    {
+      key: 'judgeBets',
+      label: 'Sędzia (gracz po lewej) też obstawia',
+      default: 1,
+      options: [
+        { value: 1, label: 'Tak (jak w oryginale)' },
+        { value: 0, label: 'Nie' },
+      ],
+    },
   ],
 
-  start(playerIds, cfg: Config, opts?: { settings?: Record<string, any>; used?: Set<number> }) {
+  start(playerIds, cfg: Config, opts?: { settings?: Record<string, any>; used?: Set<number>; questionCount?: number }) {
     if (playerIds.length < MIN_PLAYERS) return `Obstaw! potrzebuje co najmniej ${MIN_PLAYERS} graczy.`
     const st = opts?.settings ?? {}
-    const players = playerIds.slice(0, MAX_PLAYERS)
-    const rounds = [2, 3, 4].includes(Number(st.rounds)) ? Number(st.rounds) : 3
+    const players = playerIds.slice(0, MAX_PLAYERS) // the rest watch as spectators
     const used = opts?.used
+    const perPlayer = st.bank === undefined ? 150 : Number(st.bank)
     const s: State = {
       players,
       money: Object.fromEntries(players.map((p) => [p, START_MONEY])),
       reported: Object.fromEntries(players.map((p) => [p, 0])),
+      pos: Object.fromEntries(players.map((p) => [p, 0])),
+      markers: Object.fromEntries(players.map((p) => [p, players.filter((q) => q !== p)])),
+      board: makeBoard(players.length),
+      bank: perPlayer > 0 ? perPlayer * players.length : 0,
+      bankLimited: perPlayer > 0,
+      turnLimit: Math.max(0, Math.floor(Number(opts?.questionCount) || 0)),
+      judgeBets: Number(st.judgeBets) !== 0,
       turn: undefined as unknown as Turn,
-      total: players.length * rounds,
       betSeconds: Number(st.betSeconds) || 30,
       queues: { skill: queueOf(cfg.skill, used), mental: queueOf(cfg.mental, used), acting: queueOf(cfg.acting, used) },
       cfg,
@@ -381,6 +520,9 @@ const obstaw: GameModule<State> = {
     const tk = s.turn
     const active = new Set(ctx?.activeIds ?? s.players)
     switch (tk.stage) {
+      case 'roll':
+        if (t >= tk.deadline || !active.has(tk.performer)) roll(s, t)
+        break
       case 'choose':
         if (t >= tk.deadline || !active.has(tk.performer)) autoChoose(s, t)
         break
@@ -393,10 +535,7 @@ const obstaw: GameModule<State> = {
         if (t >= tk.deadline || !active.has(tk.performer)) startAct(s, t)
         break
       case 'act':
-        if (t >= tk.deadline) {
-          if (tk.task === 'mental') resolve(s, t, false)
-          else toJudge(s, t)
-        }
+        if (t >= tk.deadline) toJudge(s, t)
         break
       case 'judge':
         if (t >= tk.deadline || (tk.judge != null && !active.has(tk.judge))) resolve(s, t, false)
@@ -409,8 +548,12 @@ const obstaw: GameModule<State> = {
     return s.turn.stage === 'revealed' && s.turn.revealAt != null ? s.turn.revealAt + RESULT_SECONDS : null
   },
 
+  // The game ends at the turn limit, when the bank is empty, or when nobody has
+  // a partner marker left (the three end conditions of the original).
   next(s) {
-    if (s.turn.no + 1 >= s.total) return false
+    if (s.turnLimit > 0 && s.turn.no + 1 >= s.turnLimit) return false
+    if (s.bankLimited && s.bank < STEP) return false
+    if (s.players.every((p) => !s.markers[p].length)) return false
     newTurn(s, 0) // hub restarts its clock at 0
     return true
   },
@@ -419,21 +562,19 @@ const obstaw: GameModule<State> = {
     const tk = s.turn
     const kind = payload?.kind
     if (!s.players.includes(pid)) return
+    if (tk.stage === 'roll' && pid === tk.performer && kind === 'roll' && t <= tk.deadline + GRACE) return roll(s, t)
     if (tk.stage === 'choose' && pid === tk.performer && kind === 'pick' && t <= tk.deadline + GRACE) {
       if (tk.kind === 'blind') {
         if (payload.type === 'skill' || payload.type === 'mental') setTask(s, payload.type, t)
       } else if (tk.kind === 'acting') {
         const partner = Number(payload.partner)
-        if (partner !== pid && s.players.includes(partner)) {
-          tk.partner = partner
-          setTask(s, 'acting', t)
-        }
+        if (s.markers[pid].includes(partner)) pickPartner(s, partner, t)
       } else if (tk.kind === 'dice') {
         const opponent = Number(payload.opponent)
         const stake = Number(payload.stake)
         if (opponent === pid || !s.players.includes(opponent)) return
         if (!Number.isInteger(stake) || stake < STEP || stake > maxBet(s.money[pid])) return
-        rollDice(s, t, opponent, stake)
+        duel(s, t, opponent, stake)
       }
       return
     }
@@ -446,22 +587,8 @@ const obstaw: GameModule<State> = {
       return
     }
     if (tk.stage === 'ready' && pid === tk.performer && kind === 'start') return startAct(s, t)
-    if (tk.stage === 'act' && pid === tk.performer) {
-      if (kind === 'answer' && tk.task === 'mental' && t <= tk.deadline + GRACE) {
-        const text = cleanAnswer(payload.text)
-        const key = sameKey(text)
-        const card = tk.card as Mental
-        if (!key || tk.found.includes(key)) return
-        if (card.valid.some((v) => sameKey(v) === key)) {
-          tk.found.push(key)
-          if (tk.found.length >= card.need) resolve(s, t, true)
-        }
-      } else if (kind === 'done' && tk.task !== 'mental') toJudge(s, t)
-      return
-    }
-    if (tk.stage === 'judge' && pid === tk.judge && kind === 'ruling' && typeof payload.ok === 'boolean') {
-      resolve(s, t, payload.ok)
-    }
+    if (tk.stage === 'act' && pid === tk.performer && kind === 'done') return toJudge(s, t)
+    if (tk.stage === 'judge' && pid === tk.judge && kind === 'ruling' && typeof payload.ok === 'boolean') resolve(s, t, payload.ok)
   },
 
   // Money delta since the last report → the hub leaderboard always equals the money.
@@ -495,62 +622,66 @@ const obstaw: GameModule<State> = {
   publicView(s, t, names) {
     const tk = s.turn
     const base = header(s, t, names)
-    const common = { ...base, money: s.players.map((p) => ({ name: names[p] ?? '?', money: s.money[p] })) }
     if (tk.stage === 'revealed') {
-      return {
-        phase: 'revealed',
-        ...common,
-        task: tk.task,
-        content: tk.card ? bodyOf(tk) : null,
-        result: resultView(s, names),
-      }
+      return { phase: 'revealed', ...base, content: tk.card ? taskFor(s, 'tv') : null, hints: hintsFor(tk, true), result: resultView(s, names) }
     }
     const bt = bettors(tk, s)
     return {
       phase: 'playing',
-      ...common,
+      ...base,
       content: taskFor(s, 'tv'),
       bettorsIn: bt.filter((p) => tk.bets[p]).length,
       bettorsTotal: bt.length,
-      found: tk.found.length,
     }
   },
 
   stateForPlayer(s, pid, t, names): PlayerView {
     const tk = s.turn
-    const role = roleOf(s, pid)
     const nm = names ?? {}
+    const isPlayer = s.players.includes(pid)
+    const canBet = bettors(tk, s).includes(pid)
+    const role = !isPlayer
+      ? 'audience'
+      : pid === tk.performer
+        ? 'performer'
+        : pid === tk.partner
+          ? 'partner'
+          : pid === tk.opponent
+            ? 'opponent'
+            : pid === tk.judge
+              ? 'judge'
+              : 'bettor'
+    const viewer: Viewer = role === 'performer' ? 'performer' : role === 'partner' ? 'partner' : role === 'judge' && !(tk.stage === 'bet' && canBet) ? 'judge' : 'bettor'
+    const afterBets = tk.stage !== 'roll' && tk.stage !== 'choose' && tk.stage !== 'bet'
     const base = {
       ...header(s, t, nm),
       leaderboard: [] as any,
       role,
-      money: s.players.includes(pid) ? s.money[pid] : null,
-      myMax: s.players.includes(pid) ? maxBet(s.money[pid]) : 0,
-      content: taskFor(s, role),
+      canBet,
+      money: isPlayer ? s.money[pid] : null,
+      myMax: isPlayer ? maxBet(s.money[pid]) : 0,
+      myMarkers: isPlayer ? s.markers[pid].length : 0,
+      content: taskFor(s, viewer),
+      hints: hintsFor(tk, tk.stage === 'revealed' || (pid === tk.judge && afterBets)),
     }
     if (tk.stage === 'revealed') {
       return { phase: 'revealed', ...base, result: resultView(s, nm), myDelta: tk.delta[pid] ?? 0 }
     }
-    const bt = bettors(tk, s)
     const extra: Record<string, any> = {}
     if (tk.stage === 'choose') {
-      extra.options = s.players.filter((p) => p !== pid).map((p) => ({ id: p, name: nm[p] ?? '?' }))
+      extra.options =
+        tk.kind === 'acting'
+          ? s.markers[pid].map((p) => ({ id: p, name: nm[p] ?? '?' }))
+          : s.players.filter((p) => p !== pid).map((p) => ({ id: p, name: nm[p] ?? '?' }))
     }
     if (tk.stage === 'bet') {
+      const bt = bettors(tk, s)
       extra.myBet = tk.bets[pid] ?? null
       extra.bettorsIn = bt.filter((p) => tk.bets[p]).length
       extra.bettorsTotal = bt.length
     }
-    if (tk.task === 'mental') extra.found = tk.found.length
-    if (tk.stage === 'act' || tk.stage === 'ready') extra.actEnds = tk.deadline
     return { phase: 'playing', ...base, ...extra }
   },
-}
-
-function bodyOf(tk: Turn) {
-  if (tk.task === 'skill') return { text: (tk.card as Skill).text, sec: (tk.card as Skill).sec }
-  if (tk.task === 'mental') return { text: (tk.card as Mental).q, need: (tk.card as Mental).need, sec: (tk.card as Mental).sec }
-  return { text: tk.phrase!, sec: ACTING_SECONDS }
 }
 
 export default obstaw
