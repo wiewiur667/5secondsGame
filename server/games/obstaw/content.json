@@ -331,7 +331,7 @@
   },
   {
    "id": 105,
-   "q": "Czy znajdziesz 5 słów zawierających „STO”? (np. stokrotka, stoper) („stół” się nie liczy)",
+   "q": "Czy znajdziesz 5 słów zawierających „STO”? (np. stokrotka, stoper)",
    "sec": 30,
    "hints": [
     "stos",
@@ -512,7 +512,6 @@
     "sklepowa",
     "sklepowy",
     "supersklep",
-    "minisklep",
     "sklepienie"
    ]
   },
@@ -573,8 +572,7 @@
     "dutki",
     "gotowizna",
     "hajs",
-    "kapusta",
-    "szeląg"
+    "kapusta"
    ]
   },
   {
@@ -959,7 +957,6 @@
     "organy",
     "kornet",
     "lutnia",
-    "sakson",
     "fujara",
     "djembe"
    ]
@@ -977,9 +974,6 @@
     "kraina",
     "krasnal",
     "kradzież",
-    "kraść",
-    "Ukraina",
-    "Kraków",
     "skrajny",
     "okrasa"
    ]
